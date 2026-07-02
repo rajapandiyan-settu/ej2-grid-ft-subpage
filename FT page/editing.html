@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Data Grid Editing - Feature Tour</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* ===== DEMO SECTION ===== */
+        .demo-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0;
+        }
+
+        .tab-btn {
+            padding: 12px 0;
+            border: none;
+            background-color: transparent;
+            color: var(--text-light);
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-dark);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .demo-preview {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-content {
+            display: none;
+        }
+
+        .demo-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .demo-grid-visual {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .demo-grid-visual strong {
+            color: var(--text-dark);
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        /* ===== WHY IT MATTERS SECTION ===== */
+        .why-matters {
+            padding: 80px 0;
+        }
+
+        .why-matters-content {
+            max-width: 700px;
+        }
+
+        .section-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .why-matters-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+        }
+
+        .why-matters p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .benefit-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .chip {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* ===== CAPABILITIES SECTION ===== */
+        .capabilities {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .capability-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .capability-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .capability-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .capability-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .capability-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-top: 20px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .capability-value {
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* ===== RESOURCES SECTION ===== */
+        .resources {
+            padding: 80px 0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .resource-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .resource-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .resource-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .resource-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .resource-link:hover {
+            gap: 12px;
+        }
+
+        .resource-link::after {
+            content: "→";
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: var(--light-bg);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 20px 20px 20px;
+        }
+
+        .faq-answer p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ===== CUSTOMER STORIES SECTION ===== */
+        .customer-stories {
+            padding: 80px 0;
+        }
+
+        .testimonial {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .testimonial-quote {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .customer-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .customer-logo {
+            width: 100px;
+            height: 50px;
+            background-color: var(--light-bg);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .customer-stories-cta {
+            text-align: center;
+        }
+
+        /* ===== TRUST SECTION ===== */
+        .trust-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .trust-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .trust-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 48px;
+        }
+
+        .trust-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .trust-rating {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 24px;
+            font-size: 20px;
+        }
+
+        .star {
+            color: #ffc107;
+        }
+
+        /* ===== RELATED ARTICLES SECTION ===== */
+        .related-articles {
+            padding: 80px 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .article-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .article-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .article-card:nth-child(2) .article-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .article-card:nth-child(3) .article-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .article-card:nth-child(4) .article-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .article-content {
+            padding: 24px;
+        }
+
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .article-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .article-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .customer-logos {
+                gap: 20px;
+            }
+
+            .customer-logo {
+                width: 80px;
+            }
+
+            .demo-tabs {
+                gap: 4px;
+            }
+
+            .tab-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo">React Data Grid</div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-eyebrow">REACT DATA GRID EDITING</div>
+            <h1>Build Editable React Data Grids for Real Data Workflows</h1>
+            <p>Create, validate, and save records directly in the Syncfusion React Data Grid with inline, dialog, batch editing.</p>
+            <div class="hero-cta-group">
+                <button class="btn btn-primary" onclick="scrollToSection('demo')">View Editing Demo</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('resources')">Explore Documentation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO SECTION -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <h2 class="section-title">Try Editing Modes in Action</h2>
+            <p class="section-subtitle">Use a live sample to see how editing works before reading the details.</p>
+
+            <div class="demo-tabs">
+                <button class="tab-btn active" onclick="switchDemo('inline')">Inline Editing</button>
+                <button class="tab-btn" onclick="switchDemo('cell')">Cell Editing</button>
+                <button class="tab-btn" onclick="switchDemo('dialog')">Dialog Editing</button>
+                <button class="tab-btn" onclick="switchDemo('batch')">Batch Editing</button>
+                <button class="tab-btn" onclick="switchDemo('template')">Template Editing</button>
+                <button class="tab-btn" onclick="switchDemo('command')">Command Column</button>
+            </div>
+
+            <div class="demo-preview">
+                <div id="inline-demo" class="demo-content active">
+                    <div class="demo-grid-visual">
+                        <strong>📝 Inline Row Editing</strong>
+                        Edit an entire row by clicking the edit icon. All cells in the row become editable in a single view.
+                        <strong style="margin-top: 20px;">Perfect for:</strong>
+                        Quick edits where users need to see and modify multiple fields at once.
+                    </div>
+                </div>
+                <div id="cell-demo" class="demo-content">
+                    <div class="demo-grid-visual">
+                        <strong>🎯 Cell Editing</strong>
+                        Double-click or press Enter on any cell to edit it individually. Changes are saved per cell.
+                        <strong style="margin-top: 20px;">Perfect for:</strong>
+                        Spreadsheet-like workflows where users edit one field at a time.
+                    </div>
+                </div>
+                <div id="dialog-demo" class="demo-content">
+                    <div class="demo-grid-visual">
+                        <strong>💬 Dialog Editing</strong>
+                        Click edit to open a modal dialog containing all editable fields for that row.
+                        <strong style="margin-top: 20px;">Perfect for:</strong>
+                        Complex forms with many fields or custom validation layouts.
+                    </div>
+                </div>
+                <div id="batch-demo" class="demo-content">
+                    <div class="demo-grid-visual">
+                        <strong>📦 Batch Editing</strong>
+                        Edit multiple rows simultaneously, then save all changes in a single transaction.
+                        <strong style="margin-top: 20px;">Perfect for:</strong>
+                        Bulk updates and bulk operations that need atomic saves.
+                    </div>
+                </div>
+                <div id="template-demo" class="demo-content">
+                    <div class="demo-grid-visual">
+                        <strong>🎨 Dialog Template Editing</strong>
+                        Customize the edit dialog with your own HTML template for complete design control.
+                        <strong style="margin-top: 20px;">Perfect for:</strong>
+                        Enterprise applications requiring branded or complex form layouts.
+                    </div>
+                </div>
+                <div id="command-demo" class="demo-content">
+                    <div class="demo-grid-visual">
+                        <strong>⚙️ Command Column Editing</strong>
+                        Use a dedicated column with Edit, Save, Cancel, and Delete buttons for full control.
+                        <strong style="margin-top: 20px;">Perfect for:</strong>
+                        Applications where action buttons need to be visible and accessible.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY IT MATTERS SECTION -->
+    <section class="why-matters">
+        <div class="container">
+            <div class="why-matters-content">
+                <div class="section-eyebrow">WHY EDITING MATTERS</div>
+                <h2 class="why-matters-title">Turn Data Review into Data Update</h2>
+                <p>A data grid is often the place where users review and manipulate data. When users catch an error or need to make a change, they expect to do it right there in the grid without leaving the current view.</p>
+                <p>Syncfusion React Data Grid provides intuitive editing features that support your application's data workflow, whether you need quick inline edits, bulk updates, or complex form-based entry with validation.</p>
+
+                <div class="benefit-chips">
+                    <span class="chip">✓ Flexible editing modes</span>
+                    <span class="chip">✓ Real-time validation</span>
+                    <span class="chip">✓ Batch operations</span>
+                    <span class="chip">✓ Custom templates</span>
+                    <span class="chip">✓ Full keyboard support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPABILITIES SECTION -->
+    <section class="capabilities">
+        <div class="container">
+            <div class="section-eyebrow">CHOOSE THE RIGHT APPROACH</div>
+            <h2 class="section-title">Choose the Editing Experience That Fits Your Workflow</h2>
+            <p class="section-subtitle">Different edit-only workflows need different editing experiences. Choose the mode that matches how your users expect to work.</p>
+
+            <div class="capabilities-grid">
+                <!-- Inline Editing -->
+                <div class="capability-card">
+                    <div class="capability-icon">✏️</div>
+                    <div class="capability-name">Inline Editing</div>
+                    <p>Edit an entire row with all fields visible and editable at once. Perfect for quick multi-field updates where context matters.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Quick edits, multiple fields, row-level context</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Users need to see and modify related fields together</div>
+                </div>
+
+                <!-- Cell Editing -->
+                <div class="capability-card">
+                    <div class="capability-icon">🎯</div>
+                    <div class="capability-name">Cell Editing</div>
+                    <p>Edit individual cells with double-click or keyboard interaction. Saves changes immediately per cell for rapid workflows.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Spreadsheet-like workflows, cell-level changes</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Users expect Excel-like cell editing behavior</div>
+                </div>
+
+                <!-- Dialog Editing -->
+                <div class="capability-card">
+                    <div class="capability-icon">💬</div>
+                    <div class="capability-name">Dialog Editing</div>
+                    <p>Open a modal dialog with all editable fields organized in a form layout. Great for complex records with validation.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Complex forms, validation, organized layouts</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Records have many fields or need structured form display</div>
+                </div>
+
+                <!-- Batch Editing -->
+                <div class="capability-card">
+                    <div class="capability-icon">📦</div>
+                    <div class="capability-name">Batch Editing</div>
+                    <p>Edit multiple rows simultaneously with all changes applied at once. Ideal for bulk operations and atomic transactions.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Bulk updates, multi-row changes, atomic saves</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Users need to update many records and save together</div>
+                </div>
+
+                <!-- Dialog Template Editing -->
+                <div class="capability-card">
+                    <div class="capability-icon">🎨</div>
+                    <div class="capability-name">Dialog Template Editing</div>
+                    <p>Use custom HTML templates to design your edit dialog exactly as needed. Full control over layout and styling.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Custom layouts, branded forms, complex UX</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Default dialog doesn't match your design requirements</div>
+                </div>
+
+                <!-- Command Column Editing -->
+                <div class="capability-card">
+                    <div class="capability-icon">⚙️</div>
+                    <div class="capability-name">Command Column Editing</div>
+                    <p>Add Edit, Save, Cancel, and Delete buttons in a dedicated column. Always visible controls for explicit user actions.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Explicit actions, mobile-friendly, clear affordance</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Users need visible action buttons for every row</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES SECTION -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="section-eyebrow">IMPLEMENTATION RESOURCES</div>
+            <h2 class="section-title">Explore Editing Demos and Docs</h2>
+            <p class="section-subtitle">Find the tools and guides you need to get started with React Data Grid editing.</p>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-title">Editing Documentation</div>
+                    <div class="resource-description">Learn the full API and configuration options for all editing modes.</div>
+                    <a href="#" class="resource-link">Read guide</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Inline Editing Demo</div>
+                    <div class="resource-description">See inline row editing in action with a complete working example.</div>
+                    <a href="#" class="resource-link">View demo</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Cell Editing Demo</div>
+                    <div class="resource-description">Explore cell-level editing with keyboard shortcuts and validation.</div>
+                    <a href="#" class="resource-link">View demo</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Dialog Editing Demo</div>
+                    <div class="resource-description">See dialog-based editing with form layouts and custom fields.</div>
+                    <a href="#" class="resource-link">View demo</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Batch Editing Demo</div>
+                    <div class="resource-description">Discover batch editing for bulk updates and multi-row changes.</div>
+                    <a href="#" class="resource-link">View demo</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Custom Editor Guide</div>
+                    <div class="resource-description">Learn how to create custom editors and templates for specialized needs.</div>
+                    <a href="#" class="resource-link">Read guide</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Validation Guide</div>
+                    <div class="resource-description">Configure client-side and server-side validation for all editing modes.</div>
+                    <a href="#" class="resource-link">Read guide</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">API Reference</div>
+                    <div class="resource-description">Complete API documentation for editing events, methods, and properties.</div>
+                    <a href="#" class="resource-link">View reference</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-eyebrow">FAQ</div>
+            <h2 class="section-title">React Data Grid Editing Questions</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What editing modes are available?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Syncfusion React Data Grid supports six editing modes: Inline Row Editing (edit entire rows), Cell Editing (edit individual cells), Dialog Editing (form-based in modal), Batch Editing (edit multiple rows), Dialog Template Editing (custom templates), and Command Column Editing (dedicated action buttons).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can values be validated before saving?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Syncfusion supports both client-side validation (immediate feedback) and server-side validation (security). You can define validation rules using built-in validators or custom validation functions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can multiple changes be saved together?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Batch editing allows you to edit multiple rows and save all changes in a single API call. This is useful for atomic transactions and bulk operations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can custom editors be used?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Custom editors can be used to use specialized components like date pickers, dropdowns, or custom React components. You can also create custom edit templates and dialogs for complete control over the editing experience.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Which editing mode should I use for remote data?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All editing modes support remote data. The grid can send changes to your server immediately (cell editing) or in batches. Configure the API endpoint and the grid handles communication automatically.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is keyboard navigation supported during editing?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Full keyboard support is built-in. Users can navigate between cells with arrow keys, enter edit mode with Enter, save with Ctrl+S, and cancel with Escape. This supports accessible, productivity-focused workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER STORIES SECTION -->
+    <section class="customer-stories">
+        <div class="container">
+            <div class="section-eyebrow">CUSTOMER STORIES</div>
+            <h2 class="section-title">Trusted for Business Application Development</h2>
+
+            <div class="testimonial">
+                <div class="testimonial-quote">"Syncfusion components help teams build data-rich application screens faster, with consistent UI patterns and production-ready features."</div>
+                <div class="testimonial-author">Example customer quote from a Syncfusion success story</div>
+            </div>
+
+            <div class="customer-logos">
+                <div class="customer-logo">Logo 1</div>
+                <div class="customer-logo">Logo 2</div>
+                <div class="customer-logo">Logo 3</div>
+                <div class="customer-logo">Logo 4</div>
+                <div class="customer-logo">Logo 5</div>
+                <div class="customer-logo">Logo 6</div>
+            </div>
+
+            <div class="customer-stories-cta">
+                <a href="#" class="btn btn-secondary">Read customer stories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST SECTION -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="trust-title">Our Customers Love Us</h2>
+
+            <div class="trust-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+
+            <p class="trust-subtitle">Thousands of companies trust Syncfusion for their critical business applications</p>
+
+            <div class="trust-metrics">
+                <div class="metric">
+                    <div class="metric-value">1,800+</div>
+                    <div class="metric-label">Production Components</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">264K</div>
+                    <div class="metric-label">Active Developers</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">Trusted</div>
+                    <div class="metric-label">by Fortune 500 Companies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATED ARTICLES SECTION -->
+    <section class="related-articles">
+        <div class="container">
+            <div class="section-eyebrow">CONTINUE EXPLORING</div>
+            <h2 class="section-title">Continue Exploring React Data Grid Editing</h2>
+
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-image">React Editing Patterns</div>
+                    <div class="article-content">
+                        <div class="article-title">Best Practices for Grid Editing</div>
+                        <div class="article-excerpt">Learn proven patterns for designing intuitive editing experiences in data grids.</div>
+                        <a href="#" class="article-link">Read article</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">Validation Strategies</div>
+                    <div class="article-content">
+                        <div class="article-title">Real-time Data Validation in Grids</div>
+                        <div class="article-excerpt">Discover how to implement client and server-side validation for better data quality.</div>
+                        <a href="#" class="article-link">Read article</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">Custom Workflows</div>
+                    <div class="article-content">
+                        <div class="article-title">Building Custom Edit Workflows</div>
+                        <div class="article-excerpt">Explore how to extend grid editing with custom components and business logic.</div>
+                        <a href="#" class="article-link">Read article</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">Performance Tips</div>
+                    <div class="article-content">
+                        <div class="article-title">Optimizing Grid Performance at Scale</div>
+                        <div class="article-excerpt">Tips and techniques for maintaining fast editing experiences with large datasets.</div>
+                        <a href="#" class="article-link">Read article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Syncfusion. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Contact</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Demo switching functionality
+        function switchDemo(mode) {
+            // Hide all demos
+            const demoContents = document.querySelectorAll('.demo-content');
+            demoContents.forEach(content => content.classList.remove('active'));
+
+            // Remove active from all tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected demo and activate tab
+            document.getElementById(mode + '-demo').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Add scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for scroll animation
+        document.querySelectorAll('.capabilities-grid > div, .resources-grid > div, .article-card, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
