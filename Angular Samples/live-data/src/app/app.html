@@ -1,0 +1,194 @@
+<div class="pro-shell">
+  <ejs-grid
+    #grid
+    id="pro-stock-grid"
+    [dataSource]="stockData"
+    [allowSorting]="allowSorting"
+    [allowFiltering]="allowFiltering"
+    [allowSelection]="allowSelection"
+    [enableHover]="enableHover"
+    [rowHeight]="rowHeight"
+    [height]="height"
+    [filterSettings]="filterSettings"
+    cssClass="pro-grid"
+  >
+    <e-columns>
+      <!-- Ticker Column -->
+      <e-column
+        field="ticker"
+        headerText="Ticker"
+        [width]="120"
+        [isPrimaryKey]="true"
+        [allowSorting]="true"
+        [allowFiltering]="true"
+        textAlign="Left"
+      >
+        <ng-template #template let-data>
+          <div class="pro-instrument">
+            <div
+              class="pro-ticker-badge"
+              [style.background]="getTickerBadgeColor(data.ticker).bg"
+              [style.color]="getTickerBadgeColor(data.ticker).text"
+            >
+              {{ getShortTicker(data.ticker) }}
+            </div>
+            <div class="pro-sym-info">
+              <span class="pro-sym-ticker">{{ data.ticker }}</span>
+            </div>
+          </div>
+        </ng-template>
+      </e-column>
+
+      <!-- Price Column -->
+      <e-column
+        field="lastPrice"
+        headerText="Price"
+        [width]="100"
+        [allowSorting]="true"
+        [allowFiltering]="false"
+        textAlign="Right"
+      >
+        <ng-template #template let-data>
+          {{ data.lastPrice.toFixed(2) }}
+        </ng-template>
+      </e-column>
+
+      <!-- Change Column -->
+      <e-column
+        field="change"
+        headerText="Change"
+        [width]="100"
+        [allowSorting]="true"
+        [allowFiltering]="false"
+        textAlign="Right"
+      >
+        <ng-template #template let-data>
+          <span
+            class="pro-delta"
+            [ngClass]="{
+              'pro-up': data.change > 0,
+              'pro-dn': data.change < 0,
+              'pro-flat': data.change === 0
+            }"
+          >
+            {{ data.change > 0 ? '+' : '' }}{{ data.change.toFixed(2) }}
+          </span>
+        </ng-template>
+      </e-column>
+
+      <!-- Change % Column -->
+      <e-column
+        field="changePercent"
+        headerText="Change %"
+        [width]="100"
+        [allowSorting]="true"
+        [allowFiltering]="false"
+        textAlign="Right"
+      >
+        <ng-template #template let-data>
+          <span
+            class="pro-delta"
+            [ngClass]="{
+              'pro-up': data.changePercent > 0,
+              'pro-dn': data.changePercent < 0,
+              'pro-flat': data.changePercent === 0
+            }"
+          >
+            {{ data.changePercent > 0 ? '↑ ' : data.changePercent < 0 ? '↓ ' : '' }}{{ Math.abs(data.changePercent).toFixed(2) }}%
+          </span>
+        </ng-template>
+      </e-column>
+
+      <!-- High Column -->
+      <e-column
+        field="high"
+        headerText="High"
+        [width]="110"
+        [allowSorting]="true"
+        [allowFiltering]="false"
+        textAlign="Right"
+      >
+        <ng-template #template let-data>
+          {{ data.high.toFixed(2) }}
+        </ng-template>
+      </e-column>
+
+      <!-- Low Column -->
+      <e-column
+        field="low"
+        headerText="Low"
+        [width]="110"
+        [allowSorting]="true"
+        [allowFiltering]="false"
+        textAlign="Right"
+      >
+        <ng-template #template let-data>
+          {{ data.low.toFixed(2) }}
+        </ng-template>
+      </e-column>
+
+      <!-- Technical Rating Column -->
+      <e-column
+        field="technicalRating"
+        headerText="Technical Rating"
+        [width]="140"
+        [allowSorting]="false"
+        [allowFiltering]="false"
+        textAlign="Center"
+        [customAttributes]="{ class: 'technical-rating-cell' }"
+      >
+        <ng-template #template let-data>
+          <span class="e-icons" [ngClass]="[getTechnicalIcon(data.technicalRating), getTechnicalClass(data.technicalRating)]"></span>
+          <span [ngClass]="getTechnicalClass(data.technicalRating)">{{ getTechnicalText(data.technicalRating) }}</span>
+        </ng-template>
+      </e-column>
+
+      <!-- Trend Data Column with Chart -->
+      <e-column
+        field="trendData"
+        headerText="Timeline"
+        [width]="230"
+        [allowSorting]="false"
+        [allowFiltering]="false"
+        textAlign="Center"
+      >
+        <ng-template #template let-data>
+          <div class="pro-chart-cell">
+            <ejs-chart
+              [height]="'50px'"
+              [width]="'160px'"
+              [primaryXAxis]="{
+                visible: false,
+                valueType: 'Category'
+              }"
+              [primaryYAxis]="{
+                visible: false,
+                minimum: getChartYAxis(data.trendData).min,
+                maximum: getChartYAxis(data.trendData).max
+              }"
+              [chartArea]="{ border: { width: 0 } }"
+              [tooltip]="{ enable: true, format: '${point.y}' }"
+              [margin]="{ left: 0, right: 0, top: 2, bottom: 2 }"
+            >
+              <e-series-collection>
+                <e-series
+                  type="Column"
+                  [dataSource]="getChartData(data.trendData)"
+                  xName="x"
+                  yName="y"
+                  fill="#4F81BD"
+                  [columnSpacing]="0.1"
+                  [columnWidth]="0.9"
+                  [border]="{ width: 0 }"
+                  [animation]="{ enable: false }"
+                >
+                </e-series>
+              </e-series-collection>
+            </ejs-chart>
+          </div>
+        </ng-template>
+      </e-column>
+    </e-columns>
+  </ejs-grid>
+</div>
+
