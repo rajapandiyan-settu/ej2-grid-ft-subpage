@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Grid Localization - Global and Local Support | Syncfusion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .section:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-eyebrow {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #667eea;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Live Sample Section */
+        .demo-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            margin: 32px 0;
+        }
+
+        .locale-selector {
+            margin-bottom: 24px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .locale-selector h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .radio-option label {
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .grid-preview {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .grid-toolbar {
+            background-color: #f5f5f5;
+            padding: 12px 16px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .toolbar-btn {
+            padding: 6px 12px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toolbar-btn:hover {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .grid-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .grid-table th {
+            background-color: #f8f9fa;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        .grid-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        .grid-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .grid-footer {
+            padding: 12px 16px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 4px;
+        }
+
+        .page-btn {
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+            min-width: 30px;
+        }
+
+        .page-btn.active {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Why This Feature Matters */
+        .why-matters-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .why-matters-content p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .benefit-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .chip {
+            background-color: #e8eaf6;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Capability Cards */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .capability-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .capability-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .capability-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .capability-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .capability-label {
+            font-weight: 600;
+            font-size: 13px;
+            color: #667eea;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .capability-value {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        /* Resource Cards */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .resource-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .resource-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .resource-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .faq-item h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Customer Stories */
+        .testimonial {
+            background: white;
+            border-radius: 12px;
+            padding: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .testimonial-quote {
+            font-size: 22px;
+            line-height: 1.6;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            font-size: 16px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .customer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .customer-logo {
+            height: 40px;
+            object-fit: contain;
+        }
+
+        /* Trust Metrics */
+        .trust-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rating-stars {
+            color: #ffa500;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        /* Related Articles */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .article-content {
+            padding: 24px;
+        }
+
+        .article-card h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .article-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-metrics {
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="eyebrow">REACT DATA GRID LOCALIZATION</div>
+            <h1>Build Multi-Language React Data Grids for Global Applications</h1>
+            <p>Deliver native-language grid experiences with comprehensive localization support for global and regional formats, UI text, and number/date rendering.</p>
+            <div class="cta-group">
+                <a href="#demo" class="btn btn-primary">View Localization Demo</a>
+                <a href="https://ej2.syncfusion.com/react/documentation/grid/global-local" class="btn btn-secondary">Explore Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Sample Section -->
+    <section class="section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">LIVE SAMPLE</div>
+                <h2 class="section-title">Try Localization in Action</h2>
+                <p class="section-description">Switch between locales to see how the grid adapts to different languages and regional formats in real-time.</p>
+            </div>
+
+            <div class="demo-container">
+                <div class="locale-selector">
+                    <h3>Select a Locale:</h3>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="locale-en" name="locale" value="en-US" checked>
+                            <label for="locale-en">En-US (English - United States)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="locale-de" name="locale" value="de-DE">
+                            <label for="locale-de">Germany (Deutsch - Deutschland)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="locale-zh" name="locale" value="zh-CN">
+                            <label for="locale-zh">Chinese (中文 - 简体)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="locale-ar" name="locale" value="ar-AE">
+                            <label for="locale-ar">Arabic (العربية - الإمارات)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-preview" id="gridPreview">
+                    <div class="grid-toolbar">
+                        <button class="toolbar-btn" id="addBtn">Add</button>
+                        <button class="toolbar-btn" id="editBtn">Edit</button>
+                        <button class="toolbar-btn" id="deleteBtn">Delete</button>
+                        <button class="toolbar-btn" id="searchBtn">Search</button>
+                    </div>
+                    <table class="grid-table">
+                        <thead>
+                            <tr>
+                                <th id="th-id">Order ID</th>
+                                <th id="th-customer">Customer Name</th>
+                                <th id="th-product">Product</th>
+                                <th id="th-quantity">Quantity</th>
+                                <th id="th-price">Price</th>
+                                <th id="th-date">Order Date</th>
+                                <th id="th-status">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gridBody">
+                            <tr>
+                                <td>10248</td>
+                                <td>Paul Henriot</td>
+                                <td>Laptop</td>
+                                <td>3</td>
+                                <td id="price-1">$1,234.56</td>
+                                <td id="date-1">07/04/2024</td>
+                                <td>Processing</td>
+                            </tr>
+                            <tr>
+                                <td>10249</td>
+                                <td>Karin Josephs</td>
+                                <td>Monitor</td>
+                                <td>12</td>
+                                <td id="price-2">$456.78</td>
+                                <td id="date-2">07/05/2024</td>
+                                <td>Shipped</td>
+                            </tr>
+                            <tr>
+                                <td>10250</td>
+                                <td>Mario Pontes</td>
+                                <td>Keyboard</td>
+                                <td>5</td>
+                                <td id="price-3">$89.99</td>
+                                <td id="date-3">07/06/2024</td>
+                                <td>Delivered</td>
+                            </tr>
+                            <tr>
+                                <td>10251</td>
+                                <td>Mary Saveley</td>
+                                <td>Mouse</td>
+                                <td>25</td>
+                                <td id="price-4">$34.50</td>
+                                <td id="date-4">07/07/2024</td>
+                                <td>Processing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="grid-footer">
+                        <div id="pagerInfo">Showing 1 to 4 of 50 items</div>
+                        <div class="pagination">
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn">4</button>
+                            <button class="page-btn">5</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Feature Matters -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">WHY LOCALIZATION MATTERS</div>
+                <h2 class="section-title">Deliver Native-Language Experiences for Global Users</h2>
+            </div>
+            <div class="why-matters-content">
+                <p>Modern enterprise applications serve users across different countries, languages, and regions. Users expect data grids to display dates, numbers, currency, and UI text in formats they understand. Without proper localization, users face confusion with date formats (MM/DD/YYYY vs DD/MM/YYYY), currency symbols, number separators, and English-only UI labels—leading to data misinterpretation, poor user experience, and reduced adoption.</p>
+                
+                <p>Syncfusion React Data Grid provides comprehensive localization support that adapts the entire grid interface, formatting, and content to match user locale preferences. The grid automatically adjusts toolbar buttons, pager text, filter menus, validation messages, and data formatting based on the selected culture—ensuring your application feels native to every user regardless of their location.</p>
+
+                <div class="benefit-chips">
+                    <div class="chip">Multi-language UI support</div>
+                    <div class="chip">Culture-specific formatting</div>
+                    <div class="chip">RTL language support</div>
+                    <div class="chip">Date & number localization</div>
+                    <div class="chip">Custom culture files</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choose the Right Approach -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">CHOOSE THE RIGHT APPROACH</div>
+                <h2 class="section-title">Select the Localization Strategy That Fits Your Application</h2>
+                <p class="section-description">Different applications have different localization needs. Choose the approach that matches your workflow requirements.</p>
+            </div>
+
+            <div class="capability-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">🌐</div>
+                    <h3>Global Locale Support</h3>
+                    <p>Apply a single locale across the entire grid to match user preferences or browser settings.</p>
+                    <span class="capability-label">Best for:</span>
+                    <p class="capability-value">Applications serving users in specific regions or single-locale workflows where all users share the same language and format preferences.</p>
+                    <span class="capability-label">Use when:</span>
+                    <p class="capability-value">You need to set the grid locale once during initialization and maintain consistent formatting throughout the application.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🔄</div>
+                    <h3>Dynamic Locale Switching</h3>
+                    <p>Enable users to change the grid locale at runtime without page refresh.</p>
+                    <span class="capability-label">Best for:</span>
+                    <p class="capability-value">Multi-tenant applications, user preference systems, or applications that need to switch between languages dynamically based on user selection.</p>
+                    <span class="capability-label">Use when:</span>
+                    <p class="capability-value">Users need to switch between multiple languages or regions during their session, or when building admin dashboards with multi-language support.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📅</div>
+                    <h3>Format-Specific Localization</h3>
+                    <p>Customize date, time, number, and currency formats independently without changing the entire UI locale.</p>
+                    <span class="capability-label">Best for:</span>
+                    <p class="capability-value">Applications that need specific formatting rules while keeping UI text in a different language, or hybrid locale scenarios.</p>
+                    <span class="capability-label">Use when:</span>
+                    <p class="capability-value">Your organization uses English UI but needs European date formats, or when financial data requires specific regional number formats.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🔡</div>
+                    <h3>RTL (Right-to-Left) Support</h3>
+                    <p>Full support for Arabic, Hebrew, and other RTL languages with proper text direction and layout mirroring.</p>
+                    <span class="capability-label">Best for:</span>
+                    <p class="capability-value">Applications serving users in Middle Eastern and North African regions, or applications that must comply with regional accessibility standards.</p>
+                    <span class="capability-label">Use when:</span>
+                    <p class="capability-value">Building applications for Arabic, Hebrew, Persian, or Urdu-speaking markets where right-to-left reading direction is essential.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🛠️</div>
+                    <h3>Custom Culture Files</h3>
+                    <p>Create and load custom culture definitions for specific regional requirements or organizational standards.</p>
+                    <span class="capability-label">Best for:</span>
+                    <p class="capability-value">Organizations with specific terminology, custom date/number formats, or locales not covered by standard culture files.</p>
+                    <span class="capability-label">Use when:</span>
+                    <p class="capability-value">Standard locales don't match your organization's format requirements, or when building industry-specific applications with specialized terminology.</p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🔌</div>
+                    <h3>Internationalization (i18n) Integration</h3>
+                    <p>Seamlessly integrate with React i18n libraries and translation management systems.</p>
+                    <span class="capability-label">Best for:</span>
+                    <p class="capability-value">Applications already using react-i18next, react-intl, or other internationalization frameworks that need consistent locale handling.</p>
+                    <span class="capability-label">Use when:</span>
+                    <p class="capability-value">Your application uses a centralized translation system and the grid must sync with application-wide locale changes automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Resources -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">IMPLEMENTATION RESOURCES</div>
+                <h2 class="section-title">Explore Localization Demos and Documentation</h2>
+                <p class="section-description">Find everything you need to implement localization in your React data grid applications.</p>
+            </div>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Localization Documentation</h4>
+                    <p>Learn how to enable and configure global and local localization in the React Data Grid.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/global-local" class="resource-link">View Docs →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Basic Localization Demo</h4>
+                    <p>See how to apply locale-specific formatting and UI text translation.</p>
+                    <a href="https://ej2.syncfusion.com/react/demos/#/bootstrap5/grid/internationalization" class="resource-link">Try Demo →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>RTL Support Demo</h4>
+                    <p>Explore right-to-left language support with Arabic and Hebrew examples.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/global-local#right-to-left-rtl" class="resource-link">View Example →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Custom Culture Guide</h4>
+                    <p>Learn how to create and register custom culture files for specific requirements.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/common/localization#loading-translations" class="resource-link">Read Guide →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Date Format Configuration</h4>
+                    <p>Configure culture-specific date and time formats for grid columns.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/columns#format" class="resource-link">View Format Options →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Number & Currency Formatting</h4>
+                    <p>Apply regional number, currency, and percentage formatting rules.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/common/internationalization#number-formatting" class="resource-link">Explore Formats →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Localization API Reference</h4>
+                    <p>Complete API documentation for locale property and L10n service.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/api/grid/#locale" class="resource-link">API Reference →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Getting Started Tutorial</h4>
+                    <p>Step-by-step guide to add localization to your React Grid application.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/getting-started" class="resource-link">Start Tutorial →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">FAQ</div>
+                <h2 class="section-title">React Data Grid Localization Questions</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h4>What languages and locales does the React Data Grid support?</h4>
+                    <p>The React Data Grid supports over 80+ locales including major languages like English, Spanish, French, German, Chinese, Japanese, Arabic, and more. You can also create custom locale files for specific regional requirements or organizational terminology.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I change the grid locale dynamically without reloading the page?</h4>
+                    <p>Yes, you can switch the grid locale at runtime by updating the locale property. The grid automatically refreshes to apply the new language, date formats, number formats, and UI text without requiring a page reload.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Does localization work with remote data sources?</h4>
+                    <p>Yes, localization applies to all data sources including remote APIs. The grid handles client-side formatting for dates, numbers, and currency regardless of the data source. You can also configure server-side formatting to match the selected locale.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do I add RTL (Right-to-Left) support for Arabic or Hebrew?</h4>
+                    <p>Enable RTL mode by setting the enableRtl property to true and loading the appropriate locale file. The grid automatically reverses the layout, text direction, and column order to provide native RTL language support.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I customize specific UI text without changing the entire locale?</h4>
+                    <p>Yes, you can override specific text strings using the L10n.load() method. This allows you to customize toolbar buttons, pager text, filter menus, and validation messages while keeping the rest of the locale intact.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Where can I find locale files for the React Data Grid?</h4>
+                    <p>Locale files are available in the @syncfusion/ej2-locale package. You can import the required locale JSON file and register it using the L10n.load() method. Custom locale files can also be created following the standard locale structure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Stories -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">CUSTOMER STORIES</div>
+                <h2 class="section-title">Trusted for Global Application Development</h2>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-quote">
+                    "Syncfusion components help teams build data-rich application screens faster, with consistent UI patterns and production-ready features. The localization support made it seamless to deploy our dashboard across 15 countries."
+                </div>
+                <div class="testimonial-author">— Enterprise Development Team</div>
+            </div>
+
+            <div class="customer-logos">
+                <span style="font-size: 20px; color: #999; padding: 10px 20px; border: 1px solid #ddd; border-radius: 4px;">Logo 1</span>
+                <span style="font-size: 20px; color: #999; padding: 10px 20px; border: 1px solid #ddd; border-radius: 4px;">Logo 2</span>
+                <span style="font-size: 20px; color: #999; padding: 10px 20px; border: 1px solid #ddd; border-radius: 4px;">Logo 3</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Customers Love Us -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="rating-stars">★★★★★</div>
+                <h2 class="section-title">Our Customers Love Us</h2>
+                <p class="section-description">Join thousands of developers building business applications with Syncfusion components.</p>
+            </div>
+
+            <div class="trust-metrics">
+                <div class="metric">
+                    <span class="metric-value">1,800+</span>
+                    <span class="metric-label">Components & Frameworks</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">24/5</span>
+                    <span class="metric-label">Dedicated Support</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">Trusted</span>
+                    <span class="metric-label">By Industry Leaders</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Continue Exploring React Data Grid Localization</h2>
+            </div>
+
+            <div class="article-grid">
+                <div class="article-card">
+                    <div class="article-image">🌍</div>
+                    <div class="article-content">
+                        <h4>React Data Grid Internationalization Guide</h4>
+                        <p>Learn best practices for implementing multi-language support, date formatting, and culture-specific rendering in React applications.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">🔀</div>
+                    <div class="article-content">
+                        <h4>Building Multi-Tenant Applications with Localization</h4>
+                        <p>Discover how to build SaaS applications that support multiple locales, tenant-specific formats, and dynamic locale switching.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">📝</div>
+                    <div class="article-content">
+                        <h4>Custom Culture Configuration for Enterprise Grids</h4>
+                        <p>Step-by-step guide to creating custom locale files, overriding default formats, and implementing organization-specific terminology.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">⚡</div>
+                    <div class="article-content">
+                        <h4>Performance Optimization for Localized Grids</h4>
+                        <p>Learn how to optimize localization performance in large-scale React applications with thousands of rows and multiple locales.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Localization content for different locales
+        const localeData = {
+            'en-US': {
+                toolbar: {
+                    add: 'Add',
+                    edit: 'Edit',
+                    delete: 'Delete',
+                    search: 'Search'
+                },
+                headers: {
+                    id: 'Order ID',
+                    customer: 'Customer Name',
+                    product: 'Product',
+                    quantity: 'Quantity',
+                    price: 'Price',
+                    date: 'Order Date',
+                    status: 'Status'
+                },
+                data: [
+                    { id: '10248', customer: 'Paul Henriot', product: 'Laptop', qty: '3', price: '$1,234.56', date: '07/04/2024', status: 'Processing' },
+                    { id: '10249', customer: 'Karin Josephs', product: 'Monitor', qty: '12', price: '$456.78', date: '07/05/2024', status: 'Shipped' },
+                    { id: '10250', customer: 'Mario Pontes', product: 'Keyboard', qty: '5', price: '$89.99', date: '07/06/2024', status: 'Delivered' },
+                    { id: '10251', customer: 'Mary Saveley', product: 'Mouse', qty: '25', price: '$34.50', date: '07/07/2024', status: 'Processing' }
+                ],
+                pager: 'Showing 1 to 4 of 50 items'
+            },
+            'de-DE': {
+                toolbar: {
+                    add: 'Hinzufügen',
+                    edit: 'Bearbeiten',
+                    delete: 'Löschen',
+                    search: 'Suchen'
+                },
+                headers: {
+                    id: 'Bestell-ID',
+                    customer: 'Kundenname',
+                    product: 'Produkt',
+                    quantity: 'Menge',
+                    price: 'Preis',
+                    date: 'Bestelldatum',
+                    status: 'Status'
+                },
+                data: [
+                    { id: '10248', customer: 'Paul Henriot', product: 'Laptop', qty: '3', price: '1.234,56 €', date: '04.07.2024', status: 'In Bearbeitung' },
+                    { id: '10249', customer: 'Karin Josephs', product: 'Monitor', qty: '12', price: '456,78 €', date: '05.07.2024', status: 'Versandt' },
+                    { id: '10250', customer: 'Mario Pontes', product: 'Tastatur', qty: '5', price: '89,99 €', date: '06.07.2024', status: 'Geliefert' },
+                    { id: '10251', customer: 'Mary Saveley', product: 'Maus', qty: '25', price: '34,50 €', date: '07.07.2024', status: 'In Bearbeitung' }
+                ],
+                pager: 'Zeige 1 bis 4 von 50 Einträgen'
+            },
+            'zh-CN': {
+                toolbar: {
+                    add: '添加',
+                    edit: '编辑',
+                    delete: '删除',
+                    search: '搜索'
+                },
+                headers: {
+                    id: '订单编号',
+                    customer: '客户姓名',
+                    product: '产品',
+                    quantity: '数量',
+                    price: '价格',
+                    date: '订单日期',
+                    status: '状态'
+                },
+                data: [
+                    { id: '10248', customer: 'Paul Henriot', product: '笔记本电脑', qty: '3', price: '¥1,234.56', date: '2024/07/04', status: '处理中' },
+                    { id: '10249', customer: 'Karin Josephs', product: '显示器', qty: '12', price: '¥456.78', date: '2024/07/05', status: '已发货' },
+                    { id: '10250', customer: 'Mario Pontes', product: '键盘', qty: '5', price: '¥89.99', date: '2024/07/06', status: '已送达' },
+                    { id: '10251', customer: 'Mary Saveley', product: '鼠标', qty: '25', price: '¥34.50', date: '2024/07/07', status: '处理中' }
+                ],
+                pager: '显示第 1 到 4 条，共 50 条'
+            },
+            'ar-AE': {
+                toolbar: {
+                    add: 'إضافة',
+                    edit: 'تعديل',
+                    delete: 'حذف',
+                    search: 'بحث'
+                },
+                headers: {
+                    id: 'رقم الطلب',
+                    customer: 'اسم العميل',
+                    product: 'المنتج',
+                    quantity: 'الكمية',
+                    price: 'السعر',
+                    date: 'تاريخ الطلب',
+                    status: 'الحالة'
+                },
+                data: [
+                    { id: '10248', customer: 'Paul Henriot', product: 'كمبيوتر محمول', qty: '3', price: '1,234.56 د.إ', date: '04/07/2024', status: 'قيد المعالجة' },
+                    { id: '10249', customer: 'Karin Josephs', product: 'شاشة', qty: '12', price: '456.78 د.إ', date: '05/07/2024', status: 'تم الشحن' },
+                    { id: '10250', customer: 'Mario Pontes', product: 'لوحة مفاتيح', qty: '5', price: '89.99 د.إ', date: '06/07/2024', status: 'تم التسليم' },
+                    { id: '10251', customer: 'Mary Saveley', product: 'فأرة', qty: '25', price: '34.50 د.إ', date: '07/07/2024', status: 'قيد المعالجة' }
+                ],
+                pager: 'عرض 1 إلى 4 من 50 عنصر'
+            }
+        };
+
+        // Function to update grid based on selected locale
+        function updateGridLocale(locale) {
+            const data = localeData[locale];
+            const isRTL = locale === 'ar-AE';
+            
+            // Update grid direction for RTL
+            const gridPreview = document.getElementById('gridPreview');
+            gridPreview.style.direction = isRTL ? 'rtl' : 'ltr';
+            
+            // Update toolbar buttons
+            document.getElementById('addBtn').textContent = data.toolbar.add;
+            document.getElementById('editBtn').textContent = data.toolbar.edit;
+            document.getElementById('deleteBtn').textContent = data.toolbar.delete;
+            document.getElementById('searchBtn').textContent = data.toolbar.search;
+            
+            // Update headers
+            document.getElementById('th-id').textContent = data.headers.id;
+            document.getElementById('th-customer').textContent = data.headers.customer;
+            document.getElementById('th-product').textContent = data.headers.product;
+            document.getElementById('th-quantity').textContent = data.headers.quantity;
+            document.getElementById('th-price').textContent = data.headers.price;
+            document.getElementById('th-date').textContent = data.headers.date;
+            document.getElementById('th-status').textContent = data.headers.status;
+            
+            // Update grid body
+            const tbody = document.getElementById('gridBody');
+            tbody.innerHTML = '';
+            data.data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.id}</td>
+                    <td>${row.customer}</td>
+                    <td>${row.product}</td>
+                    <td>${row.qty}</td>
+                    <td>${row.price}</td>
+                    <td>${row.date}</td>
+                    <td>${row.status}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            // Update pager
+            document.getElementById('pagerInfo').textContent = data.pager;
+        }
+
+        // Add event listeners to radio buttons
+        document.querySelectorAll('input[name="locale"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                updateGridLocale(e.target.value);
+            });
+        });
+
+        // Initialize with default locale
+        updateGridLocale('en-US');
+    </script>
+</body>
+</html>
