@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Grid Live Data Updates | Syncfusion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .eyebrow-text {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .section-eyebrow {
+            text-align: center;
+            text-transform: uppercase;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1.2px;
+            margin-bottom: 15px;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .demo-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .demo-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .demo-preview {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            min-height: 450px;
+        }
+
+        .stock-grid {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .stock-grid thead {
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .stock-grid th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        .stock-grid td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+
+        .stock-grid tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .stock-grid tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .price-up {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .price-down {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .change-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .change-positive {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .change-negative {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0fdf4;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #15803d;
+            font-weight: 500;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Why This Matters Section */
+        .why-matters-section {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .content-text {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .benefit-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .chip {
+            background: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 500;
+            color: #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Capability Cards Section */
+        .capability-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto 0;
+        }
+
+        .capability-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .capability-card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .capability-card p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .best-for {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .best-for strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .use-when {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .resource-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .resource-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .resource-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .resource-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: #764ba2;
+            gap: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+
+        .faq-answer {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Customer Stories Section */
+        .customer-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .customer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            opacity: 0.9;
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .trust-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #fbbf24;
+        }
+
+        .trust-subtitle {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .trust-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        /* Related Articles Section */
+        .related-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .article-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .article-content {
+            padding: 25px;
+        }
+
+        .article-content h4 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .article-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-metrics {
+                gap: 30px;
+            }
+
+            .demo-container {
+                padding: 20px;
+            }
+
+            .stock-grid {
+                font-size: 0.85rem;
+            }
+
+            .stock-grid th,
+            .stock-grid td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="eyebrow-text">REACT DATA GRID FEATURE</div>
+            <h1>Build Real-Time React Data Grids with Live Updates</h1>
+            <p>Display streaming data with automatic updates, smooth animations, and responsive performance for real-time applications.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">View Live Demo</a>
+                <a href="#" class="btn btn-secondary">Explore Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Sample Section -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="section-eyebrow">SEE LIVE DATA IN ACTION</div>
+            <h2>Experience Real-Time Updates</h2>
+            <p class="demo-subtitle">Watch live stock prices update automatically with smooth visual indicators</p>
+            <div class="demo-container">
+                <div class="live-indicator">
+                    <span class="pulse-dot"></span>
+                    Live Data Streaming
+                </div>
+                <div class="demo-preview">
+                    <table class="stock-grid">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company</th>
+                                <th>Price</th>
+                                <th>Change</th>
+                                <th>Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AAPL</strong></td>
+                                <td>Apple Inc.</td>
+                                <td class="price-up">$182.45</td>
+                                <td><span class="change-indicator change-positive">↑ +2.34%</span></td>
+                                <td>52.4M</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GOOGL</strong></td>
+                                <td>Alphabet Inc.</td>
+                                <td class="price-down">$138.21</td>
+                                <td><span class="change-indicator change-negative">↓ -1.12%</span></td>
+                                <td>28.7M</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MSFT</strong></td>
+                                <td>Microsoft Corp.</td>
+                                <td class="price-up">$378.91</td>
+                                <td><span class="change-indicator change-positive">↑ +1.87%</span></td>
+                                <td>35.2M</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AMZN</strong></td>
+                                <td>Amazon.com Inc.</td>
+                                <td class="price-up">$165.34</td>
+                                <td><span class="change-indicator change-positive">↑ +0.76%</span></td>
+                                <td>41.8M</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TSLA</strong></td>
+                                <td>Tesla Inc.</td>
+                                <td class="price-down">$248.56</td>
+                                <td><span class="change-indicator change-negative">↓ -3.21%</span></td>
+                                <td>89.3M</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Matters Section -->
+    <section class="why-matters-section">
+        <div class="container">
+            <div class="eyebrow">Why Live Data Updates Matter</div>
+            <h2 class="section-title">Keep Users Informed with Real-Time Information</h2>
+            <div class="content-text">
+                <p>Real-time applications like stock trading platforms, monitoring dashboards, IoT applications, and collaborative tools require instant data updates without manual refreshes. Users expect to see changes immediately as they happen, with smooth visual feedback that highlights what's new or changed.</p>
+            </div>
+            <div class="content-text">
+                <p>Syncfusion React Grid provides robust live data capabilities that automatically update cells when data changes, highlight modifications with smooth animations, and maintain performance even with frequent updates. The grid intelligently manages re-renders to ensure smooth 60fps performance while keeping users informed of real-time changes.</p>
+            </div>
+            <div class="benefit-chips">
+                <span class="chip">Automatic data synchronization</span>
+                <span class="chip">Smooth visual update indicators</span>
+                <span class="chip">No manual refresh required</span>
+                <span class="chip">Performance-optimized updates</span>
+                <span class="chip">Configurable refresh rates</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capability Section -->
+    <section class="capability-section">
+        <div class="container">
+            <div class="section-eyebrow">CHOOSE THE RIGHT APPROACH</div>
+            <h2 class="section-title">Live Data Update Strategies</h2>
+            <div class="cards-grid">
+                <div class="capability-card">
+                    <h3>Real-Time Data Binding</h3>
+                    <p>Automatically reflects changes in the underlying data source to the grid. When your data model updates, the grid cells refresh instantly without requiring manual intervention or grid refresh calls.</p>
+                    <div class="best-for">
+                        <strong>Best for:</strong>
+                        Applications with reactive state management where data updates flow automatically through your application.
+                    </div>
+                    <p class="use-when">Use when working with reactive frameworks or state management libraries that notify the grid of data changes.</p>
+                </div>
+
+                <div class="capability-card">
+                    <h3>Periodic Refresh</h3>
+                    <p>Fetches fresh data from the server at configurable intervals and updates the grid automatically. Provides consistent updates without maintaining persistent connections while keeping data reasonably current.</p>
+                    <div class="best-for">
+                        <strong>Best for:</strong>
+                        Dashboards and monitoring applications where data changes frequently but instant updates aren't critical.
+                    </div>
+                    <p class="use-when">Use when you need regular updates without the complexity of WebSockets or real-time protocols.</p>
+                </div>
+
+                <div class="capability-card">
+                    <h3>WebSocket Integration</h3>
+                    <p>Connects to WebSocket streams to receive push notifications when data changes. Updates are applied instantly as events arrive from the server, providing true real-time synchronization with minimal latency.</p>
+                    <div class="best-for">
+                        <strong>Best for:</strong>
+                        Trading platforms, live sports scores, IoT monitoring, and applications requiring instant data propagation.
+                    </div>
+                    <p class="use-when">Use when milliseconds matter and you need immediate reflection of server-side changes.</p>
+                </div>
+
+                <div class="capability-card">
+                    <h3>Batch Updates</h3>
+                    <p>Collects multiple data changes and applies them together in a single render cycle. Optimizes performance when receiving high-frequency updates by reducing the number of re-renders while keeping the UI responsive.</p>
+                    <div class="best-for">
+                        <strong>Best for:</strong>
+                        High-frequency data streams where updates arrive faster than the screen can meaningfully display them.
+                    </div>
+                    <p class="use-when">Use when dealing with hundreds or thousands of updates per second that need intelligent throttling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Resources Section -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="section-eyebrow">IMPLEMENTATION RESOURCES</div>
+            <h2 class="section-title">Explore Live Data Demos and Docs</h2>
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <h4>Live Data Documentation</h4>
+                    <p>Complete guide to implementing real-time data updates with code examples.</p>
+                    <a href="#" class="resource-link">Read docs →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Stock Trading Demo</h4>
+                    <p>Live stock price ticker with real-time updates and visual indicators.</p>
+                    <a href="#" class="resource-link">View demo →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>WebSocket Integration Guide</h4>
+                    <p>Learn how to connect your grid to WebSocket data streams.</p>
+                    <a href="#" class="resource-link">See guide →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Data Refresh API</h4>
+                    <p>Detailed API reference for refresh methods and update configurations.</p>
+                    <a href="#" class="resource-link">View API →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Performance Optimization</h4>
+                    <p>Best practices for handling high-frequency data updates efficiently.</p>
+                    <a href="#" class="resource-link">Learn more →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Real-Time Dashboard Tutorial</h4>
+                    <p>Step-by-step guide to building a live monitoring dashboard.</p>
+                    <a href="#" class="resource-link">Start tutorial →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-eyebrow">FAQ</div>
+            <h2 class="section-title">React Data Grid Live Data Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How does the grid handle live data updates?</div>
+                    <div class="faq-answer">The grid automatically detects changes in the bound data source and updates only the affected cells, maintaining smooth performance without full grid re-renders.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I control the refresh rate?</div>
+                    <div class="faq-answer">Yes, you can configure update intervals for periodic refresh, batch update thresholds for high-frequency data, and enable manual refresh control when needed.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Does live data work with filtering and sorting?</div>
+                    <div class="faq-answer">Absolutely. When data updates arrive, the grid automatically applies active filters and sort orders, maintaining consistent view state while reflecting new data.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I highlight cells that changed?</div>
+                    <div class="faq-answer">Yes, the grid supports visual indicators for updated cells including background color changes, animations, and custom styling to draw attention to modifications.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How many updates per second can the grid handle?</div>
+                    <div class="faq-answer">With batch updates enabled, the grid efficiently handles thousands of updates per second by intelligently grouping changes and optimizing render cycles.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Where can I find implementation examples?</div>
+                    <div class="faq-answer">Check the Implementation Resources section above for live demos, WebSocket integration guides, and complete working examples.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Stories Section -->
+    <section class="customer-section">
+        <div class="container">
+            <div class="section-eyebrow" style="color: white; opacity: 0.9;">CUSTOMER STORIES</div>
+            <h2 class="section-title" style="color: white;">Trusted for Business Application Development</h2>
+            <div class="testimonial">
+                "Syncfusion's Grid component made it incredibly easy to build our real-time trading platform. The live data updates are smooth and reliable, giving our traders the instant information they need to make critical decisions."
+            </div>
+            <p class="testimonial-author">— Financial Services Platform Team</p>
+            <div class="customer-logos">
+                <div class="logo-placeholder">Logo 1</div>
+                <div class="logo-placeholder">Logo 2</div>
+                <div class="logo-placeholder">Logo 3</div>
+                <div class="logo-placeholder">Logo 4</div>
+                <div class="logo-placeholder">Logo 5</div>
+                <div class="logo-placeholder">Logo 6</div>
+            </div>
+            <a href="#" class="btn btn-primary">Read customer stories</a>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="section-title">Our Customers Love Us</h2>
+            <div class="trust-rating">
+                ★★★★★
+            </div>
+            <p class="trust-subtitle">Avg: approved rating. Based on 1000s of reviews from 20+ sources and 4 regions.</p>
+            <div class="trust-metrics">
+                <div class="metric">
+                    <span class="metric-value">1,800+</span>
+                    <div class="metric-label">Components & Controls</div>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">24/5</span>
+                    <div class="metric-label">Support Available</div>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">Trusted</span>
+                    <div class="metric-label">Industry Leader</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles Section -->
+    <section class="related-section">
+        <div class="container">
+            <div class="section-eyebrow">RELATED READING</div>
+            <h2 class="section-title">Continue Exploring React Data Grid Live Data</h2>
+            <div class="article-cards">
+                <div class="article-card">
+                    <div class="article-image">Article</div>
+                    <div class="article-content">
+                        <h4>React Data Grid Live Data Guide</h4>
+                        <p>Comprehensive guide to implementing real-time data updates in React applications with best practices.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">Article</div>
+                    <div class="article-content">
+                        <h4>Building Real-Time Dashboards</h4>
+                        <p>Learn how to create responsive monitoring dashboards with live data visualization and alerts.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">Article</div>
+                    <div class="article-content">
+                        <h4>WebSocket Data Integration</h4>
+                        <p>Technical deep-dive into connecting grids to WebSocket streams for instant data propagation.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-image">Article</div>
+                    <div class="article-content">
+                        <h4>Optimizing High-Frequency Updates</h4>
+                        <p>Performance optimization strategies for applications handling thousands of updates per second.</p>
+                        <a href="#" class="resource-link">Read article →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Syncfusion Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulate live data updates
+        function simulateLiveUpdates() {
+            const rows = document.querySelectorAll('.stock-grid tbody tr');
+            
+            setInterval(() => {
+                // Pick a random row
+                const randomRow = rows[Math.floor(Math.random() * rows.length)];
+                const priceCell = randomRow.querySelector('td:nth-child(3)');
+                const changeCell = randomRow.querySelector('td:nth-child(4)');
+                
+                // Generate random price change
+                const isUp = Math.random() > 0.5;
+                const changePercent = (Math.random() * 5).toFixed(2);
+                
+                // Update classes
+                priceCell.className = isUp ? 'price-up' : 'price-down';
+                const indicator = changeCell.querySelector('.change-indicator');
+                indicator.className = isUp ? 'change-indicator change-positive' : 'change-indicator change-negative';
+                indicator.textContent = isUp ? `↑ +${changePercent}%` : `↓ -${changePercent}%`;
+                
+                // Add flash effect
+                priceCell.style.transition = 'background-color 0.3s ease';
+                priceCell.style.backgroundColor = isUp ? '#dcfce7' : '#fee2e2';
+                setTimeout(() => {
+                    priceCell.style.backgroundColor = 'transparent';
+                }, 300);
+                
+            }, 2000);
+        }
+
+        // Start simulation when page loads
+        window.addEventListener('load', simulateLiveUpdates);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
