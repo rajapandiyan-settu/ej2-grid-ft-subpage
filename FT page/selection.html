@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Data Grid Selection - Build Flexible Row, Cell & Column Selection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============= HERO SECTION ============= */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #ffffff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============= DEMO SECTION ============= */
+        .demo-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .section-eyebrow {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #667eea;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-btn:hover {
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .demo-grid {
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #999;
+        }
+
+        /* ============= WHY MATTERS SECTION ============= */
+        .why-matters {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .why-matters-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .why-matters-text {
+            margin-bottom: 32px;
+        }
+
+        .why-matters-text p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .benefits-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .chip {
+            background-color: #f0f4ff;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* ============= CAPABILITY CARDS ============= */
+        .capabilities {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .capability-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .capability-card:hover {
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.1);
+            transform: translateY(-4px);
+            border-color: #667eea;
+        }
+
+        .capability-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .capability-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+
+        .capability-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .card-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #667eea;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-content {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .card-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.3s ease;
+        }
+
+        .card-link:hover {
+            gap: 8px;
+        }
+
+        /* ============= RESOURCES SECTION ============= */
+        .resources {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .resource-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a202c;
+        }
+
+        .resource-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .resource-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= FAQ SECTION ============= */
+        .faq {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a202c;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            user-select: none;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f4ff;
+            border-radius: 50%;
+            color: #667eea;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* ============= CUSTOMER SECTION ============= */
+        .customer-stories {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .customer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .customer-quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+            margin: 32px 0;
+            line-height: 1.8;
+        }
+
+        .customer-attribution {
+            font-size: 14px;
+            color: #666;
+            font-style: normal;
+        }
+
+        .read-more-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .read-more-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= SOCIAL PROOF SECTION ============= */
+        .social-proof {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .proof-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stars {
+            font-size: 28px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .proof-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* ============= RELATED ARTICLES SECTION ============= */
+        .related-articles {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .article-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .article-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+
+        .article-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .article-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .article-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= FOOTER ============= */
+        footer {
+            background-color: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* ============= RESPONSIVE ============= */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .cards-grid,
+            .resources-grid,
+            .articles-grid,
+            .proof-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+                text-align: left;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+                padding-left: 16px;
+            }
+
+            .tab-btn.active {
+                border-bottom: none;
+                border-left-color: #667eea;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-eyebrow">React Data Grid Selection</div>
+            <h1>Build Flexible Row, Cell & Column Selection for Real Workflows</h1>
+            <p class="hero-description">Create, customize, and control multiple selection modes in the Syncfusion React Data Grid with fine-grained control.</p>
+            <div class="hero-ctas">
+                <a href="#" class="btn btn-primary">View Demo</a>
+                <a href="#" class="btn btn-secondary">Explore Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO SECTION -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="section-eyebrow">Selection Modes</div>
+            <h2 class="section-title">Try Selection Modes in Action</h2>
+            <p class="section-description">Use a live sample tab to see the selection modes before diving into the details.</p>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('normal-row')">Normal Row Selection</button>
+                <button class="tab-btn" onclick="switchTab('checkbox')">Checkbox Selection</button>
+                <button class="tab-btn" onclick="switchTab('conditional')">Conditional Checkbox</button>
+                <button class="tab-btn" onclick="switchTab('cell')">Cell Selection</button>
+                <button class="tab-btn" onclick="switchTab('column')">Column Selection</button>
+            </div>
+
+            <div id="normal-row" class="tab-content active">
+                <div class="demo-grid">
+                    <p>Demo: Click rows to select them. Multiple rows can be selected using Ctrl+Click or Shift+Click.</p>
+                </div>
+            </div>
+
+            <div id="checkbox" class="tab-content">
+                <div class="demo-grid">
+                    <p>Demo: Use checkboxes to select one or multiple rows. Select all with the header checkbox.</p>
+                </div>
+            </div>
+
+            <div id="conditional" class="tab-content">
+                <div class="demo-grid">
+                    <p>Demo: Checkbox selection with conditions. Only specific rows can be selected based on your criteria.</p>
+                </div>
+            </div>
+
+            <div id="cell" class="tab-content">
+                <div class="demo-grid">
+                    <p>Demo: Click cells to select them individually or use keyboard shortcuts to select ranges.</p>
+                </div>
+            </div>
+
+            <div id="column" class="tab-content">
+                <div class="demo-grid">
+                    <p>Demo: Click column headers or use keyboard shortcuts to select entire columns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY MATTERS SECTION -->
+    <section class="why-matters">
+        <div class="container">
+            <div class="section-eyebrow">Why Selection Matters</div>
+            <h2 class="section-title">Turn Data Selection Into User Action</h2>
+            <p class="section-description">Selection is critical when users need to act on data. Whether bulk updates or targeted operations, the grid's selection options enable efficient workflows.</p>
+
+            <div class="why-matters-content">
+                <div class="why-matters-text">
+                    <p><strong>The Problem:</strong> Users often need to work with multiple rows, cells, or columns simultaneously. Without flexible selection modes, applications become frustrating and slow. Standard single-row selection isn't enough for real-world workflows like bulk edits, exports, or conditional actions.</p>
+                </div>
+
+                <div class="why-matters-text">
+                    <p><strong>The Solution:</strong> The Syncfusion React Data Grid supports multiple selection modes—row selection, checkbox selection, cell selection, and column selection. Each mode adapts to your use case, making data interaction intuitive and efficient. Enable keyboard shortcuts, conditional selection, and multi-mode support to match your exact workflow needs.</p>
+                </div>
+
+                <div class="benefits-chips">
+                    <span class="chip">Multi-row selection</span>
+                    <span class="chip">Checkbox control</span>
+                    <span class="chip">Cell-level precision</span>
+                    <span class="chip">Keyboard shortcuts</span>
+                    <span class="chip">Conditional rules</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPABILITY CARDS SECTION -->
+    <section class="capabilities">
+        <div class="container">
+            <div class="section-eyebrow">Choose the Right Approach</div>
+            <h2 class="section-title">Choose the Selection Experience That Fits Your Workflow</h2>
+            <p class="section-description">Different use cases need different selection modes. Choose the mode that matches your application's data interaction patterns.</p>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="capability-card">
+                    <div class="capability-icon">📋</div>
+                    <h3>Normal Row Selection</h3>
+                    <p>Users click rows to select them. Supporting multiple selections with Ctrl+Click or Shift+Click for range selection.</p>
+                    <span class="card-label">Best for</span>
+                    <div class="card-content">General-purpose row selection, data review, and filtering workflows.</div>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/row-selection#single-row-selection" target="_blank" class="card-link">Documentation →</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="capability-card">
+                    <div class="capability-icon">☑️</div>
+                    <h3>Checkbox Selection</h3>
+                    <p>Each row has a checkbox. Header checkbox lets users select all rows at once, making bulk operations intuitive.</p>
+                    <span class="card-label">Best for</span>
+                    <div class="card-content">Bulk actions, explicit selection, and accessibility-focused interfaces.</div>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#checkbox-only-selection" target="_blank" class="card-link">Documentation →</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="capability-card">
+                    <div class="capability-icon">🔀</div>
+                    <h3>Conditional Checkbox Selection</h3>
+                    <p>Control which rows can be selected using custom conditions. Only valid rows appear selectable to prevent invalid operations.</p>
+                    <span class="card-label">Best for</span>
+                    <div class="card-content">Restricted selections, validation-dependent workflows, and business-rule enforcement.</div>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#conditional-row-selection" target="_blank" class="card-link">Documentation →</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="capability-card">
+                    <div class="capability-icon">🔲</div>
+                    <h3>Cell Selection</h3>
+                    <p>Users select individual cells or cell ranges. Precise control for tasks like data entry, analysis, or targeted edits.</p>
+                    <span class="card-label">Best for</span>
+                    <div class="card-content">Fine-grained data editing, spreadsheet-like workflows, and precise data highlighting.</div>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/cell-selection#single-cell-selection" target="_blank" class="card-link">Documentation →</a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="capability-card">
+                    <div class="capability-icon">📊</div>
+                    <h3>Column Selection</h3>
+                    <p>Select entire columns by clicking headers or using keyboard shortcuts. Useful for operations affecting all rows in a column.</p>
+                    <span class="card-label">Best for</span>
+                    <div class="card-content">Column-level operations, data export, formatting, and analysis workflows.</div>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/column-selection#single-column-selection" target="_blank" class="card-link">Documentation →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPLEMENTATION RESOURCES SECTION -->
+    <section class="resources">
+        <div class="container">
+            <div class="section-eyebrow">Implementation Resources</div>
+            <h2 class="section-title">Explore Selection Demos and Docs</h2>
+            <p class="section-description">Get started with live demos, comprehensive documentation, and code examples for every selection mode.</p>
+
+            <div class="resources-grid">
+                <!-- Resource 1 -->
+                <div class="resource-card">
+                    <h4>Row Selection Documentation</h4>
+                    <p>Learn how to implement normal row selection with multi-select support.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/row-selection#single-row-selection" target="_blank">View Documentation →</a>
+                </div>
+
+                <!-- Resource 2 -->
+                <div class="resource-card">
+                    <h4>Row Selection Demo</h4>
+                    <p>See row selection in action with interactive examples and code snippets.</p>
+                    <a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection-api" target="_blank">View Demo →</a>
+                </div>
+
+                <!-- Resource 3 -->
+                <div class="resource-card">
+                    <h4>Checkbox Selection Documentation</h4>
+                    <p>Implement checkbox-based selection for better UX and accessibility.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#checkbox-only-selection" target="_blank">View Documentation →</a>
+                </div>
+
+                <!-- Resource 4 -->
+                <div class="resource-card">
+                    <h4>Checkbox Selection Demo</h4>
+                    <p>Explore checkbox selection with bulk action patterns and examples.</p>
+                    <a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/checkbox-selection" target="_blank">View Demo →</a>
+                </div>
+
+                <!-- Resource 5 -->
+                <div class="resource-card">
+                    <h4>Conditional Selection Documentation</h4>
+                    <p>Add business logic to control which rows can be selected.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#conditional-row-selection" target="_blank">View Documentation →</a>
+                </div>
+
+                <!-- Resource 6 -->
+                <div class="resource-card">
+                    <h4>Conditional Selection Demo</h4>
+                    <p>See conditional selection logic applied with real-world examples.</p>
+                    <a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/conditional-row-selection" target="_blank">View Demo →</a>
+                </div>
+
+                <!-- Resource 7 -->
+                <div class="resource-card">
+                    <h4>Cell Selection Documentation</h4>
+                    <p>Learn to implement precise cell-level selection for data editing.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/cell-selection#single-cell-selection" target="_blank">View Documentation →</a>
+                </div>
+
+                <!-- Resource 8 -->
+                <div class="resource-card">
+                    <h4>Column Selection Documentation</h4>
+                    <p>Implement column-level selection for column-based operations.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/column-selection#single-column-selection" target="_blank">View Documentation →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-eyebrow">FAQ</div>
+            <h2 class="section-title">React Data Grid Selection Questions</h2>
+
+            <div class="faq-container">
+                <!-- Question 1 -->
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        What selection modes are available?
+                    </div>
+                    <div class="faq-answer">
+                        The Syncfusion React Data Grid supports Row Selection (normal and checkbox), Cell Selection, and Column Selection. Each mode can be combined with keyboard shortcuts and conditional logic to match your workflow needs.
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Can I customize the selection behavior?
+                    </div>
+                    <div class="faq-answer">
+                        Yes. The grid supports custom selection handlers, conditional selection rules, keyboard shortcut configuration, and styling. You can define which rows/cells can be selected and customize the visual feedback.
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Does selection work with remote or dynamic data?
+                    </div>
+                    <div class="faq-answer">
+                        Yes, selection works seamlessly with remote data sources. The grid maintains selection state across pagination and sorting operations. Use the selection API to get selected rows at any time, regardless of data source.
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Can I perform bulk actions on selected rows?
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely. Use the selection API to get all selected rows, then perform batch operations like update, delete, export, or custom actions. The grid provides callbacks to capture selection changes for real-time action triggers.
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Which selection mode should I use?
+                    </div>
+                    <div class="faq-answer">
+                        Choose based on your use case: Row Selection for general workflows, Checkbox Selection for explicit/bulk actions, Cell Selection for precise editing, Column Selection for column-level operations, and Conditional Selection when business rules restrict which items can be selected.
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Where can I find complete implementation examples?
+                    </div>
+                    <div class="faq-answer">
+                        Visit the Syncfusion documentation and live demos for each selection mode. Each includes code examples, API references, and best practices for integration into your React application.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER STORIES SECTION -->
+    <section class="customer-stories">
+        <div class="container">
+            <div class="section-eyebrow">Customer Stories</div>
+            <h2 class="section-title">Trusted for Business Application Development</h2>
+
+            <div class="customer-content">
+                <div class="customer-quote">
+                    "Syncfusion components help teams build data-rich application screens faster, with consistent UI patterns and production-ready features."
+                </div>
+                <div class="customer-attribution">
+                    — Enterprise Development Team
+                </div>
+                <a href="#" class="read-more-link">Read customer stories →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF SECTION -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-eyebrow">Our Customers Love Us</div>
+            <h2 class="section-title">Loved by Development Teams Worldwide</h2>
+
+            <div class="proof-content">
+                <div class="stars">★★★★★</div>
+                <p>Trusted by developers and enterprises building high-performance applications.</p>
+
+                <div class="proof-metrics">
+                    <div class="metric">
+                        <div class="metric-number">80+</div>
+                        <div class="metric-label">UI Components</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">1M+</div>
+                        <div class="metric-label">Developers Worldwide</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">24/7</div>
+                        <div class="metric-label">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATED ARTICLES SECTION -->
+    <section class="related-articles">
+        <div class="container">
+            <div class="section-eyebrow">Related Articles</div>
+            <h2 class="section-title">Continue Exploring React Data Grid Selection</h2>
+
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <h4>React Data Grid Selection Guide</h4>
+                    <p>Comprehensive guide covering all selection modes, best practices, and integration patterns.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <h4>React Data Grid Bulk Operations Guide</h4>
+                    <p>Learn how to implement bulk edit, delete, and export operations on selected rows.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <h4>Why Inline Editing in React Tables is Hard</h4>
+                    <p>Understand the challenges and how proper selection patterns solve them.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="article-card">
+                    <h4>React Data Grid vs Other Solutions</h4>
+                    <p>Compare selection capabilities and feature support across popular data grid libraries.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Syncfusion React Data Grid Selection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab content
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // FAQ toggle functionality
+        function toggleFaq(item) {
+            item.classList.toggle('open');
+        }
+
+        // Initialize first tab as active
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set first tab button as active
+            document.querySelector('.tab-btn').classList.add('active');
+        });
+    </script>
+</body>
+</html>

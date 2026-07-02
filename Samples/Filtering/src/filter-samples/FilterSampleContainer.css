@@ -1,0 +1,19 @@
+.filter-sample-root {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-sample-grid {
+  flex: 1;
+  min-width: 640px;
+}
+
+.sample-card {
+  margin-bottom: 24px;
+}
+
+.sample-card h3 {
+  margin-bottom: 12px;
+}

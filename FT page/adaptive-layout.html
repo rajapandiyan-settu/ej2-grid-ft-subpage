@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive React Data Grid Adaptive Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-bottom: 28px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: #4f46e5;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #7c3aed;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #111;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        /* Demo Preview */
+        #demo-section {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .demo-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .demo-tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .demo-tab.active {
+            color: #4f46e5;
+            border-bottom-color: #4f46e5;
+        }
+
+        .demo-preview {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .demo-preview h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .demo-preview p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .btn-demo {
+            background-color: #4f46e5;
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-demo:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #111;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .card-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #7c3aed;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f3f4f6;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .card-value {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Benefit Chips */
+        .benefit-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .chip {
+            background-color: #f3f4f6;
+            color: #333;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: #7c3aed;
+        }
+
+        .resource-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        .resource-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .resource-cta {
+            color: #4f46e5;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .resource-cta:hover {
+            text-decoration: underline;
+        }
+
+        /* FAQ */
+        #faq-section {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .faq-container {
+            max-width: 800px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 0;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #4f46e5;
+        }
+
+        .faq-toggle {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .faq-answer.open {
+            max-height: 300px;
+            margin-top: 12px;
+        }
+
+        /* Customer Stories */
+        #customer-stories {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 8px;
+            padding: 32px;
+            border: 1px solid #e5e7eb;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .testimonial-quote {
+            font-size: 16px;
+            font-weight: 500;
+            color: #111;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-attribution {
+            font-size: 13px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .testimonial-cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link-button {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .link-button:hover {
+            text-decoration: underline;
+        }
+
+        /* Trust Metrics */
+        .trust-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .metric {
+            padding: 20px;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4f46e5;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Related Articles */
+        #related-articles {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .article-badge {
+            background-color: #f3f4f6;
+            color: #7c3aed;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            margin: 16px;
+            display: inline-block;
+            width: fit-content;
+            border-radius: 4px;
+        }
+
+        .article-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0 16px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .article-card p {
+            font-size: 13px;
+            color: #666;
+            margin: 0 16px 16px;
+            flex-grow: 1;
+        }
+
+        .article-read-more {
+            color: #4f46e5;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 0 16px 16px;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .demo-tabs {
+                flex-wrap: wrap;
+            }
+
+            .trust-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header>
+        <div class="hero-content">
+            <div class="eyebrow">React Data Grid Responsive Design</div>
+            <h1>Responsive React Data Grid Adaptive Layout</h1>
+            <p class="hero-description">Build data grids that adapt beautifully to any screen size. Optimize layouts for desktop, tablet, and mobile with intelligent column management and touch-friendly interactions.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">View Adaptive Demo</button>
+                <button class="btn btn-secondary">Explore Documentation</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Demo Preview Section -->
+    <section id="demo-section">
+        <div class="section-container">
+            <h2>See Adaptive Layout in Action</h2>
+            <p class="section-description">Watch how the data grid responds to different screen sizes and adapts content intelligently.</p>
+
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="switchDemo(this, 'desktop')">Desktop View</button>
+                <button class="demo-tab" onclick="switchDemo(this, 'tablet')">Tablet View</button>
+                <button class="demo-tab" onclick="switchDemo(this, 'mobile')">Mobile View</button>
+            </div>
+
+            <div class="demo-preview">
+                <h3 id="demo-title">Desktop View</h3>
+                <p id="demo-description">All columns visible with full data detail and native scrolling for enhanced desktop experience.</p>
+                <a href="#" class="btn-demo">View Interactive Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Feature Matters -->
+    <section>
+        <div class="section-container">
+            <div class="section-eyebrow">Why Adaptive Layout Matters</div>
+            <h2>Deliver Data Access Across All Devices</h2>
+            <p class="section-description">Users expect data grids to work flawlessly on every device they use. Adaptive layouts ensure consistent, usable experiences from large monitors to small phones.</p>
+
+            <div style="background: white; border-radius: 8px; padding: 32px; border: 1px solid #e5e7eb; margin-bottom: 30px;">
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #111;">Intelligent Design for Multi-Device Workflows</h3>
+                <p style="color: #666; line-height: 1.7; margin-bottom: 16px;">Modern data workflows span devices. Adaptive layout technology lets the grid reorganize content, manage columns, and optimize interaction patterns for each context—without requiring developers to build separate experiences.</p>
+
+                <div class="benefit-chips">
+                    <span class="chip">Mobile-first design</span>
+                    <span class="chip">Touch optimization</span>
+                    <span class="chip">Column management</span>
+                    <span class="chip">Responsive scrolling</span>
+                    <span class="chip">Device detection</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adaptive Layout Capabilities -->
+    <section id="capability-section">
+        <div class="section-container">
+            <div class="section-eyebrow">Adaptive Layout Features</div>
+            <h2>Choose Your Adaptive Layout Strategy</h2>
+            <p class="section-description">Different devices and use cases require different approaches to content adaptation. Syncfusion offers multiple strategies to optimize data visibility and usability.</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h3>Column Hiding</h3>
+                    <p>Automatically hide lower-priority columns on small screens while keeping essential data visible. Users can unhide columns as needed with a tap.</p>
+                    <span class="card-label">Best for</span>
+                    <span class="card-value">Mobile views where space is limited but data breadth is high</span>
+                    <span class="card-label">Use when</span>
+                    <span class="card-value">You need to show core data first, with optional columns accessible on demand</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Column Reordering</h3>
+                    <p>Prioritize column order based on screen size. Show most-viewed columns first on small screens, then expand as space allows. Users can also customize order.</p>
+                    <span class="card-label">Best for</span>
+                    <span class="card-value">Workflows where column priority changes by device</span>
+                    <span class="card-label">Use when</span>
+                    <span class="card-value">Desktop users want detailed columns; mobile users want quick summaries</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Stacked Layout</h3>
+                    <p>Transform grid rows into vertical card-like stacks on mobile. Each record becomes its own compact card, making mobile browsing natural and touch-friendly.</p>
+                    <span class="card-label">Best for</span>
+                    <span class="card-value">Mobile interfaces where traditional tables don't work well</span>
+                    <span class="card-label">Use when</span>
+                    <span class="card-value">You want to maximize space and create a mobile-optimized experience</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Smart Scrolling</h3>
+                    <p>Adapt scrolling behavior by device. Use horizontal scroll on desktop for many columns; switch to vertical scrolling on mobile with hidden columns available on tap.</p>
+                    <span class="card-label">Best for</span>
+                    <span class="card-value">Grids with many columns across diverse device types</span>
+                    <span class="card-label">Use when</span>
+                    <span class="card-value">You want natural scrolling patterns that match user expectations per device</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Resources -->
+    <section>
+        <div class="section-container">
+            <h2>Implementation Resources</h2>
+            <p class="section-description">Get started with adaptive layout examples, configuration guides, and responsive design best practices.</p>
+
+            <div class="resources-grid">
+                <a href="#" class="resource-card">
+                    <h4>Adaptive Layout Documentation</h4>
+                    <p>Complete guide to configuring responsive behavior, column hiding, reordering, and layout strategies.</p>
+                    <span class="resource-cta">Read guide →</span>
+                </a>
+
+                <a href="#" class="resource-card">
+                    <h4>Desktop Layout Demo</h4>
+                    <p>See the full data grid with all columns, native scrolling, and multi-column visibility on large screens.</p>
+                    <span class="resource-cta">View demo →</span>
+                </a>
+
+                <a href="#" class="resource-card">
+                    <h4>Mobile Layout Demo</h4>
+                    <p>Explore stacked card views, touch-friendly interactions, and column hiding strategies for mobile users.</p>
+                    <span class="resource-cta">View demo →</span>
+                </a>
+
+                <a href="#" class="resource-card">
+                    <h4>Responsive Design Guide</h4>
+                    <p>Best practices for choosing column visibility, priority ordering, and breakpoint strategies for your app.</p>
+                    <span class="resource-cta">Read guide →</span>
+                </a>
+
+                <a href="#" class="resource-card">
+                    <h4>Configuration Reference</h4>
+                    <p>API reference for media query rules, column hiding options, layout modes, and responsive settings.</p>
+                    <span class="resource-cta">View reference →</span>
+                </a>
+
+                <a href="#" class="resource-card">
+                    <h4>Multi-Device Example</h4>
+                    <p>Complete working example showing a data grid optimized for desktop, tablet, and mobile with adaptive rules.</p>
+                    <span class="resource-cta">View example →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq-section">
+        <div class="section-container">
+            <h2>Adaptive Layout Questions</h2>
+            <p class="section-description"></p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How does adaptive layout work?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Adaptive layout uses CSS media queries and JavaScript to detect screen size and device type, then reorganizes grid content automatically. Columns can hide, reorder, or the entire layout can switch to a stacked card view on mobile devices.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I customize which columns are hidden on mobile?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. You can define custom rules for which columns appear at each breakpoint. Set column visibility, priority order, and hiding rules based on screen size. Users can also unhide hidden columns with a tap.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Does adaptive layout work with remote data?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Adaptive layout works seamlessly with remote data sources. The grid adapts its layout based on screen size while maintaining full data loading, paging, filtering, and sorting capabilities.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What breakpoints are available?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Syncfusion provides preset breakpoints for common device sizes: mobile (< 576px), tablet (576px–992px), and desktop (> 992px). You can also define custom breakpoints to match your app's needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can users manually unhide columns on mobile?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Users can tap a "show more" button or column menu to reveal hidden columns on mobile. They can then scroll horizontally to view additional data or temporarily pin columns.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Does the grid reflow when I resize the browser window?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. The grid responds in real-time to window resizing. As you resize from desktop to tablet to mobile widths, the layout automatically adapts, hiding or showing columns and reorganizing content accordingly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Stories -->
+    <section id="customer-stories">
+        <div class="section-container">
+            <h2 style="text-align: center;">Trusted for Business Application Development</h2>
+            <div class="testimonial">
+                <p class="testimonial-quote">"Syncfusion's adaptive layouts helped us deliver a single data grid experience across mobile, tablet, and desktop without building separate interfaces. Our users get consistent, optimized experiences everywhere they work."</p>
+                <p class="testimonial-attribution">— Mobile-First Development Team</p>
+                <div class="testimonial-cta">
+                    <a href="#" class="link-button">Read customer stories</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Customers Love Us -->
+    <section>
+        <div class="section-container">
+            <h2 style="text-align: center;">Our Customers Love Us</h2>
+            <p class="section-description" style="text-align: center;">Join thousands of companies that trust Syncfusion components for responsive, production-ready applications.</p>
+
+            <div class="trust-metrics">
+                <div class="metric">
+                    <div class="metric-value">1,800+</div>
+                    <div class="metric-label">Enterprise Customers</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">2645</div>
+                    <div class="metric-label">5-Star Reviews</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">Trusted</div>
+                    <div class="metric-label">By Industry Leaders</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section id="related-articles">
+        <div class="section-container">
+            <h2>Continue Exploring React Data Grid Adaptive Layout</h2>
+            <p class="section-description"></p>
+
+            <div class="articles-grid">
+                <a href="#" class="article-card">
+                    <span class="article-badge">Feature Guide</span>
+                    <h3>Responsive React Data Grid Design Patterns</h3>
+                    <p>Learn modern design patterns for responsive data grids, including column hiding, reordering, stacked layouts, and touch-friendly interactions.</p>
+                    <span class="article-read-more">Read article</span>
+                </a>
+
+                <a href="#" class="article-card">
+                    <span class="article-badge">Best Practices</span>
+                    <h3>Mobile Data Grid UX: What Users Expect</h3>
+                    <p>Understand mobile user expectations for data grids. Explore touch interactions, scrolling patterns, readability, and mobile-first design principles.</p>
+                    <span class="article-read-more">Read article</span>
+                </a>
+
+                <a href="#" class="article-card">
+                    <span class="article-badge">How To</span>
+                    <h3>Build Adaptive Layouts for Your Data</h3>
+                    <p>Step-by-step guide to configuring column visibility, hiding rules, reordering, and breakpoints for your specific data and workflows.</p>
+                    <span class="article-read-more">Read article</span>
+                </a>
+
+                <a href="#" class="article-card">
+                    <span class="article-badge">Comparison</span>
+                    <h3>Column Hiding vs. Stacked Layouts vs. Scrolling</h3>
+                    <p>Compare different adaptive strategies. Understand tradeoffs between column hiding, card stacks, horizontal scrolling, and hybrid approaches for mobile.</p>
+                    <span class="article-read-more">Read article</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const demoContent = {
+            desktop: {
+                title: 'Desktop View',
+                description: 'All columns visible with full data detail and native scrolling for enhanced desktop experience.'
+            },
+            tablet: {
+                title: 'Tablet View',
+                description: 'Secondary columns hidden; core data visible. Users can tap to unhide columns as needed.'
+            },
+            mobile: {
+                title: 'Mobile View',
+                description: 'Data reorganized into touch-friendly cards. Swipe to view additional columns or tap for details.'
+            }
+        };
+
+        function switchDemo(element, mode) {
+            const tabs = document.querySelectorAll('.demo-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            element.classList.add('active');
+
+            const content = demoContent[mode];
+            document.getElementById('demo-title').textContent = content.title;
+            document.getElementById('demo-description').textContent = content.description;
+        }
+
+        function toggleFAQ(question) {
+            const answer = question.nextElementSibling;
+            const toggle = question.querySelector('.faq-toggle');
+
+            answer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
