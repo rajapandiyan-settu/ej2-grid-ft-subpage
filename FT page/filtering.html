@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Grid Filtering | Syncfusion</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f8fb;
+        --surface: #ffffff;
+        --surface-alt: #f3f6fb;
+        --text: #0f1f3a;
+        --muted: #5f738f;
+        --primary: #1f5be3;
+        --primary-strong: #153a90;
+        --border: #dbe4f3;
+        --shadow: 0 24px 60px rgba(15, 31, 58, 0.12);
+        --radius: 30px;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      body {
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .page {
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 40px 0 80px;
+      }
+
+      .hero {
+        padding: 72px 0 48px;
+        text-align: center;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: rgba(31, 91, 227, 0.12);
+        color: var(--primary);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-title {
+        margin: 24px auto 18px;
+        max-width: 920px;
+        font-size: clamp(3rem, 4vw, 4.8rem);
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+        margin: 0 auto 32px;
+        font-size: 1.05rem;
+        color: var(--muted);
+      }
+
+      .hero-actions {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 26px;
+        border-radius: 999px;
+        font-weight: 700;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        color: white;
+        background: linear-gradient(135deg, var(--primary), #1a4aca);
+        box-shadow: 0 20px 40px rgba(31, 91, 227, 0.2);
+      }
+
+      .btn-secondary {
+        color: var(--primary-strong);
+        background: white;
+        border-color: var(--border);
+      }
+
+      .panel {
+        background: white;
+        border-radius: 36px;
+        padding: 36px;
+        margin-top: 32px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(15, 31, 58, 0.06);
+      }
+
+      .panel-title {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--primary);
+      }
+
+      .panel-copy {
+        margin: 0 0 28px;
+        color: var(--muted);
+        max-width: 720px;
+        line-height: 1.75;
+      }
+
+      .demo-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+
+      .demo-tab {
+        padding: 14px 20px;
+        border-radius: 999px;
+        background: #f3f6fb;
+        color: var(--muted);
+        font-weight: 700;
+        border: 1px solid transparent;
+        cursor: pointer;
+      }
+
+      .demo-tab.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      .demo-card {
+        border-radius: 30px;
+        background: #f8fbff;
+        padding: 30px;
+        border: 1px solid rgba(31, 91, 227, 0.12);
+      }
+
+      .demo-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .demo-header h2 {
+        margin: 0;
+        font-size: 1.15rem;
+      }
+
+      .preview-block {
+        background: white;
+        border-radius: 24px;
+        padding: 28px;
+        border: 1px solid rgba(15, 31, 58, 0.08);
+      }
+
+      .demo-table th,
+      .demo-table td {
+        padding: 18px 16px;
+        text-align: left;
+        border-bottom: 1px solid rgba(15, 31, 58, 0.08);
+      }
+
+      .demo-table th {
+        background: #eef2fb;
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .demo-table tbody tr:hover {
+        background: rgba(31, 91, 227, 0.04);
+      }
+
+      .preview-block {
+        background: white;
+        border-radius: 24px;
+        padding: 28px;
+        border: 1px solid rgba(15, 31, 58, 0.08);
+      }
+
+      .preview-block p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .preview-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .preview-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: #f3f6fb;
+        border: 1px solid rgba(31, 91, 227, 0.08);
+      }
+
+      .preview-item strong {
+        color: var(--primary-strong);
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: start;
+        margin-top: 56px;
+      }
+
+      .summary-panel {
+        background: white;
+        border-radius: 32px;
+        padding: 32px;
+        border: 1px solid rgba(15, 31, 58, 0.06);
+        box-shadow: 0 20px 45px rgba(15, 31, 58, 0.06);
+      }
+
+      .summary-panel h2 {
+        margin-top: 0;
+      }
+
+      .tag-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .tag {
+        padding: 16px 18px;
+        border-radius: 20px;
+        background: #eef4ff;
+        color: var(--primary-strong);
+        font-weight: 700;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .info-card {
+        border-radius: 32px;
+        padding: 26px;
+        background: white;
+        box-shadow: 0 18px 40px rgba(15, 31, 58, 0.06);
+        border: 1px solid rgba(15, 31, 58, 0.05);
+      }
+
+      .info-card h3 {
+        margin-top: 0;
+        font-size: 1.05rem;
+      }
+
+      .info-card p {
+        margin: 14px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .info-card small {
+        display: inline-block;
+        margin-top: 18px;
+        color: var(--primary-strong);
+        font-weight: 700;
+      }
+
+      .resource-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .resource-card,
+      .faq-card,
+      .logo-card {
+        border-radius: 30px;
+        padding: 26px;
+        background: white;
+        border: 1px solid rgba(15, 31, 58, 0.05);
+        box-shadow: 0 16px 34px rgba(15, 31, 58, 0.05);
+      }
+
+      .resource-card h3,
+      .faq-card h3 {
+        margin-top: 0;
+      }
+
+      .resource-card p,
+      .faq-card p {
+        color: var(--muted);
+      }
+
+      .faq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .faq-card {
+        min-height: 170px;
+      }
+
+      .logo-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .stats-panel {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .stat-card {
+        border-radius: 28px;
+        padding: 26px;
+        background: white;
+        border: 1px solid rgba(15, 31, 58, 0.05);
+        box-shadow: 0 18px 40px rgba(15, 31, 58, 0.05);
+      }
+
+      .stat-value {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin: 0;
+      }
+
+      .stat-label {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+
+      .logo-card {
+        min-height: 80px;
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 700;
+        background: #f8fafc;
+      }
+
+      .footer-note {
+        text-align: center;
+        color: var(--muted);
+        margin-top: 40px;
+      }
+
+      @media (max-width: 1024px) {
+        .summary-grid,
+        .card-grid,
+        .resource-grid,
+        .faq-grid,
+        .logo-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .hero-title {
+          font-size: 2.8rem;
+        }
+
+        .demo-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <span class="hero-badge">React Grid Filtering</span>
+        <h1 class="hero-title">Build powerful React Grid filtering for real data workflows</h1>
+        <p class="hero-copy">Support Filter Bar, Checkbox, Excel-like, and Menu filtering in Syncfusion React Grid to help users locate records, apply operators, and narrow data without leaving the grid.</p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn btn-primary">Try filtering modes</a>
+          <a href="https://helpej2.syncfusion.com/react/documentation/grid/filtering/filtering" class="btn btn-secondary">Explore documentation</a>
+        </div>
+      </section>
+
+      <section class="panel" id="demo">
+        <div class="panel-title">Filtering overview</div>
+        <p class="panel-copy">Explore the available filtering modes and learn how each interface supports data discovery and control without rendering an actual grid sample.</p>
+
+        <div class="demo-tabs" role="tablist">
+          <button class="demo-tab active" data-demo="bar">Filter Bar</button>
+          <button class="demo-tab" data-demo="checkbox">Checkbox Filter</button>
+          <button class="demo-tab" data-demo="excel">Excel-like Filter</button>
+          <button class="demo-tab" data-demo="menu">Menu Filter</button>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-header">
+            <h2 id="preview-title">Inline Filter Bar preview</h2>
+            <span style="color: var(--muted);">Use the tabs to explore each filter mode description</span>
+          </div>
+          <div class="preview-block" id="preview-content">
+            <p>Filter Bar displays a row of input fields beneath grid headers so users can enter filter criteria directly and see matching results as filtering is applied.</p>
+            <div class="preview-list">
+              <div class="preview-item"><strong>Filter Bar</strong> — Input fields appear directly below headers and support immediate or Enter-mode filtering.</div>
+              <div class="preview-item"><strong>Checkbox Filter</strong> — A dialog list of distinct values that users can select or deselect to include in the filtered results.</div>
+              <div class="preview-item"><strong>Excel-like Filter</strong> — A familiar dialog with checkbox lists, search, sort, and operator controls for advanced filtering.</div>
+              <div class="preview-item"><strong>Menu Filter</strong> — A header filter icon opens a menu dialog with operators and a field input for precise matching.
+</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary-grid">
+        <div>
+          <div class="panel-title">Turn data review into focused results</div>
+          <h2 class="section-title">Filtering helps teams find the right records faster</h2>
+          <p class="section-copy">Use allowFiltering with filterSettings.type to choose the right mode: Filter Bar for inline criteria, Checkbox for multi-value selection, Excel-like for advanced dialog filtering, and Menu for header-based filter dialogs.</p>
+          <div class="tag-list">
+            <div class="tag">Built-in filter modes</div>
+            <div class="tag">Operator-driven filtering</div>
+            <div class="tag">Search and selection dialogs</div>
+            <div class="tag">Custom filter components</div>
+          </div>
+        </div>
+
+        <div class="summary-panel">
+          <h2>Flexible filtering for real data workflows</h2>
+          <p>Syncfusion React Grid lets you enable multiple filter modes with <code>filterSettings.type</code>. The Filter Bar adds inline inputs under headers, while Menu and Excel-like filters provide operator dialogs and checkbox-based value selection.</p>
+          <div class="tag-list">
+            <div class="tag">Filter Bar for inline search</div>
+            <div class="tag">Checkbox for categorical selection</div>
+            <div class="tag">Excel-like for dialog filtering</div>
+            <div class="tag">Menu for operator menus</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="panel-title">Choose the right approach</div>
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>Filter Bar</h3>
+            <p>Displays a row of input fields beneath the header. Use Immediate mode for live filtering or OnEnter mode to apply criteria only after pressing Enter.</p>
+          </article>
+          <article class="info-card">
+            <h3>Checkbox Filter</h3>
+            <p>Renders a checkbox list of unique values so users can select several items at once. Ideal for categorical columns with repeated values.</p>
+          </article>
+          <article class="info-card">
+            <h3>Excel-like Filter</h3>
+            <p>Opens a dialog with checkbox selection, search, and sorting. Great for complex filtering scenarios and distinct value lists.</p>
+          </article>
+          <article class="info-card">
+            <h3>Menu Filter</h3>
+            <p>Opens a filter menu dialog from the header icon. Supports operator selection and precise input for each column.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="panel-title">Implementation resources</div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <h3>Filtering docs</h3>
+            <p>Official React Grid documentation for filter settings, filter types, and API usage.</p>
+            <p><a href="https://helpej2.syncfusion.com/react/documentation/grid/filtering/filtering" target="_blank">View the guide</a></p>
+          </article>
+          <article class="resource-card">
+            <h3>Filter settings</h3>
+            <p>Use <code>allowFiltering</code> and <code>filterSettings.type</code> to enable Filter Bar, Menu, Excel-like, or Checkbox filtering modes.</p>
+          </article>
+          <article class="resource-card">
+            <h3>Operator behavior</h3>
+            <p>Menu and Excel-like filters support operator selection, while Filter Bar can be configured for Immediate or OnEnter application.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="panel-title">Frequently asked questions</div>
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>Does filtering support remote data?</h3>
+            <p>Yes. React Grid can send filter queries to your API and render filtered results from remote sources.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Which filter mode is best for dashboards?</h3>
+            <p>Menu filtering works well for dense dashboards because it keeps the table compact while still allowing rich criteria.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Can I use multiple filter modes?</h3>
+            <p>Each grid instance uses one mode at a time, but you can switch modes dynamically for different views or user roles.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Is checkbox filtering good for categories?</h3>
+            <p>Absolutely. Checkbox filter is ideal for repeated values and situations where users need to include several categories.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="panel-title">Trusted in production</div>
+        <div class="summary-grid">
+          <div class="summary-panel">
+            <p>Syncfusion components help teams build data-rich screens faster with consistent UI patterns and production-ready features.</p>
+            <p class="footer-note">Example customer proof block. Replace with approved customer quote.</p>
+          </div>
+          <div class="logo-grid">
+            <div class="logo-card">Logo 1</div>
+            <div class="logo-card">Logo 2</div>
+            <div class="logo-card">Logo 3</div>
+            <div class="logo-card">Logo 4</div>
+            <div class="logo-card">Logo 5</div>
+            <div class="logo-card">Logo 6</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="panel-title">Our customers love us</div>
+        <div class="stats-panel">
+          <article class="stat-card">
+            <p class="stat-value">1,800+</p>
+            <p class="stat-label">Components and frameworks</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value">24x5</p>
+            <p class="stat-label">Support availability</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value">Trusted</p>
+            <p class="stat-label">By developers worldwide</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-headline">
+          <span class="eyebrow">Related articles</span>
+          <h2 class="section-title">Continue exploring React Grid editing</h2>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <h3>React Grid Editing Guide</h3>
+            <p>Read about filter types, syntax, and filter configuration.</p>
+            <p><a href="#">Read article</a></p>
+          </article>
+          <article class="resource-card">
+            <h3>React Grid CRUD Workflow</h3>
+            <p>Learn how filtering fits into add, update, delete, and save workflows.</p>
+            <p><a href="#">Read article</a></p>
+          </article>
+          <article class="resource-card">
+            <h3>Why inline filtering is hard</h3>
+            <p>Understand the tradeoffs of inline filters in production apps.</p>
+            <p><a href="#">Read article</a></p>
+          </article>
+        </div>
+      </section>
+
+      <p class="footer-note">This single-file HTML page uses inline HTML, CSS, and JavaScript to present a reference-style overview of React Grid filtering modes without rendering a grid sample.</p>
+    </main>
+
+    <script>
+      const tabs = document.querySelectorAll('.demo-tab');
+      const previewTitle = document.getElementById('preview-title');
+      const previewContent = document.getElementById('preview-content');
+
+      const previews = {
+        bar: {
+          title: 'Inline Filter Bar preview',
+          copy: 'Filter Bar lets users type directly under column headers to narrow rows instantly. It is ideal for quick text and numeric filtering without opening menus.'
+        },
+        checkbox: {
+          title: 'Checkbox Filter preview',
+          copy: 'Checkbox Filter lets users select one or more values from a list. It is perfect for categorical fields like status, category, and tags.'
+        },
+        excel: {
+          title: 'Excel-like Filter preview',
+          copy: 'Excel-like Filter opens a sheet-style panel with search, operators, and selection controls for power users who need advanced criteria.'
+        },
+        menu: {
+          title: 'Menu Filter preview',
+          copy: 'Menu Filter keeps the filter UI compact by placing it in a header dropdown, making it great for dense tables and dashboard screens.'
+        }
+      };
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(item => item.classList.remove('active'));
+          tab.classList.add('active');
+          const mode = tab.dataset.demo;
+          previewTitle.textContent = previews[mode].title;
+          previewContent.querySelector('p').textContent = previews[mode].copy;
+        });
+      });
+    </script>
+  </body>
+</html>
