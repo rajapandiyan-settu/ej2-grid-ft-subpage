@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Grid Templates - Feature Tour</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Navigation */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 600;
+            color: #0052cc;
+            font-size: 18px;
+        }
+
+        /* ===== 1. HERO SECTION ===== */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            text-align: center;
+        }
+
+        .hero .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #0052cc;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .hero .description {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #0052cc;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0039a6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #0052cc;
+            border: 2px solid #0052cc;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f7fa;
+        }
+
+        /* ===== 2. DEMO PREVIEW SECTION ===== */
+        .demo-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 16px 24px;
+            background: none;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s ease;
+        }
+
+        .demo-tab:hover {
+            color: #0052cc;
+        }
+
+        .demo-tab.active {
+            color: #0052cc;
+            border-bottom-color: #0052cc;
+        }
+
+        .demo-content {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 40px;
+            min-height: 300px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .demo-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .demo-placeholder {
+            background: white;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        .demo-placeholder-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== 3. WHY THIS FEATURE MATTERS ===== */
+        .why-matters-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .why-matters-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .why-matters-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .why-matters-text p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .benefits-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .benefit-chip {
+            background: #f0f4ff;
+            color: #0052cc;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .why-matters-visual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            padding: 32px;
+        }
+
+        /* ===== 4. CHOOSE THE RIGHT APPROACH ===== */
+        .capabilities-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .capability-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .capability-card:hover {
+            border-color: #0052cc;
+            box-shadow: 0 8px 24px rgba(0, 82, 204, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .capability-icon {
+            width: 40px;
+            height: 40px;
+            background: #f0f4ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .capability-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .capability-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .best-for {
+            font-size: 13px;
+            font-weight: 600;
+            color: #0052cc;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .best-for-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .use-when {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #555;
+            border-left: 3px solid #0052cc;
+        }
+
+        /* ===== 5. IMPLEMENTATION RESOURCES ===== */
+        .resources-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            border-color: #0052cc;
+            box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
+        }
+
+        .resource-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .resource-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 16px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .resource-link {
+            color: #0052cc;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            gap: 12px;
+        }
+
+        /* ===== 6. FAQ ===== */
+        .faq-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faq-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ===== 7. CUSTOMER STORIES ===== */
+        .customer-stories-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .customer-stories-content {
+            background: white;
+            border-radius: 12px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .testimonial {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .customer-logos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .logo-box {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            color: #d1d5db;
+            font-weight: 500;
+        }
+
+        /* ===== 8. OUR CUSTOMERS LOVE US ===== */
+        .trust-section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .trust-content {
+            text-align: center;
+        }
+
+        .trust-header {
+            margin-bottom: 48px;
+        }
+
+        .trust-header h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .trust-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .metric {
+            padding: 32px 24px;
+            background: #f9fafb;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0052cc;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* ===== 9. RELATED ARTICLES ===== */
+        .articles-section {
+            padding: 60px 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .article-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            border-color: #0052cc;
+            box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .article-tag {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0052cc;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .article-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        .article-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .article-link {
+            color: #0052cc;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .article-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .description {
+                font-size: 16px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .why-matters-content {
+                grid-template-columns: 1fr;
+            }
+
+            .why-matters-visual {
+                min-height: 250px;
+            }
+
+            .customer-stories-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .capabilities-grid,
+            .resources-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-content {
+                padding: 24px;
+            }
+
+            .customer-logos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo">Syncfusion Data Grid</div>
+            <nav><!-- Navigation items --></nav>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="eyebrow">React Data Grid Templates</div>
+            <h1>Customize Every Part of Your Data Grid with Templates</h1>
+            <p class="description">Create powerful, flexible data displays with column templates, header templates, detail templates, and more. Build exactly what your application needs.</p>
+            <div class="cta-group">
+                <button class="btn btn-primary">View Template Demos</button>
+                <button class="btn btn-secondary">Explore Documentation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. DEMO PREVIEW SECTION -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Try Different Templates in Action</h2>
+                <p>Explore different template types to see how you can customize your grid display</p>
+            </div>
+
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-tab="column">Column Template</button>
+                <button class="demo-tab" data-tab="header">Header Template</button>
+                <button class="demo-tab" data-tab="detail">Detail Template</button>
+                <button class="demo-tab" data-tab="chooser">Column Chooser</button>
+                <button class="demo-tab" data-tab="stacked">Stacked Column</button>
+                <button class="demo-tab" data-tab="empty">Empty Record</button>
+                <button class="demo-tab" data-tab="filter">Filter Template</button>
+                <button class="demo-tab" data-tab="row">Row Template</button>
+            </div>
+
+            <div class="demo-content active" data-content="column">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">📋</div>
+                    <p><strong>Column Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Customize how data appears in each column with custom HTML, images, badges, icons, and interactive elements.</p>
+                </div>
+            </div>
+
+            <div class="demo-content" data-content="header">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">📌</div>
+                    <p><strong>Header Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Design custom column headers with icons, sorting indicators, filters, and advanced header UI.</p>
+                </div>
+            </div>
+
+            <div class="demo-content" data-content="detail">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">📂</div>
+                    <p><strong>Detail Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Build expandable row details showing related information, nested tables, or detailed records.</p>
+                </div>
+            </div>
+
+            <div class="demo-content" data-content="chooser">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">⚙️</div>
+                    <p><strong>Column Chooser Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Customize the column visibility dialog to let users select which columns to display.</p>
+                </div>
+            </div>
+
+            <div class="demo-content" data-content="stacked">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">📊</div>
+                    <p><strong>Stacked Column Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Display multiple fields stacked within a single column for compact, organized data display.</p>
+                </div>
+            </div>
+
+            <div class="demo-content" data-content="empty">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">📭</div>
+                    <p><strong>Empty Record Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Design custom empty state messages when no data is available, with helpful guidance for users.</p>
+                </div>
+            </div>
+
+            <div class="demo-content" data-content="filter">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">🔍</div>
+                    <p><strong>Filter Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Build custom filter UI with dropdowns, date pickers, sliders, and advanced filtering options.</p>
+                </div>
+            </div>
+
+            <div class="demo-content" data-content="row">
+                <div class="demo-placeholder">
+                    <div class="demo-placeholder-icon">📑</div>
+                    <p><strong>Row Template</strong></p>
+                    <p style="font-size: 13px; margin-top: 8px;">Completely customize entire row layouts with conditional styling, actions, and custom markup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. WHY THIS FEATURE MATTERS -->
+    <section class="why-matters-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">Why Templates Matter</div>
+            </div>
+            <div class="why-matters-content">
+                <div class="why-matters-text">
+                    <h3>Build Data Experiences That Match Your Brand</h3>
+                    <p>Generic data grids don't fit every application. Real-world workflows need data displays that reflect your unique business logic, branding, and user experience requirements.</p>
+                    <p>Templates let you go beyond basic cell rendering to create rich, interactive data experiences that engage users and support complex workflows.</p>
+                    <div class="benefits-chips">
+                        <span class="benefit-chip">✓ Custom cell rendering</span>
+                        <span class="benefit-chip">✓ Brand-consistent design</span>
+                        <span class="benefit-chip">✓ Interactive elements</span>
+                        <span class="benefit-chip">✓ Complex data layouts</span>
+                        <span class="benefit-chip">✓ Responsive UX</span>
+                    </div>
+                </div>
+                <div class="why-matters-visual">
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 12px;">🎨</div>
+                        <div>Complete Visual Control</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CHOOSE THE RIGHT APPROACH -->
+    <section class="capabilities-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">Choose the Right Template</div>
+                <h2>Pick the Template Type for Your Workflow</h2>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">📋</div>
+                    <h4>Column Template</h4>
+                    <p>Customize individual cell content with HTML, formatted text, images, badges, and interactive controls.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Status indicators, formatted values, action buttons, badges</div>
+                    <div class="use-when">Use when cells need custom rendering beyond plain text.</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📌</div>
+                    <h4>Header Template</h4>
+                    <p>Design custom column headers with icons, sort indicators, filter buttons, and advanced header layouts.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Custom sorting, advanced filtering, header icons</div>
+                    <div class="use-when">Use when headers need interactive elements or custom styling.</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📂</div>
+                    <h4>Detail Template</h4>
+                    <p>Create expandable row details showing comprehensive information, nested tables, or related records.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Master-detail layouts, expandable rows, nested data</div>
+                    <div class="use-when">Use when rows need to display additional detailed information.</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">⚙️</div>
+                    <h4>Column Chooser Template</h4>
+                    <p>Customize the column visibility dialog to provide an intuitive way for users to manage columns.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Column visibility dialogs, user preferences</div>
+                    <div class="use-when">Use when you need custom column selection UI.</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📊</div>
+                    <h4>Stacked Column Template</h4>
+                    <p>Display multiple fields stacked vertically within a single column for compact, organized layouts.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Multi-field display, compact layouts, grouped data</div>
+                    <div class="use-when">Use when you need to show multiple fields in one column.</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📭</div>
+                    <h4>Empty Record Template</h4>
+                    <p>Design custom empty state messages with helpful guidance when no data matches the current filter.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Empty states, user guidance, call-to-action</div>
+                    <div class="use-when">Use when you want to customize the no-data experience.</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🔍</div>
+                    <h4>Filter Template</h4>
+                    <p>Build advanced filter UI with custom dropdowns, date pickers, sliders, and filtering logic.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Advanced filters, date ranges, custom search</div>
+                    <div class="use-when">Use when filters need custom controls or logic.</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📑</div>
+                    <h4>Row Template</h4>
+                    <p>Completely customize entire row layouts with conditional styling, actions, and complex markup.</p>
+                    <div class="best-for">Best for</div>
+                    <div class="best-for-text">Custom row layouts, complex hierarchies, conditional styling</div>
+                    <div class="use-when">Use when entire rows need custom structure.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. IMPLEMENTATION RESOURCES -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">Implementation Resources</div>
+                <h2>Explore Templates Demos and Documentation</h2>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h4>Template Documentation</h4>
+                    <p>Complete guide to all template types with API references and configuration options.</p>
+                    <a href="#" class="resource-link">View documentation →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Column Template Demo</h4>
+                    <p>Interactive demo showing custom cell rendering with formatted content and controls.</p>
+                    <a href="#" class="resource-link">Try demo →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Detail Template Demo</h4>
+                    <p>Master-detail example showing expandable rows with nested data and custom layouts.</p>
+                    <a href="#" class="resource-link">Try demo →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Header Template Demo</h4>
+                    <p>Custom header examples with icons, sorting, and interactive header controls.</p>
+                    <a href="#" class="resource-link">Try demo →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Advanced Filtering Guide</h4>
+                    <p>Learn how to implement custom filter templates with validation and complex logic.</p>
+                    <a href="#" class="resource-link">Read guide →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Stacked Column Example</h4>
+                    <p>Example showing how to stack multiple fields in a single column efficiently.</p>
+                    <a href="#" class="resource-link">View example →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Empty State Best Practices</h4>
+                    <p>Guidelines for designing effective empty state templates for better UX.</p>
+                    <a href="#" class="resource-link">Read article →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Row Template Customization</h4>
+                    <p>Advanced techniques for complete row customization with conditional rendering.</p>
+                    <a href="#" class="resource-link">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Data Grid Templates Questions</h2>
+                <p>Frequently asked questions about template implementation</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>What template types are available?</h4>
+                    <p>Syncfusion Data Grid supports column, header, detail, row, stacked column, empty record, filter, and column chooser templates. Each serves a specific customization need.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can templates include React components?</h4>
+                    <p>Yes, templates fully support React components, allowing you to use your existing component library and state management within grid templates.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do templates affect performance?</h4>
+                    <p>Templates use efficient rendering. With virtual scrolling and proper memoization, even complex templates perform well with thousands of rows.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I use templates with remote data?</h4>
+                    <p>Absolutely. Templates work seamlessly with remote data sources, APIs, and dynamic data loading without any special configuration.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do templates support conditional rendering?</h4>
+                    <p>Yes, templates support full conditional rendering based on row data, enabling responsive and context-aware grid displays.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can templates include event handlers?</h4>
+                    <p>Templates fully support event handlers for click, change, and other events, enabling interactive grid experiences and actions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CUSTOMER STORIES -->
+    <section class="customer-stories-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">Customer Stories</div>
+                <h2>Trusted for Enterprise Application Development</h2>
+            </div>
+            <div class="customer-stories-content">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Syncfusion templates gave us complete control over our data display. We built a custom dashboard that matches our brand perfectly and our users love the interactive elements we added with templates."</p>
+                    <div class="testimonial-author">Sarah Johnson</div>
+                    <div class="testimonial-role">Senior Product Manager, TechCorp</div>
+                </div>
+                <div class="customer-logos">
+                    <div class="logo-box">Company Logo 1</div>
+                    <div class="logo-box">Company Logo 2</div>
+                    <div class="logo-box">Company Logo 3</div>
+                    <div class="logo-box">Company Logo 4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. OUR CUSTOMERS LOVE US -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-header">
+                    <h3>Our Customers Love Us</h3>
+                </div>
+                <div class="trust-metrics">
+                    <div class="metric">
+                        <div class="metric-value">1,800+</div>
+                        <div class="metric-label">Global Customers</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">2,545</div>
+                        <div class="metric-label">Monthly Downloads</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Trusted</div>
+                        <div class="metric-label">By Global Enterprises</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. RELATED ARTICLES -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Continue Exploring Data Grid Features</h2>
+                <p>Discover related topics and best practices for building powerful data applications</p>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-tag">Feature Guide</div>
+                    <h4>Building Advanced Data Grid Layouts</h4>
+                    <p>Learn how to combine multiple template types to create sophisticated data displays and user interfaces.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-tag">Best Practices</div>
+                    <h4>Template Performance Optimization</h4>
+                    <p>Techniques and strategies for maintaining fast rendering performance with complex templates and large datasets.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-tag">How To Guide</div>
+                    <h4>Implementing Master-Detail Workflows</h4>
+                    <p>Step-by-step guide to creating expandable master-detail views using detail templates and nested data.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-tag">Advanced Topic</div>
+                    <h4>Custom Component Integration</h4>
+                    <p>Best practices for integrating custom React components into grid templates while maintaining performance.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Syncfusion. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Demo Tab Functionality
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.demo-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.querySelector(`.demo-content[data-content="${tabName}"]`).classList.add('active');
+            });
+        });
+
+        // Smooth scroll for buttons
+        document.querySelectorAll('.btn, .resource-link, .article-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.capability-card, .resource-card, .article-card, .metric').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
