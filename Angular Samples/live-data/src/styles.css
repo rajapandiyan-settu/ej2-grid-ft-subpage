@@ -1,0 +1,202 @@
+@import '../node_modules/@syncfusion/ej2-base/styles/tailwind3.css';  
+@import '../node_modules/@syncfusion/ej2-buttons/styles/tailwind3.css';  
+@import '../node_modules/@syncfusion/ej2-calendars/styles/tailwind3.css';  
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/tailwind3.css';  
+@import '../node_modules/@syncfusion/ej2-inputs/styles/tailwind3.css';  
+@import '../node_modules/@syncfusion/ej2-navigations/styles/tailwind3.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/tailwind3.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/tailwind3.css';
+@import '../node_modules/@syncfusion/ej2-notifications/styles/tailwind3.css';
+@import '../node_modules/@syncfusion/ej2-angular-grids/styles/tailwind3.css';
+
+
+.pro-instrument {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pro-ticker-badge {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #555;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.pro-company-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+#pro-stock-grid .e-spinner-pane {
+  display: none;
+}
+
+#pro-stock-grid .e-headercell {
+  border-right: 1px solid var(--color-sf-border-light) !important;
+}
+
+.pro-sym-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+}
+
+.pro-sym-ticker {
+  line-height: 1;
+}
+
+.pro-sym-company {
+  font-size: 12px;
+  color: #3f51b5;
+  margin-top: 15px;
+}
+
+/* Price */
+.pro-price-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pro-flash-gain .pro-price-value {
+  color: #00a653;
+  animation: pro-flash-green 0.6s ease-out;
+}
+
+.pro-flash-loss .pro-price-value {
+  color: #e3515c;
+  animation: pro-flash-pink 0.6s ease-out;
+}
+
+@keyframes pro-flash-green {
+  0% { background: rgba(74, 222, 128, 0.3); }
+  100% { background: transparent; }
+}
+
+@keyframes pro-flash-pink {
+  0% { background: rgba(244, 114, 182, 0.3); }
+  100% { background: transparent; }
+}
+
+/* Delta */
+
+.pro-up {
+  color: #00a653;
+}
+
+.pro-dn {
+  color: #e3515c;
+}
+
+.pro-flat {
+  color: rgba(148, 163, 184, 0.6);
+}
+
+/* Column Chart */
+.pro-chart-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.pro-chart-cell > div {
+  width: 100%;
+  height: 100%;
+}
+
+.e-chevron-intermediate:before {
+  content: '\e87f';
+}
+
+.e-chevron-up:before {
+  content: '\e910';
+}
+
+.e-chevron-down:before {
+  content: '\e652';
+}
+
+.e-chevron-down-double:before {
+  content: '\e304';
+}
+
+.e-chevron-up-double:before {
+  content: '\e306';
+}
+.e-chevron-intermediate,
+.e-chevron-up,
+.e-chevron-up-double,
+.e-chevron-down,
+.e-chevron-down-double {
+  padding: 0 5px;
+  height: 14px;
+  width: 14px;
+  margin-left: 3px;
+}
+
+/* Green color for Buy (increase cells) */
+.e-grid .e-rowcell.e-increase,
+.e-grid .e-rowcell.e-increase:not(.e-editedbatchcell):not(.e-updatedtd) {
+  color: #22c55e;
+  font-weight: 500;
+}
+
+.e-grid .e-rowcell.e-increase .e-chevron-intermediate,
+.e-grid .e-rowcell.e-increase .e-chevron-up,
+.e-grid .e-rowcell.e-increase .e-chevron-up-double {
+  color: #22c55e;
+}
+
+.e-grid .e-rowcell .e-increase,
+.e-grid .e-rowcell .e-increase .e-chevron-intermediate,
+.e-grid .e-rowcell .e-increase .e-chevron-up,
+.e-grid .e-rowcell .e-increase .e-chevron-up-double {
+  color: #22c55e;
+  font-weight: 500;
+}
+
+/* Red color for Sell (decrease cells) */
+.e-grid .e-rowcell.e-decrease,
+.e-grid .e-rowcell.e-decrease:not(.e-editedbatchcell):not(.e-updatedtd) {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.e-grid .e-rowcell.e-decrease .e-chevron-intermediate,
+.e-grid .e-rowcell.e-decrease .e-chevron-down,
+.e-grid .e-rowcell.e-decrease .e-chevron-down-double {
+  color: #ef4444;
+}
+
+.e-grid .e-rowcell .e-decrease,
+.e-grid .e-rowcell .e-decrease .e-chevron-intermediate,
+.e-grid .e-rowcell .e-decrease .e-chevron-down,
+.e-grid .e-rowcell .e-decrease .e-chevron-down-double {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.neutral,
+.e-rowcell .e-icons.neutral,
+.e-grid .e-rowcell .neutral {
+  color: #888888;
+}
+
