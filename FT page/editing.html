@@ -198,13 +198,9 @@
         .demo-preview {
             background-color: var(--white);
             border-radius: 8px;
-            padding: 40px;
+            padding: 28px;
             box-shadow: var(--shadow);
-            text-align: center;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 320px;
         }
 
         .demo-content {
@@ -234,13 +230,130 @@
             margin-bottom: 8px;
         }
 
+        .demo-mode-card {
+            max-width: 1480px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .demo-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 18px 18px 14px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #fbfcff;
+            color: #111827;
+            font-size: 16px;
+            flex-wrap: wrap;
+        }
+
+        .demo-toolbar-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .demo-toolbar-item::before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            border: 2px solid #8b95a7;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .demo-toolbar-item.add::before { content: "+"; border: none; font-size: 26px; line-height: 1; color: #111827; width: auto; height: auto; }
+        .demo-toolbar-item.edit::before { content: "✎"; border: none; width: auto; height: auto; font-size: 18px; color: #64748b; }
+        .demo-toolbar-item.delete::before { content: "🗑"; border: none; width: auto; height: auto; font-size: 16px; }
+        .demo-toolbar-item.update::before { content: "▣"; border: none; width: auto; height: auto; font-size: 16px; color: #cbd5e1; }
+        .demo-toolbar-item.cancel::before { content: "×"; border: none; width: auto; height: auto; font-size: 22px; color: #94a3b8; }
+
+        .demo-toolbar-item.muted {
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .demo-grid-shell {
+            overflow-x: auto;
+        }
+
+        .demo-grid-table {
+            width: 100%;
+            min-width: 1200px;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .demo-grid-table th,
+        .demo-grid-table td {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 18px 14px;
+            text-align: left;
+            font-size: 16px;
+            color: #0f172a;
+            white-space: nowrap;
+        }
+
+        .demo-grid-table th {
+            font-weight: 700;
+            position: relative;
+            background: #fff;
+        }
+
+        .demo-grid-table th .filter {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border: 2px solid #94a3b8;
+            border-top: none;
+            clip-path: polygon(0 0, 100% 0, 62% 55%, 62% 100%, 38% 100%, 38% 55%);
+            opacity: 0.9;
+        }
+
+        .demo-grid-table tbody tr:hover {
+            background: #fafcff;
+        }
+
+        .demo-grid-table tbody td:first-child {
+            font-weight: 600;
+        }
+
+        .demo-mode-footer {
+            display: none;
+        }
+
+        .status.shipped { color: #0f766e; }
+        .status.pending { color: #b45309; }
+        .status.cancelled { color: #dc2626; }
+
         /* ===== WHY IT MATTERS SECTION ===== */
         .why-matters {
             padding: 80px 0;
+            background-color: var(--white);
         }
 
-        .why-matters-content {
-            max-width: 700px;
+        .why-matters-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .why-matters-left {
+            text-align: left;
+        }
+
+        .why-matters-right {
+            text-align: left;
         }
 
         .section-eyebrow {
@@ -250,20 +363,29 @@
             letter-spacing: 1px;
             color: var(--primary-color);
             margin-bottom: 16px;
+            text-align: center;
         }
 
         .why-matters-title {
-            font-size: 40px;
+            font-size: 36px;
             font-weight: 700;
             margin-bottom: 24px;
             color: var(--text-dark);
+            line-height: 1.3;
         }
 
         .why-matters p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-light);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.8;
+        }
+
+        .why-matters-right p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 16px;
         }
 
         .benefit-chips {
@@ -275,18 +397,35 @@
 
         .chip {
             background-color: var(--light-bg);
-            color: var(--text-dark);
+            color: var(--primary-color);
             padding: 10px 16px;
             border-radius: 20px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             border: 1px solid var(--border-color);
+        }
+
+        .right-content-box {
+            border-left: 5px solid var(--primary-color);
+            padding-left: 24px;
+            background-color: #f0f7ff;
+            padding: 32px;
+            padding-left: 24px;
+            border-radius: 4px;
+        }
+
+        .right-box-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
         }
 
         /* ===== CAPABILITIES SECTION ===== */
         .capabilities {
             padding: 80px 0;
             background-color: var(--light-bg);
+           
         }
 
         .capabilities-grid {
@@ -354,6 +493,7 @@
         /* ===== RESOURCES SECTION ===== */
         .resources {
             padding: 80px 0;
+            text-align: center;
         }
 
         .resources-grid {
@@ -412,6 +552,7 @@
         .faq {
             padding: 80px 0;
             background-color: var(--light-bg);
+            text-align: center;
         }
 
         .faq-container {
@@ -581,13 +722,21 @@
         /* ===== RELATED ARTICLES SECTION ===== */
         .related-articles {
             padding: 80px 0;
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        .related-articles .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 60px;
         }
 
         .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 28px;
-            margin-top: 48px;
+            margin-top: 0;
         }
 
         .article-card {
@@ -595,51 +744,48 @@
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
+            background-color: var(--white);
+            box-shadow: var(--shadow);
         }
 
         .article-card:hover {
             box-shadow: var(--shadow-lg);
             transform: translateY(-4px);
+            border-color: var(--border-color);
         }
 
         .article-image {
-            width: 100%;
-            height: 180px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: 600;
+            display: none;
         }
 
         .article-card:nth-child(2) .article-image {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: none;
         }
 
         .article-card:nth-child(3) .article-image {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            display: none;
         }
 
         .article-card:nth-child(4) .article-image {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            display: none;
         }
 
         .article-content {
-            padding: 24px;
+            padding: 32px;
         }
 
         .article-title {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            line-height: 1.4;
         }
 
         .article-excerpt {
             font-size: 14px;
             color: var(--text-light);
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             line-height: 1.6;
         }
 
@@ -648,6 +794,12 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .article-link:hover {
+            color: var(--primary-dark);
         }
 
         /* ===== FOOTER ===== */
@@ -685,6 +837,11 @@
 
             .btn {
                 width: 100%;
+            }
+
+            .why-matters-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
             .capabilities-grid {
@@ -742,6 +899,7 @@
     <!-- DEMO SECTION -->
     <section class="demo-section" id="demo">
         <div class="container">
+            <div class="section-eyebrow">Interactive Demo</div>
             <h2 class="section-title">Try Editing Modes in Action</h2>
             <p class="section-subtitle">Use a live sample to see how editing works before reading the details.</p>
 
@@ -756,51 +914,375 @@
 
             <div class="demo-preview">
                 <div id="inline-demo" class="demo-content active">
-                    <div class="demo-grid-visual">
-                        <strong>📝 Inline Row Editing</strong>
-                        Edit an entire row by clicking the edit icon. All cells in the row become editable in a single view.
-                        <strong style="margin-top: 20px;">Perfect for:</strong>
-                        Quick edits where users need to see and modify multiple fields at once.
+                    <div class="demo-mode-card">
+                        <div class="demo-toolbar">
+                            <div class="demo-toolbar-item add">Add</div>
+                            <div class="demo-toolbar-item edit">Edit</div>
+                            <div class="demo-toolbar-item delete">Delete</div>
+                            <div class="demo-toolbar-item update muted">Update</div>
+                            <div class="demo-toolbar-item cancel muted">Cancel</div>
+                        </div>
+                        <div class="demo-grid-shell">
+                            <table class="demo-grid-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number <span class="filter"></span></th>
+                                        <th>Customer Name <span class="filter"></span></th>
+                                        <th>Product <span class="filter"></span></th>
+                                        <th>Order Status <span class="filter"></span></th>
+                                        <th>Order Date <span class="filter"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ORD-1001</td>
+                                        <td>Eve Green</td>
+                                        <td>Laptop</td>
+                                        <td>Shipped</td>
+                                        <td>4/25/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1002</td>
+                                        <td>Jack Black</td>
+                                        <td>Bag</td>
+                                        <td>Canceled</td>
+                                        <td>1/17/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1003</td>
+                                        <td>David Brown</td>
+                                        <td>Shoe</td>
+                                        <td>Pending</td>
+                                        <td>10/15/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1004</td>
+                                        <td>Olivia Purple</td>
+                                        <td>Headphone</td>
+                                        <td>Ready To Ship</td>
+                                        <td>10/29/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1005</td>
+                                        <td>Alice Johnson</td>
+                                        <td>Tablet</td>
+                                        <td>In Transit</td>
+                                        <td>5/23/2025</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div id="cell-demo" class="demo-content">
-                    <div class="demo-grid-visual">
-                        <strong>🎯 Cell Editing</strong>
-                        Double-click or press Enter on any cell to edit it individually. Changes are saved per cell.
-                        <strong style="margin-top: 20px;">Perfect for:</strong>
-                        Spreadsheet-like workflows where users edit one field at a time.
+                    <div class="demo-mode-card">
+                        <div class="demo-toolbar">
+                            <div class="demo-toolbar-item add">Add</div>
+                            <div class="demo-toolbar-item edit">Edit</div>
+                            <div class="demo-toolbar-item delete">Delete</div>
+                            <div class="demo-toolbar-item update muted">Update</div>
+                            <div class="demo-toolbar-item cancel muted">Cancel</div>
+                        </div>
+                        <div class="demo-grid-shell">
+                            <table class="demo-grid-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number <span class="filter"></span></th>
+                                        <th>Customer Name <span class="filter"></span></th>
+                                        <th>Product <span class="filter"></span></th>
+                                        <th>Order Status <span class="filter"></span></th>
+                                        <th>Order Date <span class="filter"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ORD-1001</td>
+                                        <td>Eve Green</td>
+                                        <td>Laptop</td>
+                                        <td>Shipped</td>
+                                        <td>4/25/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1002</td>
+                                        <td>Jack Black</td>
+                                        <td>Bag</td>
+                                        <td>Canceled</td>
+                                        <td>1/17/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1003</td>
+                                        <td>David Brown</td>
+                                        <td>Shoe</td>
+                                        <td>Pending</td>
+                                        <td>10/15/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1004</td>
+                                        <td>Olivia Purple</td>
+                                        <td>Headphone</td>
+                                        <td>Ready To Ship</td>
+                                        <td>10/29/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1005</td>
+                                        <td>Alice Johnson</td>
+                                        <td>Tablet</td>
+                                        <td>In Transit</td>
+                                        <td>5/23/2025</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div id="dialog-demo" class="demo-content">
-                    <div class="demo-grid-visual">
-                        <strong>💬 Dialog Editing</strong>
-                        Click edit to open a modal dialog containing all editable fields for that row.
-                        <strong style="margin-top: 20px;">Perfect for:</strong>
-                        Complex forms with many fields or custom validation layouts.
+                    <div class="demo-mode-card">
+                        <div class="demo-toolbar">
+                            <div class="demo-toolbar-item add">Add</div>
+                            <div class="demo-toolbar-item edit">Edit</div>
+                            <div class="demo-toolbar-item delete">Delete</div>
+                            <div class="demo-toolbar-item update muted">Update</div>
+                            <div class="demo-toolbar-item cancel muted">Cancel</div>
+                        </div>
+                        <div class="demo-grid-shell">
+                            <table class="demo-grid-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number <span class="filter"></span></th>
+                                        <th>Customer Name <span class="filter"></span></th>
+                                        <th>Product <span class="filter"></span></th>
+                                        <th>Order Status <span class="filter"></span></th>
+                                        <th>Order Date <span class="filter"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ORD-1001</td>
+                                        <td>Eve Green</td>
+                                        <td>Laptop</td>
+                                        <td>Shipped</td>
+                                        <td>4/25/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1002</td>
+                                        <td>Jack Black</td>
+                                        <td>Bag</td>
+                                        <td>Canceled</td>
+                                        <td>1/17/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1003</td>
+                                        <td>David Brown</td>
+                                        <td>Shoe</td>
+                                        <td>Pending</td>
+                                        <td>10/15/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1004</td>
+                                        <td>Olivia Purple</td>
+                                        <td>Headphone</td>
+                                        <td>Ready To Ship</td>
+                                        <td>10/29/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1005</td>
+                                        <td>Alice Johnson</td>
+                                        <td>Tablet</td>
+                                        <td>In Transit</td>
+                                        <td>5/23/2025</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div id="batch-demo" class="demo-content">
-                    <div class="demo-grid-visual">
-                        <strong>📦 Batch Editing</strong>
-                        Edit multiple rows simultaneously, then save all changes in a single transaction.
-                        <strong style="margin-top: 20px;">Perfect for:</strong>
-                        Bulk updates and bulk operations that need atomic saves.
+                    <div class="demo-mode-card">
+                        <div class="demo-toolbar">
+                            <div class="demo-toolbar-item add">Add</div>
+                            <div class="demo-toolbar-item edit">Edit</div>
+                            <div class="demo-toolbar-item delete">Delete</div>
+                            <div class="demo-toolbar-item update muted">Update</div>
+                            <div class="demo-toolbar-item cancel muted">Cancel</div>
+                        </div>
+                        <div class="demo-grid-shell">
+                            <table class="demo-grid-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number <span class="filter"></span></th>
+                                        <th>Customer Name <span class="filter"></span></th>
+                                        <th>Product <span class="filter"></span></th>
+                                        <th>Order Status <span class="filter"></span></th>
+                                        <th>Order Date <span class="filter"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ORD-1001</td>
+                                        <td>Eve Green</td>
+                                        <td>Laptop</td>
+                                        <td>Shipped</td>
+                                        <td>4/25/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1002</td>
+                                        <td>Jack Black</td>
+                                        <td>Bag</td>
+                                        <td>Canceled</td>
+                                        <td>1/17/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1003</td>
+                                        <td>David Brown</td>
+                                        <td>Shoe</td>
+                                        <td>Pending</td>
+                                        <td>10/15/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1004</td>
+                                        <td>Olivia Purple</td>
+                                        <td>Headphone</td>
+                                        <td>Ready To Ship</td>
+                                        <td>10/29/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1005</td>
+                                        <td>Alice Johnson</td>
+                                        <td>Tablet</td>
+                                        <td>In Transit</td>
+                                        <td>5/23/2025</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div id="template-demo" class="demo-content">
-                    <div class="demo-grid-visual">
-                        <strong>🎨 Dialog Template Editing</strong>
-                        Customize the edit dialog with your own HTML template for complete design control.
-                        <strong style="margin-top: 20px;">Perfect for:</strong>
-                        Enterprise applications requiring branded or complex form layouts.
+                    <div class="demo-mode-card">
+                        <div class="demo-toolbar">
+                            <div class="demo-toolbar-item add">Add</div>
+                            <div class="demo-toolbar-item edit">Edit</div>
+                            <div class="demo-toolbar-item delete">Delete</div>
+                            <div class="demo-toolbar-item update muted">Update</div>
+                            <div class="demo-toolbar-item cancel muted">Cancel</div>
+                        </div>
+                        <div class="demo-grid-shell">
+                            <table class="demo-grid-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number <span class="filter"></span></th>
+                                        <th>Customer Name <span class="filter"></span></th>
+                                        <th>Product <span class="filter"></span></th>
+                                        <th>Order Status <span class="filter"></span></th>
+                                        <th>Order Date <span class="filter"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ORD-1001</td>
+                                        <td>Eve Green</td>
+                                        <td>Laptop</td>
+                                        <td>Shipped</td>
+                                        <td>4/25/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1002</td>
+                                        <td>Jack Black</td>
+                                        <td>Bag</td>
+                                        <td>Canceled</td>
+                                        <td>1/17/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1003</td>
+                                        <td>David Brown</td>
+                                        <td>Shoe</td>
+                                        <td>Pending</td>
+                                        <td>10/15/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1004</td>
+                                        <td>Olivia Purple</td>
+                                        <td>Headphone</td>
+                                        <td>Ready To Ship</td>
+                                        <td>10/29/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1005</td>
+                                        <td>Alice Johnson</td>
+                                        <td>Tablet</td>
+                                        <td>In Transit</td>
+                                        <td>5/23/2025</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div id="command-demo" class="demo-content">
-                    <div class="demo-grid-visual">
-                        <strong>⚙️ Command Column Editing</strong>
-                        Use a dedicated column with Edit, Save, Cancel, and Delete buttons for full control.
-                        <strong style="margin-top: 20px;">Perfect for:</strong>
-                        Applications where action buttons need to be visible and accessible.
+                    <div class="demo-mode-card">
+                        <div class="demo-toolbar">
+                            <div class="demo-toolbar-item add">Add</div>
+                            <div class="demo-toolbar-item edit">Edit</div>
+                            <div class="demo-toolbar-item delete">Delete</div>
+                            <div class="demo-toolbar-item update muted">Update</div>
+                            <div class="demo-toolbar-item cancel muted">Cancel</div>
+                        </div>
+                        <div class="demo-grid-shell">
+                            <table class="demo-grid-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number <span class="filter"></span></th>
+                                        <th>Customer Name <span class="filter"></span></th>
+                                        <th>Product <span class="filter"></span></th>
+                                        <th>Order Status <span class="filter"></span></th>
+                                        <th>Order Date <span class="filter"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ORD-1001</td>
+                                        <td>Eve Green</td>
+                                        <td>Laptop</td>
+                                        <td>Shipped</td>
+                                        <td>4/25/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1002</td>
+                                        <td>Jack Black</td>
+                                        <td>Bag</td>
+                                        <td>Canceled</td>
+                                        <td>1/17/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1003</td>
+                                        <td>David Brown</td>
+                                        <td>Shoe</td>
+                                        <td>Pending</td>
+                                        <td>10/15/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1004</td>
+                                        <td>Olivia Purple</td>
+                                        <td>Headphone</td>
+                                        <td>Ready To Ship</td>
+                                        <td>10/29/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-1005</td>
+                                        <td>Alice Johnson</td>
+                                        <td>Tablet</td>
+                                        <td>In Transit</td>
+                                        <td>5/23/2025</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -810,18 +1292,27 @@
     <!-- WHY IT MATTERS SECTION -->
     <section class="why-matters">
         <div class="container">
-            <div class="why-matters-content">
-                <div class="section-eyebrow">WHY EDITING MATTERS</div>
-                <h2 class="why-matters-title">Turn Data Review into Data Update</h2>
-                <p>A data grid is often the place where users review and manipulate data. When users catch an error or need to make a change, they expect to do it right there in the grid without leaving the current view.</p>
-                <p>Syncfusion React Data Grid provides intuitive editing features that support your application's data workflow, whether you need quick inline edits, bulk updates, or complex form-based entry with validation.</p>
+            <div class="section-eyebrow">WHY EDITING MATTERS</div>
+              <p class="section-subtitle">A data grid is often where information is reviewed and maintained. Seamless editing allows users to make updates instantly without leaving their current workflow.</p>
+            <div class="why-matters-wrapper">
+                <div class="why-matters-left">
+                    <h2 class="why-matters-title">Turn Data Review to Data Update</h2>
+                    <p>A data grid is where users frequently review, update, and manage important information. Users expect to correct errors or make changes directly within the grid without leaving the current view. Seamless editing improves productivity by reducing unnecessary navigation and extra steps. Switching between multiple screens disrupts productivity and slows down the process. It helps maintain data accuracy and ensures updates are reflected immediately.</p>
 
-                <div class="benefit-chips">
+                    <div class="benefit-chips">
                     <span class="chip">✓ Flexible editing modes</span>
                     <span class="chip">✓ Real-time validation</span>
                     <span class="chip">✓ Batch operations</span>
                     <span class="chip">✓ Custom templates</span>
                     <span class="chip">✓ Full keyboard support</span>
+                </div>
+                </div>
+
+                <div class="why-matters-right">
+                    <div class="right-content-box">
+                        <h3 class="right-box-title">Flexible Editing for Real Data Workflows</h3>
+                        <p>Syncfusion EJ2 Grid offers powerful editing capabilities that seamlessly fit into modern data-driven applications. It enables users to add, update, and delete records directly within the grid without interrupting their workflow. Whether users need quick inline modifications, bulk data updates, or form-based editing, the grid provides flexible editing modes. Built-in validation and customizable editors help ensure data accuracy and consistency during the editing process. These features enhance productivity and deliver a smooth, efficient data management experience.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -959,6 +1450,30 @@
                     <div class="resource-description">Complete API documentation for editing events, methods, and properties.</div>
                     <a href="#" class="resource-link">View reference</a>
                 </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Template Editing Demo</div>
+                    <div class="resource-description">Create custom editing forms using templates for inline and dialog editing scenarios.</div>
+                    <a href="#" class="resource-link">View demo</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Command Column Editing Demo</div>
+                    <div class="resource-description">Perform edit, save, delete, and cancel operations directly from command buttons in the grid.</div>
+                    <a href="#" class="resource-link">View demo</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Server Persistence Guide</div>
+                    <div class="resource-description">Learn how to persist grid changes to the server using REST APIs and DataManager.</div>
+                    <a href="#" class="resource-link">Read guide</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-title">Editing Events Guide</div>
+                    <div class="resource-description">Customize editing workflows using events such as actionBegin and actionComplete.</div>
+                    <a href="#" class="resource-link">Read guide</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1027,6 +1542,56 @@
                     </div>
                     <div class="faq-answer">
                         <p>Yes. Full keyboard support is built-in. Users can navigate between cells with arrow keys, enter edit mode with Enter, save with Ctrl+S, and cancel with Escape. This supports accessible, productivity-focused workflows.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can users edit data without leaving the grid?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Users can update records directly within the grid, eliminating the need to navigate to separate forms or pages. All editing modes support in-place editing, keeping users focused on the data they're working with.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Which editing mode is best for quick updates?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Cell Editing is ideal for quick updates because users can modify individual cells directly with minimal interaction. Double-click on a cell and type to edit, making it perfect for spreadsheet-like workflows and rapid data modifications.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can bulk data updates be handled efficiently?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Batch Editing enables users to make multiple changes across rows and save them together, reducing the number of server requests. This approach is efficient for bulk operations and ensures atomic transactions where all changes succeed or fail together.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can editing behavior be customized for business rules?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Developers can customize editing behavior using events, validation rules, templates, and custom editors to match business requirements. This allows you to enforce specific business logic and provide a tailored experience for your users.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does the grid support a user-friendly editing experience?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. With built-in editing modes, validation, keyboard navigation, and customizable editors, the grid provides a smooth and efficient editing experience. Users can work intuitively with features like real-time validation feedback and error highlighting.</p>
                     </div>
                 </div>
             </div>
@@ -1099,43 +1664,262 @@
 
             <div class="articles-grid">
                 <div class="article-card">
-                    <div class="article-image">React Editing Patterns</div>
                     <div class="article-content">
-                        <div class="article-title">Best Practices for Grid Editing</div>
-                        <div class="article-excerpt">Learn proven patterns for designing intuitive editing experiences in data grids.</div>
-                        <a href="#" class="article-link">Read article</a>
+                        <div class="article-title">React Data Grid Editing Guide</div>
+                        <div class="article-excerpt">A comprehensive guide to implementing editing in your React applications with validation and custom editors.</div>
+                        <a href="#" class="article-link">Read article →</a>
                     </div>
                 </div>
 
                 <div class="article-card">
-                    <div class="article-image">Validation Strategies</div>
                     <div class="article-content">
-                        <div class="article-title">Real-time Data Validation in Grids</div>
-                        <div class="article-excerpt">Discover how to implement client and server-side validation for better data quality.</div>
-                        <a href="#" class="article-link">Read article</a>
+                        <div class="article-title">React Data Grid CRUD Workflow Guide</div>
+                        <div class="article-excerpt">Learn how to build complete create, read, update, and delete workflows with the React Data Grid.</div>
+                        <a href="#" class="article-link">Read article →</a>
                     </div>
                 </div>
 
                 <div class="article-card">
-                    <div class="article-image">Custom Workflows</div>
                     <div class="article-content">
-                        <div class="article-title">Building Custom Edit Workflows</div>
-                        <div class="article-excerpt">Explore how to extend grid editing with custom components and business logic.</div>
-                        <a href="#" class="article-link">Read article</a>
+                        <div class="article-title">Why Inline Editing in React Tables is Hard</div>
+                        <div class="article-excerpt">Understand common challenges in table editing and how Syncfusion solves them with built-in features.</div>
+                        <a href="#" class="article-link">Read article →</a>
                     </div>
                 </div>
 
                 <div class="article-card">
-                    <div class="article-image">Performance Tips</div>
                     <div class="article-content">
-                        <div class="article-title">Optimizing Grid Performance at Scale</div>
-                        <div class="article-excerpt">Tips and techniques for maintaining fast editing experiences with large datasets.</div>
-                        <a href="#" class="article-link">Read article</a>
+                        <div class="article-title">Building Form-Based Editing Experiences</div>
+                        <div class="article-excerpt">Combine React Data Grid with form patterns to create rich editing interfaces for complex data.</div>
+                        <a href="#" class="article-link">Read article →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- DEMO TAB SAMPLE CARDS -->
+    <template id="inline-sample-template">
+        <div class="demo-mode-card">
+            <div class="demo-mode-header">
+                <div class="demo-mode-title">Inline Editing</div>
+                <div class="demo-mode-subtitle">Edit a row directly in the grid without leaving the table.</div>
+            </div>
+            <div class="demo-mode-body">
+                <table class="demo-mode-grid">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Quantity</th>
+                            <th>Revenue ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10248</td>
+                            <td>Alice Martin</td>
+                            <td>Widget Pro</td>
+                            <td><span class="status shipped">Shipped</span></td>
+                            <td>12</td>
+                            <td>2,400</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="demo-mode-footer">
+                <div><strong>Interaction:</strong> Click the edit icon to edit the entire row.</div>
+                <div><strong>Best for:</strong> Quick row updates.</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="cell-sample-template">
+        <div class="demo-mode-card">
+            <div class="demo-mode-header">
+                <div class="demo-mode-title">Cell Editing</div>
+                <div class="demo-mode-subtitle">Edit one cell at a time with keyboard or mouse.</div>
+            </div>
+            <div class="demo-mode-body">
+                <table class="demo-mode-grid">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Quantity</th>
+                            <th>Revenue ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10251</td>
+                            <td>Bob Chen</td>
+                            <td>Widget Lite</td>
+                            <td><span class="status pending">Pending</span></td>
+                            <td>5</td>
+                            <td>750</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="demo-mode-footer">
+                <div><strong>Interaction:</strong> Double-click or press Enter on a cell.</div>
+                <div><strong>Best for:</strong> Spreadsheet-style editing.</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="dialog-sample-template">
+        <div class="demo-mode-card">
+            <div class="demo-mode-header">
+                <div class="demo-mode-title">Dialog Editing</div>
+                <div class="demo-mode-subtitle">Open a form dialog to update all fields at once.</div>
+            </div>
+            <div class="demo-mode-body">
+                <table class="demo-mode-grid">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Quantity</th>
+                            <th>Revenue ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10260</td>
+                            <td>Carol Diaz</td>
+                            <td>Widget Max</td>
+                            <td><span class="status shipped">Shipped</span></td>
+                            <td>20</td>
+                            <td>6,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="demo-mode-footer">
+                <div><strong>Interaction:</strong> Click edit to open a dialog form.</div>
+                <div><strong>Best for:</strong> Complex forms.</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="batch-sample-template">
+        <div class="demo-mode-card">
+            <div class="demo-mode-header">
+                <div class="demo-mode-title">Batch Editing</div>
+                <div class="demo-mode-subtitle">Make multiple changes and save them together.</div>
+            </div>
+            <div class="demo-mode-body">
+                <table class="demo-mode-grid">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Quantity</th>
+                            <th>Revenue ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10265</td>
+                            <td>David Kim</td>
+                            <td>Widget Pro</td>
+                            <td><span class="status cancelled">Cancelled</span></td>
+                            <td>8</td>
+                            <td>1,600</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="demo-mode-footer">
+                <div><strong>Interaction:</strong> Edit multiple rows before saving.</div>
+                <div><strong>Best for:</strong> Bulk updates.</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-sample-template">
+        <div class="demo-mode-card">
+            <div class="demo-mode-header">
+                <div class="demo-mode-title">Template Editing</div>
+                <div class="demo-mode-subtitle">Use a custom template for the edit experience.</div>
+            </div>
+            <div class="demo-mode-body">
+                <table class="demo-mode-grid">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Quantity</th>
+                            <th>Revenue ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10270</td>
+                            <td>Eva Patel</td>
+                            <td>Widget Max</td>
+                            <td><span class="status pending">Pending</span></td>
+                            <td>15</td>
+                            <td>4,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="demo-mode-footer">
+                <div><strong>Interaction:</strong> Customize the editor layout.</div>
+                <div><strong>Best for:</strong> Branded experiences.</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="command-sample-template">
+        <div class="demo-mode-card">
+            <div class="demo-mode-header">
+                <div class="demo-mode-title">Command Column</div>
+                <div class="demo-mode-subtitle">Use visible action buttons for each row.</div>
+            </div>
+            <div class="demo-mode-body">
+                <table class="demo-mode-grid">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Quantity</th>
+                            <th>Revenue ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10275</td>
+                            <td>Grace Lee</td>
+                            <td>Widget Pro</td>
+                            <td><span class="status shipped">Shipped</span></td>
+                            <td>10</td>
+                            <td>2,200</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="demo-mode-footer">
+                <div><strong>Interaction:</strong> Edit, Save, Cancel, Delete buttons.</div>
+                <div><strong>Best for:</strong> Visible row actions.</div>
+            </div>
+        </div>
+    </template>
 
     <!-- FOOTER -->
     <footer>
@@ -1147,17 +1931,21 @@
     <script>
         // Demo switching functionality
         function switchDemo(mode) {
-            // Hide all demos
             const demoContents = document.querySelectorAll('.demo-content');
             demoContents.forEach(content => content.classList.remove('active'));
 
-            // Remove active from all tabs
             const tabs = document.querySelectorAll('.tab-btn');
             tabs.forEach(tab => tab.classList.remove('active'));
 
-            // Show selected demo and activate tab
-            document.getElementById(mode + '-demo').classList.add('active');
-            event.target.classList.add('active');
+            const activeDemo = document.getElementById(mode + '-demo');
+            const activeTab = document.querySelector(`.tab-btn[onclick="switchDemo('${mode}')"]`);
+
+            if (activeDemo) {
+                activeDemo.classList.add('active');
+            }
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
         }
 
         // FAQ toggle functionality
