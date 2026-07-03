@@ -317,7 +317,23 @@
             line-height: 1.6;
         }
 
-        .best-for {
+        .capability-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0066cc;
+            text-transform: uppercase;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .capability-scenario {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* .best-for {
             font-size: 13px;
             font-weight: 600;
             color: #0052cc;
@@ -339,7 +355,7 @@
             font-size: 13px;
             color: #555;
             border-left: 3px solid #0052cc;
-        }
+        } */
 
         /* ===== 5. IMPLEMENTATION RESOURCES ===== */
         .resources-section {
@@ -429,6 +445,7 @@
             color: #666;
             line-height: 1.7;
         }
+        
 
         /* ===== 7. CUSTOMER STORIES ===== */
         .customer-stories-section {
@@ -622,6 +639,67 @@
             font-size: 14px;
             color: #999;
         }
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ede8e8;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: var(--light-bg);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 20px 20px 20px;
+        }
+
+        .faq-answer p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
@@ -687,7 +765,7 @@
     <section class="hero">
         <div class="container">
             <div class="eyebrow">React Data Grid Templates</div>
-            <h1>Customize Every Part of Your Data Grid with Templates</h1>
+            <h1>Build Your Perfect Data Grid with Flexible Templates</h1>
             <p class="description">Create powerful, flexible data displays with column templates, header templates, detail templates, and more. Build exactly what your application needs.</p>
             <div class="cta-group">
                 <button class="btn btn-primary">View Template Demos</button>
@@ -701,7 +779,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Try Different Templates in Action</h2>
-                <p>Explore different template types to see how you can customize your grid display</p>
+                <p>Explore various template types to discover how you can customize your grid's appearance and functionality.</p>
             </div>
 
             <div class="demo-tabs">
@@ -789,15 +867,15 @@
             </div>
             <div class="why-matters-content">
                 <div class="why-matters-text">
-                    <h3>Build Data Experiences That Match Your Brand</h3>
-                    <p>Generic data grids don't fit every application. Real-world workflows need data displays that reflect your unique business logic, branding, and user experience requirements.</p>
-                    <p>Templates let you go beyond basic cell rendering to create rich, interactive data experiences that engage users and support complex workflows.</p>
+                    <h3>Develop Customized Data Experiences Tailored to Your Brand</h3>
+                    <p>Every application has unique data presentation requirements. Generic data grids can be limiting when organizations need solutions that reflect their business processes, brand identity, and user experience expectations.</p>
+                    <p>With templates, you can create highly customized and interactive data experiences, transforming standard grid displays into engaging interfaces that support sophisticated workflows and improve user productivity.</p>
                     <div class="benefits-chips">
                         <span class="benefit-chip">✓ Custom cell rendering</span>
                         <span class="benefit-chip">✓ Brand-consistent design</span>
                         <span class="benefit-chip">✓ Interactive elements</span>
                         <span class="benefit-chip">✓ Complex data layouts</span>
-                        <span class="benefit-chip">✓ Responsive UX</span>
+                        <span class="benefit-chip">✓ Responsive UI</span>
                     </div>
                 </div>
                 <div class="why-matters-visual">
@@ -814,80 +892,89 @@
     <section class="capabilities-section">
         <div class="container">
             <div class="section-header">
-                <div class="eyebrow">Choose the Right Template</div>
-                <h2>Pick the Template Type for Your Workflow</h2>
+                <div class="eyebrow">Find the Right Template for Your Requirements</div>
+                <h2> Choose the Right Template for Your Workflow</h2>
+                <p>Choose the most appropriate template customization approach based on your user interface and business requirements.</p>
             </div>
             <div class="capabilities-grid">
                 <div class="capability-card">
                     <div class="capability-icon">📋</div>
                     <h4>Column Template</h4>
                     <p>Customize individual cell content with HTML, formatted text, images, badges, and interactive controls.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Status indicators, formatted values, action buttons, badges</div>
-                    <div class="use-when">Use when cells need custom rendering beyond plain text.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Status indicators, formatted values, action buttons, badges</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">Cells need custom rendering beyond plain text.</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">📌</div>
                     <h4>Header Template</h4>
                     <p>Design custom column headers with icons, sort indicators, filter buttons, and advanced header layouts.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Custom sorting, advanced filtering, header icons</div>
-                    <div class="use-when">Use when headers need interactive elements or custom styling.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Custom sorting, advanced filtering, header icons</div>
+                     <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">Headers need interactive elements or custom styling.</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">📂</div>
                     <h4>Detail Template</h4>
                     <p>Create expandable row details showing comprehensive information, nested tables, or related records.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Master-detail layouts, expandable rows, nested data</div>
-                    <div class="use-when">Use when rows need to display additional detailed information.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Master-detail layouts, expandable rows, nested data</div>
+                     <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">Rows need to display additional detailed information.</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">⚙️</div>
                     <h4>Column Chooser Template</h4>
                     <p>Customize the column visibility dialog to provide an intuitive way for users to manage columns.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Column visibility dialogs, user preferences</div>
-                    <div class="use-when">Use when you need custom column selection UI.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Column visibility dialogs, user preferences</div>
+                     <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">You need custom column selection UI.</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">📊</div>
-                    <h4>Stacked Column Template</h4>
+                    <h4>Stacked Header Column</h4>
                     <p>Display multiple fields stacked vertically within a single column for compact, organized layouts.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Multi-field display, compact layouts, grouped data</div>
-                    <div class="use-when">Use when you need to show multiple fields in one column.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Multi-field display, compact layouts, grouped data</div>
+                     <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">You need to show multiple fields in one column.</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">📭</div>
                     <h4>Empty Record Template</h4>
                     <p>Design custom empty state messages with helpful guidance when no data matches the current filter.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Empty states, user guidance, call-to-action</div>
-                    <div class="use-when">Use when you want to customize the no-data experience.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Empty states, user guidance, call-to-action</div>
+                     <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">You want to customize the no-data experience.</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">🔍</div>
                     <h4>Filter Template</h4>
                     <p>Build advanced filter UI with custom dropdowns, date pickers, sliders, and filtering logic.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Advanced filters, date ranges, custom search</div>
-                    <div class="use-when">Use when filters need custom controls or logic.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Advanced filters, date ranges, custom search</div>
+                     <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">Filters need custom controls or logic.</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">📑</div>
                     <h4>Row Template</h4>
                     <p>Completely customize entire row layouts with conditional styling, actions, and complex markup.</p>
-                    <div class="best-for">Best for</div>
-                    <div class="best-for-text">Custom row layouts, complex hierarchies, conditional styling</div>
-                    <div class="use-when">Use when entire rows need custom structure.</div>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Custom row layouts, complex hierarchies, conditional styling</div>
+                     <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">Entire rows need custom structure.</div>
                 </div>
             </div>
         </div>
@@ -899,6 +986,7 @@
             <div class="section-header">
                 <div class="eyebrow">Implementation Resources</div>
                 <h2>Explore Templates Demos and Documentation</h2>
+                <p>Explore documentation, demos, guides, and sample implementations to build grid templates efficiently.</p>
             </div>
             <div class="resources-grid">
                 <div class="resource-card">
@@ -932,13 +1020,13 @@
                 </div>
 
                 <div class="resource-card">
-                    <h4>Stacked Column Example</h4>
-                    <p>Example showing how to stack multiple fields in a single column efficiently.</p>
+                    <h4>Stacked Header Column Example</h4>
+                    <p>Learn how to stack multiple fields in a single column efficiently.</p>
                     <a href="#" class="resource-link">View example →</a>
                 </div>
 
                 <div class="resource-card">
-                    <h4>Empty State Best Practices</h4>
+                    <h4>Best Practices for Empty State Design</h4>
                     <p>Guidelines for designing effective empty state templates for better UX.</p>
                     <a href="#" class="resource-link">Read article →</a>
                 </div>
@@ -952,42 +1040,76 @@
         </div>
     </section>
 
-    <!-- 6. FAQ -->
     <section class="faq-section">
         <div class="container">
             <div class="section-header">
-                <h2>Data Grid Templates Questions</h2>
-                <p>Frequently asked questions about template implementation</p>
+                <div class="eyebrow">FAQ</div>
+                <h2>React Data Grid Templates Questions</h2>
+                <p>Frequently Asked Questions About Template Customization and Implementation</p>
             </div>
-            <div class="faq-grid">
+            <div class="faq-container">
                 <div class="faq-item">
-                    <h4>What template types are available?</h4>
-                    <p>Syncfusion Data Grid supports column, header, detail, row, stacked column, empty record, filter, and column chooser templates. Each serves a specific customization need.</p>
+                    <div class="faq-question">
+                        <span>What template types are available?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Syncfusion Data Grid supports column, header, detail, row, stacked column, empty record, filter, and column chooser templates. Each serves a specific customization need.</p>
+                    </div>
                 </div>
-
                 <div class="faq-item">
-                    <h4>Can templates include React components?</h4>
-                    <p>Yes, templates fully support React components, allowing you to use your existing component library and state management within grid templates.</p>
+                    <div class="faq-question">
+                        <span>Can templates include React components?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, templates fully support React components, allowing you to use your existing component library and state management within grid templates.</p>
+                    </div>
                 </div>
-
                 <div class="faq-item">
-                    <h4>How do templates affect performance?</h4>
-                    <p>Templates use efficient rendering. With virtual scrolling and proper memoization, even complex templates perform well with thousands of rows.</p>
+                    <div class="faq-question">
+                        <span>How do templates affect performance?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Templates use efficient rendering. With virtual scrolling and proper memoization, even complex templates perform well with thousands of rows.</p>
+                    </div>
                 </div>
-
                 <div class="faq-item">
-                    <h4>Can I use templates with remote data?</h4>
-                    <p>Absolutely. Templates work seamlessly with remote data sources, APIs, and dynamic data loading without any special configuration.</p>
+                    <div class="faq-question">
+                        <span>Can I use templates with remote data?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. Templates work seamlessly with remote data sources, APIs, and dynamic data loading without any special configuration.</p>
+                    </div>
                 </div>
-
                 <div class="faq-item">
-                    <h4>Do templates support conditional rendering?</h4>
-                    <p>Yes, templates support full conditional rendering based on row data, enabling responsive and context-aware grid displays.</p>
+                    <div class="faq-question">
+                        <span>Do templates support conditional rendering?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, templates support full conditional rendering based on row data, enabling responsive and context-aware grid displays.</p>
+                    </div>
                 </div>
-
                 <div class="faq-item">
-                    <h4>Can templates include event handlers?</h4>
-                    <p>Templates fully support event handlers for click, change, and other events, enabling interactive grid experiences and actions.</p>
+                    <div class="faq-question">
+                        <span>Can templates include event handlers?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Templates fully support event handlers for click, change, and other events, enabling interactive grid experiences and actions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How to filter multiple records using the filter bar template in React Grid?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can filter multiple records in a JavaScript Grid by using a filter bar template that renders a MultiSelect component. The selected values are converted into predicates, which are used to build and execute a query through the DataManager, returning only the matching records.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1133,6 +1255,19 @@
             element.style.transform = 'translateY(20px)';
             element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(element);
+        });
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+            });
         });
     </script>
 </body>

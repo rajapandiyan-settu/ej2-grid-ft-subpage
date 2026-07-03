@@ -37,6 +37,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
+            text-align: center;
         }
 
         h1 {
@@ -328,31 +329,17 @@
         .capability-label {
             font-size: 12px;
             font-weight: 600;
-            color: #666;
+            color: #0066cc;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-            display: block;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
         }
 
         .capability-scenario {
-            font-size: 13px;
-            color: #0078d4;
-            margin-bottom: 16px;
-        }
-
-        .capability-scenario::before {
-            content: "✓ ";
-            font-weight: bold;
-        }
-
-        .capability-when {
-            font-size: 13px;
-            color: #555;
-            background: #fafbfc;
-            padding: 12px;
-            border-radius: 4px;
-            border-left: 3px solid #0078d4;
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
         }
 
         /* Resources Section */
@@ -417,67 +404,137 @@
 
         /* FAQ Section */
         .faq-section {
-            background: white;
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-            margin-top: 40px;
+            padding: 60px 0;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .faq-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
         }
 
         .faq-item {
-            background: #fafbfc;
-            border-radius: 8px;
-            padding: 20px;
-            border: 1px solid #e0e0e0;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
         }
 
-        .faq-item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        .faq-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ede8e8;
+            overflow: hidden;
         }
 
         .faq-question {
-            font-size: 14px;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 12px;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-dark);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: var(--light-bg);
         }
 
         .faq-toggle {
-            font-size: 18px;
-            transition: transform 0.2s ease;
-        }
-
-        .faq-answer {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            margin-top: 12px;
+            font-size: 20px;
+            transition: transform 0.3s ease;
         }
 
         .faq-item.active .faq-toggle {
             transform: rotate(180deg);
         }
 
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 20px 20px 20px;
+        }
+
+        .faq-answer p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Customer Stories */
+        .customer-story {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .quote-mark {
+            font-size: 3rem;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .customer-logos {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .customer-logo {
+            height: 40px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
         /* Customer Stories */
         .customer-section {
             background: #fafbfc;
@@ -701,8 +758,8 @@
     <!-- Hero Section -->
     <header>
         <div class="header-content">
-            <div class="eyebrow">REACT DATA GRID FEATURES</div>
-            <h1>Build Data Grids with Your Brand</h1>
+            <div class="eyebrow">REACT DATA GRID THEME CUSTOMIZATION FEATURES</div>
+            <h1>Build Applications with Your Brand Theme Customization</h1>
             <p class="hero-description">Customize colors, fonts, and visual elements to match your design system. Create a consistent, on-brand experience that reflects your product identity.</p>
             <div class="cta-group">
                 <button class="btn btn-primary" onclick="scrollToDemo()">View Theme Demo</button>
@@ -714,9 +771,9 @@
     <!-- Demo Section -->
     <section class="demo-section">
         <div class="container">
-            <div class="section-eyebrow">LIVE PREVIEW</div>
+            <div class="eyebrow">LIVE PREVIEW</div>
             <h2 id="demo">Try Theme Customization in Action</h2>
-            <p>Use the tabs below to explore different theme options before going into deep customization.</p>
+            <p>Explore the theme options using the tabs below before proceeding with advanced customization.</p>
 
             <div class="tab-group">
                 <button class="tab-btn active" onclick="switchTab(event, 'light')">Light Theme</button>
@@ -790,8 +847,8 @@
     <!-- Why This Feature Matters -->
     <section class="why-section">
         <div class="container">
-            <div class="section-eyebrow">WHY CUSTOMIZATION MATTERS</div>
-            <h2>Turn Brand Guidelines Into Code</h2>
+            <div class="eyebrow">WHY THEME CUSTOMIZATION MATTERS</div>
+            <h2>Customize Themes to Reflect Your Brand</h2>
             <div class="why-content">
                 <p>Design systems define brand identity through specific colors, typography, and spacing. Developers need to implement these guidelines consistently across applications. Generic, one-size-fits-all UI components force compromises on brand expression.</p>
                 <p>The React Data Grid theme customization system lets you map your entire design system into production-ready components. Maintain brand consistency, reduce design-to-code friction, and empower developers to build on-brand experiences without fighting the component defaults.</p>
@@ -811,7 +868,7 @@
     <!-- Capability Options -->
     <section>
         <div class="container">
-            <div class="section-eyebrow">CHOOSE YOUR APPROACH</div>
+            <div class="eyebrow">CHOOSE YOUR APPROACH</div>
             <h2>Select the Customization Method That Fits Your Workflow</h2>
             <p>Different scenarios call for different customization approaches. Choose the method that matches your development and design workflow.</p>
 
@@ -819,37 +876,41 @@
                 <div class="capability-card">
                     <div class="capability-icon">🎨</div>
                     <h3>CSS Variables</h3>
-                    <p class="capability-desc">Override theme colors using CSS custom properties. Perfect for simple color adjustments and dynamic theme switching.</p>
-                    <span class="capability-label">Best for</span>
-                    <p class="capability-scenario">Light/dark mode toggling, simple brand color updates</p>
-                    <div class="capability-when">Use when: You need quick CSS-level customization without code changes</div>
+                    <p>Override theme colors using CSS custom properties. Perfect for simple color adjustments and dynamic theme switching.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Light/dark mode toggling, simple brand color updates</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">You need quick CSS-level customization without code changes</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">📋</div>
                     <h3>Theme Configuration</h3>
-                    <p class="capability-desc">Pass a complete theme object to the grid. Supports colors, typography, spacing, and component-level styling.</p>
-                    <span class="capability-label">Best for</span>
-                    <p class="capability-scenario">Complete design system implementation, multi-theme support</p>
-                    <div class="capability-when">Use when: You have a full design system to implement</div>
+                    <p>Configure the grid using a complete theme object that supports colors, typography, spacing, and individual component styles.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Complete design system implementation, multi-theme support</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">You have a full design system to implement</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">🔧</div>
                     <h3>Custom CSS Classes</h3>
-                    <p class="capability-desc">Apply custom CSS classes to grid elements. Provides fine-grained control for advanced styling scenarios.</p>
-                    <span class="capability-label">Best for</span>
-                    <p class="capability-scenario">Complex styling requirements, third-party CSS frameworks</p>
-                    <div class="capability-when">Use when: You need complete control over specific elements</div>
+                    <p>Apply custom CSS classes to grid elements. Provides fine-grained control for advanced styling scenarios.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Complex styling requirements, third-party CSS frameworks</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">You need complete control over specific elements</div>
                 </div>
 
                 <div class="capability-card">
                     <div class="capability-icon">⚡</div>
                     <h3>Component Templates</h3>
-                    <p class="capability-desc">Custom render functions for headers, cells, and rows. Build highly branded, custom cell experiences.</p>
-                    <span class="capability-label">Best for</span>
-                    <p class="capability-scenario">Custom cell layouts, branded data visualization</p>
-                    <div class="capability-when">Use when: You need to redesign specific grid elements</div>
+                    <p>Custom render functions for headers, cells, and rows. Build highly branded, custom cell experiences.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-scenario">Custom cell layouts, branded data visualization</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-scenario">You need to redesign specific grid elements</div>
                 </div>
             </div>
         </div>
@@ -858,7 +919,7 @@
     <!-- Implementation Resources -->
     <section class="resources-section">
         <div class="container">
-            <div class="section-eyebrow">IMPLEMENTATION RESOURCES</div>
+            <div class="eyebrow">IMPLEMENTATION RESOURCES</div>
             <h2>Explore Theme Customization Guides and Demos</h2>
             <p>Find the documentation, examples, and tools you need to implement theme customization in your project.</p>
 
@@ -905,69 +966,69 @@
     <!-- FAQ -->
     <section class="faq-section">
         <div class="container">
-            <div class="section-eyebrow">FREQUENTLY ASKED QUESTIONS</div>
-            <h2>React Data Grid Theme Customization Questions</h2>
+            <div class="section-header">
+                <div class="eyebrow">Frequently Asked Questions</div>
+                <h2>React Data Grid Theme Customization Questions</h2>
+            </div>
 
             <div class="faq-container">
-                <div class="faq-grid">
-                    <div class="faq-item" onclick="toggleFAQ(this)">
-                        <div class="faq-question">
-                            What themes are included by default?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            The React Data Grid comes with Light, Dark, and High Contrast themes. Each theme supports accessibility standards and can be applied with a single property. All themes are fully responsive and optimized for different screen sizes.
-                        </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What themes are available out of the box?</span>
+                        <span class="faq-toggle">▼</span>
                     </div>
-
-                    <div class="faq-item" onclick="toggleFAQ(this)">
-                        <div class="faq-question">
-                            Can I create completely custom themes?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            Yes. You can create custom themes using CSS variables, theme configuration objects, or custom CSS classes. The theming system is flexible and supports complete design system implementations, from simple color changes to full component redesigns.
-                        </div>
+                    <div class="faq-answer">
+                        <p>Syncfusion offers Material, Bootstrap, Fabric, Tailwind, and Fluent Design themes for the React Data Grid. Each theme includes a light and dark variant, giving you 10+ pre-designed options to choose from.</p>
                     </div>
+                </div>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
-                        <div class="faq-question">
-                            Does theme customization work with dynamic switching?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            Yes. CSS variables enable real-time theme switching without reloading the page. You can implement light/dark mode toggles, multi-theme selection, or dynamic color updates based on user preferences or application state.
-                        </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I create a completely custom theme?</span>
+                        <span class="faq-toggle">▼</span>
                     </div>
-
-                    <div class="faq-item" onclick="toggleFAQ(this)">
-                        <div class="faq-question">
-                            Can I customize individual grid elements?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            Yes. Use custom templates for cells, headers, rows, and filters. You can also apply custom CSS classes to specific elements for fine-grained control over styling without affecting other grid components.
-                        </div>
+                    <div class="faq-answer">
+                        <p>Yes. You can create custom themes using CSS variables, SCSS variables, or custom CSS classes. CSS variables allow runtime switching without recompilation, while SCSS provides build-time customization. Combined with custom classes for specific cells and rows, you have complete control.</p>
                     </div>
+                </div>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
-                        <div class="faq-question">
-                            Does customization affect accessibility compliance?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            The grid maintains WCAG accessibility standards regardless of theme customization. The High Contrast theme and all custom themes respect color contrast ratios, keyboard navigation, and screen reader support.
-                        </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I implement a dark mode toggle?</span>
+                        <span class="faq-toggle">▼</span>
                     </div>
+                    <div class="faq-answer">
+                        <p>Use CSS variables or theme CSS switching. Define two sets of CSS custom properties (light and dark variants) and swap them based on user preference. This enables theme switching without page reload. Store the preference in localStorage for persistence.</p>
+                    </div>
+                </div>
 
-                    <div class="faq-item" onclick="toggleFAQ(this)">
-                        <div class="faq-question">
-                            Can multiple themes be used in the same app?
-                            <span class="faq-toggle">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            Yes. You can apply different themes to different grid instances or toggle between themes per grid. Use CSS variables or theme configuration objects to manage multiple theme states simultaneously.
-                        </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Will custom themes impact performance?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. Built-in themes are optimized and minimal. CSS variables have negligible performance impact. Custom class-based styling scales well even with thousands of rows through CSS class efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can themes be applied to specific grid instances?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Use CSS class scoping or CSS-in-JS solutions. You can apply different themes to different grid instances on the same page. CSS variables can be scoped to specific container elements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does theming support accessibility standards?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. All built-in themes meet WCAG 2.1 AA accessibility standards with proper color contrast ratios. When creating custom themes, use the theme builder to validate contrast ratios and ensure accessibility compliance.</p>
                     </div>
                 </div>
             </div>
@@ -977,7 +1038,7 @@
     <!-- Customer Stories -->
     <section class="customer-section">
         <div class="container">
-            <div class="section-eyebrow">CUSTOMER STORIES</div>
+            <div class="eyebrow">CUSTOMER STORIES</div>
             <h2>Trusted for Business Application Development</h2>
 
             <div class="customer-content">
@@ -999,7 +1060,7 @@
     <!-- Trust Metrics -->
     <section class="trust-section">
         <div class="container">
-            <div class="section-eyebrow">OUR CUSTOMERS LOVE US</div>
+            <div class="eyebrow">OUR CUSTOMERS LOVE US</div>
             <h2 style="margin-bottom: 0;">Why Developers Choose Syncfusion React Data Grid</h2>
 
             <div class="trust-metrics">
@@ -1030,7 +1091,7 @@
     <!-- Related Articles -->
     <section class="articles-section">
         <div class="container">
-            <div class="section-eyebrow">CONTINUE LEARNING</div>
+            <div class="eyebrow">CONTINUE LEARNING</div>
             <h2>Related Articles and Resources</h2>
             <p>Explore more about styling, design systems, and building branded UI experiences.</p>
 
@@ -1087,10 +1148,6 @@
             event.target.classList.add('active');
         }
 
-        // FAQ toggle
-        function toggleFAQ(element) {
-            element.classList.toggle('active');
-        }
 
         // Scroll to demo
         function scrollToDemo() {
@@ -1105,6 +1162,19 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
+            });
+        });
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
             });
         });
     </script>
