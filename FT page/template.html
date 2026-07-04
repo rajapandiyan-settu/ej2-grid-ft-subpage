@@ -11,75 +11,47 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: #333;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header/Navigation */
-        header {
-            background: #fff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 600;
-            color: #0052cc;
-            font-size: 18px;
-        }
-
-        /* ===== 1. HERO SECTION ===== */
+        /* ============= HERO SECTION ============= */
         .hero {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
             text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
 
-        .hero .eyebrow {
+        .hero-eyebrow {
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #0052cc;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            opacity: 0.9;
         }
 
         .hero h1 {
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 16px;
-            color: #1a1a1a;
             line-height: 1.2;
         }
 
-        .hero .description {
+        .hero-description {
             font-size: 18px;
-            color: #666;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
+            opacity: 0.95;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
         }
 
-        .cta-group {
+        .hero-ctas {
             display: flex;
             gap: 16px;
             justify-content: center;
@@ -90,231 +62,261 @@
             padding: 12px 32px;
             border-radius: 6px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
         }
 
         .btn-primary {
-            background: #0052cc;
-            color: white;
+            background-color: #ffffff;
+            color: #667eea;
         }
 
         .btn-primary:hover {
-            background: #0039a6;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
-            background: white;
-            color: #0052cc;
-            border: 2px solid #0052cc;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
         }
 
         .btn-secondary:hover {
-            background: #f5f7fa;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* ===== 2. DEMO PREVIEW SECTION ===== */
+        /* ============= DEMO SECTION ============= */
         .demo-section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e5e7eb;
+            background: white;
+            padding: 60px 20px;
         }
 
-        .section-header {
+        .section-eyebrow {
             text-align: center;
-            margin-bottom: 48px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #667eea;
+            margin-bottom: 12px;
         }
 
-        .section-header h2 {
+        .section-title {
+            text-align: center;
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 12px;
+            color: #1a202c;
         }
 
-        .section-header p {
+        .section-description {
+            text-align: center;
             font-size: 16px;
             color: #666;
+            margin-bottom: 40px;
             max-width: 600px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .demo-tabs {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid #e5e7eb;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-        }
-
-        .demo-tab {
-            padding: 16px 24px;
-            background: none;
-            border: none;
-            font-size: 15px;
-            font-weight: 500;
-            color: #666;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.3s ease;
-        }
-
-        .demo-tab:hover {
-            color: #0052cc;
-        }
-
-        .demo-tab.active {
-            color: #0052cc;
-            border-bottom-color: #0052cc;
-        }
-
-        .demo-content {
-            background: #f9fafb;
-            border-radius: 12px;
-            padding: 40px;
-            min-height: 300px;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .demo-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
+        
         .demo-placeholder {
             background: white;
-            border: 2px dashed #d1d5db;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 30px;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 18px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ============= WHY MATTERS SECTION ============= */
+        .why-matters {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .why-matters-header {
             text-align: center;
-            color: #9ca3af;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .demo-placeholder-icon {
-            font-size: 40px;
-            margin-bottom: 12px;
+        .why-matters-header .section-eyebrow {
+            display: block;
+            margin-bottom: 16px;
         }
 
-        /* ===== 3. WHY THIS FEATURE MATTERS ===== */
-        .why-matters-section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e5e7eb;
+        .why-matters-header .section-title {
+            margin-bottom: 20px;
         }
 
-        .why-matters-content {
+        .why-matters-header .section-description {
+            margin: 0;
+        }
+
+        .why-matters-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
+            gap: 60px;
+            align-items: start;
         }
 
-        .why-matters-text h3 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: #1a1a1a;
+        .why-matters-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .why-matters-text p {
-            font-size: 16px;
+        .why-matters-text-large {
+            font-size: 15px;
+            line-height: 1.8;
             color: #666;
-            margin-bottom: 16px;
-            line-height: 1.7;
+            margin: 0;
         }
 
-        .benefits-chips {
+        .selection-types-list {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
             margin-top: 24px;
         }
 
-        .benefit-chip {
-            background: #f0f4ff;
-            color: #0052cc;
-            padding: 10px 16px;
-            border-radius: 20px;
+        .selection-type-item {
+            background-color: #f0f4ff;
+            color: #667eea;
+            padding: 10px 18px;
+            border-radius: 24px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             display: inline-block;
         }
 
-        .why-matters-visual {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            height: 300px;
+        .why-matters-right {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
-            padding: 32px;
+            align-items: flex-start;
         }
 
-        /* ===== 4. CHOOSE THE RIGHT APPROACH ===== */
+        .why-matters-card {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            width: 100%;
+        }
+
+        .why-matters-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0 0 16px 0;
+        }
+
+        .why-matters-card .card-description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+            margin: 0;
+        }
+
+        .benefits-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .chip {
+            background-color: #f0f4ff;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Capability Options */
         .capabilities-section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e5e7eb;
+            padding: 60px 20px;
+            background: #f9f9f9;
+        }
+
+        .capabilities-section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .capabilities-eyebrow {
+            color: #0066cc;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .capabilities-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
         }
 
         .capabilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            margin-top: 32px;
         }
 
         .capability-card {
             background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 32px 24px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
         }
 
         .capability-card:hover {
-            border-color: #0052cc;
-            box-shadow: 0 8px 24px rgba(0, 82, 204, 0.1);
-            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
         }
 
         .capability-icon {
-            width: 40px;
-            height: 40px;
-            background: #f0f4ff;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background: #e8f1ff;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            margin-bottom: 16px;
+            font-size: 24px;
         }
 
-        .capability-card h4 {
-            font-size: 18px;
+        .capability-card h3 {
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 12px;
             color: #1a1a1a;
         }
 
         .capability-card p {
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
-            margin-bottom: 16px;
             line-height: 1.6;
+            margin-bottom: 16px;
         }
 
         .capability-label {
@@ -333,268 +335,247 @@
             margin-top: 8px;
         }
 
-        /* ===== 5. IMPLEMENTATION RESOURCES ===== */
-        .resources-section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e5e7eb;
+        /* ============= RESOURCES SECTION ============= */
+        .resources {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 24px;
-            margin-top: 32px;
+            margin-top: 40px;
         }
 
         .resource-card {
             background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             padding: 24px;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
 
         .resource-card:hover {
-            border-color: #0052cc;
-            box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
 
         .resource-card h4 {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 8px;
-            color: #1a1a1a;
+            color: #1a202c;
         }
 
         .resource-card p {
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
             margin-bottom: 16px;
-            flex-grow: 1;
-            line-height: 1.6;
         }
 
-        .resource-link {
-            color: #0052cc;
-            font-weight: 500;
+        .resource-card a {
+            color: #667eea;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            gap: 4px;
         }
 
-        .resource-link:hover {
-            gap: 12px;
+        .resource-card a:hover {
+            text-decoration: underline;
         }
 
-        /* ===== 6. FAQ ===== */
-        .faq-section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e5e7eb;
+        /* ============= FAQ SECTION ============= */
+        .faq {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-            margin-top: 32px;
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 40px;
         }
 
         .faq-item {
-            display: flex;
-            flex-direction: column;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 24px 0;
         }
 
-        .faq-item h4 {
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
             font-size: 16px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-        }
-
-        .faq-item p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.7;
-        }
-        
-
-        /* ===== 7. CUSTOMER STORIES ===== */
-        .customer-stories-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .customer-stories-content {
-            background: white;
-            border-radius: 12px;
-            padding: 48px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            font-weight: 700;
+            color: #1a202c;
+            cursor: pointer;
+            display: flex;
             align-items: center;
+            gap: 12px;
+            user-select: none;
         }
 
-        .testimonial {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stars {
-            color: #fbbf24;
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 24px;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 4px;
-        }
-
-        .testimonial-role {
-            font-size: 13px;
-            color: #999;
-        }
-
-        .customer-logos {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .logo-box {
-            background: #f9fafb;
-            border-radius: 8px;
-            padding: 24px;
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 80px;
-            color: #d1d5db;
-            font-weight: 500;
+            background-color: #f0f4ff;
+            border-radius: 50%;
+            color: #667eea;
+            font-weight: bold;
+            transition: transform 0.3s ease;
         }
 
-        /* ===== 8. OUR CUSTOMERS LOVE US ===== */
-        .trust-section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e5e7eb;
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
         }
 
-        .trust-content {
+        .faq-answer {
+            display: none;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* ============= CUSTOMER SECTION ============= */
+        .customer-stories {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .customer-content {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .trust-header {
-            margin-bottom: 48px;
+        .customer-quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+            margin: 32px 0;
+            line-height: 1.8;
         }
 
-        .trust-header h3 {
+        .customer-attribution {
+            font-size: 14px;
+            color: #666;
+            font-style: normal;
+        }
+
+        .read-more-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .read-more-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= SOCIAL PROOF SECTION ============= */
+        .social-proof {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .proof-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stars {
             font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
         }
 
-        .trust-metrics {
+        .proof-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 32px;
-            margin-top: 32px;
+            margin-top: 40px;
         }
 
         .metric {
-            padding: 32px 24px;
-            background: #f9fafb;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
+            text-align: center;
         }
 
-        .metric-value {
+        .metric-number {
             font-size: 32px;
             font-weight: 700;
-            color: #0052cc;
+            color: #667eea;
             margin-bottom: 8px;
         }
 
         .metric-label {
             font-size: 14px;
             color: #666;
-            font-weight: 500;
         }
 
-        /* ===== 9. RELATED ARTICLES ===== */
-        .articles-section {
-            padding: 60px 0;
+        /* ============= RELATED ARTICLES SECTION ============= */
+        .related-articles {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 24px;
-            margin-top: 32px;
+            margin-top: 40px;
         }
 
         .article-card {
             background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             padding: 24px;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
 
         .article-card:hover {
-            border-color: #0052cc;
-            box-shadow: 0 4px 16px rgba(0, 82, 204, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .article-tag {
-            font-size: 12px;
-            font-weight: 600;
-            color: #0052cc;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
         }
 
         .article-card h4 {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 12px;
-            color: #1a1a1a;
-            line-height: 1.5;
+            color: #1a202c;
         }
 
         .article-card p {
             font-size: 14px;
             color: #666;
             margin-bottom: 16px;
-            flex-grow: 1;
-            line-height: 1.6;
         }
 
         .article-link {
-            color: #0052cc;
-            font-weight: 500;
+            color: #667eea;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-weight: 600;
             font-size: 14px;
         }
 
@@ -602,649 +583,133 @@
             text-decoration: underline;
         }
 
-        /* ===== FOOTER ===== */
+        /* ============= FOOTER ============= */
         footer {
-            background: #1a1a1a;
+            background-color: #1a202c;
             color: white;
-            padding: 40px 0;
             text-align: center;
-            margin-top: 60px;
+            padding: 40px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
         footer p {
             font-size: 14px;
-            color: #999;
-        }
-        .faq {
-            padding: 80px 0;
-            background-color: var(--light-bg);
+            opacity: 0.9;
         }
 
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background-color: var(--white);
-            border-radius: 8px;
-            margin-bottom: 16px;
-            border: 1px solid #ede8e8;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-dark);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-            user-select: none;
-        }
-
-        .faq-question:hover {
-            background-color: var(--light-bg);
-        }
-
-        .faq-toggle {
-            font-size: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 20px;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 20px 20px 20px;
-        }
-
-        .faq-answer p {
-            font-size: 14px;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-
-        /* ===== RESPONSIVE ===== */
+        /* ============= RESPONSIVE ============= */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
 
-            .hero .description {
-                font-size: 16px;
-            }
-
-            .section-header h2 {
+            .section-title {
                 font-size: 28px;
             }
 
-            .why-matters-content {
-                grid-template-columns: 1fr;
-            }
-
-            .why-matters-visual {
-                min-height: 250px;
-            }
-
-            .customer-stories-content {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-group {
+            .hero-ctas {
                 flex-direction: column;
-                width: 100%;
             }
 
             .btn {
                 width: 100%;
+                text-align: center;
             }
 
-            .capabilities-grid,
-            .resources-grid,
-            .articles-grid {
+            .why-matters-wrapper {
                 grid-template-columns: 1fr;
+                gap: 32px;
             }
 
-            .demo-content {
-                padding: 24px;
-            }
-
-            .customer-logos {
-                grid-template-columns: 1fr;
+            .why-matters-header {
+                margin-bottom: 40px;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="container">
-            <div class="logo">Syncfusion Data Grid</div>
-            <nav><!-- Navigation items --></nav>
-        </div>
-    </header>
-
-    <!-- 1. HERO SECTION -->
-    <section class="hero">
-        <div class="container">
-            <div class="eyebrow">React Data Grid Templates</div>
-            <h1>Build Your Perfect Data Grid with Flexible Templates</h1>
-            <p class="description">Create powerful, flexible data displays with column templates, header templates, detail templates, and more. Build exactly what your application needs.</p>
-            <div class="cta-group">
-                <button class="btn btn-primary">View Template Demos</button>
-                <button class="btn btn-secondary">Explore Documentation</button>
-            </div>
-        </div>
+    <!-- HERO SECTION -->
+    <section class="hero">        
     </section>
 
-    <!-- 2. DEMO PREVIEW SECTION -->
+    <!-- DEMO SECTION -->
     <section class="demo-section">
+    </section>
+
+    <!-- WHY MATTERS SECTION -->
+    <section class="why-matters">        
+    </section>
+
+    <!-- CAPABILITY CARDS SECTION -->
+     <section class="capabilities-section">        
+    </section>
+
+    <!-- IMPLEMENTATION RESOURCES SECTION -->
+    <section class="resources">        
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">       
+    </section>
+
+    <!-- CUSTOMER STORIES SECTION -->
+    <section class="customer-stories">
         <div class="container">
-            <div class="section-header">
-                <h2>Try Different Templates in Action</h2>
-                <p>Explore various template types to discover how you can customize your grid's appearance and functionality.</p>
-            </div>
+            <div class="section-eyebrow">Customer Stories</div>
+            <h2 class="section-title">Trusted for Business Application Development</h2>
 
-            <div class="demo-tabs">
-                <button class="demo-tab active" data-tab="column">Column Template</button>
-                <button class="demo-tab" data-tab="header">Header Template</button>
-                <button class="demo-tab" data-tab="detail">Detail Template</button>
-                <button class="demo-tab" data-tab="chooser">Column Chooser</button>
-                <button class="demo-tab" data-tab="stacked">Stacked Column</button>
-                <button class="demo-tab" data-tab="empty">Empty Record</button>
-                <button class="demo-tab" data-tab="filter">Filter Template</button>
-                <button class="demo-tab" data-tab="row">Row Template</button>
-            </div>
-
-            <div class="demo-content active" data-content="column">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">📋</div>
-                    <p><strong>Column Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Customize how data appears in each column with custom HTML, images, badges, icons, and interactive elements.</p>
+            <div class="customer-content">
+                <div class="customer-quote">
+                    "Syncfusion components help teams build data-rich application screens faster, with consistent UI
+                    patterns and production-ready features."
                 </div>
-            </div>
-
-            <div class="demo-content" data-content="header">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">📌</div>
-                    <p><strong>Header Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Design custom column headers with icons, sorting indicators, filters, and advanced header UI.</p>
+                <div class="customer-attribution">
+                    — Enterprise Development Team
                 </div>
-            </div>
-
-            <div class="demo-content" data-content="detail">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">📂</div>
-                    <p><strong>Detail Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Build expandable row details showing related information, nested tables, or detailed records.</p>
-                </div>
-            </div>
-
-            <div class="demo-content" data-content="chooser">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">⚙️</div>
-                    <p><strong>Column Chooser Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Customize the column visibility dialog to let users select which columns to display.</p>
-                </div>
-            </div>
-
-            <div class="demo-content" data-content="stacked">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">📊</div>
-                    <p><strong>Stacked Column Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Display multiple fields stacked within a single column for compact, organized data display.</p>
-                </div>
-            </div>
-
-            <div class="demo-content" data-content="empty">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">📭</div>
-                    <p><strong>Empty Record Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Design custom empty state messages when no data is available, with helpful guidance for users.</p>
-                </div>
-            </div>
-
-            <div class="demo-content" data-content="filter">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">🔍</div>
-                    <p><strong>Filter Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Build custom filter UI with dropdowns, date pickers, sliders, and advanced filtering options.</p>
-                </div>
-            </div>
-
-            <div class="demo-content" data-content="row">
-                <div class="demo-placeholder">
-                    <div class="demo-placeholder-icon">📑</div>
-                    <p><strong>Row Template</strong></p>
-                    <p style="font-size: 13px; margin-top: 8px;">Completely customize entire row layouts with conditional styling, actions, and custom markup.</p>
-                </div>
+                <a href="#" class="read-more-link">Read customer stories →</a>
             </div>
         </div>
     </section>
 
-    <!-- 3. WHY THIS FEATURE MATTERS -->
-    <section class="why-matters-section">
+    <!-- SOCIAL PROOF SECTION -->
+    <section class="social-proof">
         <div class="container">
-            <div class="section-header">
-                <div class="eyebrow">Why Templates Matter</div>
-            </div>
-            <div class="why-matters-content">
-                <div class="why-matters-text">
-                    <h3>Develop Customized Data Experiences Tailored to Your Brand</h3>
-                    <p>Every application has unique data presentation requirements. Generic data grids can be limiting when organizations need solutions that reflect their business processes, brand identity, and user experience expectations.</p>
-                    <p>With templates, you can create highly customized and interactive data experiences, transforming standard grid displays into engaging interfaces that support sophisticated workflows and improve user productivity.</p>
-                    <div class="benefits-chips">
-                        <span class="benefit-chip">✓ Custom cell rendering</span>
-                        <span class="benefit-chip">✓ Brand-consistent design</span>
-                        <span class="benefit-chip">✓ Interactive elements</span>
-                        <span class="benefit-chip">✓ Complex data layouts</span>
-                        <span class="benefit-chip">✓ Responsive UI</span>
-                    </div>
-                </div>
-                <div class="why-matters-visual">
-                    <div style="text-align: center;">
-                        <div style="font-size: 48px; margin-bottom: 12px;">🎨</div>
-                        <div>Complete Visual Control</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="section-eyebrow">Our Customers Love Us</div>
+            <h2 class="section-title">Loved by Development Teams Worldwide</h2>
 
-    <!-- 4. CHOOSE THE RIGHT APPROACH -->
-    <section class="capabilities-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow">Find the Right Template for Your Requirements</div>
-                <h2> Choose the Right Template for Your Workflow</h2>
-                <p>Choose the most appropriate template customization approach based on your user interface and business requirements.</p>
-            </div>
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <div class="capability-icon">📋</div>
-                    <h4>Column Template</h4>
-                    <p>Customize individual cell content with HTML, formatted text, images, badges, and interactive controls.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Status indicators, formatted values, action buttons, badges</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">Cells need custom rendering beyond plain text.</div>
-                </div>
+            <div class="proof-content">
+                <div class="stars">★★★★★</div>
+                <p>Trusted by developers and enterprises building high-performance applications.</p>
 
-                <div class="capability-card">
-                    <div class="capability-icon">📌</div>
-                    <h4>Header Template</h4>
-                    <p>Design custom column headers with icons, sort indicators, filter buttons, and advanced header layouts.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Custom sorting, advanced filtering, header icons</div>
-                     <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">Headers need interactive elements or custom styling.</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">📂</div>
-                    <h4>Detail Template</h4>
-                    <p>Create expandable row details showing comprehensive information, nested tables, or related records.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Master-detail layouts, expandable rows, nested data</div>
-                     <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">Rows need to display additional detailed information.</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">⚙️</div>
-                    <h4>Column Chooser Template</h4>
-                    <p>Customize the column visibility dialog to provide an intuitive way for users to manage columns.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Column visibility dialogs, user preferences</div>
-                     <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">You need custom column selection UI.</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">📊</div>
-                    <h4>Stacked Header Column</h4>
-                    <p>Display multiple fields stacked vertically within a single column for compact, organized layouts.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Multi-field display, compact layouts, grouped data</div>
-                     <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">You need to show multiple fields in one column.</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">📭</div>
-                    <h4>Empty Record Template</h4>
-                    <p>Design custom empty state messages with helpful guidance when no data matches the current filter.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Empty states, user guidance, call-to-action</div>
-                     <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">You want to customize the no-data experience.</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">🔍</div>
-                    <h4>Filter Template</h4>
-                    <p>Build advanced filter UI with custom dropdowns, date pickers, sliders, and filtering logic.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Advanced filters, date ranges, custom search</div>
-                     <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">Filters need custom controls or logic.</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">📑</div>
-                    <h4>Row Template</h4>
-                    <p>Completely customize entire row layouts with conditional styling, actions, and complex markup.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Custom row layouts, complex hierarchies, conditional styling</div>
-                     <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">Entire rows need custom structure.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. IMPLEMENTATION RESOURCES -->
-    <section class="resources-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow">Implementation Resources</div>
-                <h2>Explore Templates Demos and Documentation</h2>
-                <p>Explore documentation, demos, guides, and sample implementations to build grid templates efficiently.</p>
-            </div>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h4>Template Documentation</h4>
-                    <p>Complete guide to all template types with API references and configuration options.</p>
-                    <a href="#" class="resource-link">View documentation →</a>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Column Template Demo</h4>
-                    <p>Interactive demo showing custom cell rendering with formatted content and controls.</p>
-                    <a href="#" class="resource-link">Try demo →</a>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Detail Template Demo</h4>
-                    <p>Master-detail example showing expandable rows with nested data and custom layouts.</p>
-                    <a href="#" class="resource-link">Try demo →</a>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Header Template Demo</h4>
-                    <p>Custom header examples with icons, sorting, and interactive header controls.</p>
-                    <a href="#" class="resource-link">Try demo →</a>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Advanced Filtering Guide</h4>
-                    <p>Learn how to implement custom filter templates with validation and complex logic.</p>
-                    <a href="#" class="resource-link">Read guide →</a>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Stacked Header Column Example</h4>
-                    <p>Learn how to stack multiple fields in a single column efficiently.</p>
-                    <a href="#" class="resource-link">View example →</a>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Best Practices for Empty State Design</h4>
-                    <p>Guidelines for designing effective empty state templates for better UX.</p>
-                    <a href="#" class="resource-link">Read article →</a>
-                </div>
-
-                <div class="resource-card">
-                    <h4>Row Template Customization</h4>
-                    <p>Advanced techniques for complete row customization with conditional rendering.</p>
-                    <a href="#" class="resource-link">Learn more →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow">FAQ</div>
-                <h2>React Data Grid Templates Questions</h2>
-                <p>Frequently Asked Questions About Template Customization and Implementation</p>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What template types are available?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Syncfusion Data Grid supports column, header, detail, row, stacked column, empty record, filter, and column chooser templates. Each serves a specific customization need.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can templates include React components?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, templates fully support React components, allowing you to use your existing component library and state management within grid templates.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do templates affect performance?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Templates use efficient rendering. With virtual scrolling and proper memoization, even complex templates perform well with thousands of rows.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I use templates with remote data?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutely. Templates work seamlessly with remote data sources, APIs, and dynamic data loading without any special configuration.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Do templates support conditional rendering?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, templates support full conditional rendering based on row data, enabling responsive and context-aware grid displays.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can templates include event handlers?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Templates fully support event handlers for click, change, and other events, enabling interactive grid experiences and actions.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How to filter multiple records using the filter bar template in React Grid?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You can filter multiple records in a JavaScript Grid by using a filter bar template that renders a MultiSelect component. The selected values are converted into predicates, which are used to build and execute a query through the DataManager, returning only the matching records.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. CUSTOMER STORIES -->
-    <section class="customer-stories-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow">Customer Stories</div>
-                <h2>Trusted for Enterprise Application Development</h2>
-            </div>
-            <div class="customer-stories-content">
-                <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Syncfusion templates gave us complete control over our data display. We built a custom dashboard that matches our brand perfectly and our users love the interactive elements we added with templates."</p>
-                    <div class="testimonial-author">Sarah Johnson</div>
-                    <div class="testimonial-role">Senior Product Manager, TechCorp</div>
-                </div>
-                <div class="customer-logos">
-                    <div class="logo-box">Company Logo 1</div>
-                    <div class="logo-box">Company Logo 2</div>
-                    <div class="logo-box">Company Logo 3</div>
-                    <div class="logo-box">Company Logo 4</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. OUR CUSTOMERS LOVE US -->
-    <section class="trust-section">
-        <div class="container">
-            <div class="trust-content">
-                <div class="trust-header">
-                    <h3>Our Customers Love Us</h3>
-                </div>
-                <div class="trust-metrics">
+                <div class="proof-metrics">
                     <div class="metric">
-                        <div class="metric-value">1,800+</div>
-                        <div class="metric-label">Global Customers</div>
+                        <div class="metric-number">80+</div>
+                        <div class="metric-label">UI Components</div>
                     </div>
                     <div class="metric">
-                        <div class="metric-value">2,545</div>
-                        <div class="metric-label">Monthly Downloads</div>
+                        <div class="metric-number">1M+</div>
+                        <div class="metric-label">Developers Worldwide</div>
                     </div>
                     <div class="metric">
-                        <div class="metric-value">Trusted</div>
-                        <div class="metric-label">By Global Enterprises</div>
+                        <div class="metric-number">24/7</div>
+                        <div class="metric-label">Support Available</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 9. RELATED ARTICLES -->
-    <section class="articles-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Continue Exploring Data Grid Features</h2>
-                <p>Discover related topics and best practices for building powerful data applications</p>
-            </div>
-            <div class="articles-grid">
-                <div class="article-card">
-                    <div class="article-tag">Feature Guide</div>
-                    <h4>Building Advanced Data Grid Layouts</h4>
-                    <p>Learn how to combine multiple template types to create sophisticated data displays and user interfaces.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-tag">Best Practices</div>
-                    <h4>Template Performance Optimization</h4>
-                    <p>Techniques and strategies for maintaining fast rendering performance with complex templates and large datasets.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-tag">How To Guide</div>
-                    <h4>Implementing Master-Detail Workflows</h4>
-                    <p>Step-by-step guide to creating expandable master-detail views using detail templates and nested data.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-tag">Advanced Topic</div>
-                    <h4>Custom Component Integration</h4>
-                    <p>Best practices for integrating custom React components into grid templates while maintaining performance.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-            </div>
-        </div>
+    <!-- RELATED ARTICLES SECTION -->
+    <section class="related-articles">        
     </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Syncfusion. All rights reserved.</p>
+            <p>&copy; 2024 Syncfusion React Data Grid Selection. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Demo Tab Functionality
-        document.querySelectorAll('.demo-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabName = this.getAttribute('data-tab');
-                
-                // Remove active class from all tabs and contents
-                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.demo-content').forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked tab and corresponding content
-                this.classList.add('active');
-                document.querySelector(`.demo-content[data-content="${tabName}"]`).classList.add('active');
-            });
-        });
-
-        // Smooth scroll for buttons
-        document.querySelectorAll('.btn, .resource-link, .article-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                }
-            });
-        });
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.capability-card, .resource-card, .article-card, .metric').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(element);
-        });
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const faqItem = this.parentElement;
-                faqItem.classList.toggle('active');
-
-                // Close other items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    if (item !== faqItem) {
-                        item.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="template.js"></script>
 </body>
 </html>

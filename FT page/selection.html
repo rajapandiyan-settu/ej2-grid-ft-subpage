@@ -19,97 +19,6 @@
             background-color: #f9fafb;
         }
 
-        /* ============= DEMO GRIDS TABLE STYLES ============= */
-        .demo-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
-
-        .demo-table thead {
-            background-color: #f0f4ff;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .demo-table th {
-            padding: 12px 16px;
-            text-align: left;
-            font-weight: 600;
-            color: #1a202c;
-            font-size: 14px;
-        }
-
-        .demo-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 14px;
-        }
-
-        .demo-table tbody tr {
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .demo-table tbody tr:hover {
-            background-color: #f8f9ff;
-        }
-
-        .demo-table tbody tr.row-selected {
-            background-color: #e6efff;
-            border-left: 3px solid #667eea;
-        }
-
-        .demo-table input[type="checkbox"] {
-            cursor: pointer;
-            width: 18px;
-            height: 18px;
-            accent-color: #667eea;
-        }
-
-        .cell-selected {
-            background-color: #eef3ff !important;
-            outline: 2px solid #667eea;
-            outline-offset: -2px;
-        }
-
-        .column-selected {
-            background-color: #e6efff;
-        }
-
-        .demo-info {
-            padding: 12px 16px;
-            background-color: #f0f4ff;
-            border-left: 3px solid #667eea;
-            margin-bottom: 16px;
-            border-radius: 4px;
-            font-size: 13px;
-            color: #555;
-        }
-
-        .cell-clickable {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .cell-clickable:hover {
-            background-color: #f0f4ff;
-        }
-
-        .column-header {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .column-header:hover {
-            background-color: #e6efff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
         /* ============= HERO SECTION ============= */
         .hero {
             text-align: center;
@@ -216,66 +125,18 @@
             margin-right: auto;
         }
 
-        .tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 32px;
-            border-bottom: 1px solid #e2e8f0;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 12px 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            color: #666;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .tab-btn.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        .tab-btn:hover {
-            color: #667eea;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .demo-grid {
-            background-color: #f8f9fa;
-            border: 1px solid #e2e8f0;
+        
+        .demo-placeholder {
+            background: white;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 24px;
-            min-height: 250px;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 18px;
+            min-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-style: italic;
-            color: #999;
         }
 
         /* ============= WHY MATTERS SECTION ============= */
@@ -385,83 +246,94 @@
             font-size: 14px;
             font-weight: 600;
         }
-
-        /* ============= CAPABILITY CARDS ============= */
-        .capabilities {
-            background: white;
+        
+        /* Capability Options */
+        .capabilities-section {
             padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
+            background: #f9f9f9;
         }
 
-        .cards-grid {
+        .capabilities-section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .capabilities-eyebrow {
+            color: #0066cc;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .capabilities-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .capabilities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            margin-top: 40px;
         }
 
         .capability-card {
             background: white;
-            border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 32px 24px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
         }
 
         .capability-card:hover {
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.1);
-            transform: translateY(-4px);
-            border-color: #667eea;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
         }
 
         .capability-icon {
-            font-size: 32px;
-            margin-bottom: 16px;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background: #e8f1ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
         }
 
         .capability-card h3 {
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             margin-bottom: 12px;
-            color: #1a202c;
+            color: #1a1a1a;
         }
 
         .capability-card p {
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
-            margin-bottom: 16px;
             line-height: 1.6;
+            margin-bottom: 16px;
         }
 
-        .card-label {
+        .capability-label {
             font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #667eea;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .card-content {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 12px;
-        }
-
-        .card-link {
-            color: #667eea;
-            text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: gap 0.3s ease;
+            color: #0066cc;
+            text-transform: uppercase;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
         }
 
-        .card-link:hover {
-            gap: 8px;
+        .capability-scenario {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
         }
 
         /* ============= RESOURCES SECTION ============= */
@@ -745,13 +617,6 @@
                 text-align: center;
             }
 
-            .cards-grid,
-            .resources-grid,
-            .articles-grid,
-            .proof-metrics {
-                grid-template-columns: 1fr;
-            }
-
             .why-matters-wrapper {
                 grid-template-columns: 1fr;
                 gap: 32px;
@@ -760,660 +625,33 @@
             .why-matters-header {
                 margin-bottom: 40px;
             }
-
-            .tabs {
-                flex-direction: column;
-            }
-
-            .tab-btn {
-                width: 100%;
-                text-align: left;
-                border-bottom: none;
-                border-left: 3px solid transparent;
-                padding-left: 16px;
-            }
-
-            .tab-btn.active {
-                border-bottom: none;
-                border-left-color: #667eea;
-            }
         }
     </style>
 </head>
 
 <body>
     <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-eyebrow">React Data Grid Selection</div>
-            <h1>Build Flexible Row, Cell & Column Selection for Real Workflows</h1>
-            <p class="hero-description">Create, customize, and control multiple selection modes in the Syncfusion React
-                Data Grid with fine-grained control.</p>
-            <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">View Demo</a>
-                <a href="#" class="btn btn-secondary">Explore Documentation</a>
-            </div>
-        </div>
+    <section class="hero">        
     </section>
 
     <!-- DEMO SECTION -->
     <section class="demo-section">
-        <div class="container">
-            <div class="section-eyebrow">Selection Modes</div>
-            <h2 class="section-title">Try Selection Modes in Action</h2>
-            <p class="section-description">Use a live sample tab to see the selection modes before diving into the
-                details.</p>
-
-            <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab('normal-row')">Normal Row Selection</button>
-                <button class="tab-btn" onclick="switchTab('checkbox')">Checkbox Selection</button>
-                <button class="tab-btn" onclick="switchTab('conditional')">Conditional Checkbox</button>
-                <button class="tab-btn" onclick="switchTab('cell')">Cell Selection</button>
-                <button class="tab-btn" onclick="switchTab('column')">Column Selection</button>
-            </div>
-
-            <!-- NORMAL ROW SELECTION TAB -->
-            <div id="normal-row" class="tab-content active">
-                <div class="demo-info">
-                    💡 Click rows to select them. Use Ctrl+Click for multiple selections or Shift+Click for range
-                    selection.
-                </div>
-                <div class="demo-grid">
-                    <table class="demo-table" id="normalRowTable">
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Wireless Headphones</td>
-                                <td>Electronics</td>
-                                <td>$79.99</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td>USB-C Cable</td>
-                                <td>Accessories</td>
-                                <td>$12.99</td>
-                                <td>500</td>
-                            </tr>
-                            <tr>
-                                <td>Laptop Stand</td>
-                                <td>Office</td>
-                                <td>$39.99</td>
-                                <td>75</td>
-                            </tr>
-                            <tr>
-                                <td>Mechanical Keyboard</td>
-                                <td>Electronics</td>
-                                <td>$129.99</td>
-                                <td>45</td>
-                            </tr>
-                            <tr>
-                                <td>Monitor Mount</td>
-                                <td>Office</td>
-                                <td>$54.99</td>
-                                <td>120</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- CHECKBOX SELECTION TAB -->
-            <div id="checkbox" class="tab-content">
-                <div class="demo-info">
-                    💡 Use checkboxes to select rows. Click the header checkbox to select or deselect all rows at once.
-                </div>
-                <div class="demo-grid">
-                    <table class="demo-table" id="checkboxTable">
-                        <thead>
-                            <tr>
-                                <th><input type="checkbox" id="selectAllCheckbox" onchange="toggleAllCheckboxes(this)">
-                                </th>
-                                <th>Product Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
-                                </td>
-                                <td>Wireless Headphones</td>
-                                <td>Electronics</td>
-                                <td>$79.99</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
-                                </td>
-                                <td>USB-C Cable</td>
-                                <td>Accessories</td>
-                                <td>$12.99</td>
-                                <td>500</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
-                                </td>
-                                <td>Laptop Stand</td>
-                                <td>Office</td>
-                                <td>$39.99</td>
-                                <td>75</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
-                                </td>
-                                <td>Mechanical Keyboard</td>
-                                <td>Electronics</td>
-                                <td>$129.99</td>
-                                <td>45</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
-                                </td>
-                                <td>Monitor Mount</td>
-                                <td>Office</td>
-                                <td>$54.99</td>
-                                <td>120</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- CONDITIONAL CHECKBOX SELECTION TAB -->
-            <div id="conditional" class="tab-content">
-                <div class="demo-info">
-                    💡 Conditional selection: Only rows with Stock > 100 can be selected. Try selecting different items.
-                </div>
-                <div class="demo-grid">
-                    <table class="demo-table" id="conditionalTable">
-                        <thead>
-                            <tr>
-                                <th><input type="checkbox" id="selectAllConditional"
-                                        onchange="toggleAllConditional(this)" disabled></th>
-                                <th>Product Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-selectable="true">
-                                <td><input type="checkbox" class="conditionalCheckbox"
-                                        onchange="updateSelectAllConditional()"></td>
-                                <td>Wireless Headphones</td>
-                                <td>Electronics</td>
-                                <td>$79.99</td>
-                                <td><strong style="color: #667eea;">150</strong> ✓</td>
-                            </tr>
-                            <tr data-selectable="false">
-                                <td><input type="checkbox" class="conditionalCheckbox" disabled style="opacity: 0.3;">
-                                </td>
-                                <td>USB-C Cable</td>
-                                <td>Accessories</td>
-                                <td>$12.99</td>
-                                <td><strong style="color: #999;">500</strong> (Acc only)</td>
-                            </tr>
-                            <tr data-selectable="true">
-                                <td><input type="checkbox" class="conditionalCheckbox"
-                                        onchange="updateSelectAllConditional()"></td>
-                                <td>Laptop Stand</td>
-                                <td>Office</td>
-                                <td>$39.99</td>
-                                <td><strong style="color: #667eea;">120</strong> ✓</td>
-                            </tr>
-                            <tr data-selectable="false">
-                                <td><input type="checkbox" class="conditionalCheckbox" disabled style="opacity: 0.3;">
-                                </td>
-                                <td>Mechanical Keyboard</td>
-                                <td>Electronics</td>
-                                <td>$129.99</td>
-                                <td><strong style="color: #ccc;">45</strong> (Low)</td>
-                            </tr>
-                            <tr data-selectable="true">
-                                <td><input type="checkbox" class="conditionalCheckbox"
-                                        onchange="updateSelectAllConditional()"></td>
-                                <td>Monitor Mount</td>
-                                <td>Office</td>
-                                <td>$54.99</td>
-                                <td><strong style="color: #667eea;">200</strong> ✓</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- CELL SELECTION TAB -->
-            <div id="cell" class="tab-content">
-                <div class="demo-info">
-                    💡 Click individual cells to select them. Selected cells are highlighted in blue.
-                </div>
-                <div class="demo-grid">
-                    <table class="demo-table" id="cellTable">
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Q1 Sales</th>
-                                <th>Q2 Sales</th>
-                                <th>Q3 Sales</th>
-                                <th>Q4 Sales</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="cell-clickable">Product A</td>
-                                <td class="cell-clickable">$45,000</td>
-                                <td class="cell-clickable">$52,000</td>
-                                <td class="cell-clickable">$48,000</td>
-                                <td class="cell-clickable">$61,000</td>
-                            </tr>
-                            <tr>
-                                <td class="cell-clickable">Product B</td>
-                                <td class="cell-clickable">$32,000</td>
-                                <td class="cell-clickable">$38,000</td>
-                                <td class="cell-clickable">$41,000</td>
-                                <td class="cell-clickable">$47,000</td>
-                            </tr>
-                            <tr>
-                                <td class="cell-clickable">Product C</td>
-                                <td class="cell-clickable">$28,000</td>
-                                <td class="cell-clickable">$31,000</td>
-                                <td class="cell-clickable">$35,000</td>
-                                <td class="cell-clickable">$42,000</td>
-                            </tr>
-                            <tr>
-                                <td class="cell-clickable">Product D</td>
-                                <td class="cell-clickable">$55,000</td>
-                                <td class="cell-clickable">$58,000</td>
-                                <td class="cell-clickable">$62,000</td>
-                                <td class="cell-clickable">$70,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- COLUMN SELECTION TAB -->
-            <div id="column" class="tab-content">
-                <div class="demo-info">
-                    💡 Click a column header to select an entire column. Use Ctrl + Click to select or deselect multiple columns. All cells in the selected columns will be highlighted.
-                </div>
-                <div class="demo-grid">
-                    <table class="demo-table" id="columnTable">
-                        <thead>
-                            <tr>
-                                <th class="column-header" data-column="0">Product</th>
-                                <th class="column-header" data-column="1">Jan Sales</th>
-                                <th class="column-header" data-column="2">Feb Sales</th>
-                                <th class="column-header" data-column="3">Mar Sales</th>
-                                <th class="column-header" data-column="4">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="column-cell" data-column="0">Widget A</td>
-                                <td class="column-cell" data-column="1">$12,000</td>
-                                <td class="column-cell" data-column="2">$14,000</td>
-                                <td class="column-cell" data-column="3">$18,000</td>
-                                <td class="column-cell" data-column="4">$44,000</td>
-                            </tr>
-                            <tr>
-                                <td class="column-cell" data-column="0">Widget B</td>
-                                <td class="column-cell" data-column="1">$18,000</td>
-                                <td class="column-cell" data-column="2">$19,000</td>
-                                <td class="column-cell" data-column="3">$21,000</td>
-                                <td class="column-cell" data-column="4">$58,000</td>
-                            </tr>
-                            <tr>
-                                <td class="column-cell" data-column="0">Widget C</td>
-                                <td class="column-cell" data-column="1">$15,000</td>
-                                <td class="column-cell" data-column="2">$16,000</td>
-                                <td class="column-cell" data-column="3">$17,000</td>
-                                <td class="column-cell" data-column="4">$48,000</td>
-                            </tr>
-                            <tr>
-                                <td class="column-cell" data-column="0">Widget D</td>
-                                <td class="column-cell" data-column="1">$22,000</td>
-                                <td class="column-cell" data-column="2">$24,000</td>
-                                <td class="column-cell" data-column="3">$26,000</td>
-                                <td class="column-cell" data-column="4">$72,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- WHY MATTERS SECTION -->
-    <section class="why-matters">
-        <div class="container">
-            <!-- Centered Header Section -->
-            <div class="why-matters-header">
-                <div class="section-eyebrow">Why Selection Matters</div>
-                <h2 class="section-title">Turn Data Selection Into User Action</h2>
-                <p class="section-description">
-                    <center>Selection is critical when users need to act on data. Whether bulk updates or targeted
-                        operations, the grid's selection options enable efficient workflows.</center>
-                </p>
-            </div>
-
-            <!-- Two Column Layout -->
-            <div class="why-matters-wrapper">
-                <!-- LEFT SIDE -->
-                <div class="why-matters-left">
-                    <p class="why-matters-text-large">A data grid is often where users review, compare, and act on
-                        information. When selection is intuitive and flexible, users can quickly focus on the data that
-                        matters and perform actions with confidence.</p>
-                    <p class="why-matters-text-large">Flexible selection options help users review, compare, and act on
-                        data efficiently. From individual records to cells, columns, and multiple items, users can
-                        select the data they need and work more effectively.</p>
-
-                    <div class="selection-types-list">
-                        <div class="selection-type-item">Multi-row selection</div>
-                        <div class="selection-type-item">Checkbox control</div>
-                        <div class="selection-type-item">Cell-level precision</div>
-                        <div class="selection-type-item">Interactive data selection</div>
-                        <div class="selection-type-item">Conditional rules</div>
-                    </div>
-                </div>
-
-                <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">Flexible Selection for Real Data Workflows</h3>
-                        <p class="card-description">Syncfusion React Data Grid brings powerful selection capabilities
-                            directly into the grid. Choose row, checkbox, cell, or column selection based on your
-                            workflow. Support multi-selection, range selection, keyboard navigation, and conditional
-                            selection rules to help users interact with data efficiently while maintaining accuracy and
-                            control.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="why-matters">        
     </section>
 
     <!-- CAPABILITY CARDS SECTION -->
-    <section class="capabilities">
-        <div class="container">
-            <div class="section-eyebrow">Choose the Right Approach</div>
-            <h2 class="section-title">Choose the Selection Experience That Fits Your Workflow</h2>
-            <p class="section-description">Different use cases need different selection modes. Choose the mode that
-                matches your application's data interaction patterns.</p>
-
-            <div class="cards-grid">
-                <!-- Card 1 -->
-                <div class="capability-card">
-                    <div class="capability-icon">📋</div>
-                    <h3>Normal Row Selection</h3>
-                    <p>Users click rows to select them. Supporting multiple selections with Ctrl+Click or Shift+Click
-                        for range selection.</p>
-                    <span class="card-label">Best for</span>
-                    <div class="card-content">General-purpose row selection, data review, and filtering workflows.</div>
-                    <span class="card-label">Use When</span>
-                    <div class="card-content">Users need a familiar and simple way to select one or multiple rows
-                        without additional UI elements.</div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="capability-card">
-                    <div class="capability-icon">☑️</div>
-                    <h3>Checkbox Selection</h3>
-                    <p>Each row has a checkbox. Header checkbox lets users select all rows at once, making bulk
-                        operations intuitive.</p>
-                    <span class="card-label">Best for</span>
-                    <div class="card-content">Bulk actions, explicit selection, and accessibility-focused interfaces.
-                    </div>
-                    <span class="card-label">Use When</span>
-                    <div class="card-content">Users frequently perform actions on multiple records and need clear visual
-                        confirmation of selected items.</div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="capability-card">
-                    <div class="capability-icon">🔀</div>
-                    <h3>Conditional Checkbox Selection</h3>
-                    <p>Control which rows can be selected using custom conditions. Only valid rows appear selectable to
-                        prevent invalid operations.</p>
-                    <span class="card-label">Best for</span>
-                    <div class="card-content">Restricted selections, validation-dependent workflows, and business-rule
-                        enforcement.</div>
-                    <span class="card-label">Use When</span>
-                    <div class="card-content">Only certain records should be eligible for selection, preventing invalid
-                        user actions.</div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="capability-card">
-                    <div class="capability-icon">🔲</div>
-                    <h3>Cell Selection</h3>
-                    <p>Users select individual cells or cell ranges. Precise control for tasks like data entry,
-                        analysis, or targeted edits.</p>
-                    <span class="card-label">Best for</span>
-                    <div class="card-content">Fine-grained data editing, spreadsheet-like workflows, and precise data
-                        highlighting.</div>
-                    <span class="card-label">Use When</span>
-                    <div class="card-content">Users need to interact with specific data points rather than whole
-                        records.</div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="capability-card">
-                    <div class="capability-icon">📊</div>
-                    <h3>Column Selection</h3>
-                    <p>Select entire columns by clicking headers or using keyboard shortcuts. Useful for operations
-                        affecting all rows in a column.</p>
-                    <span class="card-label">Best for</span>
-                    <div class="card-content">Column-level operations, data export, formatting, and analysis workflows.
-                    </div>
-                    <span class="card-label">Use When</span>
-                    <div class="card-content">Users need to analyze, format, copy, or apply actions to all values within
-                        a column.</div>
-                </div>
-            </div>
-        </div>
+     <section class="capabilities-section">        
     </section>
 
     <!-- IMPLEMENTATION RESOURCES SECTION -->
-    <section class="resources">
-        <div class="container">
-            <div class="section-eyebrow">Implementation Resources</div>
-            <h2 class="section-title">Explore Selection Demos and Docs</h2>
-            <p class="section-description">Get started with live demos, comprehensive documentation, and code examples
-                for every selection mode.</p>
-
-            <div class="resources-grid">
-                <!-- Resource 1 -->
-                <div class="resource-card">
-                    <h4>Row Selection Documentation</h4>
-                    <p>Learn how to implement normal row selection with multi-select support.</p>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/row-selection#single-row-selection"
-                        target="_blank">View Documentation →</a>
-                </div>
-
-                <!-- Resource 2 -->
-                <div class="resource-card">
-                    <h4>Row Selection Demo</h4>
-                    <p>See row selection in action with interactive examples and code snippets.</p>
-                    <a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection-api" target="_blank">View
-                        Demo →</a>
-                </div>
-
-                <!-- Resource 3 -->
-                <div class="resource-card">
-                    <h4>Checkbox Selection Documentation</h4>
-                    <p>Implement checkbox-based selection for better UX and accessibility.</p>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#checkbox-only-selection"
-                        target="_blank">View Documentation →</a>
-                </div>
-
-                <!-- Resource 4 -->
-                <div class="resource-card">
-                    <h4>Checkbox Selection Demo</h4>
-                    <p>Explore checkbox selection with bulk action patterns and examples.</p>
-                    <a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/checkbox-selection"
-                        target="_blank">View Demo →</a>
-                </div>
-
-                <!-- Resource 5 -->
-                <div class="resource-card">
-                    <h4>Conditional Selection Documentation</h4>
-                    <p>Add business logic to control which rows can be selected.</p>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#conditional-row-selection"
-                        target="_blank">View Documentation →</a>
-                </div>
-
-                <!-- Resource 6 -->
-                <div class="resource-card">
-                    <h4>Conditional Selection Demo</h4>
-                    <p>See conditional selection logic applied with real-world examples.</p>
-                    <a href="https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/conditional-row-selection"
-                        target="_blank">View Demo →</a>
-                </div>
-
-                <!-- Resource 7 -->
-                <div class="resource-card">
-                    <h4>Cell Selection Documentation</h4>
-                    <p>Learn to implement precise cell-level selection for data editing.</p>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/cell-selection#single-cell-selection"
-                        target="_blank">View Documentation →</a>
-                </div>
-
-                <!-- Resource 8 -->
-                <div class="resource-card">
-                    <h4>Column Selection Documentation</h4>
-                    <p>Implement column-level selection for column-based operations.</p>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/selection/column-selection#single-column-selection"
-                        target="_blank">View Documentation →</a>
-                </div>
-            </div>
-        </div>
+    <section class="resources">        
     </section>
 
     <!-- FAQ SECTION -->
-    <section class="faq">
-        <div class="container">
-            <div class="section-eyebrow">FAQ</div>
-            <h2 class="section-title">React Data Grid Selection Questions</h2>
-
-            <div class="faq-container">
-                <!-- Question 1 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        What selection modes are available?
-                    </div>
-                    <div class="faq-answer">
-                        The Syncfusion React Data Grid supports Row Selection (normal and checkbox), Cell Selection, and
-                        Column Selection. Each mode can be combined with keyboard shortcuts and conditional logic to
-                        match your workflow needs.
-                    </div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        Can I customize the selection behavior?
-                    </div>
-                    <div class="faq-answer">
-                        Yes. The grid supports custom selection handlers, conditional selection rules, keyboard shortcut
-                        configuration, and styling. You can define which rows/cells can be selected and customize the
-                        visual feedback.
-                    </div>
-                </div>
-
-                <!-- Question 3 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        Does selection work with remote or dynamic data?
-                    </div>
-                    <div class="faq-answer">
-                        Yes, selection works seamlessly with remote data sources. The grid maintains selection state
-                        across pagination and sorting operations. Use the selection API to get selected rows at any
-                        time, regardless of data source.
-                    </div>
-                </div>
-
-                <!-- Question 4 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        Can I perform bulk actions on selected rows?
-                    </div>
-                    <div class="faq-answer">
-                        Absolutely. Use the selection API to get all selected rows, then perform batch operations like
-                        update, delete, export, or custom actions. The grid provides callbacks to capture selection
-                        changes for real-time action triggers.
-                    </div>
-                </div>
-
-                <!-- Question 5 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        Which selection mode should I use?
-                    </div>
-                    <div class="faq-answer">
-                        Choose based on your use case: Row Selection for general workflows, Checkbox Selection for
-                        explicit/bulk actions, Cell Selection for precise editing, Column Selection for column-level
-                        operations, and Conditional Selection when business rules restrict which items can be selected.
-                    </div>
-                </div>
-
-                <!-- Question 6 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        Can I use Shift+Click and Ctrl+Click for range and multi-selection?
-                    </div>
-                    <div class="faq-answer">
-                        Yes, the grid supports standard keyboard shortcuts out of the box. Shift+Click selects a range of rows, Ctrl+Click (or Cmd+Click on Mac) toggles individual row selection. These shortcuts work seamlessly with all selection modes and can be customized as needed.
-                    </div>
-                </div>
-
-                <!-- Question 7 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        How can I restrict selection based on business rules?
-                    </div>
-                    <div class="faq-answer">
-                        Use Conditional Checkbox Selection to apply custom logic that determines which rows are selectable. You can define selection rules based on row data, status, permissions, or any other criteria. Implement the conditional handler to enable/disable selection dynamically.
-                    </div>
-                </div>
-
-                <!-- Question 8 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        Can I get the selected data programmatically?
-                    </div>
-                    <div class="faq-answer">
-                        Yes, the grid exposes a comprehensive selection API. You can retrieve selected rows, cells, or columns at any time using methods like `getSelectedRowIndexes()`, `getSelectedRowsData()`, and `getSelectedCellData()`. These methods make it easy to perform actions on selections.
-                    </div>
-                </div>
-
-                <!-- Question 9 -->
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">
-                        <span class="faq-toggle">+</span>
-                        Does selection persist when the grid is filtered or sorted?
-                    </div>
-                    <div class="faq-answer">
-                        Yes, selections are maintained across filtering and sorting operations by default. The grid tracks selections by row identifier (primary key) rather than row index, ensuring selections remain consistent even when the data order changes. You can configure this behavior to suit your needs.
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="faq">       
     </section>
 
     <!-- CUSTOMER STORIES SECTION -->
@@ -1464,73 +702,7 @@
     </section>
 
     <!-- RELATED ARTICLES SECTION -->
-    <section class="related-articles">
-        <div class="container">
-            <div class="section-eyebrow">Related Articles</div>
-            <h2 class="section-title">Continue Exploring React Data Grid Selection</h2>
-
-            <div class="articles-grid">
-                <!-- Article 1 -->
-                <div class="article-card">
-                    <h4>React Data Grid Selection Guide</h4>
-                    <p>A comprehensive guide covering row, checkbox, cell, and column selection modes, including best
-                        practices and implementation patterns.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <!-- Article 2 -->
-                <div class="article-card">
-                    <h4>React Data Grid Bulk Operations Guide</h4>
-                    <p>Learn how to build bulk delete, export, update, and approval workflows using selected rows.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <!-- Article 3 -->
-                <div class="article-card">
-                    <h4>Common Selection UX Challenges and Solutions</h4>
-                    <p>Understand common selection issues such as multi-selection, range selection, keyboard navigation,
-                        and maintaining selection state across pagination and filtering.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <!-- Article 4 -->
-                <div class="article-card">
-                    <h4>Building Advanced Selection Experiences</h4>
-                    <p>Explore conditional selection, hierarchical selection, custom selection behaviors, and
-                        accessibility-focused selection patterns.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <!-- Article 5 -->
-                <div class="article-card">
-                    <h4>Selection State Management & Persistence</h4>
-                    <p>Learn how to manage selection state across pagination, filtering, sorting, and data refreshes. Implement persistent selection that survives navigation and data updates.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-
-                <!-- Article 6 -->
-                <div class="article-card">
-                    <h4>Selection Styling & Custom Indicators</h4>
-                    <p>Customize selection appearance with themes, colors, and icons. Create visual indicators for selected, disabled, or restricted rows using CSS and custom renderers.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <!-- Article 7 -->
-                <div class="article-card">
-                    <h4>Conditional Selection Rules & Business Logic</h4>
-                    <p>Implement conditional checkbox selection with business rules. Restrict selections based on user roles, data values, row status, or custom validation logic.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-
-                <!-- Article 8 -->
-                <div class="article-card">
-                    <h4>Selection Events & Action Triggers</h4>
-                    <p>Explore selection event callbacks, event handling patterns, and real-time action triggers. Build responsive UIs that react to selection changes instantly.</p>
-                    <a href="#" class="article-link">Read article →</a>
-                </div>
-            </div>
-        </div>
+    <section class="related-articles">        
     </section>
 
     <!-- FOOTER -->
@@ -1539,229 +711,7 @@
             <p>&copy; 2024 Syncfusion React Data Grid Selection. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // ========== TAB SWITCHING ==========
-        function switchTab(tabName) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-
-            const selectedTab = document.getElementById(tabName);
-            if (selectedTab) {
-                selectedTab.classList.add('active');
-            }
-
-            event.target.classList.add('active');
-        }
-
-        // ========== NORMAL ROW SELECTION ==========
-        let selectedRows = new Set();
-        document.addEventListener('DOMContentLoaded', function () {
-            const normalRowTable = document.getElementById('normalRowTable');
-            if (normalRowTable) {
-                normalRowTable.addEventListener('click', function (e) {
-                    if (e.target.tagName !== 'TD') return;
-
-                    const row = e.target.closest('tr');
-                    const tbody = normalRowTable.querySelector('tbody');
-                    const isCtrlClick = e.ctrlKey || e.metaKey;
-                    const isShiftClick = e.shiftKey;
-
-                    if (!isCtrlClick && !isShiftClick) {
-                        // Single selection - clear others
-                        document.querySelectorAll('#normalRowTable tbody tr').forEach(r => {
-                            r.classList.remove('row-selected');
-                        });
-                        selectedRows.clear();
-                    }
-
-                    if (isCtrlClick) {
-                        // Toggle selection
-                        row.classList.toggle('row-selected');
-                        const rowIndex = Array.from(tbody.rows).indexOf(row);
-                        if (selectedRows.has(rowIndex)) {
-                            selectedRows.delete(rowIndex);
-                        } else {
-                            selectedRows.add(rowIndex);
-                        }
-                    } else if (isShiftClick && selectedRows.size > 0) {
-                        // Range selection
-                        const lastSelected = Math.max(...selectedRows);
-                        const currentIndex = Array.from(tbody.rows).indexOf(row);
-                        const start = Math.min(lastSelected, currentIndex);
-                        const end = Math.max(lastSelected, currentIndex);
-
-                        for (let i = start; i <= end; i++) {
-                            tbody.rows[i].classList.add('row-selected');
-                            selectedRows.add(i);
-                        }
-                    } else {
-                        // Simple click
-                        row.classList.add('row-selected');
-                        const rowIndex = Array.from(tbody.rows).indexOf(row);
-                        selectedRows.add(rowIndex);
-                    }
-                });
-            }
-        });
-
-        // ========== CHECKBOX SELECTION ==========
-        function toggleAllCheckboxes(headerCheckbox) {
-            const checkboxes = document.querySelectorAll('#checkboxTable tbody .rowCheckbox');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = headerCheckbox.checked;
-                updateRowHighlight(checkbox);
-            });
-        }
-
-        function updateSelectAllCheckbox() {
-            const checkboxes = document.querySelectorAll('#checkboxTable tbody .rowCheckbox');
-            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-            const someChecked = Array.from(checkboxes).some(cb => cb.checked);
-
-            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
-            selectAllCheckbox.checked = allChecked;
-            selectAllCheckbox.indeterminate = someChecked && !allChecked;
-
-            checkboxes.forEach(checkbox => {
-                updateRowHighlight(checkbox);
-            });
-        }
-
-        function updateRowHighlight(checkbox) {
-            const row = checkbox.closest('tr');
-            if (checkbox.checked) {
-                row.classList.add('row-selected');
-            } else {
-                row.classList.remove('row-selected');
-            }
-        }
-
-
-
-        // ========== CONDITIONAL CHECKBOX SELECTION ==========
-        function toggleAllConditional(headerCheckbox) {
-            const checkboxes = document.querySelectorAll('#conditionalTable tbody .conditionalCheckbox');
-            checkboxes.forEach(checkbox => {
-                if (!checkbox.disabled) {
-                    checkbox.checked = headerCheckbox.checked;
-                    updateConditionalRowHighlight(checkbox);
-                }
-            });
-        }
-
-        function updateSelectAllConditional() {
-            const checkboxes = document.querySelectorAll('#conditionalTable tbody .conditionalCheckbox:not([disabled])');
-            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-            const someChecked = Array.from(checkboxes).some(cb => cb.checked);
-
-            const selectAllCheckbox = document.getElementById('selectAllConditional');
-            selectAllCheckbox.checked = allChecked;
-            selectAllCheckbox.indeterminate = someChecked && !allChecked;
-
-            checkboxes.forEach(checkbox => {
-                updateConditionalRowHighlight(checkbox);
-            });
-        }
-
-        function updateConditionalRowHighlight(checkbox) {
-            const row = checkbox.closest('tr');
-            if (checkbox.checked) {
-                row.classList.add('row-selected');
-            } else {
-                row.classList.remove('row-selected');
-            }
-        }
-
-
-
-        // ========== CELL SELECTION ==========
-        const cellTable = document.getElementById('cellTable');
-        const cellClickables = document.querySelectorAll('#cellTable .cell-clickable');
-
-        cellClickables.forEach(cell => {
-            cell.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                if (!e.ctrlKey && !e.metaKey) {
-                    cellClickables.forEach(c => c.classList.remove('cell-selected'));
-                }
-
-                this.classList.toggle('cell-selected');
-            });
-        });
-
-        // ========== COLUMN SELECTION ==========
-        const columnHeaders = document.querySelectorAll('#columnTable .column-header');
-        let selectedColumns = new Set();
-
-        columnHeaders.forEach(header => {
-            header.addEventListener('click', function (e) {
-                const columnIndex = this.dataset.column;
-
-                if (!e.ctrlKey && !e.metaKey) {
-                    document.querySelectorAll('#columnTable .column-selected')
-                        .forEach(cell => cell.classList.remove('column-selected'));
-
-                    columnHeaders.forEach(h =>
-                        h.classList.remove('column-selected')
-                    );
-
-                    selectedColumns.clear();
-                }
-
-                if (selectedColumns.has(columnIndex)) {
-                    selectedColumns.delete(columnIndex);
-
-                    this.classList.remove('column-selected');
-
-                    document
-                        .querySelectorAll(`#columnTable .column-cell[data-column="${columnIndex}"]`)
-                        .forEach(cell => cell.classList.remove('column-selected'));
-                } else {
-                    selectedColumns.add(columnIndex);
-
-                    this.classList.add('column-selected');
-
-                    document
-                        .querySelectorAll(`#columnTable .column-cell[data-column="${columnIndex}"]`)
-                        .forEach(cell => cell.classList.add('column-selected'));
-                }
-            });
-        });
-
-        // ========== FAQ TOGGLE ==========
-        function toggleFaq(item) {
-            item.classList.toggle('open');
-        }
-
-        // ========== INITIALIZE ALL LISTENERS ==========
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize first tab as active
-            document.querySelector('.tab-btn').classList.add('active');
-
-            // Initialize checkbox listeners for normal checkbox selection
-            document.querySelectorAll('#checkboxTable tbody .rowCheckbox').forEach(checkbox => {
-                checkbox.addEventListener('change', updateSelectAllCheckbox);
-            });
-
-            // Initialize conditional checkbox listeners
-            document.querySelectorAll('#conditionalTable tbody .conditionalCheckbox').forEach(checkbox => {
-                if (!checkbox.disabled) {
-                    checkbox.addEventListener('change', updateSelectAllConditional);
-                }
-            });
-        });
-
-
-    </script>
+    <script src="selection.js"></script>
 </body>
 
 </html>

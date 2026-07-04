@@ -12,318 +12,311 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #f9fafb;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 60px 20px;
+        /* ============= HERO SECTION ============= */
+        .hero {
             text-align: center;
-            border-bottom: 1px solid #e0e0e0;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
 
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .eyebrow {
+        .hero-eyebrow {
             font-size: 12px;
             font-weight: 600;
-            color: #0078d4;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
-            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            opacity: 0.9;
         }
 
-        h1 {
-            font-size: 42px;
+        .hero h1 {
+            font-size: 48px;
             font-weight: 700;
-            line-height: 1.2;
             margin-bottom: 16px;
-            color: #000;
+            line-height: 1.2;
         }
 
         .hero-description {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 30px;
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-group {
+        .hero-ctas {
             display: flex;
-            gap: 12px;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 28px;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 16px;
             font-weight: 600;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
         }
 
         .btn-primary {
-            background: #0078d4;
-            color: white;
+            background-color: #ffffff;
+            color: #667eea;
         }
 
         .btn-primary:hover {
-            background: #005a9e;
-            box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
-            background: white;
-            color: #0078d4;
-            border: 2px solid #0078d4;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
         }
 
         .btn-secondary:hover {
-            background: #f0f7ff;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Sections */
-        section {
+        /* ============= DEMO SECTION ============= */
+        .demo-section {
+            background: white;
             padding: 60px 20px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        section h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            text-align: center;
-            color: #000;
         }
 
         .section-eyebrow {
             text-align: center;
             font-size: 12px;
             font-weight: 600;
-            color: #0078d4;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #667eea;
+            margin-bottom: 12px;
         }
 
-        section > .container > p:first-of-type {
+        .section-title {
             text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 16px;
             color: #666;
             margin-bottom: 40px;
-            font-size: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Demo Section */
-        .demo-section {
-            background: #fafbfc;
-        }
-
-        .tab-group {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid #e0e0e0;
-            margin-bottom: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 14px 24px;
-            background: transparent;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            color: #666;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn.active {
-            color: #0078d4;
-            border-bottom-color: #0078d4;
-        }
-
-        .tab-btn:hover {
-            color: #0078d4;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .theme-preview {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .theme-card {
+        
+        .demo-placeholder {
             background: white;
-            border-radius: 8px;
-            padding: 20px;
             border: 1px solid #e0e0e0;
-            transition: all 0.3s ease;
-        }
-
-        .theme-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .theme-preview-box {
-            width: 100%;
-            height: 150px;
-            border-radius: 4px;
-            margin-bottom: 12px;
+            border-radius: 8px;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 18px;
+            min-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
         }
 
-        .light-theme {
-            background: linear-gradient(135deg, #ffffff, #f5f5f5);
-            border: 1px solid #ddd;
-            color: #333;
-        }
-
-        .dark-theme {
-            background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
-        }
-
-        .highcontrast-theme {
-            background: linear-gradient(135deg, #000, #1a1a1a);
-        }
-
-        .custom-theme {
-            background: linear-gradient(135deg, #0078d4, #50e6ff);
-        }
-
-        .theme-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-        }
-
-        .theme-desc {
-            font-size: 13px;
-            color: #666;
-        }
-
-        /* Why This Feature Matters */
-        .why-section {
+        /* ============= WHY MATTERS SECTION ============= */
+        .why-matters {
             background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
-        .why-content {
-            max-width: 900px;
-            margin: 0 auto;
-            margin-bottom: 40px;
-        }
-
-        .why-content p {
-            font-size: 15px;
-            color: #555;
-            margin-bottom: 16px;
-            line-height: 1.8;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .benefit-chip {
-            background: #f0f7ff;
-            color: #0078d4;
-            padding: 10px 16px;
-            border-radius: 24px;
-            font-size: 13px;
-            font-weight: 600;
+        .why-matters-header {
             text-align: center;
-            border: 1px solid #b3d9ff;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        .why-matters-header .section-eyebrow {
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .why-matters-header .section-title {
+            margin-bottom: 20px;
+        }
+
+        .why-matters-header .section-description {
+            margin: 0;
+        }
+
+        .why-matters-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .why-matters-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .why-matters-text-large {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin: 0;
+        }
+
+        .selection-types-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .selection-type-item {
+            background-color: #f0f4ff;
+            color: #667eea;
+            padding: 10px 18px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .why-matters-right {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .why-matters-card {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            width: 100%;
+        }
+
+        .why-matters-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0 0 16px 0;
+        }
+
+        .why-matters-card .card-description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+            margin: 0;
+        }
+
+        .benefits-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .chip {
+            background-color: #f0f4ff;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
         /* Capability Options */
+        .capabilities-section {
+            padding: 60px 20px;
+            background: #f9f9f9;
+        }
+
+        .capabilities-section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .capabilities-eyebrow {
+            color: #0066cc;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .capabilities-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
         .capabilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            margin-top: 40px;
         }
 
         .capability-card {
             background: white;
-            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 28px;
-            transition: all 0.3s ease;
+            padding: 32px 24px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
         }
 
         .capability-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
         }
 
         .capability-icon {
-            width: 40px;
-            height: 40px;
-            background: #f0f7ff;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background: #e8f1ff;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            margin-bottom: 16px;
+            font-size: 24px;
         }
 
         .capability-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #000;
+            font-size: 16px;
+            font-weight: 600;
             margin-bottom: 12px;
+            color: #1a1a1a;
         }
 
-        .capability-desc {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 16px;
+        .capability-card p {
+            font-size: 13px;
+            color: #666;
             line-height: 1.6;
+            margin-bottom: 16px;
         }
 
         .capability-label {
@@ -342,841 +335,381 @@
             margin-top: 8px;
         }
 
-        /* Resources Section */
-        .resources-section {
-            background: #fafbfc;
+        /* ============= RESOURCES SECTION ============= */
+        .resources {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
             margin-top: 40px;
         }
 
         .resource-card {
             background: white;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 24px;
-            border: 1px solid #e0e0e0;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
 
         .resource-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
 
-        .resource-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 10px;
-        }
-
-        .resource-desc {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 16px;
-            flex-grow: 1;
-        }
-
-        .resource-link {
-            color: #0078d4;
-            font-weight: 600;
-            font-size: 13px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .resource-link:hover {
-            color: #005a9e;
-            gap: 10px;
-        }
-
-        .resource-link::after {
-            content: "→";
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-            margin-top: 32px;
-        }
-
-        .faq-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .faq-item h4 {
+        .resource-card h4 {
             font-size: 16px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a202c;
         }
 
-        .faq-item p {
+        .resource-card p {
             font-size: 14px;
             color: #666;
-            line-height: 1.7;
+            margin-bottom: 16px;
         }
+
+        .resource-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= FAQ SECTION ============= */
         .faq {
-            padding: 80px 0;
-            background-color: var(--light-bg);
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
+            margin-top: 40px;
         }
 
         .faq-item {
-            background-color: var(--white);
-            border-radius: 8px;
-            margin-bottom: 16px;
-            border: 1px solid #ede8e8;
-            overflow: hidden;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
         }
 
         .faq-question {
-            padding: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a202c;
             cursor: pointer;
-            font-weight: 600;
-            color: var(--text-dark);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: background-color 0.3s ease;
+            gap: 12px;
             user-select: none;
         }
 
-        .faq-question:hover {
-            background-color: var(--light-bg);
-        }
-
         .faq-toggle {
-            font-size: 20px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f4ff;
+            border-radius: 50%;
+            color: #667eea;
+            font-weight: bold;
             transition: transform 0.3s ease;
         }
 
-        .faq-item.active .faq-toggle {
+        .faq-item.open .faq-toggle {
             transform: rotate(180deg);
         }
 
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding: 0 20px;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 20px 20px 20px;
-        }
-
-        .faq-answer p {
+            display: none;
+            margin-top: 16px;
             font-size: 14px;
-            color: var(--text-light);
+            color: #666;
             line-height: 1.8;
         }
 
-        /* Customer Stories */
-        .customer-story {
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
+        .faq-item.open .faq-answer {
+            display: block;
         }
 
-        .quote {
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .quote-mark {
-            font-size: 3rem;
-            color: var(--primary-color);
-            line-height: 1;
-        }
-
-        .customer-logos {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-
-        .customer-logo {
-            height: 40px;
-            background-color: var(--border-color);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 100px;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-        /* Customer Stories */
-        .customer-section {
-            background: #fafbfc;
+        /* ============= CUSTOMER SECTION ============= */
+        .customer-stories {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
         .customer-content {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
-            margin-top: 40px;
         }
 
         .customer-quote {
             font-size: 18px;
-            font-weight: 600;
-            color: #000;
+            font-style: italic;
+            color: #333;
+            margin: 32px 0;
             line-height: 1.8;
-            margin-bottom: 24px;
-            border-left: 4px solid #0078d4;
-            padding-left: 24px;
-            text-align: left;
         }
 
-        .customer-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .customer-logo {
-            width: 100px;
-            height: 50px;
-            background: white;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #e0e0e0;
-            font-size: 12px;
-            font-weight: 700;
+        .customer-attribution {
+            font-size: 14px;
             color: #666;
+            font-style: normal;
         }
 
-        .customer-link {
-            color: #0078d4;
-            font-weight: 600;
+        .read-more-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: #667eea;
             text-decoration: none;
-            font-size: 13px;
+            font-weight: 600;
+            font-size: 14px;
         }
 
-        .customer-link:hover {
+        .read-more-link:hover {
             text-decoration: underline;
         }
 
-        /* Trust Metrics */
-        .trust-section {
+        /* ============= SOCIAL PROOF SECTION ============= */
+        .social-proof {
             background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
-        .trust-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        .proof-content {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .metric {
-            padding: 20px;
+        .stars {
+            font-size: 28px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
         }
 
-        .metric-value {
+        .proof-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-number {
             font-size: 32px;
             font-weight: 700;
-            color: #0078d4;
+            color: #667eea;
             margin-bottom: 8px;
         }
 
         .metric-label {
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
-            font-weight: 600;
         }
 
-        .rating {
-            font-size: 24px;
-            color: #ffc107;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-
-        /* Related Articles */
-        .articles-section {
-            background: #fafbfc;
+        /* ============= RELATED ARTICLES SECTION ============= */
+        .related-articles {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
         }
 
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
             margin-top: 40px;
         }
 
         .article-card {
             background: white;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 24px;
-            border: 1px solid #e0e0e0;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
 
         .article-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
         }
 
-        .article-title {
-            font-size: 15px;
+        .article-card h4 {
+            font-size: 16px;
             font-weight: 700;
-            color: #000;
             margin-bottom: 12px;
-            line-height: 1.5;
+            color: #1a202c;
         }
 
-        .article-desc {
-            font-size: 13px;
+        .article-card p {
+            font-size: 14px;
             color: #666;
             margin-bottom: 16px;
-            flex-grow: 1;
         }
 
         .article-link {
-            color: #0078d4;
-            font-weight: 600;
-            font-size: 13px;
+            color: #667eea;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .article-link:hover {
-            color: #005a9e;
-            gap: 10px;
-        }
-
-        .article-link::after {
-            content: "→";
-        }
-
-        /* Footer CTA */
-        .footer-cta {
-            background: white;
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .footer-cta p {
-            color: #666;
-            margin-bottom: 20px;
+            font-weight: 600;
             font-size: 14px;
         }
 
-        /* Responsive */
+        .article-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= FOOTER ============= */
+        footer {
+            background-color: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* ============= RESPONSIVE ============= */
         @media (max-width: 768px) {
-            h1 {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
                 font-size: 28px;
             }
 
-            section h2 {
-                font-size: 24px;
-            }
-
-            .cta-group {
+            .hero-ctas {
                 flex-direction: column;
             }
 
             .btn {
                 width: 100%;
-            }
-
-            .theme-preview {
-                grid-template-columns: 1fr;
-            }
-
-            .tab-group {
-                gap: 8px;
-            }
-
-            .tab-btn {
-                padding: 10px 16px;
-                font-size: 13px;
-            }
-
-            .capabilities-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .customer-quote {
                 text-align: center;
-                padding-left: 0;
-                border-left: none;
-                border-top: 4px solid #0078d4;
-                padding-top: 24px;
+            }
+
+            .why-matters-wrapper {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .why-matters-header {
+                margin-bottom: 40px;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Hero Section -->
-    <header>
-        <div class="header-content">
-            <div class="eyebrow">REACT DATA GRID THEME CUSTOMIZATION FEATURES</div>
-            <h1>Build Applications with Your Brand Theme Customization</h1>
-            <p class="hero-description">Customize colors, fonts, and visual elements to match your design system. Create a consistent, on-brand experience that reflects your product identity.</p>
-            <div class="cta-group">
-                <button class="btn btn-primary" onclick="scrollToDemo()">View Theme Demo</button>
-                <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="btn btn-secondary">Explore Documentation</a>
-            </div>
-        </div>
-    </header>
+    <!-- HERO SECTION -->
+    <section class="hero">        
+    </section>
 
-    <!-- Demo Section -->
+    <!-- DEMO SECTION -->
     <section class="demo-section">
-        <div class="container">
-            <div class="eyebrow">LIVE PREVIEW</div>
-            <h2 id="demo">Try Theme Customization in Action</h2>
-            <p>Explore the theme options using the tabs below before proceeding with advanced customization.</p>
-
-            <div class="tab-group">
-                <button class="tab-btn active" onclick="switchTab(event, 'light')">Light Theme</button>
-                <button class="tab-btn" onclick="switchTab(event, 'dark')">Dark Theme</button>
-                <button class="tab-btn" onclick="switchTab(event, 'highcontrast')">High Contrast</button>
-                <button class="tab-btn" onclick="switchTab(event, 'custom')">Custom Brand</button>
-            </div>
-
-            <div id="light" class="tab-content active">
-                <div class="theme-preview">
-                    <div class="theme-card">
-                        <div class="theme-preview-box light-theme">Light Theme</div>
-                        <div class="theme-name">Default Light</div>
-                        <div class="theme-desc">Clean, minimal theme perfect for professional applications</div>
-                    </div>
-                    <div class="theme-card">
-                        <div class="theme-preview-box light-theme">Light Preview</div>
-                        <div class="theme-name">Light Variant</div>
-                        <div class="theme-desc">Subtle color palette with soft shadows and transitions</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="dark" class="tab-content">
-                <div class="theme-preview">
-                    <div class="theme-card">
-                        <div class="theme-preview-box dark-theme">Dark Theme</div>
-                        <div class="theme-name">Default Dark</div>
-                        <div class="theme-desc">Reduces eye strain with darker backgrounds and light text</div>
-                    </div>
-                    <div class="theme-card">
-                        <div class="theme-preview-box dark-theme">Dark Preview</div>
-                        <div class="theme-name">Dark Variant</div>
-                        <div class="theme-desc">Enhanced dark mode with optimized contrast and readability</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="highcontrast" class="tab-content">
-                <div class="theme-preview">
-                    <div class="theme-card">
-                        <div class="theme-preview-box highcontrast-theme">High Contrast</div>
-                        <div class="theme-name">High Contrast</div>
-                        <div class="theme-desc">Maximum contrast for accessibility compliance (WCAG AA)</div>
-                    </div>
-                    <div class="theme-card">
-                        <div class="theme-preview-box highcontrast-theme">HC Preview</div>
-                        <div class="theme-name">HC Variant</div>
-                        <div class="theme-desc">Alternative high-contrast palette with strong visual hierarchy</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="custom" class="tab-content">
-                <div class="theme-preview">
-                    <div class="theme-card">
-                        <div class="theme-preview-box custom-theme">Custom Brand</div>
-                        <div class="theme-name">Brand Theme</div>
-                        <div class="theme-desc">Fully customized theme matching your product brand colors</div>
-                    </div>
-                    <div class="theme-card">
-                        <div class="theme-preview-box custom-theme">Custom Preview</div>
-                        <div class="theme-name">Custom Variant</div>
-                        <div class="theme-desc">Second variant with alternative accent colors and styling</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <!-- Why This Feature Matters -->
-    <section class="why-section">
-        <div class="container">
-            <div class="eyebrow">WHY THEME CUSTOMIZATION MATTERS</div>
-            <h2>Customize Themes to Reflect Your Brand</h2>
-            <div class="why-content">
-                <p>Design systems define brand identity through specific colors, typography, and spacing. Developers need to implement these guidelines consistently across applications. Generic, one-size-fits-all UI components force compromises on brand expression.</p>
-                <p>The React Data Grid theme customization system lets you map your entire design system into production-ready components. Maintain brand consistency, reduce design-to-code friction, and empower developers to build on-brand experiences without fighting the component defaults.</p>
-            </div>
-
-            <div class="benefits-grid">
-                <div class="benefit-chip">Consistent Brand Expression</div>
-                <div class="benefit-chip">Reduce Design-Dev Friction</div>
-                <div class="benefit-chip">Faster Implementation</div>
-                <div class="benefit-chip">Centralized Style Control</div>
-                <div class="benefit-chip">Multiple Theme Support</div>
-                <div class="benefit-chip">Accessibility Built-In</div>
-            </div>
-        </div>
+    <!-- WHY MATTERS SECTION -->
+    <section class="why-matters">        
     </section>
 
-    <!-- Capability Options -->
-    <section>
-        <div class="container">
-            <div class="eyebrow">CHOOSE YOUR APPROACH</div>
-            <h2>Select the Customization Method That Fits Your Workflow</h2>
-            <p>Different scenarios call for different customization approaches. Choose the method that matches your development and design workflow.</p>
-
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <div class="capability-icon">🎨</div>
-                    <h3>CSS Variables</h3>
-                    <p>Override theme colors using CSS custom properties. Perfect for simple color adjustments and dynamic theme switching.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Light/dark mode toggling, simple brand color updates</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">You need quick CSS-level customization without code changes</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">📋</div>
-                    <h3>Theme Configuration</h3>
-                    <p>Configure the grid using a complete theme object that supports colors, typography, spacing, and individual component styles.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Complete design system implementation, multi-theme support</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">You have a full design system to implement</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">🔧</div>
-                    <h3>Custom CSS Classes</h3>
-                    <p>Apply custom CSS classes to grid elements. Provides fine-grained control for advanced styling scenarios.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Complex styling requirements, third-party CSS frameworks</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">You need complete control over specific elements</div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-icon">⚡</div>
-                    <h3>Component Templates</h3>
-                    <p>Custom render functions for headers, cells, and rows. Build highly branded, custom cell experiences.</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">Custom cell layouts, branded data visualization</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">You need to redesign specific grid elements</div>
-                </div>
-            </div>
-        </div>
+    <!-- CAPABILITY CARDS SECTION -->
+     <section class="capabilities-section">        
     </section>
 
-    <!-- Implementation Resources -->
-    <section class="resources-section">
-        <div class="container">
-            <div class="eyebrow">IMPLEMENTATION RESOURCES</div>
-            <h2>Explore Theme Customization Guides and Demos</h2>
-            <p>Find the documentation, examples, and tools you need to implement theme customization in your project.</p>
-
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-title">Theme Documentation</div>
-                    <div class="resource-desc">Complete guide to theming options, CSS variables, and theme configuration objects.</div>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="resource-link">View Guide</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-title">CSS Variables Reference</div>
-                    <div class="resource-desc">Full list of available CSS custom properties and their default values.</div>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="resource-link">View Reference</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-title">Light/Dark Mode Demo</div>
-                    <div class="resource-desc">Live demo showing how to implement light and dark theme switching with code examples.</div>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="resource-link">View Demo</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-title">Custom Theme Builder</div>
-                    <div class="resource-desc">Interactive tool to create and preview custom themes, generate CSS variables.</div>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="resource-link">Open Tool</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-title">Template Customization Guide</div>
-                    <div class="resource-desc">Learn how to use custom render templates to create branded cell and row layouts.</div>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="resource-link">View Guide</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-title">API Reference</div>
-                    <div class="resource-desc">Complete TypeScript API documentation for theme configuration and styling options.</div>
-                    <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="resource-link">View API Docs</a>
-                </div>
-            </div>
-        </div>
+    <!-- IMPLEMENTATION RESOURCES SECTION -->
+    <section class="resources">        
     </section>
 
-    <!-- FAQ -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow">Frequently Asked Questions</div>
-                <h2>React Data Grid Theme Customization Questions</h2>
-            </div>
-
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What themes are available out of the box?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Syncfusion offers Material, Bootstrap, Fabric, Tailwind, and Fluent Design themes for the React Data Grid. Each theme includes a light and dark variant, giving you 10+ pre-designed options to choose from.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I create a completely custom theme?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes. You can create custom themes using CSS variables, SCSS variables, or custom CSS classes. CSS variables allow runtime switching without recompilation, while SCSS provides build-time customization. Combined with custom classes for specific cells and rows, you have complete control.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do I implement a dark mode toggle?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Use CSS variables or theme CSS switching. Define two sets of CSS custom properties (light and dark variants) and swap them based on user preference. This enables theme switching without page reload. Store the preference in localStorage for persistence.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Will custom themes impact performance?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>No. Built-in themes are optimized and minimal. CSS variables have negligible performance impact. Custom class-based styling scales well even with thousands of rows through CSS class efficiency.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can themes be applied to specific grid instances?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes. Use CSS class scoping or CSS-in-JS solutions. You can apply different themes to different grid instances on the same page. CSS variables can be scoped to specific container elements.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Does theming support accessibility standards?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes. All built-in themes meet WCAG 2.1 AA accessibility standards with proper color contrast ratios. When creating custom themes, use the theme builder to validate contrast ratios and ensure accessibility compliance.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- FAQ SECTION -->
+    <section class="faq">       
     </section>
 
-    <!-- Customer Stories -->
-    <section class="customer-section">
+    <!-- CUSTOMER STORIES SECTION -->
+    <section class="customer-stories">
         <div class="container">
-            <div class="eyebrow">CUSTOMER STORIES</div>
-            <h2>Trusted for Business Application Development</h2>
+            <div class="section-eyebrow">Customer Stories</div>
+            <h2 class="section-title">Trusted for Business Application Development</h2>
 
             <div class="customer-content">
                 <div class="customer-quote">
-                    "The theme customization system let us implement our complete design system without fighting component defaults. We shipped our white-label platform 3 weeks faster with consistent styling across all customer instances."
+                    "Syncfusion components help teams build data-rich application screens faster, with consistent UI
+                    patterns and production-ready features."
                 </div>
-
-                <div class="customer-info">
-                    <div class="customer-logo">Brand Corp</div>
-                    <div class="customer-logo">Tech Startup</div>
-                    <div class="customer-logo">Enterprise Co</div>
+                <div class="customer-attribution">
+                    — Enterprise Development Team
                 </div>
-
-                <a href="#" class="customer-link">Read more customer stories</a>
+                <a href="#" class="read-more-link">Read customer stories →</a>
             </div>
         </div>
     </section>
 
-    <!-- Trust Metrics -->
-    <section class="trust-section">
+    <!-- SOCIAL PROOF SECTION -->
+    <section class="social-proof">
         <div class="container">
-            <div class="eyebrow">OUR CUSTOMERS LOVE US</div>
-            <h2 style="margin-bottom: 0;">Why Developers Choose Syncfusion React Data Grid</h2>
+            <div class="section-eyebrow">Our Customers Love Us</div>
+            <h2 class="section-title">Loved by Development Teams Worldwide</h2>
 
-            <div class="trust-metrics">
-                <div class="metric">
-                    <div class="rating">★★★★★</div>
-                    <div class="metric-value">4.8/5</div>
-                    <div class="metric-label">Average Rating</div>
-                </div>
+            <div class="proof-content">
+                <div class="stars">★★★★★</div>
+                <p>Trusted by developers and enterprises building high-performance applications.</p>
 
-                <div class="metric">
-                    <div class="metric-value">1,800+</div>
-                    <div class="metric-label">Components Included</div>
-                </div>
-
-                <div class="metric">
-                    <div class="metric-value">24/5</div>
-                    <div class="metric-label">Priority Support</div>
-                </div>
-
-                <div class="metric">
-                    <div class="metric-value">15 Years</div>
-                    <div class="metric-label">In the Market</div>
+                <div class="proof-metrics">
+                    <div class="metric">
+                        <div class="metric-number">80+</div>
+                        <div class="metric-label">UI Components</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">1M+</div>
+                        <div class="metric-label">Developers Worldwide</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">24/7</div>
+                        <div class="metric-label">Support Available</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Related Articles -->
-    <section class="articles-section">
+    <!-- RELATED ARTICLES SECTION -->
+    <section class="related-articles">        
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
         <div class="container">
-            <div class="eyebrow">CONTINUE LEARNING</div>
-            <h2>Related Articles and Resources</h2>
-            <p>Explore more about styling, design systems, and building branded UI experiences.</p>
-
-            <div class="articles-grid">
-                <div class="article-card">
-                    <div class="article-title">Building Design Systems with React Data Grid</div>
-                    <div class="article-desc">Learn how to create a scalable design system using theme customization and component templates.</div>
-                    <a href="#" class="article-link">Read Article</a>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-title">Dark Mode Best Practices</div>
-                    <div class="article-desc">Implement accessible, user-friendly dark mode using CSS variables and React state management.</div>
-                    <a href="#" class="article-link">Read Article</a>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-title">White-Label Applications with React Data Grid</div>
-                    <div class="article-desc">Multi-tenant styling strategies and how to support customer-specific branding.</div>
-                    <a href="#" class="article-link">Read Article</a>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-title">Accessibility and Theme Customization</div>
-                    <div class="article-desc">Maintain WCAG compliance while creating custom themes and branded experiences.</div>
-                    <a href="#" class="article-link">Read Article</a>
-                </div>
-            </div>
+            <p>&copy; 2024 Syncfusion React Data Grid Selection. All rights reserved.</p>
         </div>
-    </section>
-
-    <!-- Footer CTA -->
-    <section class="footer-cta">
-        <div class="container">
-            <h2>Ready to Customize Your Data Grid?</h2>
-            <p>Start with the documentation or explore the interactive theme builder.</p>
-            <div class="cta-group">
-                <a href="https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance" target="_blank" class="btn btn-primary">View Full Documentation</a>
-                <button class="btn btn-secondary" onclick="alert('Theme Builder would open in a new tab')">Open Theme Builder</button>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Tab switching
-        function switchTab(event, tabName) {
-            const tabContents = document.querySelectorAll('.tab-content');
-            const tabBtns = document.querySelectorAll('.tab-btn');
-
-            tabContents.forEach(tab => tab.classList.remove('active'));
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-
-        // Scroll to demo
-        function scrollToDemo() {
-            document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const faqItem = this.parentElement;
-                faqItem.classList.toggle('active');
-
-                // Close other items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    if (item !== faqItem) {
-                        item.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
+    </footer>
+    <script src="theme.js"></script>
 </body>
 </html>
