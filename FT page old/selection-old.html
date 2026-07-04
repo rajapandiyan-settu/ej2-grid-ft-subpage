@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Data Grid Selection - Build Flexible Row, Cell & Column Selection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+
+        /* ============= DEMO GRIDS TABLE STYLES ============= */
+        .demo-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .demo-table thead {
+            background-color: #f0f4ff;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .demo-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #1a202c;
+            font-size: 14px;
+        }
+
+        .demo-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+
+        .demo-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .demo-table tbody tr:hover {
+            background-color: #f8f9ff;
+        }
+
+        .demo-table tbody tr.row-selected {
+            background-color: #e6efff;
+            border-left: 3px solid #667eea;
+        }
+
+        .demo-table input[type="checkbox"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+
+        .cell-selected {
+            background-color: #eef3ff !important;
+            outline: 2px solid #667eea;
+            outline-offset: -2px;
+        }
+
+        .column-selected {
+            background-color: #e6efff;
+        }
+
+        .demo-info {
+            padding: 12px 16px;
+            background-color: #f0f4ff;
+            border-left: 3px solid #667eea;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .cell-clickable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cell-clickable:hover {
+            background-color: #f0f4ff;
+        }
+
+        .column-header {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .column-header:hover {
+            background-color: #e6efff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============= HERO SECTION ============= */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #ffffff;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============= DEMO SECTION ============= */
+        .demo-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .section-eyebrow {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #667eea;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-btn:hover {
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .demo-grid {
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #999;
+        }
+
+        /* ============= WHY MATTERS SECTION ============= */
+        .why-matters {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .why-matters-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .why-matters-header .section-eyebrow {
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .why-matters-header .section-title {
+            margin-bottom: 20px;
+        }
+
+        .why-matters-header .section-description {
+            margin: 0;
+        }
+
+        .why-matters-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .why-matters-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .why-matters-text-large {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin: 0;
+        }
+
+        .selection-types-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .selection-type-item {
+            background-color: #f0f4ff;
+            color: #667eea;
+            padding: 10px 18px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .why-matters-right {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .why-matters-card {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            width: 100%;
+        }
+
+        .why-matters-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0 0 16px 0;
+        }
+
+        .why-matters-card .card-description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+            margin: 0;
+        }
+
+        .benefits-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .chip {
+            background-color: #f0f4ff;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Capability Options */
+        .capabilities-section {
+            padding: 60px 20px;
+            background: #f9f9f9;
+        }
+
+        .capabilities-section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .capabilities-eyebrow {
+            color: #0066cc;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .capabilities-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .capability-card {
+            background: white;
+            border-radius: 8px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .capability-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
+        }
+
+        .capability-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            background: #e8f1ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .capability-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .capability-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .capability-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0066cc;
+            text-transform: uppercase;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .capability-scenario {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* ============= RESOURCES SECTION ============= */
+        .resources {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .resource-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a202c;
+        }
+
+        .resource-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .resource-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= FAQ SECTION ============= */
+        .faq {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 24px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a202c;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            user-select: none;
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f4ff;
+            border-radius: 50%;
+            color: #667eea;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* ============= CUSTOMER SECTION ============= */
+        .customer-stories {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .customer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .customer-quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+            margin: 32px 0;
+            line-height: 1.8;
+        }
+
+        .customer-attribution {
+            font-size: 14px;
+            color: #666;
+            font-style: normal;
+        }
+
+        .read-more-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .read-more-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= SOCIAL PROOF SECTION ============= */
+        .social-proof {
+            background: white;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .proof-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stars {
+            font-size: 28px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .proof-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* ============= RELATED ARTICLES SECTION ============= */
+        .related-articles {
+            background: #f9fafb;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .article-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .article-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+
+        .article-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .article-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .article-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ============= FOOTER ============= */
+        footer {
+            background-color: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* ============= RESPONSIVE ============= */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .cards-grid,
+            .resources-grid,
+            .articles-grid,
+            .proof-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .why-matters-wrapper {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .why-matters-header {
+                margin-bottom: 40px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+                text-align: left;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+                padding-left: 16px;
+            }
+
+            .tab-btn.active {
+                border-bottom: none;
+                border-left-color: #667eea;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">        
+    </section>
+
+    <!-- DEMO SECTION -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="section-eyebrow">Selection Modes</div>
+            <h2 class="section-title">Try Selection Modes in Action</h2>
+            <p class="section-description">Use a live sample tab to see the selection modes before diving into the
+                details.</p>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('normal-row')">Normal Row Selection</button>
+                <button class="tab-btn" onclick="switchTab('checkbox')">Checkbox Selection</button>
+                <button class="tab-btn" onclick="switchTab('conditional')">Conditional Checkbox</button>
+                <button class="tab-btn" onclick="switchTab('cell')">Cell Selection</button>
+                <button class="tab-btn" onclick="switchTab('column')">Column Selection</button>
+            </div>
+
+            <!-- NORMAL ROW SELECTION TAB -->
+            <div id="normal-row" class="tab-content active">
+                <div class="demo-info">
+                    💡 Click rows to select them. Use Ctrl+Click for multiple selections or Shift+Click for range
+                    selection.
+                </div>
+                <div class="demo-grid">
+                    <table class="demo-table" id="normalRowTable">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Wireless Headphones</td>
+                                <td>Electronics</td>
+                                <td>$79.99</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>USB-C Cable</td>
+                                <td>Accessories</td>
+                                <td>$12.99</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Laptop Stand</td>
+                                <td>Office</td>
+                                <td>$39.99</td>
+                                <td>75</td>
+                            </tr>
+                            <tr>
+                                <td>Mechanical Keyboard</td>
+                                <td>Electronics</td>
+                                <td>$129.99</td>
+                                <td>45</td>
+                            </tr>
+                            <tr>
+                                <td>Monitor Mount</td>
+                                <td>Office</td>
+                                <td>$54.99</td>
+                                <td>120</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CHECKBOX SELECTION TAB -->
+            <div id="checkbox" class="tab-content">
+                <div class="demo-info">
+                    💡 Use checkboxes to select rows. Click the header checkbox to select or deselect all rows at once.
+                </div>
+                <div class="demo-grid">
+                    <table class="demo-table" id="checkboxTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAllCheckbox" onchange="toggleAllCheckboxes(this)">
+                                </th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
+                                </td>
+                                <td>Wireless Headphones</td>
+                                <td>Electronics</td>
+                                <td>$79.99</td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
+                                </td>
+                                <td>USB-C Cable</td>
+                                <td>Accessories</td>
+                                <td>$12.99</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
+                                </td>
+                                <td>Laptop Stand</td>
+                                <td>Office</td>
+                                <td>$39.99</td>
+                                <td>75</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
+                                </td>
+                                <td>Mechanical Keyboard</td>
+                                <td>Electronics</td>
+                                <td>$129.99</td>
+                                <td>45</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="rowCheckbox" onchange="updateSelectAllCheckbox()">
+                                </td>
+                                <td>Monitor Mount</td>
+                                <td>Office</td>
+                                <td>$54.99</td>
+                                <td>120</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CONDITIONAL CHECKBOX SELECTION TAB -->
+            <div id="conditional" class="tab-content">
+                <div class="demo-info">
+                    💡 Conditional selection: Only rows with Stock > 100 can be selected. Try selecting different items.
+                </div>
+                <div class="demo-grid">
+                    <table class="demo-table" id="conditionalTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAllConditional"
+                                        onchange="toggleAllConditional(this)" disabled></th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-selectable="true">
+                                <td><input type="checkbox" class="conditionalCheckbox"
+                                        onchange="updateSelectAllConditional()"></td>
+                                <td>Wireless Headphones</td>
+                                <td>Electronics</td>
+                                <td>$79.99</td>
+                                <td><strong style="color: #667eea;">150</strong> ✓</td>
+                            </tr>
+                            <tr data-selectable="false">
+                                <td><input type="checkbox" class="conditionalCheckbox" disabled style="opacity: 0.3;">
+                                </td>
+                                <td>USB-C Cable</td>
+                                <td>Accessories</td>
+                                <td>$12.99</td>
+                                <td><strong style="color: #999;">500</strong> (Acc only)</td>
+                            </tr>
+                            <tr data-selectable="true">
+                                <td><input type="checkbox" class="conditionalCheckbox"
+                                        onchange="updateSelectAllConditional()"></td>
+                                <td>Laptop Stand</td>
+                                <td>Office</td>
+                                <td>$39.99</td>
+                                <td><strong style="color: #667eea;">120</strong> ✓</td>
+                            </tr>
+                            <tr data-selectable="false">
+                                <td><input type="checkbox" class="conditionalCheckbox" disabled style="opacity: 0.3;">
+                                </td>
+                                <td>Mechanical Keyboard</td>
+                                <td>Electronics</td>
+                                <td>$129.99</td>
+                                <td><strong style="color: #ccc;">45</strong> (Low)</td>
+                            </tr>
+                            <tr data-selectable="true">
+                                <td><input type="checkbox" class="conditionalCheckbox"
+                                        onchange="updateSelectAllConditional()"></td>
+                                <td>Monitor Mount</td>
+                                <td>Office</td>
+                                <td>$54.99</td>
+                                <td><strong style="color: #667eea;">200</strong> ✓</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CELL SELECTION TAB -->
+            <div id="cell" class="tab-content">
+                <div class="demo-info">
+                    💡 Click individual cells to select them. Selected cells are highlighted in blue.
+                </div>
+                <div class="demo-grid">
+                    <table class="demo-table" id="cellTable">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Q1 Sales</th>
+                                <th>Q2 Sales</th>
+                                <th>Q3 Sales</th>
+                                <th>Q4 Sales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cell-clickable">Product A</td>
+                                <td class="cell-clickable">$45,000</td>
+                                <td class="cell-clickable">$52,000</td>
+                                <td class="cell-clickable">$48,000</td>
+                                <td class="cell-clickable">$61,000</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-clickable">Product B</td>
+                                <td class="cell-clickable">$32,000</td>
+                                <td class="cell-clickable">$38,000</td>
+                                <td class="cell-clickable">$41,000</td>
+                                <td class="cell-clickable">$47,000</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-clickable">Product C</td>
+                                <td class="cell-clickable">$28,000</td>
+                                <td class="cell-clickable">$31,000</td>
+                                <td class="cell-clickable">$35,000</td>
+                                <td class="cell-clickable">$42,000</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-clickable">Product D</td>
+                                <td class="cell-clickable">$55,000</td>
+                                <td class="cell-clickable">$58,000</td>
+                                <td class="cell-clickable">$62,000</td>
+                                <td class="cell-clickable">$70,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- COLUMN SELECTION TAB -->
+            <div id="column" class="tab-content">
+                <div class="demo-info">
+                    💡 Click a column header to select an entire column. Use Ctrl + Click to select or deselect multiple columns. All cells in the selected columns will be highlighted.
+                </div>
+                <div class="demo-grid">
+                    <table class="demo-table" id="columnTable">
+                        <thead>
+                            <tr>
+                                <th class="column-header" data-column="0">Product</th>
+                                <th class="column-header" data-column="1">Jan Sales</th>
+                                <th class="column-header" data-column="2">Feb Sales</th>
+                                <th class="column-header" data-column="3">Mar Sales</th>
+                                <th class="column-header" data-column="4">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="column-cell" data-column="0">Widget A</td>
+                                <td class="column-cell" data-column="1">$12,000</td>
+                                <td class="column-cell" data-column="2">$14,000</td>
+                                <td class="column-cell" data-column="3">$18,000</td>
+                                <td class="column-cell" data-column="4">$44,000</td>
+                            </tr>
+                            <tr>
+                                <td class="column-cell" data-column="0">Widget B</td>
+                                <td class="column-cell" data-column="1">$18,000</td>
+                                <td class="column-cell" data-column="2">$19,000</td>
+                                <td class="column-cell" data-column="3">$21,000</td>
+                                <td class="column-cell" data-column="4">$58,000</td>
+                            </tr>
+                            <tr>
+                                <td class="column-cell" data-column="0">Widget C</td>
+                                <td class="column-cell" data-column="1">$15,000</td>
+                                <td class="column-cell" data-column="2">$16,000</td>
+                                <td class="column-cell" data-column="3">$17,000</td>
+                                <td class="column-cell" data-column="4">$48,000</td>
+                            </tr>
+                            <tr>
+                                <td class="column-cell" data-column="0">Widget D</td>
+                                <td class="column-cell" data-column="1">$22,000</td>
+                                <td class="column-cell" data-column="2">$24,000</td>
+                                <td class="column-cell" data-column="3">$26,000</td>
+                                <td class="column-cell" data-column="4">$72,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY MATTERS SECTION -->
+    <section class="why-matters">        
+    </section>
+
+    <!-- CAPABILITY CARDS SECTION -->
+     <section class="capabilities-section">        
+    </section>
+
+    <!-- IMPLEMENTATION RESOURCES SECTION -->
+    <section class="resources">        
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">       
+    </section>
+
+    <!-- CUSTOMER STORIES SECTION -->
+    <section class="customer-stories">
+        <div class="container">
+            <div class="section-eyebrow">Customer Stories</div>
+            <h2 class="section-title">Trusted for Business Application Development</h2>
+
+            <div class="customer-content">
+                <div class="customer-quote">
+                    "Syncfusion components help teams build data-rich application screens faster, with consistent UI
+                    patterns and production-ready features."
+                </div>
+                <div class="customer-attribution">
+                    — Enterprise Development Team
+                </div>
+                <a href="#" class="read-more-link">Read customer stories →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF SECTION -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="section-eyebrow">Our Customers Love Us</div>
+            <h2 class="section-title">Loved by Development Teams Worldwide</h2>
+
+            <div class="proof-content">
+                <div class="stars">★★★★★</div>
+                <p>Trusted by developers and enterprises building high-performance applications.</p>
+
+                <div class="proof-metrics">
+                    <div class="metric">
+                        <div class="metric-number">80+</div>
+                        <div class="metric-label">UI Components</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">1M+</div>
+                        <div class="metric-label">Developers Worldwide</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number">24/7</div>
+                        <div class="metric-label">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATED ARTICLES SECTION -->
+    <section class="related-articles">        
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Syncfusion React Data Grid Selection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="selection.js"></script>
+    <script>
+        // ========== TAB SWITCHING ==========
+        function switchTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            event.target.classList.add('active');
+        }
+
+        // ========== NORMAL ROW SELECTION ==========
+        let selectedRows = new Set();
+        document.addEventListener('DOMContentLoaded', function () {
+            const normalRowTable = document.getElementById('normalRowTable');
+            if (normalRowTable) {
+                normalRowTable.addEventListener('click', function (e) {
+                    if (e.target.tagName !== 'TD') return;
+
+                    const row = e.target.closest('tr');
+                    const tbody = normalRowTable.querySelector('tbody');
+                    const isCtrlClick = e.ctrlKey || e.metaKey;
+                    const isShiftClick = e.shiftKey;
+
+                    if (!isCtrlClick && !isShiftClick) {
+                        // Single selection - clear others
+                        document.querySelectorAll('#normalRowTable tbody tr').forEach(r => {
+                            r.classList.remove('row-selected');
+                        });
+                        selectedRows.clear();
+                    }
+
+                    if (isCtrlClick) {
+                        // Toggle selection
+                        row.classList.toggle('row-selected');
+                        const rowIndex = Array.from(tbody.rows).indexOf(row);
+                        if (selectedRows.has(rowIndex)) {
+                            selectedRows.delete(rowIndex);
+                        } else {
+                            selectedRows.add(rowIndex);
+                        }
+                    } else if (isShiftClick && selectedRows.size > 0) {
+                        // Range selection
+                        const lastSelected = Math.max(...selectedRows);
+                        const currentIndex = Array.from(tbody.rows).indexOf(row);
+                        const start = Math.min(lastSelected, currentIndex);
+                        const end = Math.max(lastSelected, currentIndex);
+
+                        for (let i = start; i <= end; i++) {
+                            tbody.rows[i].classList.add('row-selected');
+                            selectedRows.add(i);
+                        }
+                    } else {
+                        // Simple click
+                        row.classList.add('row-selected');
+                        const rowIndex = Array.from(tbody.rows).indexOf(row);
+                        selectedRows.add(rowIndex);
+                    }
+                });
+            }
+        });
+
+        // ========== CHECKBOX SELECTION ==========
+        function toggleAllCheckboxes(headerCheckbox) {
+            const checkboxes = document.querySelectorAll('#checkboxTable tbody .rowCheckbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = headerCheckbox.checked;
+                updateRowHighlight(checkbox);
+            });
+        }
+
+        function updateSelectAllCheckbox() {
+            const checkboxes = document.querySelectorAll('#checkboxTable tbody .rowCheckbox');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            const someChecked = Array.from(checkboxes).some(cb => cb.checked);
+
+            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+            selectAllCheckbox.checked = allChecked;
+            selectAllCheckbox.indeterminate = someChecked && !allChecked;
+
+            checkboxes.forEach(checkbox => {
+                updateRowHighlight(checkbox);
+            });
+        }
+
+        function updateRowHighlight(checkbox) {
+            const row = checkbox.closest('tr');
+            if (checkbox.checked) {
+                row.classList.add('row-selected');
+            } else {
+                row.classList.remove('row-selected');
+            }
+        }
+
+
+
+        // ========== CONDITIONAL CHECKBOX SELECTION ==========
+        function toggleAllConditional(headerCheckbox) {
+            const checkboxes = document.querySelectorAll('#conditionalTable tbody .conditionalCheckbox');
+            checkboxes.forEach(checkbox => {
+                if (!checkbox.disabled) {
+                    checkbox.checked = headerCheckbox.checked;
+                    updateConditionalRowHighlight(checkbox);
+                }
+            });
+        }
+
+        function updateSelectAllConditional() {
+            const checkboxes = document.querySelectorAll('#conditionalTable tbody .conditionalCheckbox:not([disabled])');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            const someChecked = Array.from(checkboxes).some(cb => cb.checked);
+
+            const selectAllCheckbox = document.getElementById('selectAllConditional');
+            selectAllCheckbox.checked = allChecked;
+            selectAllCheckbox.indeterminate = someChecked && !allChecked;
+
+            checkboxes.forEach(checkbox => {
+                updateConditionalRowHighlight(checkbox);
+            });
+        }
+
+        function updateConditionalRowHighlight(checkbox) {
+            const row = checkbox.closest('tr');
+            if (checkbox.checked) {
+                row.classList.add('row-selected');
+            } else {
+                row.classList.remove('row-selected');
+            }
+        }
+
+
+
+        // ========== CELL SELECTION ==========
+        const cellTable = document.getElementById('cellTable');
+        const cellClickables = document.querySelectorAll('#cellTable .cell-clickable');
+
+        cellClickables.forEach(cell => {
+            cell.addEventListener('click', function (e) {
+                e.stopPropagation();
+
+                if (!e.ctrlKey && !e.metaKey) {
+                    cellClickables.forEach(c => c.classList.remove('cell-selected'));
+                }
+
+                this.classList.toggle('cell-selected');
+            });
+        });
+
+        // ========== COLUMN SELECTION ==========
+        const columnHeaders = document.querySelectorAll('#columnTable .column-header');
+        let selectedColumns = new Set();
+
+        columnHeaders.forEach(header => {
+            header.addEventListener('click', function (e) {
+                const columnIndex = this.dataset.column;
+
+                if (!e.ctrlKey && !e.metaKey) {
+                    document.querySelectorAll('#columnTable .column-selected')
+                        .forEach(cell => cell.classList.remove('column-selected'));
+
+                    columnHeaders.forEach(h =>
+                        h.classList.remove('column-selected')
+                    );
+
+                    selectedColumns.clear();
+                }
+
+                if (selectedColumns.has(columnIndex)) {
+                    selectedColumns.delete(columnIndex);
+
+                    this.classList.remove('column-selected');
+
+                    document
+                        .querySelectorAll(`#columnTable .column-cell[data-column="${columnIndex}"]`)
+                        .forEach(cell => cell.classList.remove('column-selected'));
+                } else {
+                    selectedColumns.add(columnIndex);
+
+                    this.classList.add('column-selected');
+
+                    document
+                        .querySelectorAll(`#columnTable .column-cell[data-column="${columnIndex}"]`)
+                        .forEach(cell => cell.classList.add('column-selected'));
+                }
+            });
+        });
+
+        // ========== INITIALIZE ALL LISTENERS ==========
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize first tab as active
+            document.querySelector('.tab-btn').classList.add('active');
+
+            // Initialize checkbox listeners for normal checkbox selection
+            document.querySelectorAll('#checkboxTable tbody .rowCheckbox').forEach(checkbox => {
+                checkbox.addEventListener('change', updateSelectAllCheckbox);
+            });
+
+            // Initialize conditional checkbox listeners
+            document.querySelectorAll('#conditionalTable tbody .conditionalCheckbox').forEach(checkbox => {
+                if (!checkbox.disabled) {
+                    checkbox.addEventListener('change', updateSelectAllConditional);
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

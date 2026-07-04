@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Grid Performance Optimization | Syncfusion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-eyebrow {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-container {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            padding: 32px;
+            margin: 32px 0;
+        }
+
+        .radio-controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--light-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+        }
+
+        .radio-option input[type="radio"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+        }
+
+        .radio-option label {
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .radio-option.active {
+            border-color: var(--primary-color);
+            background: #e8f0fe;
+        }
+
+        .demo-preview {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* Why This Matters Section */
+        .why-matters-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .why-matters-left {
+            max-width: 600px;
+        }
+
+        .why-matters-content p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .why-matters-right {
+            background-color: #f0f7ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 32px;
+            border-radius: 4px;
+        }
+
+        .why-matters-right h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .why-matters-right p {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .benefit-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .chip {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Capability Cards Section */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .capability-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .capability-icon {
+            width: 56px;
+            height: 56px;
+            background-color: #e8f0fe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+        }
+
+        .capability-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .capability-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .capability-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-top: 16px;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .capability-value {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Resources Section */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .resource-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .resource-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .resource-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.3s ease;
+        }
+
+        .resource-link:hover {
+            gap: 8px;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: var(--light-bg);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            color: var(--text-dark);
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 24px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 24px 24px 24px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Customer Stories Section */
+        .testimonial {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-quote {
+            font-size: 22px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            font-size: 16px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .customer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .customer-logo-placeholder {
+            font-size: 20px;
+            color: var(--text-light);
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* Trust Metrics */
+        .trust-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rating-stars {
+            color: #ffc107;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        /* Related Articles Section */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .article-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .article-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .article-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.3s ease;
+        }
+
+        .article-link:hover {
+            gap: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .why-matters-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .capability-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .capability-card {
+                padding: 20px;
+            }
+
+            .radio-controls {
+                flex-direction: column;
+            }
+
+            .radio-option {
+                width: 100%;
+            }
+
+            .trust-metrics {
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="eyebrow">REACT DATA GRID LARGE DATASETS</div>
+            <h1>Handle Large Datasets with Lightning-Fast Performance</h1>
+            <p>Deliver lightning-fast, responsive grid experiences with intelligent rendering strategies that scale effortlessly.</p>
+            <div class="cta-group">
+                <a href="#demo" class="btn btn-primary">View Live Demos</a>
+                <a href="#" class="btn btn-secondary">Explore Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Sample Section -->
+    <section class="section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">INTERACTIVE DEMO</div>
+                <h2 class="section-title">Experience Performance in Action</h2>
+                <p class="section-description">Select a rendering strategy to see how each approach optimizes grid performance for different scenarios.</p>
+            </div>
+            <div class="demo-container">
+                <div class="radio-controls">
+                    <div class="radio-option active">
+                        <input type="radio" id="dom-virtual" name="performance" value="dom-virtual" checked>
+                        <label for="dom-virtual">DOM Virtualization with Virtual Scroll</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="virtual-scroll" name="performance" value="virtual-scroll">
+                        <label for="virtual-scroll">Virtual Scrolling</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="paging" name="performance" value="paging">
+                        <label for="paging">Paging</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="infinite-scroll" name="performance" value="infinite-scroll">
+                        <label for="infinite-scroll">Infinite Scrolling</label>
+                    </div>
+                </div>
+                <div class="demo-preview">
+                    <p>Grid Performance Demo will be displayed here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Matters Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-eyebrow">WHY PERFORMANCE OPTIMIZATION MATTERS</div>
+            <h2 class="section-title">Deliver Fast, Responsive User Experiences</h2>
+            
+            <div class="why-matters-content">
+                <div class="why-matters-left">
+                    <p>Modern applications often struggle when displaying large volumes of data. Rendering thousands of rows and columns can lead to slow initial load times, laggy scrolling, excessive memory consumption, delayed user interactions, and an overall unresponsive experience. As datasets grow, increased DOM size and frequent re-rendering can further impact browser performance, making it difficult to deliver the fast, seamless experience users expect.</p>
+                    
+                    <p>Syncfusion React Grid addresses these challenges through built-in performance optimization techniques such as DOM virtualization, virtual scrolling, pagination and infinite scrolling. By rendering only the visible content and efficiently managing data operations, the grid significantly reduces DOM overhead, minimizes memory usage, and maintains smooth, responsive interactions. This enables applications to handle large datasets efficiently while delivering a consistent, high-performance user experience.</p>
+
+                    <div class="benefit-chips">
+                        <div class="chip">Blazing-fast rendering speed</div>
+                        <div class="chip">Efficient DOM Management</div>
+                        <div class="chip">Memory Optimization</div>
+                        <div class="chip">Smooth Scrolling Experience</div>
+                        <div class="chip">Server-Side Data Operations</div>
+                        <div class="chip">Fast Data Refresh and Updates</div>
+                    </div>
+                </div>
+
+                <div class="why-matters-right">
+                    <h3>Intelligent Rendering</h3>
+                    <p>The Syncfusion React Grid leverages advanced rendering techniques and efficient DOM management to deliver consistent performance across large datasets.</p>
+                    <p>By rendering only the rows currently visible within the viewport, the grid significantly reduces DOM overhead and memory consumption. This virtualization-driven approach minimizes rendering work, enables smooth scrolling, and ensures responsive interactions even when working with hundreds of thousands or millions of records.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choose the Right Approach Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">CHOOSE THE RIGHT APPROACH</div>
+                <h2 class="section-title">Choose the Right Performance Strategy</h2>
+                <p class="section-description">Select the rendering approach that best matches your data size and user interaction patterns.</p>
+            </div>
+
+            <div class="capability-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">⚡</div>
+                    <div class="capability-name">DOM Virtualization</div>
+                    <p>Achieves maximum rendering speed by minimizing DOM overhead with configurable buffer values.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Ultra-fast rendering with extensive columns and rows</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Performance optimization is critical and you need fine-grained control</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📜</div>
+                    <div class="capability-name">Virtual Scrolling</div>
+                    <p>Delivers seamless scrolling through massive datasets by loading only viewport content.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Large datasets requiring smooth, continuous navigation</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Working with thousands to millions of records</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📄</div>
+                    <div class="capability-name">Paging</div>
+                    <p>Breaks data into manageable pages with intuitive navigation controls.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Traditional data browsing with clear page boundaries</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Users need to track position and revisit specific pages</div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">∞</div>
+                    <div class="capability-name">Infinite Scrolling</div>
+                    <p>Progressively loads data as users scroll, creating an endless browsing experience.</p>
+                    <div class="capability-label">Best for</div>
+                    <div class="capability-value">Social feeds, activity logs, and continuous exploration</div>
+                    <div class="capability-label">Use when</div>
+                    <div class="capability-value">Building mobile-first or discovery-focused interfaces</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Resources Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">IMPLEMENTATION RESOURCES</div>
+                <h2 class="section-title">Explore Performance Demos and Docs</h2>
+                <p class="section-description">Find everything you need to implement performance optimization in your React grid applications.</p>
+            </div>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Virtual Scrolling Documentation</h4>
+                    <p>Master row and column virtualization with configuration examples for optimal viewport rendering.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/scrolling/virtual-scrolling" class="resource-link">Read Documentation →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Infinite Scrolling Implementation</h4>
+                    <p>Build seamless data loading experiences with remote data binding and lazy load patterns.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/scrolling/infinite-scrolling" class="resource-link">View Guide →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Paging Configuration Guide</h4>
+                    <p>Configure page sizes, templates, and navigation controls for chunk-based data display.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/paging" class="resource-link">Explore Options →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Performance Best Practices</h4>
+                    <p>Learn optimization techniques including server-side operations and efficient data binding strategies.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/performance" class="resource-link">Read Best Practices →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>DOM Row Virtualization</h4>
+                    <p>Implement DOM virtualization with buffer configuration for maximum rendering efficiency.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/virtualization" class="resource-link">View Examples →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Server-Side Data Operations</h4>
+                    <p>Offload filtering, sorting, and paging to the server for improved scalability with large datasets.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/data-binding" class="resource-link">Learn More →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Getting Started Tutorial</h4>
+                    <p>Step-by-step guide to set up React Grid with performance features in your application.</p>
+                    <a href="https://ej2.syncfusion.com/react/documentation/grid/getting-started" class="resource-link">Get Started →</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Live Performance Demos</h4>
+                    <p>Explore interactive examples comparing rendering strategies with real-world datasets.</p>
+                    <a href="https://ej2.syncfusion.com/react/demos/grid/virtualization" class="resource-link">View Demos →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">FAQ</div>
+                <h2 class="section-title">React Data Grid Performance Questions</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can the Syncfusion React Grid handle large datasets efficiently?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. The grid is designed to handle large datasets using performance-focused features such as row virtualization, column virtualization, paging, infinite scrolling, and lazy loading. These capabilities help maintain smooth rendering and responsive interactions even with hundreds of thousands of records.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does virtualization improve performance?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Virtualization renders only the rows and columns visible within the viewport instead of rendering the entire dataset. This significantly reduces DOM size, lowers memory usage, and provides faster rendering and smoother scrolling.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Should I load all records at once?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For optimal performance, loading data on demand through paging, infinite scrolling, or server-side data operations is recommended. This approach minimizes client-side resource consumption and improves application responsiveness.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can the grid perform well with millions of records?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. When combined with virtualization and server-side data processing, the grid can efficiently work with very large datasets while maintaining smooth scrolling and fast user interactions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does the grid support server-side data operations?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. The grid supports server-side paging, sorting, filtering, grouping, and other data operations, reducing the processing workload on the client and improving scalability.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the grid reduce memory consumption?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The grid minimizes memory usage by rendering only the visible content, reusing DOM elements where possible, and loading data incrementally rather than holding the entire dataset in memory.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What features help improve user experience when working with large datasets?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Features such as virtualization, infinite scrolling, lazy loading, optimized rendering, and efficient DOM management ensure fast loading, smooth scrolling, and responsive interactions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is any additional configuration required to improve performance?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While the grid performs efficiently out of the box, enabling features such as row virtualization, column virtualization, and server-side data operations can further optimize performance for large-scale datasets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Stories Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">CUSTOMER STORIES</div>
+                <h2 class="section-title">Trusted for Business Application Development</h2>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-quote">
+                    "Syncfusion's Grid component transformed our application performance. The optimization features gave us smooth, responsive interactions that our users love. It was a game-changer for our dashboard experience."
+                </div>
+                <div class="testimonial-author">— Enterprise Development Team</div>
+            </div>
+
+            <div class="customer-logos">
+                <span class="customer-logo-placeholder">Logo 1</span>
+                <span class="customer-logo-placeholder">Logo 2</span>
+                <span class="customer-logo-placeholder">Logo 3</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="rating-stars">★★★★★</div>
+                <h2 class="section-title">Our Customers Love Us</h2>
+                <p class="section-description">Join thousands of developers building business applications with Syncfusion components.</p>
+            </div>
+
+            <div class="trust-metrics">
+                <div class="metric">
+                    <span class="metric-value">1,800+</span>
+                    <span class="metric-label">Components & Frameworks</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">24/5</span>
+                    <span class="metric-label">Dedicated Support</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">Trusted</span>
+                    <span class="metric-label">By Industry Leaders</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">CONTINUE EXPLORING</div>
+                <h2 class="section-title">Performance and Optimization Articles</h2>
+                <p class="section-description">Deepen your knowledge with expert insights on handling large datasets and optimizing grid performance.</p>
+            </div>
+
+            <div class="article-grid">
+                <div class="article-card">
+                    <div class="article-title">Understanding Virtual Scrolling Performance</div>
+                    <div class="article-excerpt">Deep dive into how virtual scrolling works under the hood and best practices for optimal viewport rendering.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-title">Server-Side vs Client-Side Data Processing</div>
+                    <div class="article-excerpt">Compare approaches to filtering, sorting, and paging with large datasets and choose the right strategy.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-title">Memory Management for Large Datasets</div>
+                    <div class="article-excerpt">Learn techniques to minimize memory footprint and prevent performance degradation with millions of records.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-title">DOM Virtualization Best Practices</div>
+                    <div class="article-excerpt">Master buffer configuration and DOM reuse strategies for lightning-fast rendering with extensive data.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-title">Optimizing Grid Operations at Scale</div>
+                    <div class="article-excerpt">Strategies for maintaining responsiveness when editing, filtering, and sorting large data volumes.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-title">Infinite Scrolling Implementation Guide</div>
+                    <div class="article-excerpt">Build seamless infinite scroll experiences with remote data sources and progressive loading patterns.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-title">Performance Benchmarking Your Grid</div>
+                    <div class="article-excerpt">Tools and techniques to measure rendering speed, memory usage, and identify performance bottlenecks.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+
+                <div class="article-card">
+                    <div class="article-title">React Grid Performance Optimization Tips</div>
+                    <div class="article-excerpt">20 proven techniques to boost React Grid performance including lazy loading and efficient re-rendering.</div>
+                    <a href="#" class="article-link">Read Article →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Radio button interaction
+        document.querySelectorAll('.radio-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                this.querySelector('input[type="radio"]').checked = true;
+                
+                // Update demo preview based on selection
+                const selectedValue = this.querySelector('input[type="radio"]').value;
+                const demoPreview = document.querySelector('.demo-preview');
+                
+                const messages = {
+                    'dom-virtual': 'DOM Virtualization Demo - Renders only visible cells for optimal performance with large columns and rows',
+                    'virtual-scroll': 'Virtual Scrolling Demo - Smooth continuous scrolling through millions of records',
+                    'paging': 'Paging Demo - Navigate through data in discrete pages with pagination controls',
+                    'infinite-scroll': 'Infinite Scrolling Demo - Automatically loads more data as you scroll down'
+                };
+                
+                demoPreview.innerHTML = `<p>${messages[selectedValue]}</p>`;
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                if (isActive) {
+                    faqItem.classList.remove('active');
+                } else {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

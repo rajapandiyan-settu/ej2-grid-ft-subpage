@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>React Data Grid Filtering</title>
+
+<style>
+
+:root {
+    color-scheme: light;
+    font-family: Inter, 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1f2937;
+    background: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f8fafc;
+}
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.2), transparent 28%),
+        linear-gradient(135deg, #4338ca 0%, #8b5cf6 100%);
+    color: #eef2ff;
+    text-align: center;
+    padding: clamp(64px, 8vw, 112px) 20px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.18), transparent 35%);
+    pointer-events: none;
+}
+
+.hero-eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    color: #e0e7ff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    position: relative;
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
+    line-height: 1.02;
+    max-width: 10ch;
+    margin: 0 auto 24px;
+    letter-spacing: -0.04em;
+}
+
+.hero-description {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(241, 245, 249, 0.92);
+    font-size: 1.05rem;
+}
+
+.hero-buttons {
+    position: relative;
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    color: #312e81;
+    background: #ffffff;
+    box-shadow: 0 20px 60px -40px rgba(99, 102, 241, 0.8);
+}
+
+.btn-secondary {
+    color: #eef2ff;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* SECTION */
+
+section {
+    padding: clamp(56px, 6vw, 90px) 0;
+}
+
+.section-eyebrow {
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    color: #7c3aed;
+    margin-bottom: 14px;
+}
+
+.section-title {
+    font-size: clamp(2.6rem, 3vw, 3.4rem);
+    text-align: center;
+    margin-bottom: 18px;
+    color: #111827;
+    line-height: 1.05;
+}
+
+.section-description {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    color: #475569;
+    margin-bottom: 44px;
+    font-size: 1rem;
+}
+
+/* TABS */
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    padding: 14px 22px;
+    font-weight: 700;
+    color: #475569;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.tab-btn:hover {
+    transform: translateY(-1px);
+    border-color: #c7d2fe;
+}
+
+.tab-btn.active {
+    color: #312e81;
+    border-color: #8b5cf6;
+    background: #eef2ff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* DEMO */
+
+.demo-box {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 0 28px 80px -50px rgba(15, 23, 42, 0.16);
+}
+
+.demo-info {
+    background: #eef2ff;
+    border-left: 4px solid #6366f1;
+    padding: 18px 22px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    color: #334155;
+}
+
+.demo-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 320px) 1fr;
+    gap: 26px;
+}
+
+.panel {
+    border: 1px solid #e2e8f0;
+    border-radius: 22px;
+    padding: 24px;
+    background: #f8fafc;
+}
+
+.panel h4 {
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+}
+
+.panel input,
+.panel select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    background: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel input:focus,
+.panel select:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+/* TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+thead {
+    background: #f8fafc;
+}
+
+th,
+td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    font-weight: 700;
+    color: #334155;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    margin-top: 10px;
+    background: #ffffff;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+.tag {
+    display: block;
+    margin-bottom: 10px;
+    color: #334155;
+}
+
+/* WHY */
+
+.why-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-top: 40px;
+}
+
+.info-card {
+    background: #ffffff;
+    padding: 32px;
+    border-left: 5px solid #6366f1;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 16px 40px -30px rgba(15, 23, 42, 0.12);
+}
+
+.info-card h3,
+.card h3,
+.resource-card h4,
+.article-card h4 {
+    color: #111827;
+}
+
+.info-card p,
+.card-content,
+.resource-card p,
+.article-card p {
+    color: #475569;
+}
+
+.selection-types-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.selection-type-item {
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 20px 40px -30px rgba(15, 23, 42, 0.16);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #c7d2fe;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #475569;
+    line-height: 1.8;
+}
+
+.card-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #6366f1;
+    margin-top: 18px;
+}
+
+.card-content {
+    font-size: 0.98rem;
+    margin-top: 10px;
+    line-height: 1.8;
+}
+
+/* RESOURCES */
+
+.resources {
+    background: #eef2ff;
+    padding: 64px 0;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 34px;
+}
+
+.resource-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 28px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 50px -30px rgba(15, 23, 42, 0.15);
+}
+
+.resource-card h4 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+.resource-card p {
+    font-size: 0.98rem;
+    margin-bottom: 18px;
+}
+
+.resource-card a {
+    color: #4338ca;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.resource-card a:hover {
+    text-decoration: underline;
+}
+
+/* RELATED ARTICLES */
+
+.related-articles {
+    background: #f8fafc;
+    padding: 64px 0;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.article-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    padding: 28px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px -30px rgba(15, 23, 42, 0.14);
+}
+
+.article-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.article-card p {
+    font-size: 0.98rem;
+    margin-bottom: 18px;
+    line-height: 1.8;
+}
+
+.article-link {
+    color: #4338ca;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.article-link:hover {
+    text-decoration: underline;
+}
+
+/* FAQ */
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.faq-item:hover {
+    border-color: #c7d2fe;
+    box-shadow: 0 20px 50px -35px rgba(15, 23, 42, 0.12);
+}
+
+.faq-item.open {
+    border-color: #8b5cf6;
+}
+
+.faq-question {
+    padding: 22px 26px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #111827;
+    background: #f8fafc;
+    cursor: pointer;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: #6366f1;
+    transition: transform 0.25s ease;
+}
+
+.faq-item.open .faq-question::after {
+    content: '-';
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 26px;
+    color: #475569;
+    font-size: 0.98rem;
+    line-height: 1.85;
+    transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.35s ease;
+    opacity: 0;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 420px;
+    padding: 20px 26px 24px;
+    opacity: 1;
+}
+
+/* METRICS */
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.metric {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid #e5e7eb;
+    text-align: center;
+    box-shadow: 0 20px 50px -40px rgba(15, 23, 42, 0.12);
+}
+
+.metric-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+footer {
+    background: #111827;
+    color: #d1d5db;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+@media (max-width: 980px) {
+    .demo-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .why-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero h1 {
+        font-size: clamp(2.4rem, 8vw, 3.2rem);
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .tabs {
+        justify-content: center;
+    }
+
+    .tab-btn {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-eyebrow">
+React Grid Filtering
+</div>
+
+<h1>
+Powerful React Data Grid Filtering
+</h1>
+
+<p class="hero-description">
+Help users find records faster using Filter Bar, Checkbox Filter,
+Excel-like Filter and Menu Filter experiences.
+</p>
+
+<div class="hero-buttons">
+    <a href="#demo" class="btn btn-primary">Try Demo</a>
+    <a href="https://ej2.syncfusion.com/react/documentation/grid/filtering/filtering" target="_blank" class="btn btn-secondary">Documentation</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- DEMO -->
+
+<section id="demo">
+
+<div class="container">
+
+<div class="section-eyebrow">
+Interactive Demo
+</div>
+
+<h2 class="section-title">
+Try Filtering Modes
+</h2>
+
+<p class="section-description">
+Explore how different filtering experiences work inside Syncfusion React Grid.
+</p>
+
+<div class="tabs">
+<button class="tab-btn active" onclick="switchTab(event,'bar')">Filter Bar</button>
+<button class="tab-btn" onclick="switchTab(event,'checkbox')">Checkbox Filter</button>
+<button class="tab-btn" onclick="switchTab(event,'excel')">Excel Filter</button>
+<button class="tab-btn" onclick="switchTab(event,'menu')">Menu Filter</button>
+</div>
+
+<div class="demo-box">
+
+<!-- FILTER BAR -->
+
+<div id="bar" class="tab-content active">
+
+<div class="demo-info">
+Enter values directly beneath the column headers.
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>
+Customer
+<input class="filter-input" placeholder="Search customer">
+</th>
+<th>
+Country
+<input class="filter-input" placeholder="Search country">
+</th>
+<th>
+Status
+<input class="filter-input" placeholder="Search status">
+</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Andrew</td>
+<td>USA</td>
+<td>Active</td>
+</tr>
+
+<tr>
+<td>Janet</td>
+<td>Germany</td>
+<td>Active</td>
+</tr>
+
+<tr>
+<td>Nancy</td>
+<td>UK</td>
+<td>Inactive</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+<!-- CHECKBOX -->
+
+<div id="checkbox" class="tab-content">
+
+<div class="demo-info">
+Filter records by selecting one or more values.
+</div>
+
+<div class="demo-layout">
+
+<div class="panel">
+
+<h4>Country Filter</h4>
+
+<input type="text" placeholder="Search countries">
+
+<label class="tag">
+<input type="checkbox" checked>
+USA (12)
+</label>
+
+<label class="tag">
+<input type="checkbox" checked>
+Germany (8)
+</label>
+
+<label class="tag">
+<input type="checkbox">
+UK (10)
+</label>
+
+<label class="tag">
+<input type="checkbox">
+France (6)
+</label>
+
+</div>
+
+<div>
+
+<table>
+
+<thead>
+<tr>
+<th>Customer</th>
+<th>Country</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Andrew</td>
+<td>USA</td>
+<td>Active</td>
+</tr>
+
+<tr>
+<td>Janet</td>
+<td>Germany</td>
+<td>Active</td>
+</tr>
+
+<tr>
+<td>Thomas</td>
+<td>USA</td>
+<td>Pending</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EXCEL -->
+
+<div id="excel" class="tab-content">
+
+<div class="demo-info">
+Excel-style filtering with operators and advanced conditions.
+</div>
+
+<div class="demo-layout">
+
+<div class="panel">
+
+<h4>Excel Filter Dialog</h4>
+
+<label>Operator</label>
+
+<select>
+<option>Greater Than</option>
+<option>Less Than</option>
+<option>Equal To</option>
+</select>
+
+<label>Value</label>
+
+<input type="text" value="5000">
+
+#
+Apply Filter
+</a>
+
+</div>
+
+<div>
+
+<table>
+
+<thead>
+<tr>
+<th>Order ID</th>
+<th>Customer</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>10245</td>
+<td>Andrew</td>
+<td>$6,000</td>
+</tr>
+
+<tr>
+<td>10267</td>
+<td>Janet</td>
+<td>$8,500</td>
+</tr>
+
+<tr>
+<td>10310</td>
+<td>Steven</td>
+<td>$12,000</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MENU -->
+
+<div id="menu" class="tab-content">
+
+<div class="demo-info">
+Compact menu filter attached to a column.
+</div>
+
+<div class="demo-layout">
+
+<div class="panel">
+
+<h4>Status Filter</h4>
+
+<label>Condition</label>
+
+<select>
+<option>Equals</option>
+<option>Contains</option>
+<option>Not Equal</option>
+</select>
+
+<label>Value</label>
+
+<select>
+<option>Active</option>
+<option>Pending</option>
+<option>Inactive</option>
+</select>
+
+#
+Filter
+</a>
+
+</div>
+
+<div>
+
+<table>
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Status</th>
+<th>Region</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Andrew</td>
+<td>Active</td>
+<td>USA</td>
+</tr>
+
+<tr>
+<td>Robert</td>
+<td>Active</td>
+<td>Germany</td>
+</tr>
+
+<tr>
+<td>Nancy</td>
+<td>Active</td>
+<td>UK</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WHY FILTERING -->
+
+<section>
+
+<div class="container">
+
+<div class="section-eyebrow">
+Why Filtering Matters
+</div>
+
+<h2 class="section-title">
+Find Data Faster
+</h2>
+
+<div class="why-wrapper">
+
+<div>
+<h3>Why filtering matters</h3>
+<p>
+A grid should make it easy for people to find the right records without scrolling through noise. Clear filtering turns large datasets into usable views, so teams can act quickly and avoid missing important data.
+</p>
+<p>
+Syncfusion React Grid supports flexible filtering for real application needs — inline filter bars for quick lookups, checkbox menus for categorical choices, Excel-style rules for advanced queries, and compact menu filters for fast decision-making.
+</p>
+<div class="selection-types-list">
+<span class="selection-type-item">Quick value discovery</span>
+<span class="selection-type-item">Searchable filter choices</span>
+<span class="selection-type-item">Advanced conditions</span>
+<span class="selection-type-item">Remote data ready</span>
+<span class="selection-type-item">Compact or full-width filtering</span>
+</div>
+</div>
+
+<div class="info-card">
+<h3>Why choose Syncfusion filtering</h3>
+<p>
+Syncfusion React Grid delivers a complete filtering toolkit with built-in Filter Bar, Checkbox, Excel-style, and Menu filtering. It lets developers match the right filter pattern to each data workflow.
+</p>
+<p>
+Use intuitive inline filters for quick searches, checkbox filters for multi-value selection, Excel-style dialogs for complex rules, and menu filters for compact column-level controls.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FILTER TYPES -->
+
+<section>
+
+<div class="container">
+
+<div class="section-eyebrow">
+Choose the Right Approach
+</div>
+
+<h2 class="section-title">
+Choose The Right Filtering Experience
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Filter Bar</h3>
+<p>Quickly apply text and value filters directly below column headers for fast lookups.</p>
+<span class="card-label">Best for</span>
+<div class="card-content">Inline searching and immediate row-level filtering.</div>
+<span class="card-label">Use when</span>
+<div class="card-content">Users need to narrow results directly in the grid without opening extra controls.</div>
+</div>
+
+<div class="card">
+<h3>Checkbox Filter</h3>
+<p>Pick one or more values from a list and narrow results with a friendly, searchable panel.</p>
+<span class="card-label">Best for</span>
+<div class="card-content">Categorical data and multi-value selection.</div>
+<span class="card-label">Use when</span>
+<div class="card-content">Users need to choose multiple values while keeping the filter UI easy to scan.</div>
+</div>
+
+<div class="card">
+<h3>Excel Filter</h3>
+<p>Build advanced conditions with operators, ranges, and multi-field rules like a spreadsheet.</p>
+<span class="card-label">Best for</span>
+<div class="card-content">Complex queries, numeric ranges, and date-based filtering.</div>
+<span class="card-label">Use when</span>
+<div class="card-content">The app needs powerful filtering rules and users expect Excel-style control.</div>
+</div>
+
+<div class="card">
+<h3>Menu Filter</h3>
+<p>Use a compact column menu for operator-based filtering without taking up extra grid space.</p>
+<span class="card-label">Best for</span>
+<div class="card-content">Simple comparisons and streamlined grid layouts.</div>
+<span class="card-label">Use when</span>
+<div class="card-content">You want a compact filter experience that preserves grid real estate.</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- IMPLEMENTATION RESOURCES -->
+
+<section class="resources">
+
+<div class="container">
+
+<div class="section-eyebrow">
+Implementation Resources
+</div>
+
+<h2 class="section-title">
+Get Started with Filtering
+</h2>
+
+<div class="resources-grid">
+
+<div class="resource-card">
+<h4>Filtering Documentation</h4>
+<p>Learn the core filtering setup and supported filter modes.</p>
+<a href="https://helpej2.syncfusion.com/react/documentation/grid/filtering/filtering" target="_blank">View Documentation →</a>
+</div>
+
+<div class="resource-card">
+<h4>Filter Bar Documentation</h4>
+<p>See how inline filter inputs appear directly beneath column headers.</p>
+<a href="https://helpej2.syncfusion.com/react/documentation/grid/filtering/filter-bar" target="_blank">View Documentation →</a>
+</div>
+
+<div class="resource-card">
+<h4>Filter Menu Documentation</h4>
+<p>Explore compact menu-based filtering for each column.</p>
+<a href="https://helpej2.syncfusion.com/react/documentation/grid/filtering/filter-menu" target="_blank">View Documentation →</a>
+</div>
+
+<div class="resource-card">
+<h4>Excel-like Filter Documentation</h4>
+<p>Review advanced filter dialogs and condition-based filtering.</p>
+<a href="https://helpej2.syncfusion.com/react/documentation/grid/filtering/excel-like-filter" target="_blank">View Documentation →</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-eyebrow">
+            FAQ
+        </div>
+
+        <h2 class="section-title">
+            Frequently Asked Questions
+        </h2>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                How do I enable filtering in the React Grid?
+            </div>
+            <div class="faq-answer">
+                Enable the <strong>allowFiltering</strong> property and configure
+                the <strong>filterSettings</strong> option to choose the filtering
+                experience that best suits your application.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Which filtering modes are available?
+            </div>
+            <div class="faq-answer">
+                Syncfusion React Grid supports Filter Bar, Checkbox Filter,
+                Excel-like Filter, and Menu Filter. Each mode is designed to
+                address different data exploration and filtering workflows.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Can I filter multiple columns at the same time?
+            </div>
+            <div class="faq-answer">
+                Yes. You can apply filters across multiple columns simultaneously,
+                allowing users to create highly refined result sets based on
+                several conditions.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Can filtering work with remote data sources?
+            </div>
+            <div class="faq-answer">
+                Yes. The React Grid supports remote filtering with APIs and
+                server-side data sources, making it easy to work with large
+                datasets efficiently.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Can filter types be changed dynamically?
+            </div>
+            <div class="faq-answer">
+                Yes. You can switch between Filter Bar, Checkbox, Excel-like,
+                and Menu filtering modes programmatically at runtime.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Does filtering support text, numeric, and date columns?
+            </div>
+            <div class="faq-answer">
+                Yes. The grid provides built-in filtering support for text,
+                numeric, date, datetime, boolean, and other supported column types.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Can I use custom filter operators?
+            </div>
+            <div class="faq-answer">
+                Yes. Developers can configure custom operators, templates, and
+                filtering logic to address specific business requirements.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Can users clear or reset all filters?
+            </div>
+            <div class="faq-answer">
+                Yes. Individual filters or all active filters can be cleared
+                programmatically through the Grid API.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+                Can filtering be combined with sorting and grouping?
+            </div>
+            <div class="faq-answer">
+                Yes. Filtering works seamlessly alongside sorting, grouping,
+                paging, searching, and other data operations provided by the Grid.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- RELATED ARTICLES -->
+
+<section class="related-articles">
+
+<div class="container">
+
+<div class="section-eyebrow">
+Related Articles
+</div>
+
+<h2 class="section-title">
+Continue Exploring React Data Grid Filtering
+</h2>
+
+<p class="section-description">
+Explore filtering techniques, implementation patterns, and best practices for building better data exploration experiences.
+</p>
+
+<div class="articles-grid">
+
+<div class="article-card">
+<h4>Getting Started with React Data Grid Filtering</h4>
+<p>
+Learn how to enable filtering, configure filter settings, and provide fast search experiences for users.
+</p>
+<a href="https://ej2.syncfusion.com/react/documentation/grid/filtering/filtering" target="_blank" class="article-link">Read Article →</a>
+</div>
+
+<div class="article-card">
+<h4>Filter Bar vs Menu Filtering</h4>
+<p>
+Compare inline filter bars and menu filters to determine the best filtering experience for different workflows.
+</p>
+<a href="https://ej2.syncfusion.com/react/documentation/grid/filtering/filter-menu" target="_blank" class="article-link">Read Article →</a>
+</div>
+
+<div class="article-card">
+<h4>Advanced Excel-like Filtering</h4>
+<p>
+Build sophisticated filtering rules using operators, conditions, ranges, and Excel-style dialogs.
+</p>
+<a href="https://ej2.syncfusion.com/react/documentation/grid/filtering/excel-like-filter" target="_blank" class="article-link">Read Article →</a>
+</div>
+
+<div class="article-card">
+<h4>Filtering Large Datasets Efficiently</h4>
+<p>
+Discover techniques for remote filtering, API-driven filtering, and scalable grid performance.
+</p>
+<a href="https://ej2.syncfusion.com/react/documentation/grid/filtering/filtering" target="_blank" class="article-link">Read Article →</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- METRICS -->
+
+<section>
+
+<div class="container">
+
+<div class="section-eyebrow">
+Our Customers Love Us
+</div>
+
+<h2 class="section-title">
+Trusted Worldwide
+</h2>
+
+<div class="metrics">
+
+<div class="metric">
+<div class="metric-value">90+</div>
+<div>Components</div>
+</div>
+
+<div class="metric">
+<div class="metric-value">1M+</div>
+<div>Developers</div>
+</div>
+
+<div class="metric">
+<div class="metric-value">24/5</div>
+<div>Support</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+React Data Grid Filtering Demo
+</footer>
+
+<script>
+
+function switchTab(event,tabId){
+
+document.querySelectorAll('.tab-content')
+.forEach(tab=>tab.classList.remove('active'));
+
+document.querySelectorAll('.tab-btn')
+.forEach(btn=>btn.classList.remove('active'));
+
+document.getElementById(tabId)
+.classList.add('active');
+
+event.target.classList.add('active');
+
+}
+
+function toggleFaq(item){
+item.classList.toggle('open');
+}
+
+</script>
+
+</body>
+</html>
