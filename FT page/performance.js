@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "REACT DATA GRID LARGE DATASETS",
-    "MainTitle": "Handle Large Datasets with Lightning-Fast Performance",
-    "Subtitle": "Deliver lightning-fast, responsive grid experiences with intelligent rendering strategies that scale effortlessly.",
+    "MainTitle": "Handle Massive Datasets with Exceptional Data Grid Performance",
+    "Subtitle": "Ensure fast, responsive interactions even with millions of records through virtualization, optimized rendering, and efficient data loading.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"
   },

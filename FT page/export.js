@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "REACT DATA GRID EXPORTING",
-    "MainTitle": "Export, Print, and Share React Grid Data in Any Format",
-    "Subtitle": "Create professional exports in Excel, PDF, and CSV formats or print grid data with complete control over formatting and presentation.",
+    "MainTitle": "Generate Reports Faster with Powerful Export Capabilities",
+    "Subtitle": "Export grid data to Excel, PDF, and CSV formats with ease while preserving formatting, structure, and valuable business insights.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"
   },

@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "REACT DATA GRID LOCALIZATION",
-    "MainTitle": "Build Multi-Language React Data Grids for Global Applications",
-    "Subtitle": "Deliver native-language grid experiences with comprehensive localization support for global and regional formats, UI text, and number/date rendering.",
+    "MainTitle": "Reach Global Audiences with Localized Data Experiences",
+    "Subtitle": "Deliver a consistent user experience across regions with support for multiple languages, cultures, date formats, and currencies.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"
   },

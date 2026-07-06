@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "React Data Grid · Grouping & Aggregates",
-    "MainTitle": "Build Powerful React Data Grids with Grouping and Aggregates",
-    "Subtitle": "Organize records into groups, display aggregate summaries, and analyze data more efficiently with the Syncfusion React Data Grid.",
+    "MainTitle": "Organize Data Intelligently with Powerful Grouping",
+    "Subtitle": "Transform complex datasets into meaningful categories with flexible grouping, summaries, and aggregate calculations.",
     "ViewDemo": "View Grouping Demo",
     "ExploreDoc": "Explore Documentation"
   },
