@@ -5,8 +5,8 @@ window.data = {
     "Eyebrow": "REACT DATA GRID EDITING",
     "MainTitle": "Empower Faster Workflows with Intuitive Data Grid Editing",
     "Subtitle": "Streamline data management with inline, cell, dialog, batch, and custom editing modes that help users update records quickly and accurately.",
-    "ViewDemo": "View Demo",
-    "ExploreDoc": "Explore Documentation"
+    "ViewDemo": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/normal-edit",
+    "ExploreDoc": "https://ej2.syncfusion.com/react/documentation/grid/editing/edit"
   },
   "Preview": {
     "Eyebrow": "Interactive Demo",
@@ -77,16 +77,16 @@ window.data = {
     "Subtitle": "Find the tools and guides you need to get started with React Data Grid editing.",
     "Options": [
       {
-        "Title": "Editing Documentation",
-        "Content": "Learn the full API and configuration options for all editing modes.",
+        "Title": "Edit Types Documentation",
+        "Content": "Learn how to configure and use different editing modes, including text, numeric, dropdown, date picker, checkbox, and custom editors.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/editing/edit-types"
       },
       {
         "Title": "Inline Editing Demo",
         "Content": "See inline row editing in action with a complete working example.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/normal-edit"
       },
       {
         "Title": "Cell Editing Demo",
@@ -98,62 +98,62 @@ window.data = {
         "Title": "Dialog Editing Demo",
         "Content": "See dialog-based editing with form layouts and custom fields.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/dialog-edit"
       },
       {
         "Title": "Batch Editing Demo",
         "Content": "Discover batch editing for bulk updates and multi-row changes.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/batch"
       },
       {
-        "Title": "Custom Editor Guide",
-        "Content": "Learn how to create custom editors and templates for specialized needs.",
+        "Title": "Template Editing Guide",
+        "Content": "Explore template-based editing to customize the appearance and behavior of edit forms in the Grid.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/editing/template-editing"
       },
       {
         "Title": "Validation Guide",
         "Content": "Configure client-side and server-side validation for all editing modes.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/editing/validation"
       },
       {
-        "Title": "API Reference",
-        "Content": "Complete API documentation for editing events, methods, and properties.",
-        "ReadGuideORViewDemoTitle": "View Reference",
-        "ReadGuideORViewDemoLink": ""
+        "Title": "Custom Editor Guide",
+        "Content": "Explore template-based editing to customize the appearance and behavior of edit forms in the Grid.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/editing/template-editing"
       },
       {
-        "Title": "Template Editing Demo",
-        "Content": "Create custom editing forms using templates for inline and dialog editing scenarios.",
+        "Title": "Dialog Template Demo",
+        "Content": "Explore template-based editing to customize the appearance and behavior of edit forms in the Grid.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/dialog-template"
       },
       {
         "Title": "Command Column Editing Demo",
         "Content": "Perform edit, save, delete, and cancel operations directly from command buttons in the grid.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/command-column"
       },
       {
         "Title": "Server Persistence Guide",
         "Content": "Learn how to persist grid changes to the server using REST APIs and DataManager.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/editing/persisting-data-in-server"
       },
       {
-        "Title": "Editing Events Guide",
-        "Content": "Customize editing workflows using events such as actionBegin and actionComplete.",
+        "Title": "Programmatic CRUD Actions",
+        "Content": "Explore how to trigger Grid CRUD operations through code for custom workflows and user interactions.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/editing/in-line-editing#perform-crud-action-programmatically"
       },
       {
-        "Title": "Built-in Editors Demo",
-        "Content": "Explore TextBox, NumericTextBox, DropDownList, DatePicker, and CheckBox editors for different data types.",
-        "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
-      }
+        "Title": "API Reference",
+        "Content": "Complete API documentation for editing events, methods, and properties.",
+        "ReadGuideORViewDemoTitle": "View Reference",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/api/grid/edit"
+      },
     ]
   },
   "FAQ": {
@@ -202,6 +202,22 @@ window.data = {
         "Answer": "Yes. Developers can customize editing behavior using events, validation rules, templates, and custom editors."
       },
       {
+        "Question": "Is it possible to delete multiple records at once?",
+        "Answer": "Yes. Multiple selected rows can be deleted in a single action."
+      },
+      {
+        "Question": "Can focus be moved to a specific cell while editing?",
+        "Answer": "Yes. You can programmatically set focus to a particular cell during editing operations."
+      },
+      {
+        "Question": "How can users start editing with a single click?",
+        "Answer": "The Grid supports single-click editing by triggering edit mode through the startEdit and endEdit methods when users click a designated element."
+      },
+      {
+        "Question": "Can editing be restricted for specific columns?",
+        "Answer": "Yes. You can disable editing for individual columns while allowing other fields to remain editable."
+      },
+      {
         "Question": "Does the grid support a user-friendly editing experience?",
         "Answer": "Yes. Built-in editing modes, validation, keyboard navigation, and customizable editors provide a smooth and efficient editing experience."
       }
@@ -213,24 +229,24 @@ window.data = {
     "Subtitle": "Continue Exploring React Data Grid Editing",
     "Options": [
       {
-        "Title": "React Data Grid Editing Guide",
-        "Content": "A comprehensive guide to implementing editing in your React applications with validation and custom editors.",
-        "ReadArticleLink": ""
+        "Title": "Cell Edit Templates in React Grid",
+        "Content": "Learn how to customize Grid editing by rendering components such as multiline TextBox controls using cell edit templates.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11397/how-to-cell-edit-template-using-textbox-in-react-grid"
       },
       {
-        "Title": "React Data Grid CRUD Workflow Guide",
-        "Content": "Learn how to build complete create, read, update, and delete workflows with the React Data Grid.",
-        "ReadArticleLink": ""
+        "Title": "Custom Editor with Uploader Control",
+        "Content": "Use the Uploader component as a custom editor and enable file-based editing within Grid cells and forms.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11098/how-to-edit-the-column-in-grid-using-the-uploader-control"
       },
       {
-        "Title": "Why Inline Editing in React Tables is Hard",
-        "Content": "Understand common challenges in table editing and how Syncfusion solves them with built-in features.",
-        "ReadArticleLink": ""
+        "Title": "Edit Foreign Key Columns with Custom Templates",
+        "Content": "Create custom edit templates for foreign key columns and manage value mapping during editing operations.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/7251/how-to-use-edit-template-to-edit-foreign-key-column"
       },
       {
-        "Title": "Building Form-Based Editing Experiences",
-        "Content": "Combine React Data Grid with form patterns to create rich editing interfaces for complex data.",
-        "ReadArticleLink": ""
+        "Title": "Document Editor in Grid Dialog Editing",
+        "Content": "Integrate the Document Editor into Grid dialog forms to build rich document-based editing experiences.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/10154/how-to-use-document-editor-as-an-edit-field-in-data-grid"
       }
     ]
   }
@@ -246,8 +262,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href="${data.HeroWithCTA.ViewDemo}" class="btn btn-primary">View Demo</a>
+                <a href="${data.HeroWithCTA.ExploreDoc}" class="btn btn-secondary">Explore Documentation</a>
             </div>
         </div>`
 
