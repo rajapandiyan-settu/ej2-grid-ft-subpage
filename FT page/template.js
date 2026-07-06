@@ -5,11 +5,11 @@ window.data = {
     "Eyebrow": "React Data Grid Templates",
     "MainTitle": "Build Your Perfect Data Grid with Flexible Templates",
     "Subtitle": "Create powerful, flexible data displays with column templates, header templates, detail templates, and more. Build exactly what your application needs.",
-    "ViewDemo": "View Demo",
-    "ExploreDoc": "Explore Documentation"
+    "ViewDemo": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/column-template",
+    "ExploreDoc": "https://ej2.syncfusion.com/react/documentation/grid/columns/column-template"
   },
   "Preview": {
-    "Eyebrow": "Live Sample",
+    "Eyebrow": "Interactive Demo",
     "MainTitle": "Try Different Templates in Action",
     "Subtitle": "Explore various template types to discover how you can customize your grid's appearance and functionality."
   },
@@ -19,13 +19,16 @@ window.data = {
     "Subtitle": "Templates provide the flexibility needed to create unique, interactive, and branded data experiences that align with business requirements.",
     "Content": "Every application has unique data presentation requirements. Generic data grids can be limiting when organizations need solutions that reflect their business processes, brand identity, and user experience expectations. With templates, you can create highly customized and interactive data experiences, transforming standard grid displays into engaging interfaces that support sophisticated workflows and improve user productivity.",
     "OverviewTitle": "Syncfusion EJ2 Grid Feature Overview",
-    "OverviewContent": "Templates provide complete visual control over the Data Grid, enabling custom rendering, branding, interactive elements, and advanced layouts.",
+    "OverviewContent": "Templates provide extensive customization capabilities for the Data Grid, enabling custom rendering, seamless branding, interactive components, and advanced layout designs to meet diverse application requirements.",
     "KeyCababilitiesTitle": [
-      "Custom Cell Rendering",
+      "Custom Cell & Row Rendering",
       "Brand-Consistent Design",
-      "Interactive Elements",
-      "Complex Data Layouts",
-      "Responsive UI"
+      "Interactive UI Components",
+      "Advanced Data Layouts",
+      "Responsive Design Support",
+      "Conditional Content Rendering",
+      "Flexible Layout Composition"
+
     ]
   },
   "ChooseRightApproach": {
@@ -92,49 +95,49 @@ window.data = {
         "Title": "Template Documentation",
         "Content": "Complete guide to all template types with API references and configuration options.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/columns/column-template"
       },
       {
         "Title": "Column Template Demo",
         "Content": "Interactive demo showing custom cell rendering with formatted content and controls.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/column-template"
       },
       {
         "Title": "Detail Template Demo",
         "Content": "Master-detail example showing expandable rows with nested data and custom layouts.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/detail-template"
       },
       {
         "Title": "Header Template Demo",
         "Content": "Custom header examples with icons, sorting, and interactive header controls.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/header-template"
       },
       {
         "Title": "Advanced Filtering Guide",
         "Content": "Learn how to implement custom filter templates with validation and complex logic.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/filtering/filtering#perform-enum-column-filtering"
       },
       {
-        "Title": "Stacked Header Column Example",
+        "Title": "Stacked Header Column Demo",
         "Content": "Learn how to stack multiple fields in a single column efficiently.",
-        "ReadGuideORViewDemoTitle": "View Example",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoTitle": "View Demo",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/stacked-header"
       },
       {
         "Title": "Best Practices for Empty State Design",
         "Content": "Guidelines for designing effective empty state templates for better UX.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/how-to/customize-the-empty-record-template"
       },
       {
         "Title": "Row Template Customization",
         "Content": "Advanced techniques for complete row customization with conditional rendering.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/row/row-template"
       }
     ]
   },
@@ -179,24 +182,29 @@ window.data = {
     "Subtitle": "Discover related topics and best practices for building powerful data applications",
     "Options": [
       {
-        "Title": "Building Advanced Data Grid Layouts",
-        "Content": "Learn how to combine multiple template types to create sophisticated data displays and user interfaces.",
-        "ReadArticleLink": ""
+        "Title": "Cell Edit Template Using TextBox",
+        "Content": "Use a multiline TextBox as a custom edit template in React Grid cells.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11397/how-to-cell-edit-template-using-textbox-in-react-grid"
       },
       {
-        "Title": "Template Performance Optimization",
-        "Content": "Techniques and strategies for maintaining fast rendering performance with complex templates and large datasets.",
-        "ReadArticleLink": ""
+        "Title": "Custom Column Editor with Uploader",
+        "Content": "Use the Uploader component as a custom edit template for Grid columns.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11098/how-to-edit-the-column-in-grid-using-the-uploader-control"
+      }, 
+      {
+        "Title": "Group Caption Template Customization",
+        "Content": "Learn how to customize group captions with dynamic content, icons, and conditional rendering in React Data Grid.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/12048/change-default-group-caption-based-on-condition-in-react-grid"
       },
       {
-        "Title": "Implementing Master-Detail Workflows",
-        "Content": "Step-by-step guide to creating expandable master-detail views using detail templates and nested data.",
-        "ReadArticleLink": ""
+        "Title": "MultiSelect Cell Edit Template",
+        "Content": "Use a MultiSelect Dropdown as a custom cell edit template in React Grid to edit multiple values within a column.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11434/how-to-edit-the-column-in-grid-using-the-multiselect-dropdown-control"
       },
       {
-        "Title": "Custom Component Integration",
-        "Content": "Best practices for integrating custom React components into grid templates while maintaining performance.",
-        "ReadArticleLink": ""
+        "Title": "Group Caption Formatting",
+        "Content": "Learn how to format and customize group caption templates to display values in a user-friendly format.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/9693/how-to-apply-formatting-for-the-group-caption-template"
       }
     ]
   }
@@ -212,8 +220,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href=${data.HeroWithCTA.ViewDemo} class="btn btn-primary">ViewDemo</a>
+                <a href=${data.HeroWithCTA.ExploreDoc} class="btn btn-secondary">Explore Documentation</a>
             </div>
         </div>`
 
