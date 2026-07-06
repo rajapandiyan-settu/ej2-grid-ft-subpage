@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+#tabContent .e-content .e-item {
+    font-size: 12px;
+    margin: 10px;
+    text-align: justify;
+}
