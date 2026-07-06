@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "React Grid Filtering",
-    "MainTitle": "Powerful React Data Grid Filtering",
-    "Subtitle": "Help users find records faster using Filter Bar, Checkbox Filter, Excel-like Filter, and Menu Filter experiences.",
+    "MainTitle": "Unlock Faster Insights with Advanced Data Grid Filtering",
+    "Subtitle": "Help users find exactly what they need using powerful filtering options, including menu, Excel-like, checkbox, and custom filters.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"
   },

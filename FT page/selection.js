@@ -3,8 +3,8 @@
 window.data = {
     HeroWithCTA: {
         Eyebrow: "React Data Grid Selection",
-        MainTitle: "Build Flexible Row, Cell & Column Selection for Real Workflows",
-        Subtitle: "Create, customize, and control multiple selection modes in the Syncfusion React Data Grid with fine-grained control.",
+        MainTitle: "Accelerate User Actions with Flexible Data Selection",
+        Subtitle: "Enable intuitive row, cell, range, and checkbox selection patterns that simplify data interaction and boost productivity.",
         ViewDemo: "View Demo",
         ExploreDoc: "Explore Documentation",
     },

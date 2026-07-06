@@ -3,7 +3,7 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "REACT DATA GRID THEME CUSTOMIZATION FEATURES",
-    "MainTitle": "Build Applications with Your Brand Theme Customization",
+    "MainTitle": "Deliver Stunning User Experiences with Custom Themes",
     "Subtitle": "Customize colors, fonts, and visual elements to match your design system. Create a consistent, on-brand experience that reflects your product identity.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"

@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "React Data Grid Templates",
-    "MainTitle": "Build Your Perfect Data Grid with Flexible Templates",
-    "Subtitle": "Create powerful, flexible data displays with column templates, header templates, detail templates, and more. Build exactly what your application needs.",
+    "MainTitle": "Craft Rich Experiences with Powerful Grid Customization",
+    "Subtitle": "Customize columns, cells, templates, editors, and layouts to create highly interactive data grids tailored to your application's needs.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"
   },

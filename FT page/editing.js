@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "REACT DATA GRID EDITING",
-    "MainTitle": "Build Editable React Data Grids for Real Data Workflows",
-    "Subtitle": "Create, validate, and save records directly in the Syncfusion React Data Grid with inline, dialog, batch editing",
+    "MainTitle": "Empower Faster Workflows with Intuitive Data Grid Editing",
+    "Subtitle": "Streamline data management with inline, cell, dialog, batch, and custom editing modes that help users update records quickly and accurately.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"
   },
