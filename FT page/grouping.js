@@ -14,19 +14,23 @@ window.data = {
     "Subtitle": "Explore grouping and aggregate modes in action. Switch tabs to see each configuration."
   },
   "WhyMatters": {
-  "Eyebrow": "Why Grouping & Aggregates Matter",
-  "MainTitle": "Turn Large Datasets into Meaningful Summaries",
-  "Subtitle": "Grouping and aggregate calculations help users analyze large datasets faster by organizing records and surfacing key summary information.",
-  "Content": "Grouping and aggregates help organize large datasets into meaningful categories and provide instant summary information without requiring users to analyze individual records. The Syncfusion React Data Grid supports hierarchical grouping, built-in aggregate calculations, custom summaries, caption aggregates, and reactive updates. These features make it easier to compare data, identify trends, and build reporting experiences directly within the grid. Whether working with business reports, dashboards, or enterprise applications, grouping and aggregates help users gain insights faster.",
-  "KeyCababilitiesTitle": [
-    "Drag-and-Drop Grouping",
-    "Multi-Level Grouping",
-    "Built-In Aggregates",
-    "Custom Aggregates",
-    "Caption Aggregates",
-    "Reactive Aggregates"
-  ]
-},
+    "Eyebrow": "Why Grouping & Aggregates Matter",
+    "MainTitle": "Turn Large Datasets into Meaningful Summaries",
+    "Content": "Grouping and aggregates help users organize large datasets into meaningful categories and instantly view summary information without manually reviewing individual records. The Syncfusion React Data Grid supports drag-and-drop grouping, hierarchical grouping, aggregate calculations, caption summaries, and reactive updates. These capabilities make it easier to analyze trends, compare results, and create interactive reporting experiences. From business dashboards to enterprise applications, grouping and aggregates help transform raw data into actionable insights.",
+    "CapabilitiesTitle": "Key Capabilities",
+
+    "KeyCababilitiesTitle": [
+      "Data Grouping",
+      "Data Summaries",
+      "Trend Analysis",
+      "Custom Metrics",
+      "KPI Reporting",
+      "Real-Time Insights",
+      "Scalable Processing",
+      "Business Reporting"
+    ]
+
+  },
   "ChooseRightApproach": {
     "Eyebrow": "Choose the Right Grouping Strategy",
     "MainTitle": "Choose the Right Grouping and Aggregation Strategy",
@@ -35,77 +39,89 @@ window.data = {
       {
         "Title": "Drag-and-Drop Grouping",
         "Content": "Allow users to organize records dynamically by dragging columns into the grouping area during runtime.",
+
         "BestFor": [
-          "Self-service reporting",
-          "Ad-hoc data exploration"
-        ],
+          "Ideal for self-service reporting and interactive data exploration.",
+          "Allows users to organize records without developer assistance."
+        ]
+        ,
         "UseWhen": "Use when users need to change the grouping themselves at runtime."
       },
       {
         "Title": "Programmatic Grouping",
         "Content": "Set group columns in configuration so the grid always loads in a consistent, pre-defined state.",
+
         "BestFor": [
-          "Standardized business reports",
-          "Administrative dashboards"
-        ],
+          "Suitable for standardized reports and business workflows.",
+          "Ensures a consistent grouping experience across all users."
+        ]
+        ,
         "UseWhen": "Use when the grouping structure must stay consistent for all users."
       },
       {
         "Title": "Built-in Aggregate Functions",
         "Content": "Apply Sum, Average, Count, Min, or Max to any numeric column. Results appear at the group footer and grid footer.",
+
         "BestFor": [
-          "Financial summaries",
-          "KPI and inventory tracking"
-        ],
+          "Perfect for financial summaries and KPI reporting.",
+          "Provides instant totals, averages, counts, and other insights."
+        ]
+        ,
         "UseWhen": "Use when standard statistical summaries meet your reporting needs."
       },
       {
         "Title": "Custom Aggregate Functions",
         "Content": "Write a function that receives group data and returns any value — weighted averages, margin ratios, or business KPIs.",
+
         "BestFor": [
-          "Business-specific calculations",
-          "Advanced analytics applications"
-        ],
+          "Useful for business-specific calculations and custom metrics.",
+          "Supports advanced reporting requirements beyond built-in summaries."
+        ]
+        ,
         "UseWhen": "Use when built-in functions don't cover your calculation."
       },
       {
         "Title": "Server-Side Grouping",
         "Content": "Group parameters are sent with each data request. The backend handles grouping and aggregation; the grid renders the result.",
+
         "BestFor": [
-          "Large enterprise datasets",
-          "Remote data integrations"
-        ],
+          "Designed for enterprise-scale and high-volume datasets.",
+          "Reduces browser processing by delegating operations to the server."
+        ]
+        ,
         "UseWhen": "Use when loading all rows into the browser is not feasible."
       },
       {
         "Title": "Caption Templates",
         "Content": "Replace the default group header with a custom template — add icons, badges, or inline aggregate values per group row.",
+
         "BestFor": [
-          "Branded business applications",
-          "Customized reporting interfaces"
-        ],
+          "Ideal for branded applications and customized interfaces.",
+          "Improves visibility by displaying meaningful information in group captions."
+        ]
+        ,
         "UseWhen": "Use when the default caption layout doesn't fit your design."
       },
       {
         "Title": "Group by Formatted Values",
         "Content": "Organize records using formatted date, time, or numeric values instead of raw data fields for more meaningful analysis.",
+
         "BestFor": [
-
-          "Time-based reporting",
-          "Financial trend analysis"
-
-        ],
+          "Useful for date-based reporting and trend analysis.",
+          "Makes grouped data easier to understand through formatted values."
+        ]
+        ,
         "UseWhen": "Use when data needs to be grouped by month, year, quarter, or custom formats."
       },
       {
         "Title": "Grouping with Paging",
         "Content": "Combine grouped records with paging to improve navigation and maintain performance across large result sets.",
+
         "BestFor": [
-
-          "High-volume data grids",
-          "Performance-sensitive applications"
-
-        ],
+          "Suitable for large grouped datasets with many records.",
+          "Improves navigation and overall grid performance."
+        ]
+        ,
         "UseWhen": "Use when grouped datasets are too large to display on a single page."
       }
     ]
@@ -114,7 +130,7 @@ window.data = {
     "Eyebrow": "Implementation Resources",
     "MainTitle": "Explore Grouping Demos, Guides, and APIs",
     "Subtitle": "Access the documentation, demos, implementation guides, and API references needed to evaluate, configure, and customize grouping and aggregation features.",
-   
+
     "Options": [
       {
         "Title": "Grouping Documentation",
@@ -340,20 +356,40 @@ document.getElementsByClassName("demo-section")[0].innerHTML = `
 </div>
 `;
 
-document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="container">
-            <!-- Two Column Layout -->
-            <div class="why-matters-wrapper">
-                <!-- LEFT SIDE -->
-                <div class="why-matters-left">
-                    <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
-                    <h2>${data.WhyMatters.MainTitle}</h2>
-                    <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
+document.getElementsByClassName("why-matters")[0].innerHTML = `
+<div class="container">
+    <div class="why-matters-wrapper">
+
+        <div class="why-matters-left">
+            <div class="section-eyebrow">
+                ${data.WhyMatters.Eyebrow}
+            </div>
+
+            <h2>${data.WhyMatters.MainTitle}</h2>
+
+            <p class="why-matters-text-large">
+                ${data.WhyMatters.Content}
+            </p>
+        </div>
+
+        <div class="why-matters-right">
+            <div class="why-matters-card">
+                <h3 class="card-title">
+                    ${data.WhyMatters.CapabilitiesTitle}
+                </h3>
+
+                <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `
+                        <div class="selection-type-item">
+                            ${item}
+                        </div>
+                    `).join('')}
                 </div>
             </div>
-        </div>`;
+        </div>
+
+    </div>
+</div>`;
 
 document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div class="container">
             <div class="capabilities-section-header">
@@ -367,9 +403,15 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
                     <div class="capability-label">BEST FOR</div>
-                    <ul class="capability-scenario-list">
-                        ${item.BestFor.map(x => `<li>${x}</li>`).join('')}
-                    </ul>
+                    
+                    <div class="capability-bestfor">
+                        ${item.BestFor.map(point => `
+                        <div class="bestfor-item">
+                            ✓ ${point}
+                         </div>
+                        `).join('')}
+                    </div>
+
                     <div class="capability-label">Use when</div>
                     <div class="capability-scenario">${item.UseWhen}</div>
                 </div>
