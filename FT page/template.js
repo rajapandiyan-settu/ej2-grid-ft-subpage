@@ -17,9 +17,7 @@ window.data = {
     "Eyebrow": "Why Templates Matter",
     "MainTitle": "Develop Customized Data Experiences Tailored to Your Brand",
     "Subtitle": "Templates provide the flexibility needed to create unique, interactive, and branded data experiences that align with business requirements.",
-    "Content": "Every application has unique data presentation requirements. Generic data grids can be limiting when organizations need solutions that reflect their business processes, brand identity, and user experience expectations. With templates, you can create highly customized and interactive data experiences, transforming standard grid displays into engaging interfaces that support sophisticated workflows and improve user productivity.",
-    "OverviewTitle": "Syncfusion EJ2 Grid Feature Overview",
-    "OverviewContent": "Templates provide extensive customization capabilities for the Data Grid, enabling custom rendering, seamless branding, interactive components, and advanced layout designs to meet diverse application requirements.",
+    "Content": "Templates are essential in the Syncfusion Data Grid because they enable developers to customize how data is displayed beyond the limitations of standard grid layouts. They help create data experiences that align with specific business workflows, branding requirements, and user expectations. By using templates, you can embed interactive elements such as buttons, images, progress bars, and custom components directly within the grid. This flexibility enhances usability, improves user engagement, and transforms the grid from a simple data display into a powerful and interactive workspace.",
     "KeyCababilitiesTitle": [
       "Custom Cell & Row Rendering",
       "Brand-Consistent Design",
@@ -39,50 +37,50 @@ window.data = {
       {
         "Title": "Column Template",
         "Content": "Customize individual cell content with HTML, formatted text, images, badges, and interactive controls.",
-        "BestFor": "Status indicators, formatted values, action buttons, badges",
-        "UseWhen": "Cells need custom rendering beyond plain text."
+        "BestFor": ["Status indicators", "Formatted values", "Action buttons", "Badges"],
+        "UseWhen": "Use when cells need custom rendering beyond plain text."
       },
       {
         "Title": "Header Template",
         "Content": "Design custom column headers with icons, sort indicators, filter buttons, and advanced header layouts.",
-        "BestFor": "Custom sorting, advanced filtering, header icons",
-        "UseWhen": "Headers need interactive elements or custom styling."
+        "BestFor": ["Custom sorting", "Advanced filtering", "Header icons"],
+        "UseWhen": "Use when headers need interactive elements or custom styling."
       },
       {
         "Title": "Detail Template",
         "Content": "Create expandable row details showing comprehensive information, nested tables, or related records.",
-        "BestFor": "Master-detail layouts, expandable rows, nested data",
-        "UseWhen": "Rows need to display additional detailed information."
+        "BestFor": ["Master-detail layouts", "Expandable rows", "Nested data"],
+        "UseWhen": "Use when rows need to display additional detailed information."
       },
       {
         "Title": "Column Chooser Template",
         "Content": "Customize the column visibility dialog to provide an intuitive way for users to manage columns.",
-        "BestFor": "Column visibility dialogs, user preferences",
-        "UseWhen": "You need custom column selection UI."
+        "BestFor": ["Column visibility dialogs", "User preferences"],
+        "UseWhen": "Use when you need custom column selection UI."
       },
       {
         "Title": "Stacked Header Column",
         "Content": "Display multiple fields stacked vertically within a single column for compact, organized layouts.",
-        "BestFor": "Multi-field display, compact layouts, grouped data",
-        "UseWhen": "You need to show multiple fields in one column."
+        "BestFor": ["Multi-field display", "Compact layouts", "Grouped data"],
+        "UseWhen": "Use when you need to show multiple fields in one column."
       },
       {
         "Title": "Empty Record Template",
         "Content": "Design custom empty state messages with helpful guidance when no data matches the current filter.",
-        "BestFor": "Empty states, user guidance, call-to-action",
-        "UseWhen": "You want to customize the no-data experience."
+        "BestFor": ["Empty states", "User guidance", "Call-to-action"],
+        "UseWhen": "Use when you want to customize the no-data experience."
       },
       {
         "Title": "Filter Template",
         "Content": "Build advanced filter UI with custom dropdowns, date pickers, sliders, and filtering logic.",
-        "BestFor": "Advanced filters, date ranges, custom search",
-        "UseWhen": "Filters need custom controls or logic."
+        "BestFor": ["Advanced filters", "Date ranges", "Custom search"],
+        "UseWhen": "Use when filters need custom controls or logic."
       },
       {
         "Title": "Row Template",
         "Content": "Completely customize entire row layouts with conditional styling, actions, and complex markup.",
-        "BestFor": "Custom row layouts, complex hierarchies, conditional styling",
-        "UseWhen": "Entire rows need custom structure."
+        "BestFor": ["Custom row layouts", "Complex hierarchies", "Conditional styling"],
+        "UseWhen": "Use when entire rows need custom structure."
       }
     ]
   },
@@ -242,15 +240,12 @@ document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="conta
                     <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
                     <h2>${data.WhyMatters.MainTitle}</h2>
                     <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
                 </div>
                 <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
+                <div class="why-matters-right" style="width: 330px;">
+                <div class="selection-list">
+                    <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
                     </div>
                 </div>
             </div>
@@ -267,10 +262,10 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
+                    <ul class="capability-list">
+                        ${item.BestFor.map(bestForItem => `<li>${bestForItem}</li>`).join('')}
+                    </ul>
+                    <div class="capability-pill">${item.UseWhen}</div>
                 </div>
                 `).join('')}
             </div>

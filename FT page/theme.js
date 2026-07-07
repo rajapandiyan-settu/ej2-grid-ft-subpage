@@ -17,9 +17,7 @@ window.data = {
     "Eyebrow": "Why the theme customization matters?",
     "MainTitle": "Customize Themes to Reflect Your Brand",
     "Subtitle": "Theme customization helps organizations align data grids with their design systems while maintaining consistency, usability, and accessibility.",
-    "Content": "Design systems define brand identity through specific colors, typography, and spacing. Developers need to implement these guidelines consistently across applications. Generic, one-size-fits-all UI components force compromises on brand expression. The React Data Grid theme customization system lets you map your entire design system into production-ready components. Maintain brand consistency, reduce design-to-code friction, and empower developers to build on-brand experiences without fighting the component defaults.",
-    "OverviewTitle": "Syncfusion EJ2 Grid Feature Overview",
-    "OverviewContent": "Theme customization provides comprehensive control over the Data Grid's appearance, enabling developers to tailor colors, typography, spacing, and visual elements while ensuring brand consistency, multi-theme support, and adherence to accessibility standards.",
+    "Content": "Theme customization in the Syncfusion Data Grid enables developers to align the grid's appearance with their organization's design system and brand identity. It provides complete control over colors, typography, spacing, and visual styles, ensuring a consistent user experience across applications. By supporting custom themes and accessibility standards, it helps create visually appealing, on-brand, and user-friendly data experiences.",
     "KeyCababilitiesTitle": [
       "Consistent Brand Expression",
       "Centralized Style Control",
@@ -37,25 +35,25 @@ window.data = {
       {
         "Title": "CSS Variables",
         "Content": "Override theme colors using CSS custom properties. Perfect for simple color adjustments and dynamic theme switching.",
-        "BestFor": "Light/dark mode toggling, simple brand color updates",
+        "BestFor": ["Light/dark mode toggling", "simple brand color updates"],
         "UseWhen": "You need quick CSS-level customization without code changes."
       },
       {
         "Title": "Theme Configuration",
         "Content": "Configure the grid using a complete theme object that supports colors, typography, spacing, and individual component styles.",
-        "BestFor": "Complete design system implementation, multi-theme support",
+        "BestFor": ["Complete design system implementation", "multi-theme support"],
         "UseWhen": "You have a full design system to implement."
       },
       {
         "Title": "Custom CSS Classes",
         "Content": "Apply custom CSS classes to grid elements. Provides fine-grained control for advanced styling scenarios.",
-        "BestFor": "Complex styling requirements, third-party CSS frameworks",
+        "BestFor": ["Complex styling requirements", "third-party CSS frameworks"],
         "UseWhen": "You need complete control over specific elements."
       },
       {
         "Title": "Component Templates",
         "Content": "Custom render functions for headers, cells, and rows. Build highly branded, custom cell experiences.",
-        "BestFor": "Custom cell layouts, branded data visualization",
+        "BestFor": ["Custom cell layouts", "branded data visualization"],
         "UseWhen": "You need to redesign specific grid elements."
       }
     ]
@@ -204,15 +202,12 @@ document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="conta
                     <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
                     <h2>${data.WhyMatters.MainTitle}</h2>
                     <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
                 </div>
                 <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
+                <div class="why-matters-right" style="width: 330px;">
+                <div class="selection-list">
+                    <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
                     </div>
                 </div>
             </div>
@@ -229,10 +224,10 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
+                    <ul class="capability-list">
+                        ${item.BestFor.map(bestForItem => `<li>${bestForItem}</li>`).join('')}
+                    </ul>
+                    <div class="capability-pill">${item.UseWhen}</div>
                 </div>
                 `).join('')}
             </div>
