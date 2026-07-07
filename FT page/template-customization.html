@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Grid Templates - Feature Tour</title>
+    <title>Data Grid Templates & Theme Customization - Feature Tour</title>
     <style>
         * {
             margin: 0;
@@ -498,64 +498,16 @@
             font-style: normal;
         }
 
-        .read-more-link {
-            display: inline-block;
-            margin-top: 24px;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .read-more-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ============= SOCIAL PROOF SECTION ============= */
-        .social-proof {
-            background: white;
-            padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .proof-content {
-            max-width: 800px;
+        /* ============= CONTAINER ============= */
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            padding: 0 20px;
         }
 
-        .stars {
-            font-size: 28px;
-            margin-bottom: 16px;
-            letter-spacing: 4px;
-        }
-
-        .proof-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-
-        .metric-label {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* ============= RELATED ARTICLES SECTION ============= */
+        /* ============= ARTICLES ============= */
         .related-articles {
-            background: #f9fafb;
+            background: white;
             padding: 60px 20px;
             border-top: 1px solid #e2e8f0;
         }
@@ -577,13 +529,12 @@
 
         .article-card:hover {
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            transform: translateY(-4px);
         }
 
         .article-card h4 {
             font-size: 16px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             color: #1a202c;
         }
 
@@ -598,139 +549,63 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .article-link:hover {
             text-decoration: underline;
         }
 
-        /* ============= FOOTER ============= */
-        footer {
-            background-color: #1a202c;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        footer p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* ============= RESPONSIVE ============= */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             .section-title {
                 font-size: 28px;
             }
 
-            .hero-ctas {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
             .why-matters-wrapper {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 40px;
             }
 
-            .why-matters-header {
-                margin-bottom: 40px;
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capability-card {
+                min-height: auto;
             }
         }
     </style>
 </head>
-
 <body>
-    <!-- HERO SECTION -->
-    <section class="hero">        
-    </section>
+    <!-- Hero Section -->
+    <div class="hero"></div>
 
-    <!-- DEMO SECTION -->
-    <section class="demo-section">
-    </section>
+    <!-- Demo Section -->
+    <div class="demo-section"></div>
 
-    <!-- WHY MATTERS SECTION -->
-    <section class="why-matters">        
-    </section>
+    <!-- Why Matters Section -->
+    <div class="why-matters"></div>
 
-    <!-- CAPABILITY CARDS SECTION -->
-     <section class="capabilities-section">        
-    </section>
+    <!-- Capabilities Section -->
+    <div class="capabilities-section"></div>
 
-    <!-- IMPLEMENTATION RESOURCES SECTION -->
-    <section class="resources">        
-    </section>
+    <!-- Resources Section -->
+    <div class="resources"></div>
 
-    <!-- FAQ SECTION -->
-    <section class="faq">       
-    </section>
+    <!-- FAQ Section -->
+    <div class="faq"></div>
 
-    <!-- CUSTOMER STORIES SECTION -->
-    <section class="customer-stories">
-        <div class="container">
-            <div class="section-eyebrow">Customer Stories</div>
-            <h2 class="section-title">Trusted for Business Application Development</h2>
+    <!-- Related Articles Section -->
+    <div class="related-articles"></div>
 
-            <div class="customer-content">
-                <div class="customer-quote">
-                    "Syncfusion components help teams build data-rich application screens faster, with consistent UI
-                    patterns and production-ready features."
-                </div>
-                <div class="customer-attribution">
-                    — Enterprise Development Team
-                </div>
-                <a href="#" class="read-more-link">Read customer stories →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOCIAL PROOF SECTION -->
-    <section class="social-proof">
-        <div class="container">
-            <div class="section-eyebrow">Our Customers Love Us</div>
-            <h2 class="section-title">Loved by Development Teams Worldwide</h2>
-
-            <div class="proof-content">
-                <div class="stars">★★★★★</div>
-                <p>Trusted by developers and enterprises building high-performance applications.</p>
-
-                <div class="proof-metrics">
-                    <div class="metric">
-                        <div class="metric-number">80+</div>
-                        <div class="metric-label">UI Components</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-number">1M+</div>
-                        <div class="metric-label">Developers Worldwide</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-number">24/7</div>
-                        <div class="metric-label">Support Available</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RELATED ARTICLES SECTION -->
-    <section class="related-articles">        
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Syncfusion React Data Grid Selection. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="template.js"></script>
+    <!-- Script Reference -->
+    <script src="template-customization.js"></script>
 </body>
 </html>
