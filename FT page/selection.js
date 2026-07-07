@@ -5,8 +5,8 @@ window.data = {
         Eyebrow: "React Data Grid Selection",
         MainTitle: "Accelerate User Actions with Flexible Data Selection",
         Subtitle: "Enable intuitive row, cell, range, and checkbox selection patterns that simplify data interaction and boost productivity.",
-        ViewDemo: "View Demo",
-        ExploreDoc: "Explore Documentation",
+        ViewDemo: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection",
+        ExploreDoc: "https://ej2.syncfusion.com/react/documentation/grid/selection/selection",
     },
     Preview: {
         Eyebrow: "Interactive Demo",
@@ -14,13 +14,13 @@ window.data = {
         Subtitle: "Use a live sample tab to see the selection modes before diving into the details.",
     },
     WhyMatters: {
-        Eyebrow: "Why Editing Matters",
+        Eyebrow: "Why Selection Matters",
         MainTitle: "Turn Data Review to Data Update",
         Subtitle: "",
-        Content: "A data grid is often where users review, compare, and act on information. When selection is intuitive and flexible, users can quickly focus on the data that matters and perform actions with confidence. \n \n Flexible selection options help users review, compare, and act on data efficiently. From individual records to cells, columns, and multiple items, users can select the data they need and work more effectively.",
-        OverviewTitle: "Flexible Selection for Real Data Workflows",
-        OverviewContent: "Syncfusion React Data Grid brings powerful selection capabilities directly into the grid. Choose row, checkbox, cell, or column selection based on your workflow. Support multi-selection, range selection, keyboard navigation, and conditional selection rules to help users interact with data efficiently while maintaining accuracy and control.",
-        KeyCababilitiesTitle: ["Multi-row selection", "Checkbox control", "Cell-level precision", "Interactive data selection", "Conditional rules"],
+        Content: "Syncfusion React Data Grid offers flexible selection modes including row, checkbox, cell, column, and conditional selection to support a wide range of data workflows. Users can select individual records, multiple items, cell ranges, or entire columns based on the task at hand. Features such as multi-selection, keyboard navigation, range selection, persistent selection, and custom selection rules provide greater control over how data is accessed and managed. This enables efficient data review, bulk operations, targeted analysis, and business-rule-driven interactions within the grid.",
+        OverviewTitle: "",
+        OverviewContent: "",
+        KeyCababilitiesTitle: ["Multi-row selection", "Checkbox control", "Cell-level precision", "Interactive data selection", "Conditional rules", "Bulk Action Support", "Flexible Selection Modes", "Smart Data Targeting"],
     },
     ChooseRightApproach: {
         Eyebrow: "Choose the Right Approach",
@@ -30,32 +30,32 @@ window.data = {
             {
                 Title: "Normal Row Selection",
                 Content: "Users click rows to select them. Supporting multiple selections with Ctrl+Click or Shift+Click for range selection.",
-                BestFor: "General-purpose row selection, data review, and filtering workflows.",
-                UseWhen: "Users need a familiar and simple way to select one or multiple rows without additional UI elements.",
+                BestFor: ["✔ Best for data review, record management, and filtering workflows."],
+                UseWhen: ["🔹Use when users need a simple and intuitive way to select one or more rows."],
             },
             {
                 Title: "Checkbox Selection",
                 Content: "Each row has a checkbox. Header checkbox lets users select all rows at once, making bulk operations intuitive.",
-                BestFor: "Bulk actions, explicit selection, and accessibility-focused interfaces.",
-                UseWhen: "Users frequently perform actions on multiple records and need clear visual confirmation of selected items.",
+                BestFor: ["✔ Best for bulk updates, exports, approvals, and delete operations."],
+                UseWhen: ["🔹Use when users frequently perform actions on multiple records at once."],
             },
             {
                 Title: "Conditional Checkbox Selection",
                 Content: "Control which rows can be selected using custom conditions. Only valid rows appear selectable to prevent invalid operations.",
-                BestFor: "Scenarios where selection is restricted based on data criteria.",
-                UseWhen: "Users need to select rows that meet specific conditions, ensuring data integrity.",
+                BestFor: ["✔ Best for approval workflows, inventory management, and permission-based actions."],
+                UseWhen: ["🔹Use when selection must be restricted based on record status, permissions, or custom conditions."],
             },
             {
                 Title: "Cell Selection",
                 Content: "Users select individual cells or cell ranges. Precise control for tasks like data entry, analysis, or targeted edits.",
-                BestFor: "Fine-grained data editing, spreadsheet-like workflows, and precise data highlighting.",
-                UseWhen: "Users need to interact with specific data points rather than whole records.",
+                BestFor: ["✔ Best for spreadsheet-style experiences and detailed data analysis."],
+                UseWhen: ["🔹Use when users need to interact with specific data points instead of entire rows."],
             },
             {
                 Title: "Column Selection",
                 Content: "Select entire columns by clicking headers or using keyboard shortcuts. Useful for operations affecting all rows in a column.",
-                BestFor: "Column-level operations, data export, formatting, and analysis workflows.",
-                UseWhen: "Users need to analyze, format, copy, or apply actions to all values within a column.",
+                BestFor: ["✔ Best for reporting, data analysis, and column-focused workflows."],
+                UseWhen: ["🔹Use when users need to work with entire columns rather than individual records."],
             }
         ]
     },
@@ -106,12 +106,24 @@ window.data = {
                 ReadGuideORViewDemoTitle: "View Documentation",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/documentation/grid/selection/cell-selection#single-cell-selection",
             },
+             {
+                Title: "Cell Selection Demo",
+                Content: "Explore cell selection with interactive examples.",
+                ReadGuideORViewDemoTitle: "View Demo",
+                ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection-api",
+            },
             {
                 Title: "Column Selection Documentation",
                 Content: "Implement column-level selection for column-based operations.",
                 ReadGuideORViewDemoTitle: "View Documentation",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/documentation/grid/selection/column-selection#single-column-selection",
             },
+             {
+                Title: "Column Selection Demo",
+                Content: "Discover column selection through interactive examples.",
+                ReadGuideORViewDemoTitle: "View Demo",
+                ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection-api",
+            }
         ]
     },
     FAQ: {
@@ -154,6 +166,38 @@ window.data = {
             {
                 Question: "Does selection persist when the grid is filtered or sorted?",
                 Answer: "Yes, selections are maintained across filtering and sorting operations by default. The grid tracks selections by row identifier (primary key) rather than row index, ensuring selections remain consistent even when the data order changes. You can configure this behavior to suit your needs."
+            },
+            {
+                Question: "Can I switch between single and multiple selection modes?",
+                Answer: "Yes. The Syncfusion Data Grid supports both Single and Multiple selection types through the selectionSettings.type property. You can dynamically switch between them at runtime based on your application's requirements."
+            },
+            {
+                Question: "Can users select rows, cells, and columns in the same grid?",
+                Answer: "Yes. The grid provides Row, Cell, and Both selection modes. Using the Both mode, users can interact with row and cell selections simultaneously, enabling more flexible data interaction scenarios."
+            },
+            {
+                Question: "How does checkbox selection improve usability?",
+                Answer: "Checkbox selection provides a clear visual indication of which rows are selected and allows users to easily select or deselect multiple rows at once. It also enables more intuitive bulk actions and improves the overall user experience when working with large datasets."
+            },
+            {
+                Question: "Can selection be disabled when it is not needed?",
+                Answer: "Yes. You can completely disable selection by setting the allowSelection property to false. This is useful for read-only views where users only need to review data without interacting with records."
+            },
+            {
+                Question: "Are selection events available for custom business logic?",
+                Answer: "Yes. The grid exposes selection-related events such as rowSelected, rowDeselected, cellSelected, and cellDeselected. These events can be used to trigger custom actions, update UI elements, or integrate with external components."
+            },
+            {
+                Question: "Can selection be used with keyboard navigation?",
+                Answer: "Yes. Users can navigate and select records using keyboard controls, including arrow keys, Shift, and Ctrl/Cmd combinations. This improves accessibility and helps power users work more efficiently."
+            },
+            {
+                Question: "What is the benefit of persistent selection?",
+                Answer: "Persistent selection ensures that users' selection choices are maintained even when the grid is updated, filtered, or sorted. This provides a better user experience by preventing the loss of selection state and allowing users to continue working with their selected data seamlessly."
+            },
+            {
+                Question: "Can selection be combined with editing workflows?",
+                Answer: "Yes. Selection can be integrated with editing features to identify records that need modifications before applying updates. This enables efficient review-and-update workflows within the same grid interface."
             }
         ]
     },
@@ -163,24 +207,24 @@ window.data = {
         Subtitle: "",
         Options: [
             {
-                Title: "React Data Grid Selection Guide",
-                Content: "A comprehensive guide covering row, checkbox, cell, and column selection modes, including best practices and implementation patterns.",
-                ReadArticleLink: "#",
+                Title: "Maintain Row Selection After Adding Records",
+                Content: "Discover how to keep previously selected rows intact when new records are added to the React Data Grid, ensuring a consistent selection experience across grid refresh operations.",
+                ReadArticleLink: "https://support.syncfusion.com/kb/article/10245/how-to-maintain-selected-rows-after-adding-new-record",
             },
             {
-                Title: "React Data Grid Selection Guide",
-                Content: "A comprehensive guide covering row, checkbox, cell, and column selection modes, including best practices and implementation patterns.",
-                ReadArticleLink: "#",
+                Title: "React Data Grid Record Selection Guide",
+                Content: "Learn how to select specific rows in the React Data Grid using primary key values. Covers retrieving row indexes with primary keys and programmatically selecting records using Grid selection APIs.",
+                ReadArticleLink: "https://support.syncfusion.com/kb/article/10061/how-to-select-the-specific-record-in-the-grid-using-its-primary-key-value",
             },
             {
-                Title: "React Data Grid Selection Guide",
-                Content: "A comprehensive guide covering row, checkbox, cell, and column selection modes, including best practices and implementation patterns.",
-                ReadArticleLink: "#",
+                Title: "Print Selected Rows in React Data Grid",
+                Content: "A comprehensive guide to printing only selected rows in the React Data Grid, including row selection, print customization, and handling selected records through Grid events.",
+                ReadArticleLink: "https://support.syncfusion.com/kb/article/9694/how-to-print-only-selected-records-in-grid-of-javascript",
             },
             {
-                Title: "React Data Grid Selection Guide",
-                Content: "A comprehensive guide covering row, checkbox, cell, and column selection modes, including best practices and implementation patterns.",
-                ReadArticleLink: "#",
+                Title: "React Data Grid Cell Interaction Guide",
+                Content: "Learn how to capture clicked cell details in the React Data Grid, including row data retrieval, column identification, and cell value extraction using the getRowInfo API.",
+                ReadArticleLink: "https://support.syncfusion.com/kb/article/9937/how-to-get-the-clicked-cell-details-in-javascript-datagrid",
             }
         ]
     }
@@ -196,8 +240,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href="${data.HeroWithCTA.ViewDemo}" class="btn btn-primary" target="_blank"> View Demo </a>
+                <a href="${data.HeroWithCTA.ExploreDoc}" class="btn btn-secondary" target="_blank"> Explore Documentation </a>
             </div>
         </div>`
 
@@ -218,15 +262,11 @@ document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="conta
                     <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
                     <h2>${data.WhyMatters.MainTitle}</h2>
                     <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
                 </div>
                 <!-- RIGHT SIDE CARD -->
                 <div class="why-matters-right" style="padding-top: 110px;">
                     <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
+                        <p class="card-description">${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}</p>
                     </div>
                 </div>
             </div>
@@ -243,9 +283,7 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
                     <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
                     <div class="capability-scenario">${item.UseWhen}</div>
                 </div>
                 `).join('')}
