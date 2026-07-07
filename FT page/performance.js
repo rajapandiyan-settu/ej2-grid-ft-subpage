@@ -2,205 +2,144 @@
 
 window.data = {
   "HeroWithCTA": {
-    "Eyebrow": "REACT DATA GRID LARGE DATASETS",
-    "MainTitle": "Handle Massive Datasets with Exceptional Data Grid Performance",
-    "Subtitle": "Ensure fast, responsive interactions even with millions of records through virtualization, optimized rendering, and efficient data loading.",
+    "Eyebrow": "REACT DATA GRID PERFORMANCE OPTIMIZATION",
+    "MainTitle": "Boost Your React Grid Performance with Advanced Optimization Techniques",
+    "Subtitle": "Deliver lightning-fast, responsive data grids with industry-leading performance optimization. Improve user experience with virtual scrolling, smart paging, and infinite scrolling.",
     "ViewDemo": "View Demo",
     "ExploreDoc": "Explore Documentation"
   },
   "Preview": {
     "Eyebrow": "INTERACTIVE DEMO",
-    "MainTitle": "Experience Performance in Action",
-    "Subtitle": "Select a rendering strategy to see how each approach optimizes grid performance for different scenarios."
+    "MainTitle": "See Real-Time Performance Optimization",
+    "Subtitle": "Experience how our performance optimization techniques deliver instant results. Compare rendering strategies and see the difference in your applications."
   },
   "WhyMatters": {
-    "Eyebrow": "WHY PERFORMANCE OPTIMIZATION MATTERS",
-    "MainTitle": "Deliver Fast, Responsive User Experiences",
-    "Subtitle": "Modern applications require efficient rendering strategies to maintain responsiveness as datasets continue to grow.",
-    "Content": "Modern applications often struggle when displaying large volumes of data. Rendering thousands of rows and columns can lead to slow initial load times, laggy scrolling, excessive memory consumption, delayed user interactions, and an overall unresponsive experience. As datasets grow, increased DOM size and frequent re-rendering can further impact browser performance, making it difficult to deliver the fast, seamless experience users expect. Syncfusion React Grid addresses these challenges through built-in performance optimization techniques such as DOM virtualization, virtual scrolling, pagination, and infinite scrolling. By rendering only the visible content and efficiently managing data operations, the grid significantly reduces DOM overhead, minimizes memory usage, and maintains smooth, responsive interactions. This enables applications to handle large datasets efficiently while delivering a consistent, high-performance user experience.",
-    "OverviewTitle": "The Syncfusion React Grid Performance Overview",
-    "OverviewContent": "The Syncfusion React Grid leverages advanced rendering techniques and efficient DOM management to deliver consistent performance across large datasets. By rendering only the rows currently visible within the viewport, the grid significantly reduces DOM overhead and memory consumption. This virtualization-driven approach minimizes rendering work, enables smooth scrolling, and ensures responsive interactions even when working with hundreds of thousands or millions of records.",
+    "Eyebrow": "WHY PERFORMANCE MATTERS",
+    "MainTitle": "Speed Matters: Deliver Exceptional User Experiences",
+    "Subtitle": "Performance optimization isn't optional—it's essential for user satisfaction and business success.",
+    "Content": "Slow grid performance costs you customers and revenue. Every second of delay impacts user satisfaction, productivity, and conversion rates. The Syncfusion React Grid eliminates performance bottlenecks with three powerful optimization techniques: Virtual Scrolling renders only visible rows for instant load times and smooth scrolling. Paging breaks data into manageable chunks for predictable performance. Infinite Scrolling loads data progressively for seamless browsing. These battle-tested strategies ensure your applications remain fast and responsive, regardless of data volume. Give your users the speed they demand and watch your application success metrics soar.",
     "KeyCababilitiesTitle": [
-      "Blazing-fast Rendering Speed",
-      "Efficient DOM Management",
-      "Memory Optimization",
+      "Lightning-Fast Load Times",
       "Smooth Scrolling Experience",
-      "Server-Side Data Operations",
-      "Fast Data Refresh and Updates"
+      "Memory-Efficient Rendering",
+      "Optimized for Mobile",
+      "Zero Configuration Required",
+      "Production-Ready Performance"
     ]
   },
   "ChooseRightApproach": {
-    "Eyebrow": "CHOOSE THE RIGHT APPROACH",
-    "MainTitle": "Choose the Right Performance Strategy",
-    "Subtitle": "Select the rendering approach that best matches your data size and user interaction patterns.",
+    "Eyebrow": "PERFORMANCE OPTIMIZATION TECHNIQUES",
+    "MainTitle": "Three Powerful Ways to Optimize Your React Data Grid",
+    "Subtitle": "Choose the performance strategy that perfectly matches your application needs and user expectations.",
     "Options": [
       {
-        "Title": "DOM Virtualization",
-        "Content": "Achieves maximum rendering speed by minimizing DOM overhead with configurable buffer values.",
-        "BestFor": "Ultra-fast rendering with extensive columns and rows.",
-        "UseWhen": "Performance optimization is critical and fine-grained control is needed."
-      },
-      {
         "Title": "Virtual Scrolling",
-        "Content": "Delivers seamless scrolling through massive datasets by loading only viewport content.",
-        "BestFor": "Large datasets requiring smooth, continuous navigation.",
-        "UseWhen": "Working with thousands or millions of records."
+        "Content": "Load only visible rows for instant rendering and buttery-smooth scrolling through unlimited data. The gold standard for high-performance grids.",
+        "BestFor": ["Applications handling thousands to millions of records", "High-performance data visualization"],
+        "UseWhen": "You need maximum performance with minimal memory footprint and seamless scrolling."
       },
       {
         "Title": "Paging",
-        "Content": "Breaks data into manageable pages with intuitive navigation controls.",
-        "BestFor": "Traditional data browsing with clear page boundaries.",
-        "UseWhen": "Users need to track position and revisit specific pages."
+        "Content": "Display data in organized pages with full navigation controls. Perfect for traditional workflows and data exploration.",
+        "BestFor": ["Enterprise applications requiring structured navigation", "Traditional data browsing patterns"],
+        "UseWhen": "Users need to track their position, bookmark locations, or revisit specific data ranges."
       },
       {
         "Title": "Infinite Scrolling",
-        "Content": "Progressively loads data as users scroll, creating an endless browsing experience.",
-        "BestFor": "Social feeds, activity logs, and continuous exploration.",
-        "UseWhen": "Building mobile-first or discovery-focused interfaces."
+        "Content": "Automatically load more data as users scroll down. Creates engaging, modern browsing experiences.",
+        "BestFor": ["Mobile apps and dashboards", "Social media-style interfaces"],
+        "UseWhen": "Building consumer-facing apps or discovery-driven workflows where continuous exploration matters."
       }
     ]
   },
   "Resources": {
     "Eyebrow": "IMPLEMENTATION RESOURCES",
-    "MainTitle": "Explore Performance Demos and Docs",
-    "Subtitle": "Find everything you need to implement performance optimization in your React grid applications.",
+    "MainTitle": "Everything You Need to Get Started",
+    "Subtitle": "Complete documentation, live demos, and expert guidance to implement performance optimization in minutes.",
     "Options": [
       {
-        "Title": "Virtual Scrolling Documentation",
-        "Content": "Master row and column virtualization with configuration examples for optimal viewport rendering.",
+        "Title": "Virtual Scrolling Quick Start",
+        "Content": "Get virtual scrolling running in under 5 minutes with our step-by-step implementation guide.",
         "ReadGuideORViewDemoTitle": "Read Documentation",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/scrolling/virtual-scrolling"
       },
       {
         "Title": "Infinite Scrolling Implementation",
-        "Content": "Build seamless data loading experiences with remote data binding and lazy load patterns.",
+        "Content": "Build engaging infinite scroll experiences with our production-ready examples and code snippets.",
         "ReadGuideORViewDemoTitle": "View Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/scrolling/infinite-scrolling"
       },
       {
-        "Title": "Paging Configuration Guide",
-        "Content": "Configure page sizes, templates, and navigation controls for chunk-based data display.",
+        "Title": "Paging Configuration Made Easy",
+        "Content": "Set up custom paging with navigation controls and page size options in minutes.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/paging"
       },
       {
-        "Title": "Performance Best Practices",
-        "Content": "Learn optimization techniques including server-side operations and efficient data binding strategies.",
+        "Title": "Performance Optimization Guide",
+        "Content": "Master advanced techniques to squeeze every ounce of performance from your data grid.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/performance"
       },
       {
-        "Title": "DOM Virtualization Guide",
-        "Content": "Implement DOM virtualization with buffer configuration for maximum rendering efficiency.",
-        "ReadGuideORViewDemoTitle": "View Examples",
-        "ReadGuideORViewDemoLink": ""
+        "Title": "Live Interactive Demos",
+        "Content": "Experience the performance difference with side-by-side comparisons of all optimization techniques.",
+        "ReadGuideORViewDemoTitle": "View Demos",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/material3/grid/overview"
       },
       {
-        "Title": "Server-Side Data Operations",
-        "Content": "Offload filtering, sorting, and paging to the server for improved scalability with large datasets.",
+        "Title": "Migration & Integration Guide",
+        "Content": "Seamlessly add performance optimization to your existing React applications.",
         "ReadGuideORViewDemoTitle": "Learn More",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/data-binding"
       },
       {
-        "Title": "Getting Started Tutorial",
-        "Content": "Step-by-step guide to set up React Grid with performance features in your application.",
+        "Title": "Getting Started in 5 Minutes",
+        "Content": "Fast-track guide to building your first high-performance React data grid.",
         "ReadGuideORViewDemoTitle": "Get Started",
-        "ReadGuideORViewDemoLink": ""
-      },
-      {
-        "Title": "Live Performance Demos",
-        "Content": "Explore interactive examples comparing rendering strategies with real-world datasets.",
-        "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/getting-started"
       }
     ]
   },
   "FAQ": {
-    "Eyebrow": "FAQ",
-    "MainTitle": "React Data Grid Large Dataset Questions",
+    "Eyebrow": "FREQUENTLY ASKED QUESTIONS",
+    "MainTitle": "React Data Grid Performance: Your Questions Answered",
     "Subtitle": "",
     "Options": [
       {
-        "Question": "Can the Syncfusion React Grid handle large datasets efficiently?",
-        "Answer": "Yes. The grid is designed to handle large datasets using virtualization, paging, infinite scrolling, lazy loading, and optimized rendering techniques."
+        "Question": "How fast can the Syncfusion React Grid load data?",
+        "Answer": "With virtual scrolling enabled, the grid renders data in milliseconds regardless of dataset size—from hundreds to millions of records. You get instant initial load and smooth, lag-free scrolling."
       },
       {
-        "Question": "How does virtualization improve performance?",
-        "Answer": "Virtualization renders only the visible rows and columns, reducing DOM size, memory usage, and rendering time."
+        "Question": "Do I need to write complex code to enable performance optimization?",
+        "Answer": "No. Virtual scrolling, paging, and infinite scrolling are built-in features that work with simple configuration. Enable them with just a few lines of code and get enterprise-grade performance immediately."
       },
       {
-        "Question": "Should I load all records at once?",
-        "Answer": "No. Using paging, infinite scrolling, or server-side operations is recommended for better scalability and responsiveness."
+        "Question": "Which performance technique should I use for my application?",
+        "Answer": "Virtual scrolling for maximum performance with large datasets. Paging for structured navigation and familiar UX. Infinite scrolling for modern, social media-style interfaces. All three work seamlessly with the Syncfusion Grid."
       },
       {
-        "Question": "Can the grid perform well with millions of records?",
-        "Answer": "Yes. Combined with virtualization and server-side processing, the grid can efficiently handle very large datasets."
+        "Question": "Will performance optimization work on mobile devices?",
+        "Answer": "Absolutely. Our optimization techniques are specifically designed for mobile performance. Users get the same fast, responsive experience on smartphones and tablets as they do on desktop."
       },
       {
-        "Question": "Does the grid support server-side data operations?",
-        "Answer": "Yes. Server-side paging, sorting, filtering, and grouping are supported to reduce client-side workload."
+        "Question": "Can I switch between performance modes without rewriting code?",
+        "Answer": "Yes. The Syncfusion Grid's flexible architecture lets you switch between virtual scrolling, paging, and infinite scrolling with simple configuration changes—no major code refactoring required."
       },
       {
-        "Question": "How does the grid reduce memory consumption?",
-        "Answer": "The grid renders only visible content and reuses DOM elements wherever possible."
+        "Question": "What's the ROI of performance optimization?",
+        "Answer": "Studies show every 1-second improvement in load time increases conversions by 7%. Faster grids mean happier users, higher productivity, and better business outcomes."
       },
       {
-        "Question": "What features improve the user experience with large datasets?",
-        "Answer": "Virtualization, infinite scrolling, optimized rendering, and efficient DOM management all contribute to smooth interactions."
+        "Question": "How does Syncfusion Grid compare to building custom performance solutions?",
+        "Answer": "Our grid delivers production-ready performance optimization that would take months to build in-house. Save development time, reduce bugs, and ship faster with battle-tested components used by thousands of companies."
       },
       {
-        "Question": "Is additional configuration required to improve performance?",
-        "Answer": "While the grid performs well by default, enabling virtualization and server-side operations provides additional optimization."
+        "Question": "Do I need to upgrade to get performance features?",
+        "Answer": "All performance optimization features—virtual scrolling, paging, and infinite scrolling—are included in every Syncfusion license. No hidden fees or premium tiers."
       }
     ]
   },
-  "RelatedArticles": {
-    "Eyebrow": "Related Articles",
-    "MainTitle": "CONTINUE EXPLORING",
-    "Subtitle": "Continue Exploring React Data Grid Performance Optimization",
-    "Options": [
-      {
-        "Title": "Understanding Virtual Scrolling Performance",
-        "Content": "Deep dive into how virtual scrolling works under the hood and best practices for optimal viewport rendering.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Server-Side vs Client-Side Data Processing",
-        "Content": "Compare approaches to filtering, sorting, and paging with large datasets and choose the right strategy.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Memory Management for Large Datasets",
-        "Content": "Learn techniques to minimize memory footprint and prevent performance degradation with millions of records.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "DOM Virtualization Best Practices",
-        "Content": "Master buffer configuration and DOM reuse strategies for lightning-fast rendering with extensive data.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Optimizing Grid Operations at Scale",
-        "Content": "Explore techniques for maintaining high performance while processing, filtering, grouping, and sorting large datasets.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Infinite Scrolling Implementation Guide",
-        "Content": "Learn how to implement efficient infinite scrolling patterns for modern, large-scale applications.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Performance Benchmarking Your Grid",
-        "Content": "Measure rendering, scrolling, and data-loading performance to identify optimization opportunities.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "React Grid Performance Optimization Tips",
-        "Content": "Discover practical recommendations for maximizing grid responsiveness, scalability, and rendering efficiency.",
-        "ReadArticleLink": ""
-      }
-    ]
-  }
 }
 
 // ========== FAQ TOGGLE ==========
@@ -213,8 +152,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href="https://ej2.syncfusion.com/react/demos/#/material3/grid/overview" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
+                <a href="https://ej2.syncfusion.com/react/documentation/grid/scrolling/virtual-scrolling" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
             </div>
         </div>`
 
@@ -235,15 +174,12 @@ document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="conta
                     <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
                     <h2>${data.WhyMatters.MainTitle}</h2>
                     <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
                 </div>
                 <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
+                <div class="why-matters-right" style="width: 330px;">
+                <div class="selection-list">
+                    <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
                     </div>
                 </div>
             </div>
@@ -260,10 +196,10 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
+                    <ul class="capability-list">
+                        ${item.BestFor.map(bestForItem => `<li>${bestForItem}</li>`).join('')}
+                    </ul>
+                    <div class="capability-pill">${item.UseWhen}</div>
                 </div>
                 `).join('')}
             </div>
@@ -303,19 +239,3 @@ document.getElementsByClassName("faq")[0].innerHTML = ` <div class="container">
             </div>
         </div>`;
 
-document.getElementsByClassName("related-articles")[0].innerHTML = `<div class="container">
-            <div class="section-eyebrow">${data.RelatedArticles.Eyebrow}</div>
-            <h2 class="section-title">${data.RelatedArticles.MainTitle}</h2>
-
-            <div class="articles-grid">
-                
-            ${data.RelatedArticles.Options.map(item => `
-                    <div class="article-card">
-                    <h4>${item.Title}</h4>
-                    <p>${item.Content}</p>
-                    <a href="${item.ReadArticleLink}" target="_blank" class="article-link">Read article →</a>
-                </div>
-                `).join('')}
-                
-            </div>
-        </div>`;
