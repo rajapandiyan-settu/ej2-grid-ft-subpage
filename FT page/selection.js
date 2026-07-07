@@ -17,7 +17,7 @@ window.data = {
         Eyebrow: "Why Selection Matters",
         MainTitle: "Turn Data Review to Data Update",
         Subtitle: "",
-        Content: "Syncfusion React Data Grid offers flexible selection modes including row, checkbox, cell, column, and conditional selection to support a wide range of data workflows. Users can select individual records, multiple items, cell ranges, or entire columns based on the task at hand. Features such as multi-selection, keyboard navigation, range selection, persistent selection, and custom selection rules provide greater control over how data is accessed and managed. This enables efficient data review, bulk operations, targeted analysis, and business-rule-driven interactions within the grid.",
+        Content: "Selection enables users to interact with data efficiently by selecting records, cells, columns, or eligible items based on their workflow. Features such as multi-selection, range selection, keyboard navigation, persistent selection, and custom selection rules provide greater control over data interactions. These capabilities help streamline data review, support bulk operations, simplify analysis, and improve productivity when working with large and dynamic datasets.",
         OverviewTitle: "",
         OverviewContent: "",
         KeyCababilitiesTitle: ["Multi-row selection", "Checkbox control", "Cell-level precision", "Interactive data selection", "Conditional rules", "Bulk Action Support", "Flexible Selection Modes", "Smart Data Targeting"],
@@ -29,33 +29,33 @@ window.data = {
         Options: [
             {
                 Title: "Normal Row Selection",
-                Content: "Users click rows to select them. Supporting multiple selections with Ctrl+Click or Shift+Click for range selection.",
-                BestFor: ["✔ Best for data review, record management, and filtering workflows."],
-                UseWhen: ["🔹Use when users need a simple and intuitive way to select one or more rows."],
+                Content: "Select one or multiple rows for record-level actions and data management.",
+                BestFor: ["✔ Best for record review, data management, and master-detail scenarios."],
+                UseWhen: ["🔹Use when users review and interact with one or more complete records."],
             },
             {
                 Title: "Checkbox Selection",
-                Content: "Each row has a checkbox. Header checkbox lets users select all rows at once, making bulk operations intuitive.",
+                Content: "Use checkboxes to quickly select multiple rows, including select-all operations.",
                 BestFor: ["✔ Best for bulk updates, exports, approvals, and delete operations."],
                 UseWhen: ["🔹Use when users frequently perform actions on multiple records at once."],
             },
             {
                 Title: "Conditional Checkbox Selection",
-                Content: "Control which rows can be selected using custom conditions. Only valid rows appear selectable to prevent invalid operations.",
+                Content: "Allow selection only for rows that meet specific business rules or conditions.",
                 BestFor: ["✔ Best for approval workflows, inventory management, and permission-based actions."],
                 UseWhen: ["🔹Use when selection must be restricted based on record status, permissions, or custom conditions."],
             },
             {
                 Title: "Cell Selection",
-                Content: "Users select individual cells or cell ranges. Precise control for tasks like data entry, analysis, or targeted edits.",
+                Content: "Select individual cells or ranges for precise data interaction and analysis.",
                 BestFor: ["✔ Best for spreadsheet-style experiences and detailed data analysis."],
                 UseWhen: ["🔹Use when users need to interact with specific data points instead of entire rows."],
             },
             {
                 Title: "Column Selection",
-                Content: "Select entire columns by clicking headers or using keyboard shortcuts. Useful for operations affecting all rows in a column.",
+                Content: "Select entire columns to focus on a specific field across all records.",
                 BestFor: ["✔ Best for reporting, data analysis, and column-focused workflows."],
-                UseWhen: ["🔹Use when users need to work with entire columns rather than individual records."],
+                UseWhen: ["🔹Use when users work with entire columns rather than individual records."],
             }
         ]
     },
@@ -66,37 +66,37 @@ window.data = {
         Options: [
             {
                 Title: "Row Selection Documentation",
-                Content: "Learn how to implement normal row selection with multi-select support.",
+                Content: "Learn how to select single or multiple rows and perform record-level actions with ease.",
                 ReadGuideORViewDemoTitle: "View Documentation",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/documentation/grid/selection/row-selection#single-row-selection",
             },
             {
                 Title: "Row Selection Demo",
-                Content: "See row selection in action with interactive examples and code snippets.",
+                Content: "Explore interactive examples showcasing row selection, multi-selection, and selection APIs.",
                 ReadGuideORViewDemoTitle: "View Demo",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection-api",
             },
             {
                 Title: "Checkbox Selection Documentation",
-                Content: "Implement checkbox-based selection for better UX and accessibility.",
+                Content: "Discover how checkbox-based selection simplifies bulk actions and record management.",
                 ReadGuideORViewDemoTitle: "View Documentation",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#checkbox-only-selection",
             },
             {
                 Title: "Checkbox Selection Demo",
-                Content: "See checkbox selection in action with interactive examples and code snippets.",
+                Content: "See how checkbox selection enables quick multi-record selection and select-all operations.",
                 ReadGuideORViewDemoTitle: "View Demo",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/checkbox-selection",
             },
             {
                 Title: "Conditional Selection Documentation",
-                Content: "Learn how to implement conditional selection based on specific criteria.",
+                Content: "Learn how to restrict selection based on business rules, permissions, or record status.",
                 ReadGuideORViewDemoTitle: "View Documentation",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/documentation/grid/selection/check-box-selection#conditional-row-selection",
             },
             {
                 Title: "Conditional Selection Demo",
-                Content: "See conditional selection in action with interactive examples and code snippets.",
+                Content: "Explore real-world scenarios where selection is enabled only for eligible records.",
                 ReadGuideORViewDemoTitle: "View Demo",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/conditional-row-selection",
             },
@@ -108,19 +108,19 @@ window.data = {
             },
              {
                 Title: "Cell Selection Demo",
-                Content: "Explore cell selection with interactive examples.",
+                Content: "Explore cell selection capabilities through interactive examples and common use cases.",
                 ReadGuideORViewDemoTitle: "View Demo",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection-api",
             },
             {
                 Title: "Column Selection Documentation",
-                Content: "Implement column-level selection for column-based operations.",
+                Content: "Discover how to select entire columns for field-focused analysis and operations.",
                 ReadGuideORViewDemoTitle: "View Documentation",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/documentation/grid/selection/column-selection#single-column-selection",
             },
              {
                 Title: "Column Selection Demo",
-                Content: "Discover column selection through interactive examples.",
+                Content: "See column selection in action and learn how to work with complete data fields.",
                 ReadGuideORViewDemoTitle: "View Demo",
                 ReadGuideORViewDemoLink: "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/selection-api",
             }
@@ -198,6 +198,18 @@ window.data = {
             {
                 Question: "Can selection be combined with editing workflows?",
                 Answer: "Yes. Selection can be integrated with editing features to identify records that need modifications before applying updates. This enables efficient review-and-update workflows within the same grid interface."
+            },
+             {
+                Question: "Can I preselect rows, cells, or columns when the grid loads?",
+                Answer: "Yes. You can use the grid's selection APIs to programmatically select rows, cells, or columns during initialization, allowing important records or data points to be highlighted by default."
+            },
+            {
+                Question: "Is selection supported in virtualized grids?",
+                Answer: "Yes. Selection works with row and column virtualization, enabling users to select records efficiently even when working with large datasets."
+            },
+            {
+                Question: "Can I clear all current selections at once?",
+                Answer: "Yes. The grid provides methods to clear selected rows, cells, and columns programmatically, making it easy to reset the selection state when needed."
             }
         ]
     },
