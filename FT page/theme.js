@@ -17,7 +17,7 @@ window.data = {
     "Eyebrow": "Why the theme customization matters?",
     "MainTitle": "Customize Themes to Reflect Your Brand",
     "Subtitle": "Theme customization helps organizations align data grids with their design systems while maintaining consistency, usability, and accessibility.",
-    "Content": "Theme customization in the Syncfusion Data Grid enables developers to align the grid's appearance with their organization's design system and brand identity. It provides complete control over colors, typography, spacing, and visual styles, ensuring a consistent user experience across applications. By supporting custom themes and accessibility standards, it helps create visually appealing, on-brand, and user-friendly data experiences.",
+    "Content": "Theme customization is important because it allows applications to match an organization's branding, design guidelines, and visual identity. It provides full control over colors, typography, spacing, and component styling, ensuring a consistent and professional look across the entire application. Custom themes also improve accessibility, readability, and user engagement by creating a more intuitive and visually appealing interface. This helps developers deliver cohesive, user-friendly experiences that align with both business and user expectations.",
     "KeyCababilitiesTitle": [
       "Consistent Brand Expression",
       "Centralized Style Control",
@@ -133,6 +133,34 @@ window.data = {
       {
         "Question": "How to change the font size of DataGrid elements?",
         "Answer": "Customize the Data Grid font size by overriding the default Grid CSS classes and applying a custom font-size to headers, rows, and cells. This ensures a consistent appearance across all Grid elements."
+      },
+      {
+        "Question": "Can I switch themes at runtime?",
+        "Answer": "Yes. You can swap CSS variables or load a different theme stylesheet at runtime to support user-driven theme switching without a full page refresh."
+      },
+      {
+        "Question": "Can different grids use different themes?",
+        "Answer": "Yes. Scope CSS variables or custom classes to a container so each grid instance can follow its own theme styling on the same page."
+      },
+      {
+        "Question": "Which option should I use for a quick brand update?",
+        "Answer": "Use CSS variables for quick color and contrast changes. It is the fastest way to align the grid with a brand palette without restructuring your styles."
+      },
+      {
+        "Question": "Which option fits a full design system rollout?",
+        "Answer": "Use theme configuration when you need broader control over colors, typography, spacing, and component-level styling across an application."
+      },
+      {
+        "Question": "Do custom themes work with dark mode?",
+        "Answer": "Yes. Define separate light and dark values for your CSS variables or load matching theme files to support dark mode switching."
+      },
+      {
+        "Question": "Can I style only specific cells or rows?",
+        "Answer": "Yes. Use custom CSS classes or templates when you need to target only certain cells, headers, or rows with specialized styling."
+      },
+      {
+        "Question": "Is accessibility affected by custom styling?",
+        "Answer": "Yes, custom styling can affect accessibility if it reduces contrast, impacts readability, or makes interactive elements harder to identify. Maintaining proper contrast, clear typography, and visible focus indicators helps ensure an accessible user experience."
       }
     ]
   },

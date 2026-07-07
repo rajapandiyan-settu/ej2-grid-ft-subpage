@@ -17,15 +17,16 @@ window.data = {
     "Eyebrow": "Why Templates Matter",
     "MainTitle": "Develop Customized Data Experiences Tailored to Your Brand",
     "Subtitle": "Templates provide the flexibility needed to create unique, interactive, and branded data experiences that align with business requirements.",
-    "Content": "Templates are essential in the Syncfusion Data Grid because they enable developers to customize how data is displayed beyond the limitations of standard grid layouts. They help create data experiences that align with specific business workflows, branding requirements, and user expectations. By using templates, you can embed interactive elements such as buttons, images, progress bars, and custom components directly within the grid. This flexibility enhances usability, improves user engagement, and transforms the grid from a simple data display into a powerful and interactive workspace.",
+    "Content": "Templates are essential for customizing the appearance of data, headers, rows, and other interface elements beyond the default layout. They enable the display of rich content such as images, icons, buttons, hyperlinks, and expandable sections, making information more engaging and easier to understand. By offering greater flexibility in presentation, templates enhance usability and accommodate complex business needs. This helps developers create modern, visually appealing, and highly interactive applications.",
     "KeyCababilitiesTitle": [
-      "Custom Cell & Row Rendering",
+      "Custom Cell Rendering",
       "Brand-Consistent Design",
       "Interactive UI Components",
       "Advanced Data Layouts",
       "Responsive Design Support",
-      "Conditional Content Rendering",
-      "Flexible Layout Composition"
+      "Flexible Business-Specific Interfaces",
+      "Row Layout Customization",
+      "Custom Empty-State Messages"
 
     ]
   },
@@ -171,6 +172,42 @@ window.data = {
       {
         "Question": "How to filter multiple records using the filter bar template in React Grid?",
         "Answer": "You can filter multiple records in a React Grid by using a filter bar template that renders a MultiSelect component. The selected values are converted into predicates, which are used to build and execute a query through the DataManager, returning only the matching records."
+      },
+      {
+        "Question": "Can I template a single column differently per row?",
+        "Answer": "Yes. Use conditional logic inside a column template to render different markup, classes, or components based on the row's field values."
+      },
+      {
+        "Question": "How do I access the current row data inside a column template?",
+        "Answer": "The template receives the row's data as a property. Destructure the fields you need from the data argument to render cell content, badges, or action controls."
+      },
+      {
+        "Question": "Do templates render in the exported or printed view?",
+        "Answer": "Templates are used during normal rendering only. For PDF, Excel, and print exports, configure a separate export-specific template or use the default value for that column."
+      },
+      {
+        "Question": "Can I bind click events inside a template?",
+        "Answer": "Yes. You can attach standard React event handlers such as onClick inside any template. Use the row data passed to the template to drive the action."
+      },
+      {
+        "Question": "How do I show async content like images inside a template?",
+        "Answer": "Use a standard React img tag or any async-aware component inside the template. The grid re-renders the template cell whenever the row data changes."
+      },
+      {
+        "Question": "Do templates work with frozen and freeze pane columns?",
+        "Answer": "Yes. Templates render inside frozen, movable, and lockable columns the same way they do in regular columns. Plan the column width so template content fits the frozen area."
+      },
+      {
+        "Question": "Are templates compatible with virtualization for 100k+ rows?",
+        "Answer": "Yes. Templates work with row virtualization. Keep template markup lightweight and memoize heavy child components to keep scrolling smooth at scale."
+      },
+      {
+        "Question": "How do I debug a template that is not rendering?",
+        "Answer": "Start by logging the row data inside the template, confirm the field name matches your data source, and verify the template property name matches the documented API for that template type."
+      },
+      {
+        "Question": "Can I reuse the same template across multiple grids?",
+        "Answer": "Yes. Extract the template as a React component or function and pass it to each Grid's column configuration. This keeps template logic consistent across your app."
       }
     ]
   },
@@ -218,7 +255,7 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href=${data.HeroWithCTA.ViewDemo} class="btn btn-primary">ViewDemo</a>
+                <a href=${data.HeroWithCTA.ViewDemo} class="btn btn-primary">View Demo</a>
                 <a href=${data.HeroWithCTA.ExploreDoc} class="btn btn-secondary">Explore Documentation</a>
             </div>
         </div>`
