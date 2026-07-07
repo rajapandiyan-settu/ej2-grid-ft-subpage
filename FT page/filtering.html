@@ -82,8 +82,32 @@
       border-top: 1px solid #e5e7eb;
     }
     .why-matters-wrapper {
-      display: block;
-      gap: 0;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: center;
+    }
+    .why-matters-right {
+      background: #fff;
+      border: 1px solid #e6eef9;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+    }
+    .pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pill-item {
+      background: #eff6ff;
+      color: #2563eb;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-block;
+      width: fit-content;
     }
     .why-matters-text-large {
       font-size: 16px;
@@ -220,9 +244,11 @@
       background: #fff;
     }
 
+    @media (max-width: 1024px) {
+      .why-matters-wrapper { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
       .hero { padding: 68px 0; }
-      .why-matters-wrapper { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; }
       .btn { width: 100%; text-align: center; }
     }

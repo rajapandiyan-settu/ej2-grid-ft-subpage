@@ -30,50 +30,38 @@ window.data = {
       {
         Title: 'Filter Bar',
         Content: 'Display filter inputs directly beneath column headers for immediate filtering.',
-        Highlights: [
-          'Quick searches and inline filtering.',
-          'Users want fast filtering directly within the grid.'
-        ]
+        BestFor: ['Quick searches and inline filtering.', 'Low-friction inline adjustments.'],
+        UseWhen: ['Users want fast filtering directly within the grid.']
       },
       {
         Title: 'Checkbox Filter',
         Content: 'Allow users to select one or more values from a searchable list.',
-        Highlights: [
-          'Categorical data and multi-value filtering.',
-          'Users need to filter multiple values from a predefined set.'
-        ]
+        BestFor: ['Categorical data and multi-value filtering.', 'Good for selecting several predefined values.'],
+        UseWhen: ['Users need to filter multiple values from a predefined set.']
       },
       {
         Title: 'Excel-like Filter',
         Content: 'Provide advanced filtering with operators, conditions, and ranges.',
-        Highlights: [
-          'Complex queries, numeric ranges, and advanced filtering scenarios.',
-          'Users require sophisticated filtering rules and conditions.'
-        ]
+        BestFor: ['Complex queries, numeric ranges, and advanced filtering scenarios.', 'Ideal for compound logical conditions.'],
+        UseWhen: ['Users require sophisticated filtering rules and conditions.']
       },
       {
         Title: 'Menu Filter',
         Content: 'Display compact filter controls within column menus.',
-        Highlights: [
-          'Space-efficient filtering and simple comparisons.',
-          'Grid space is limited and filtering should remain compact.'
-        ]
+        BestFor: ['Space-efficient filtering and simple comparisons.', 'Works well on small screens and dense layouts.'],
+        UseWhen: ['Grid space is limited and filtering should remain compact.']
       },
       {
         Title: 'Sorting',
         Content: 'Reorder columns in ascending or descending order to compare values and spot trends.',
-        Highlights: [
-          'Analysis, comparison, and prioritization.',
-          'Users need to understand patterns and rankings.'
-        ]
+        BestFor: ['Analysis, comparison, and prioritization.', 'Useful for ordering results to highlight top items.'],
+        UseWhen: ['Users need to understand patterns and rankings.']
       },
       {
         Title: 'Search',
         Content: 'Enable quick text-based lookup so users can jump directly to relevant records.',
-        Highlights: [
-          'Fast lookup and quick navigation.',
-          'Users need to find a specific row or value immediately.'
-        ]
+        BestFor: ['Fast lookup and quick navigation.', 'Effective for targeted, single-record discovery.'],
+        UseWhen: ['Users need to find a specific row or value immediately.']
       }
     ]
   },
@@ -255,8 +243,10 @@ document.getElementsByClassName('why-matters')[0].innerHTML = `
         <h2 class="section-title">${data.WhyMatters.MainTitle}</h2>
         <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
         <p class="why-matters-summary"><strong>${data.WhyMatters.OverviewTitle}:</strong> ${data.WhyMatters.OverviewContent}</p>
-        <div class="selection-types-list">
-          ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
+      </div>
+      <div class="why-matters-right">
+        <div class="pill-list">
+          ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="pill-item">${item}</div>`).join('')}
         </div>
       </div>
     </div>
@@ -276,8 +266,9 @@ document.getElementsByClassName('capabilities-section')[0].innerHTML = `
           <h3>${item.Title}</h3>
           <p>${item.Content}</p>
           <ul class="capability-bullets">
-            ${item.Highlights.map(highlight => `<li>${highlight}</li>`).join('')}
+            ${item.BestFor.map(b => `<li>${b}</li>`).join('')}
           </ul>
+          <div class="capability-card-footer">Use when ${item.UseWhen.join(' ')}</div>
         </div>
       `).join('')}
     </div>
