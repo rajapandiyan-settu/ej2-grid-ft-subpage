@@ -97,6 +97,99 @@
             padding: 60px 20px;
         }
 
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 10px 18px;
+            border: none;
+            background: #f0f4ff;
+            color: #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .demo-tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .demo-preview {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            padding: 20px;
+            min-height: 350px;
+        }
+
+        .demo-panel {
+            display: none;
+        }
+
+        .demo-panel.active {
+            display: block;
+        }
+
+        .mock-toolbar {
+            padding: 10px;
+            background: #f8f9ff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .mock-chip {
+            background: #e8f1ff;
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 6px;
+        }
+
+        .mock-grid table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .mock-grid th,
+        .mock-grid td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .group-row {
+            background: #f0f4ff;
+            font-weight: 600;
+        }
+
+        .footer-row {
+            background: #fafafa;
+            font-weight: 600;
+        }
+
+        .demo-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 260px;
+            color: #666;
+            font-size: 20px;
+        }
+
+        .demo-content {
+            display: none;
+        }
+
+        .demo-content.active {
+            display: block;
+        }
+
         .section-eyebrow {
             text-align: center;
             font-size: 12px;
@@ -125,7 +218,7 @@
             margin-right: auto;
         }
 
-        
+
         .demo-placeholder {
             background: white;
             border: 1px solid #e0e0e0;
@@ -168,30 +261,46 @@
         }
 
         .why-matters-wrapper {
-            display: grid;
+            /* display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: start;
+            align-items: start; */
+
+            display: flex;
+            justify-content: center;
+
         }
 
         .why-matters-left {
+
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
             gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+
         }
 
         .why-matters-text-large {
+
             font-size: 15px;
             line-height: 1.8;
             color: #666;
-            margin: 0;
+            margin: 0 auto;
+            max-width: 900px;
+            text-align: center;
+
         }
 
         .selection-types-list {
+
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 12px;
-            margin-top: 24px;
+            margin-top: 24px
         }
 
         .selection-type-item {
@@ -246,7 +355,7 @@
             font-size: 14px;
             font-weight: 600;
         }
-        
+
         /* Capability Options */
         .capabilities-section {
             padding: 60px 20px;
@@ -631,7 +740,7 @@
 
 <body>
     <!-- HERO SECTION -->
-    <section class="hero">        
+    <section class="hero">
     </section>
 
     <!-- DEMO SECTION -->
@@ -639,19 +748,19 @@
     </section>
 
     <!-- WHY MATTERS SECTION -->
-    <section class="why-matters">        
+    <section class="why-matters">
     </section>
 
     <!-- CAPABILITY CARDS SECTION -->
-     <section class="capabilities-section">        
+    <section class="capabilities-section">
     </section>
 
     <!-- IMPLEMENTATION RESOURCES SECTION -->
-    <section class="resources">        
+    <section class="resources">
     </section>
 
     <!-- FAQ SECTION -->
-    <section class="faq">       
+    <section class="faq">
     </section>
 
     <!-- CUSTOMER STORIES SECTION -->
@@ -702,7 +811,7 @@
     </section>
 
     <!-- RELATED ARTICLES SECTION -->
-    <section class="related-articles">        
+    <section class="related-articles">
     </section>
 
     <!-- FOOTER -->
