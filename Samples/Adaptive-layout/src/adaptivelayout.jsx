@@ -3,7 +3,7 @@ import { ColumnDirective, ColumnsDirective, GridComponent, Inject, } from '@sync
 import { AggregateColumnsDirective, AggregateColumnDirective, AggregateDirective, AggregatesDirective } from '@syncfusion/ej2-react-grids';
 import { Filter, Sort, Edit, Toolbar, Aggregate, Page } from '@syncfusion/ej2-react-grids';
 import * as React from 'react';
-import { data } from '../src/assets/datasource';
+import { data } from '../src/datasource';
 
 function App() {
   const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };

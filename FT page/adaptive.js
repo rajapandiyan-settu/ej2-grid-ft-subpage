@@ -16,16 +16,16 @@ window.data = {
   "WhyMatters": {
     "Eyebrow": "Why Adaptive Layout Matters",
     "MainTitle": "Deliver Data Access Across All Devices",
-    "Subtitle": "Users expect consistent, usable data experiences everywhere—desktop, tablet, and mobile. Adaptive layouts ensure your grid remains accessible and efficient regardless of screen size.",
-    "Content": "Users expect consistent, usable data experiences everywhere—desk, tablet, phone. Traditional grids that work on desktop often break on mobile. Adaptive layout automatically reorganizes your grid based on screen size. Show all columns on desktop, hide secondary columns on tablet, and switch to mobile-friendly cards on phones. Mobile-first design, responsive columns, touch optimization, and a single codebase help deliver a seamless experience across all devices.",
-    "OverviewTitle": "Syncfusion EJ2 Grid Feature Overview",
-    "OverviewContent": "Adaptive Layout enables responsive behavior through automatic column management, touch-friendly rendering, flexible layout transformations, and intelligent device-specific interactions.",
+    "Content": "Modern applications must provide a seamless data experience across desktops, tablets, and mobile devices. Adaptive Layout in the Syncfusion React Data Grid automatically adjusts data presentation based on available screen space, ensuring usability without requiring separate implementations for different devices. Whether users access your application from a desktop monitor, tablet, or mobile phone, the grid intelligently reorganizes content, optimizes interactions, and maintains accessibility. Features such as column hiding, column reordering, vertical row rendering, touch-friendly dialogs, and responsive behavior help developers create efficient, user-friendly applications that remain consistent across all screen sizes while maintaining a single codebase.",
     "KeyCababilitiesTitle": [
       "Column Hiding",
       "Column Reordering",
-      "Stacked Layout",
+      "Adaptive Dialogs",
+      "Mobile-Only Layout",
       "Smart Scrolling",
-      "Real-Time Responsiveness"
+      "Touch Optimization",
+      "Responsive Rendering",
+      "Device-Aware UI"
     ]
   },
   "ChooseRightApproach": {
@@ -36,25 +36,37 @@ window.data = {
       {
         "Title": "Column Hiding",
         "Content": "Automatically hide lower-priority columns on small screens while keeping essential data visible. Users can tap to unhide columns as needed.",
-        "BestFor": "Mobile views where space is limited but data breadth is high.",
+        "BestFor": [
+          "Mobile views where space is limited but data breadth is high.",
+          "Applications that need to prioritize essential information on smaller screens."
+        ],
         "UseWhen": "You need to show core data first, with optional columns accessible on demand."
       },
       {
         "Title": "Column Reordering",
         "Content": "Prioritize column order based on screen size. Show most-viewed columns first on small screens, then expand as space allows.",
-        "BestFor": "Workflows where column priority changes by device.",
+        "BestFor": [
+          "Workflows where column priority changes by device.",
+          "Data-heavy applications where the most important fields vary by device."
+        ],
         "UseWhen": "Desktop users want detailed columns; mobile users want quick summaries."
       },
       {
         "Title": "Stacked Layout",
         "Content": "Transform grid rows into vertical card-like stacks on mobile. Each record becomes its own compact card, making mobile browsing natural and touch-friendly.",
-        "BestFor": "Mobile interfaces where traditional tables don't work well.",
+        "BestFor": [
+          "Mobile interfaces where traditional tables don't work well.",
+          "Customer-facing applications that require a mobile-first experience."
+        ],
         "UseWhen": "You want to maximize space and create a mobile-optimized experience."
       },
       {
         "Title": "Smart Scrolling",
         "Content": "Adapt scrolling behavior by device. Use horizontal scroll on desktop for many columns; switch to vertical scrolling on mobile with hidden columns available on tap.",
-        "BestFor": "Grids with many columns across diverse device types.",
+        "BestFor": [
+          "Grids with many columns across diverse device types.",
+          "Large datasets that cannot fit within the available screen width."
+        ],
         "UseWhen": "You want natural scrolling patterns that match user expectations per device."
       }
     ]
@@ -68,37 +80,37 @@ window.data = {
         "Title": "Adaptive Layout Documentation",
         "Content": "Complete guide to configuring responsive behavior, column hiding, reordering, and layout strategies.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/adaptive"
       },
       {
-        "Title": "Desktop Layout Demo",
-        "Content": "See the full data grid with all columns, native scrolling, and multi-column visibility on large screens.",
-        "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
-      },
-      {
-        "Title": "Mobile Layout Demo",
-        "Content": "Explore stacked card views, touch-friendly interactions, and column hiding strategies for mobile users.",
-        "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
-      },
-      {
-        "Title": "Responsive Design Guide",
-        "Content": "Best practices for choosing column visibility, priority ordering, and breakpoint strategies.",
+        "Title": "Render Adaptive Dialogs",
+        "Content": "Improve mobile usability by rendering filter, sort, and edit dialogs adaptively. The enableAdaptiveUI property displays dialogs in a responsive full-screen view for smaller screens.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/adaptive#render-adaptive-dialogs"
       },
       {
-        "Title": "Configuration Reference",
-        "Content": "API reference for media query rules, column hiding options, layout modes, and responsive settings.",
-        "ReadGuideORViewDemoTitle": "View Reference",
-        "ReadGuideORViewDemoLink": ""
+        "Title": "Vertical Row Rendering",
+        "Content": "Display grid rows in a vertical card-like layout to improve readability on mobile devices. Vertical rendering optimizes data visibility and provides a touch-friendly experience on smaller screens.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/adaptive#vertical-row-rendering"
       },
       {
-        "Title": "Multi-Device Example",
-        "Content": "Complete working example showing a data grid optimized for desktop, tablet, and mobile.",
-        "ReadGuideORViewDemoTitle": "View Example",
-        "ReadGuideORViewDemoLink": ""
+        "Title": "Supported Features in Vertical Row Rendering",
+        "Content": "Use vertical row rendering without sacrificing core grid functionality. Features such as paging, sorting, filtering, selection, dialog editing, aggregates, infinite scrolling, and adaptive toolbar actions remain fully supported in the vertical layout.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/adaptive#supported-features-by-vertical-row-rendering"
+      },
+      {
+        "Title": "Mobile-Only Adaptive Layout",
+        "Content": "Enable adaptive UI exclusively for mobile devices while preserving the standard desktop grid experience. Configure AdaptiveUIMode as Mobile to apply responsive layouts only on smaller screens.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/adaptive#rendering-an-adaptive-layout-for-smaller-screens-alone"
+      },
+      {
+        "Title": "Switch Between Mobile and Desktop Views",
+        "Content": "Dynamically adapt the DataGrid experience for different devices. Use enableAdaptiveUI and rowRenderingMode to switch between desktop and mobile layouts, providing an optimized view based on screen size and device type.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://support.syncfusion.com/kb/article/11484/how-to-switch-the-javascript-datagrid-in-mobile-and-desktop-views"
       }
     ]
   },
@@ -130,6 +142,46 @@ window.data = {
       {
         "Question": "Can users manually unhide columns on mobile?",
         "Answer": "Yes. Users can tap a menu button to reveal hidden columns on mobile. They can temporarily view additional data or switch the layout mode as needed for their workflow."
+      },
+      {
+        "Question": "Can adaptive layouts be used alongside row virtualization?",
+        "Answer": "Yes. Adaptive layouts can be combined with row virtualization to efficiently render large datasets while maintaining a responsive user experience across different screen sizes."
+      },
+      {
+        "Question": "Does adaptive layout affect accessibility features?",
+        "Answer": "No. Adaptive layouts are designed to preserve keyboard navigation, focus management, and screen reader compatibility, helping maintain an accessible experience on all devices."
+      },
+      {
+        "Question": "Can I customize the layout shown in vertical row mode?",
+        "Answer": "Yes. You can customize column visibility, templates, and row presentation to control how data appears when the grid is rendered in a vertical layout."
+      },
+      {
+        "Question": "Will adaptive layout work in landscape and portrait orientations?",
+        "Answer": "Yes. The grid automatically adjusts its presentation when device orientation changes, ensuring optimal data visibility in both portrait and landscape modes."
+      },
+      {
+        "Question": "Can adaptive UI be enabled at runtime?",
+        "Answer": "Yes. You can dynamically enable or disable adaptive UI and switch rendering modes programmatically based on user preferences, screen size, or application logic."
+      },
+      {
+        "Question": "Does adaptive layout support export operations?",
+        "Answer": "Yes. Features such as Excel, PDF, and CSV export remain available in adaptive mode. Users can access export options through the adaptive toolbar when enabled."
+      },
+      {
+        "Question": "Can adaptive layout be used with custom row templates?",
+        "Answer": "Yes. Adaptive layouts can work with customized row and column templates, allowing you to maintain a branded and application-specific user experience."
+      },
+      {
+        "Question": "How are toolbar actions displayed on smaller screens?",
+        "Answer": "On smaller devices, toolbar actions are optimized for limited screen space. Additional commands can be grouped under an overflow menu while keeping frequently used actions easily accessible."
+      },
+      {
+        "Question": "Does adaptive layout require separate mobile and desktop implementations?",
+        "Answer": "No. A single DataGrid configuration can support both desktop and mobile experiences, reducing development effort and simplifying maintenance."
+      },
+      {
+        "Question": "Can adaptive layouts be used in enterprise applications with complex workflows?",
+        "Answer": "Yes. Adaptive layouts support advanced grid capabilities such as editing, filtering, selection, exports, and data operations, making them suitable for enterprise-scale applications."
       }
     ]
   },
@@ -139,33 +191,32 @@ window.data = {
     "Subtitle": "Dive deeper into adaptive layout strategies, best practices, and real-world implementation patterns.",
     "Options": [
       {
-        "Title": "Responsive React Data Grid Design Patterns",
-        "Content": "Learn modern design patterns for responsive data grids, including column hiding, reordering, stacked layouts, and touch-friendly interactions.",
-        "ReadArticleLink": ""
+        "Title": "Responsive Grid with Parent Container",
+        "Content": "Learn how the React Data Grid automatically adjusts its width and layout based on its parent container to provide a responsive experience across different screen sizes.",
+        "ReadArticleLink": "https://ej2.syncfusion.com/react/documentation/grid/scrolling/scrolling#responsive-with-parent-container"
       },
       {
-        "Title": "Mobile Data Grid UX: What Users Expect",
-        "Content": "Understand mobile user expectations for data grids. Explore touch interactions, scrolling patterns, and mobile-first design principles.",
-        "ReadArticleLink": ""
+        "Title": "Configure Grid Width and Height",
+        "Content": "Control grid dimensions using fixed, dynamic, and percentage-based sizing options to create layouts that adapt to various devices and screen resolutions.",
+        "ReadArticleLink": "https://ej2.syncfusion.com/react/documentation/grid/scrolling/scrolling#set-width-and-height"
       },
       {
-        "Title": "Build Adaptive Layouts for Your Data",
-        "Content": "Step-by-step guide to configuring column visibility, hiding rules, reordering, and breakpoints for your specific data and workflows.",
-        "ReadArticleLink": ""
+        "Title": "Sticky Header Configuration",
+        "Content": "Keep column headers visible while scrolling through large datasets, improving navigation and readability on both desktop and mobile devices.",
+        "ReadArticleLink": "https://ej2.syncfusion.com/react/documentation/grid/scrolling/scrolling#sticky-header-configuration"
       },
       {
-        "Title": "Column Hiding vs. Stacked Layouts vs. Scrolling",
-        "Content": "Compare different adaptive strategies. Understand tradeoffs between hiding, cards, horizontal scrolling, and hybrid approaches for mobile.",
-        "ReadArticleLink": ""
+        "Title": "Auto-Scroll to Selected Row",
+        "Content": "Automatically bring selected records into view, helping users quickly locate and interact with data in large scrollable grids.",
+        "ReadArticleLink": "https://ej2.syncfusion.com/react/documentation/grid/scrolling/scrolling#auto-scroll-to-selected-row"
       }
     ]
   }
 }
- 
 
 // ========== FAQ TOGGLE ==========
 function toggleFaq(item) {
-    item.classList.toggle('open');
+  item.classList.toggle('open');
 }
 
 document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
@@ -173,8 +224,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href="https://ej2.syncfusion.com/react/demos/grid/adaptive-layout/" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
+                <a href="https://ej2.syncfusion.com/react/documentation/grid/adaptive" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
             </div>
         </div>`
 
@@ -187,28 +238,36 @@ document.getElementsByClassName("demo-section")[0].innerHTML = `<div class="cont
             </div>
         </div>`;
 
-document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="container">
-            <!-- Two Column Layout -->
-            <div class="why-matters-wrapper">
-                <!-- LEFT SIDE -->
-                <div class="why-matters-left">
-                    <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
-                    <h2>${data.WhyMatters.MainTitle}</h2>
-                    <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
-                </div>
-                <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
-                    </div>
-                </div>
-            </div>
-        </div>`;
+document.getElementsByClassName("why-matters")[0].innerHTML = `
+<div class="container">
 
+    <div class="section-eyebrow">
+        ${data.WhyMatters.Eyebrow}
+    </div>
+
+    <h2 class="section-title">
+        ${data.WhyMatters.MainTitle}
+    </h2>
+
+    <div class="why-matters-body">
+
+        <div class="why-matters-content">
+            ${data.WhyMatters.Content}
+        </div>
+
+        <div class="why-matters-capabilities">
+            <h3>Key Capabilities</h3>
+
+            <div class="selection-types-list">
+                ${data.WhyMatters.KeyCababilitiesTitle.map(item => `
+                    <div class="selection-type-item">${item}</div>
+                `).join('')}
+            </div>
+        </div>
+
+    </div>
+
+</div>`;
 document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div class="container">
             <div class="capabilities-section-header">
                 <div class="capabilities-eyebrow">${data.ChooseRightApproach.Eyebrow}</div>
@@ -220,11 +279,15 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
-                </div>
+                    
+                  <ul class="capability-points">
+    ${item.BestFor.map(point => `
+        <li><strong>Best for:</strong> ${point}</li>
+    `).join('')}
+
+    <li><strong>Use when:</strong> ${item.UseWhen}</li>
+</ul>
+                    </div>
                 `).join('')}
             </div>
         </div>`;
