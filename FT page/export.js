@@ -17,9 +17,10 @@ window.data = {
     "Eyebrow": "WHY DATA EXPORT MATTERS",
     "MainTitle": "Turn Grid Data into Actionable Reports and Shareable Insights",
     "Subtitle": "Export grid data into reports, spreadsheets, and shareable documents that help users analyze, distribute, and act on information.",
-    "Content": "Exporting transforms grid data into actionable reports, spreadsheets, and shareable documents. Deliver Excel, PDF, CSV, and print-ready outputs directly from your React applications. Streamline reporting workflows and help users access data in the format that best fits their needs. Maintain data consistency, support informed decision-making, and provide stakeholders with professionally formatted exports that are easy to share and consume.",
+    "Content": "Exporting enables users to transform grid data into reports, spreadsheets, and shareable documents that support analysis, collaboration, and decision-making. It helps organizations distribute information in accessible formats while maintaining consistency across reporting workflows. The Syncfusion React Data Grid provides built-in exporting and printing capabilities for Excel, PDF, and CSV formats, along with print-ready reports. Developers can customize exported content, preserve formatting, add headers and footers, apply branding, and tailor outputs to meet specific business and reporting requirements.",
     "OverviewTitle": "Built for Professional Data Exports",
     "OverviewContent": "The Syncfusion React Data Grid includes integrated exporting and printing capabilities that enable users to transform grid data into Excel, PDF, and CSV formats or generate print-ready reports. Developers can customize exported content, preserve formatting, add headers and footers, apply branding, and tailor output to meet business and reporting requirements—all while maintaining a consistent user experience.",
+    "CapabilitiesTitle":  "Key Capabilities",
     "KeyCababilitiesTitle": [
 
       "Multiple Exporting",
@@ -30,6 +31,9 @@ window.data = {
       "Brand Styling",
       "Column Visibility Control",
       "Selected Records Export",
+      "Server-Side Excel Export",
+      "PDF Export as Blob"
+
 
     ]
   },
@@ -268,27 +272,40 @@ document.getElementsByClassName("demo-section")[0].innerHTML = `<div class="cont
             </div>
         </div>`;
 
-document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="container">
-            <!-- Two Column Layout -->
-            <div class="why-matters-wrapper">
-                <!-- LEFT SIDE -->
-                <div class="why-matters-left">
-                    <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
-                    <h2>${data.WhyMatters.MainTitle}</h2>
-                    <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
-                </div>
-                <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
-                    </div>
+document.getElementsByClassName("why-matters")[0].innerHTML = `
+<div class="container">
+    <div class="why-matters-wrapper">
+ 
+        <div class="why-matters-left">
+            <div class="section-eyebrow">
+                ${data.WhyMatters.Eyebrow}
+            </div>
+ 
+            <h2>${data.WhyMatters.MainTitle}</h2>
+ 
+            <p class="why-matters-text-large">
+                ${data.WhyMatters.Content}
+            </p>
+        </div>
+ 
+        <div class="why-matters-right">
+            <div class="why-matters-card">
+                <h3 class="card-title">
+                    ${data.WhyMatters.CapabilitiesTitle}
+                </h3>
+ 
+                <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `
+                        <div class="selection-type-item">
+                            ${item}
+                        </div>
+                    `).join('')}
                 </div>
             </div>
-        </div>`;
+        </div>
+ 
+    </div>
+</div>`;
 
 document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div class="container">
             <div class="capabilities-section-header">
@@ -298,17 +315,30 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
             </div>
             <div class="capabilities-grid">
             ${data.ChooseRightApproach.Options.map(item => `
-                    <div class="capability-card">
-                    <h3>${item.Title}</h3>
-                    <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario"><ul class="capability-scenario-list">
-                        ${item.BestFor.map(x => `<li>${x}</li>`).join('')}
-                    </ul></div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
-                </div>
-                `).join('')}
+                  <div class="capability-card">
+
+                      <div class="capability-icon">
+                          📄
+                      </div>
+
+                      <h3>${item.Title}</h3>
+
+                      <p class="capability-description">
+                          ${item.Content}
+                      </p>
+
+                      <ul class="capability-scenario-list">
+                          ${item.BestFor.map(x => `
+                              <li>${x}</li>
+                          `).join('')}
+                      </ul>
+
+                      <div class="capability-usewhen">
+                          ${item.UseWhen}
+                      </div>
+
+                  </div>
+              `).join('')}
             </div>
         </div>`;
 
