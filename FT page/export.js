@@ -5,8 +5,8 @@ window.data = {
     "Eyebrow": "REACT DATA GRID EXPORTING",
     "MainTitle": "Generate Reports Faster with Powerful Export Capabilities",
     "Subtitle": "Export grid data to Excel, PDF, and CSV formats with ease while preserving formatting, structure, and valuable business insights.",
-    "ViewDemo": "View Demo",
-    "ExploreDoc": "Explore Documentation"
+    "ViewDemo": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/default-exporting",
+    "ExploreDoc": "https://ej2.syncfusion.com/react/documentation/grid/pdf-export/pdf-export"
   },
   "Preview": {
     "Eyebrow": "INTERACTIVE EXPORT DEMO",
@@ -17,17 +17,24 @@ window.data = {
     "Eyebrow": "WHY DATA EXPORT MATTERS",
     "MainTitle": "Turn Grid Data into Actionable Reports and Shareable Insights",
     "Subtitle": "Export grid data into reports, spreadsheets, and shareable documents that help users analyze, distribute, and act on information.",
-    "Content": "Exporting transforms grid data into actionable reports, spreadsheets, and shareable documents. Deliver Excel, PDF, CSV, and print-ready outputs directly from your React applications. Streamline reporting workflows and help users access data in the format that best fits their needs.",
+    "Content": "Exporting enables users to transform grid data into reports, spreadsheets, and shareable documents that support analysis, collaboration, and informed decision-making. It helps organizations distribute information in accessible formats while maintaining consistency across reporting workflows. The Syncfusion React Data Grid provides built-in support for Excel, PDF, and CSV exports, along with print-ready reports. Developers can customize exported content, preserve formatting, add headers and footers, apply branding, and tailor outputs to meet specific business, reporting, and compliance requirements.",
     "OverviewTitle": "Built for Professional Data Exports",
     "OverviewContent": "The Syncfusion React Data Grid includes integrated exporting and printing capabilities that enable users to transform grid data into Excel, PDF, and CSV formats or generate print-ready reports. Developers can customize exported content, preserve formatting, add headers and footers, apply branding, and tailor output to meet business and reporting requirements—all while maintaining a consistent user experience.",
+    "CapabilitiesTitle":  "Key Capabilities",
     "KeyCababilitiesTitle": [
-      "Excel Exports",
-      "PDF Exports",
-      "CSV Exports",
-      "Print-Ready Reports",
+
+      "Multiple Exporting",
+      "Hierarchy Export",
+      "Detail Template Export",
       "Custom Layouts",
       "Headers & Footers",
-      "Brand Styling"
+      "Brand Styling",
+      "Column Visibility Control",
+      "Selected Records Export",
+      "Server-Side Excel Export",
+      "PDF Export as Blob"
+
+
     ]
   },
   "ChooseRightApproach": {
@@ -38,26 +45,26 @@ window.data = {
       {
         "Title": "PDF Export",
         "Content": "Export grid data as professional PDF reports with custom layouts, styling, headers, and footers.",
-        "BestFor": "Reports, compliance documents, and printable records.",
-        "UseWhen": "You need a fixed-format document that looks the same everywhere."
+        "BestFor": ["Best for compliance reports, audit documents, and executive-ready reports.", "Preserves consistent formatting across devices and platforms."],
+        "UseWhen": "Use when you need a fixed-format document that looks the same everywhere."
       },
       {
         "Title": "Excel Export",
         "Content": "Export to native Excel files with support for formatting, formulas, summaries, and data analysis.",
-        "BestFor": "Financial reports, analytics, and spreadsheet workflows.",
-        "UseWhen": "Users need editable data for further calculations and reporting."
+        "BestFor": ["Best for financial reporting, business analytics, and data modeling.", "Enables users to modify data, apply formulas, and create custom reports."],
+        "UseWhen": "Use when users need editable data for further calculations and reporting."
       },
       {
         "Title": "CSV Export",
         "Content": "Export lightweight text-based files with broad compatibility across systems and tools.",
-        "BestFor": "Data exchange, imports, and integrations.",
-        "UseWhen": "You need a simple format supported by virtually any platform."
+        "BestFor": ["Best for system integrations, data migration, and bulk imports.", "Works with virtually any database, application, or spreadsheet tool."],
+        "UseWhen": "Use when you need a simple format supported by virtually any platform."
       },
       {
         "Title": "Print",
         "Content": "Generate print-ready output directly from the grid with customizable page settings.",
-        "BestFor": "Quick reports, reviews, and hard-copy documentation.",
-        "UseWhen": "Users need immediate printing without exporting a file first."
+        "BestFor": ["Best for quick reviews, meeting handouts, and operational records.", "Allows immediate hard-copy output without additional processing."],
+        "UseWhen": "Use when users need immediate printing without exporting a file first."
       }
     ]
   },
@@ -88,7 +95,7 @@ window.data = {
         "Title": "Interactive Export Demo",
         "Content": "Explore Excel, PDF, CSV, and Print features in a live sample and see exporting workflows in action.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/demos/#/tailwind3/grid/default-exporting.html"
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/default-exporting"
       },
       {
         "Title": "PDF Export Customization",
@@ -106,7 +113,7 @@ window.data = {
         "Title": "Print-Ready Report Guide",
         "Content": "Understand printing behavior, page layout considerations, and best practices for report generation.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/demos/#/tailwind3/grid/print.html"
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/print"
       },
       {
         "Title": "Export Multiple Grids",
@@ -233,24 +240,9 @@ window.data = {
     "Subtitle": "Go Deeper on Exporting",
     "Options": [
       {
-        "Title": "Export React Data Grid to PDF",
-        "Content": "Learn how to generate professional PDF reports with custom headers, footers, themes, page orientation settings, page numbering, and export event customization.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Export React Data Grid to Excel and CSV",
-        "Content": "Export Grid data to Excel and CSV formats with support for workbook customization, formatting, filtered records, selected rows, and advanced export scenarios.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Customize Exported Documents",
-        "Content": "Customize exported files by adding branding, logos, custom file names, themes, headers, footers, cell styles, and business-specific content using export events.",
-        "ReadArticleLink": ""
-      },
-      {
-        "Title": "Export Grouped, Hierarchical, and Multiple Grids",
-        "Content": "Explore advanced export scenarios including grouped data, aggregate summaries, hierarchical grids, and exporting multiple grids into a single document for consolidated reporting.",
-        "ReadArticleLink": ""
+        "Title": "Customize Grid Cell Values During Export",
+        "Content": "Learn how to modify header and cell values during Excel, PDF, and CSV export using export events, allowing you to generate customized reports without changing the original grid data.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/10087/how-to-customize-the-grid-cell-values-while-exporting-in-javascript"
       }
     ]
   }
@@ -258,7 +250,7 @@ window.data = {
 
 // ========== FAQ TOGGLE ==========
 function toggleFaq(item) {
-    item.classList.toggle('open');
+  item.classList.toggle('open');
 }
 
 document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
@@ -266,8 +258,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href="${data.HeroWithCTA.ViewDemo}" class="btn btn-primary">View Demo</a>
+                <a href="${data.HeroWithCTA.ExploreDoc}" class="btn btn-secondary">Explore Documentation</a>
             </div>
         </div>`
 
@@ -280,27 +272,40 @@ document.getElementsByClassName("demo-section")[0].innerHTML = `<div class="cont
             </div>
         </div>`;
 
-document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="container">
-            <!-- Two Column Layout -->
-            <div class="why-matters-wrapper">
-                <!-- LEFT SIDE -->
-                <div class="why-matters-left">
-                    <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
-                    <h2>${data.WhyMatters.MainTitle}</h2>
-                    <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
-                </div>
-                <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
-                    </div>
+document.getElementsByClassName("why-matters")[0].innerHTML = `
+<div class="container">
+    <div class="why-matters-wrapper">
+ 
+        <div class="why-matters-left">
+            <div class="section-eyebrow">
+                ${data.WhyMatters.Eyebrow}
+            </div>
+ 
+            <h2>${data.WhyMatters.MainTitle}</h2>
+ 
+            <p class="why-matters-text-large">
+                ${data.WhyMatters.Content}
+            </p>
+        </div>
+ 
+        <div class="why-matters-right">
+            <div class="why-matters-card">
+                <h3 class="card-title">
+                    ${data.WhyMatters.CapabilitiesTitle}
+                </h3>
+ 
+                <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `
+                        <div class="selection-type-item">
+                            ${item}
+                        </div>
+                    `).join('')}
                 </div>
             </div>
-        </div>`;
+        </div>
+ 
+    </div>
+</div>`;
 
 document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div class="container">
             <div class="capabilities-section-header">
@@ -310,15 +315,30 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
             </div>
             <div class="capabilities-grid">
             ${data.ChooseRightApproach.Options.map(item => `
-                    <div class="capability-card">
-                    <h3>${item.Title}</h3>
-                    <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
-                </div>
-                `).join('')}
+                  <div class="capability-card">
+
+                      <div class="capability-icon">
+                          📄
+                      </div>
+
+                      <h3>${item.Title}</h3>
+
+                      <p class="capability-description">
+                          ${item.Content}
+                      </p>
+
+                      <ul class="capability-scenario-list">
+                          ${item.BestFor.map(x => `
+                              <li>${x}</li>
+                          `).join('')}
+                      </ul>
+
+                      <div class="capability-usewhen">
+                          ${item.UseWhen}
+                      </div>
+
+                  </div>
+              `).join('')}
             </div>
         </div>`;
 
