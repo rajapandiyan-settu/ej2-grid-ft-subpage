@@ -3,33 +3,30 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "React Data Grid Templates Customization",
-    "MainTitle": "Craft Rich Experiences with Powerful Grid Customization",
-    "Subtitle": "Customize columns, cells, templates, editors, and layouts to create highly interactive data grids tailored to your application's needs.",
+    "MainTitle": "Build Exceptional User Experiences with a Fully Customizable React Data Grid",
+    "Subtitle": "Create highly interactive data grid experiences with flexible template customization. Design custom cell, row, header, and editor templates using React Data Grid components to display rich content, actions, and data exactly the way your application requires.",
     "ViewDemo": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/column-template",
     "ExploreDoc": "https://ej2.syncfusion.com/react/documentation/grid/columns/column-template"
   },
   "Preview": {
     "Eyebrow": "Interactive Demo",
-    "MainTitle": "Try Templates Customization in Action",
-    "Subtitle": "Explore various template customization options to discover how you can create branded data grid experiences."
+    "MainTitle": "Explore Template Customization in Action",
+    "Subtitle": "Explore a variety of React Data Grid template customization options and discover how to create interactive, personalized, and visually appealing data grid experiences tailored to your application's needs."
   },
   "WhyMatters": {
-    "Eyebrow": "Why Templates Customization Matter",
-    "MainTitle": "Develop Customized Data Experiences Tailored to Your Brand",
-    "Subtitle": "Template customization provides the flexibility to design data experiences that meet specific business requirements, enabling personalized, interactive, and engaging user interfaces.",
-    "Content": "Template customization matters because it enables organizations to tailor layouts, content, and interface elements to their specific business needs while maintaining consistency. It supports rich and interactive experiences through customized headers, rows, cells, and components. Theme customization enhances the visual appearance by managing colors, fonts, spacing, and branding elements. Together, they create cohesive, user-friendly, and professional applications.",
+    "Eyebrow": "Why Template Customization Matter",
+    "MainTitle": "Customize Cell Rendering to Match Your Brand",
+    "Subtitle": "Template customization empowers you to create data grid experiences tailored to your business needs. Build personalized, interactive, and visually engaging interfaces that align with your brand and enhance user productivity.",
+    "Content": "Template customization empowers you to create interactive data grid experiences tailored to your needs. Customize layouts, headers, rows, cells, and components while maintaining a cohesive visual identity through personalized colors, typography, spacing, and styling. Together, these capabilities help deliver engaging, professional, and user-friendly applications.",
     "KeyCababilitiesTitle": [
-      "Custom Cell Rendering",
-      "Brand-Consistent Design",
-      "Interactive UI Components",
-      "Advanced Data Layouts",
-      "Responsive Design Support",
-      "Flexible Business-Specific Interfaces",
-      "Row Layout Customization",
-      "Custom Empty-State Messages",
-      "Consistent Brand Expression",
-      "Multiple Theme Support",
-      "Accessibility Built-In"
+        "Header & Content Customization",
+        "Conditional UI Rendering",
+        "Custom Component Integration",
+        "Flexible Layout Design",
+        "Reusable Template Support",
+        "Custom Empty State Views",
+        "Business-Specific Interfaces",
+        "End-to-End UI Personalization"
     ]
   },
   "ChooseRightApproach": {
