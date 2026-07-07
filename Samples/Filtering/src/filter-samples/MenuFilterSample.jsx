@@ -1,10 +1,11 @@
-import { ColumnDirective, ColumnsDirective, GridComponent } from '@syncfusion/ej2-react-grids';
-import { Filter, Inject } from '@syncfusion/ej2-react-grids';
+import { ColumnDirective, ColumnsDirective, GridComponent, Sort } from '@syncfusion/ej2-react-grids';
+import { Filter, Inject, Search, Toolbar } from '@syncfusion/ej2-react-grids';
 import * as React from 'react';
 import { data } from '../datasource';
 
 function MenuFilterSample() {
   const filterSettings = { type: 'Menu' };
+  const toolbarOptions = ['Search'];
 
   return (
     <div className="sample-card">
@@ -12,7 +13,9 @@ function MenuFilterSample() {
       <GridComponent
         dataSource={data}
         allowFiltering={true}
+        allowSorting={true}
         filterSettings={filterSettings}
+        toolbar={toolbarOptions}
         height={320}
       >
         <ColumnsDirective>
@@ -23,7 +26,7 @@ function MenuFilterSample() {
           <ColumnDirective field="PublishDate" headerText="Publish Date" width="150" format="yMd" textAlign="Right" type="date" />
           <ColumnDirective field="Status" headerText="Status" width="120" />
         </ColumnsDirective>
-        <Inject services={[Filter]} />
+        <Inject services={[Filter, Sort, Search, Toolbar]} />
       </GridComponent>
     </div>
   );

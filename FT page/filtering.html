@@ -1,718 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>React Data Grid Filtering</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
-        }
-
-        /* ============= HERO SECTION ============= */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .hero-eyebrow {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            opacity: 0.9;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .hero-description {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 32px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: #ffffff;
-            color: #667eea;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* ============= DEMO SECTION ============= */
-        .demo-section {
-            background: white;
-            padding: 60px 20px;
-        }
-
-        .section-eyebrow {
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #667eea;
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1a202c;
-        }
-
-        .section-description {
-            text-align: center;
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        
-        .demo-placeholder {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 60px 20px;
-            color: #999;
-            font-size: 18px;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* ============= WHY MATTERS SECTION ============= */
-        .why-matters {
-            background: white;
-            padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .why-matters-header {
-            text-align: center;
-            margin-bottom: 60px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .why-matters-header .section-eyebrow {
-            display: block;
-            margin-bottom: 16px;
-        }
-
-        .why-matters-header .section-title {
-            margin-bottom: 20px;
-        }
-
-        .why-matters-header .section-description {
-            margin: 0;
-        }
-
-        .why-matters-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .why-matters-left {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .why-matters-text-large {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #666;
-            margin: 0;
-        }
-
-        .selection-types-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .selection-type-item {
-            background-color: #f0f4ff;
-            color: #667eea;
-            padding: 10px 18px;
-            border-radius: 24px;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .why-matters-right {
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .why-matters-card {
-            background: #f8f9ff;
-            border-left: 4px solid #667eea;
-            padding: 32px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            width: 100%;
-        }
-
-        .why-matters-card .card-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1a202c;
-            margin: 0 0 16px 0;
-        }
-
-        .why-matters-card .card-description {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #555;
-            margin: 0;
-        }
-
-        .benefits-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .chip {
-            background-color: #f0f4ff;
-            color: #667eea;
-            padding: 8px 16px;
-            border-radius: 24px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        
-        /* Capability Options */
-        .capabilities-section {
-            padding: 60px 20px;
-            background: #f9f9f9;
-        }
-
-        .capabilities-section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .capabilities-eyebrow {
-            color: #0066cc;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .capabilities-section h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1a1a1a;
-        }
-
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-        }
-
-        .capability-card {
-            background: white;
-            border-radius: 8px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: box-shadow 0.3s ease;
-            border: 1px solid #e0e0e0;
-        }
-
-        .capability-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            border-color: transparent;
-        }
-
-        .capability-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 16px;
-            background: #e8f1ff;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .capability-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #1a1a1a;
-        }
-
-        .capability-card p {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .capability-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #0066cc;
-            text-transform: uppercase;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .capability-scenario {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-        }
-
-        /* ============= RESOURCES SECTION ============= */
-        .resources {
-            background: #f9fafb;
-            padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .resource-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .resource-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .resource-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1a202c;
-        }
-
-        .resource-card p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 16px;
-        }
-
-        .resource-card a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .resource-card a:hover {
-            text-decoration: underline;
-        }
-
-        /* ============= FAQ SECTION ============= */
-        .faq {
-            background: white;
-            padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 40px;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #e2e8f0;
-            padding: 24px 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-question {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1a202c;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            user-select: none;
-        }
-
-        .faq-toggle {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f0f4ff;
-            border-radius: 50%;
-            color: #667eea;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.open .faq-toggle {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            display: none;
-            margin-top: 16px;
-            font-size: 14px;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .faq-item.open .faq-answer {
-            display: block;
-        }
-
-        /* ============= CUSTOMER SECTION ============= */
-        .customer-stories {
-            background: #f9fafb;
-            padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .customer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .customer-quote {
-            font-size: 18px;
-            font-style: italic;
-            color: #333;
-            margin: 32px 0;
-            line-height: 1.8;
-        }
-
-        .customer-attribution {
-            font-size: 14px;
-            color: #666;
-            font-style: normal;
-        }
-
-        .read-more-link {
-            display: inline-block;
-            margin-top: 24px;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .read-more-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ============= SOCIAL PROOF SECTION ============= */
-        .social-proof {
-            background: white;
-            padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .proof-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stars {
-            font-size: 28px;
-            margin-bottom: 16px;
-            letter-spacing: 4px;
-        }
-
-        .proof-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-
-        .metric-label {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* ============= RELATED ARTICLES SECTION ============= */
-        .related-articles {
-            background: #f9fafb;
-            padding: 60px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .article-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .article-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            transform: translateY(-4px);
-        }
-
-        .article-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1a202c;
-        }
-
-        .article-card p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 16px;
-        }
-
-        .article-link {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .article-link:hover {
-            text-decoration: underline;
-        }
-
-        /* ============= FOOTER ============= */
-        footer {
-            background-color: #1a202c;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        footer p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* ============= RESPONSIVE ============= */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .hero-ctas {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .why-matters-wrapper {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .why-matters-header {
-                margin-bottom: 40px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React Data Grid Search, Filter, and Sort</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f9fafb;
+    }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .hero {
+      padding: 88px 0;
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .hero-eyebrow,
+    .section-eyebrow,
+    .capabilities-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      opacity: 0.9;
+    }
+    .hero h1,
+    .section-title,
+    .capabilities-section h2 {
+      font-size: clamp(32px, 4vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero-description,
+    .section-description,
+    .demo-subtitle {
+      font-size: 18px;
+      max-width: 760px;
+      margin: 0 auto 28px;
+      opacity: 0.95;
+    }
+    .hero-ctas { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: #fff; color: #2563eb; }
+    .btn-secondary { border: 1px solid #fff; color: #fff; }
+
+    .demo-section,
+    .why-matters,
+    .faq,
+    .related-articles {
+      padding: 72px 0;
+      background: #fff;
+    }
+    .demo-placeholder {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 48px 24px;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 18px;
+      margin-top: 24px;
+      background: #f9fafb;
+    }
+    .demo-preview {
+      margin-top: 24px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+    }
+    .demo-preview-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 16px;
+    }
+    .preview-search {
+      flex: 1;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: #64748b;
+      font-size: 14px;
+    }
+    .preview-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .preview-chip {
+      background: #eff6ff;
+      color: #2563eb;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .demo-preview-table {
+      display: grid;
+      gap: 10px;
+    }
+    .demo-preview-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #334155;
+    }
+    .demo-preview-header {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 12px;
+    }
+    .preview-pill {
+      display: inline-flex;
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .preview-pill.success {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .why-matters,
+    .resources,
+    .related-articles {
+      border-top: 1px solid #e5e7eb;
+    }
+    .why-matters-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: center;
+    }
+    .why-matters-right {
+      background: #fff;
+      border: 1px solid #e6eef9;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+    }
+    .pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pill-item {
+      background: #eff6ff;
+      color: #2563eb;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-block;
+      width: fit-content;
+    }
+    .why-matters-text-large {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 22px;
+    }
+    .selection-types-list { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .selection-type-item {
+      background: #eff6ff;
+      color: #2563eb;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .why-matters-summary {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.8;
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .capabilities-section,
+    .resources {
+      padding: 72px 0;
+      background: #f8fafc;
+    }
+    .capabilities-grid,
+    .resources-grid,
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .capability-card,
+    .resource-card,
+    .article-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      min-height: 340px;
+    }
+    .capability-card h3,
+    .resource-card h4,
+    .article-card h4 {
+      margin-bottom: 14px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .capability-card p,
+    .resource-card p,
+    .article-card p {
+      color: #6b7280;
+      font-size: 15px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .capability-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 22px;
+      display: grid;
+      gap: 12px;
+    }
+    .capability-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .capability-bullets li::before {
+      content: '✓';
+      color: #16a34a;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .capability-card-footer {
+      margin-top: auto;
+      background: #eff6ff;
+      border-radius: 18px;
+      padding: 16px 18px;
+      color: #1d4ed8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .resource-card a,
+    .article-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: #2563eb;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .resource-card a:hover,
+    .article-link:hover { text-decoration: underline; }
+
+    .faq-container { max-width: 860px; margin: 28px auto 0; }
+    .faq-item { border-bottom: 1px solid #e5e7eb; padding: 18px 0; }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .faq-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #eff6ff;
+      color: #2563eb;
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer { display: none; margin-top: 10px; color: #4b5563; }
+    .faq-item.open .faq-answer { display: block; }
+
+    footer {
+      padding: 28px 0 44px;
+      text-align: center;
+      color: #6b7280;
+      background: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .why-matters-wrapper { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 68px 0; }
+      .hero-ctas { flex-direction: column; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- HERO SECTION -->
-    <section class="hero">        
-    </section>
+  <section class="hero"></section>
+  <section class="demo-section"></section>
+  <section class="why-matters"></section>
+  <section class="capabilities-section"></section>
+  <section class="resources"></section>
+  <section class="faq"></section>
+  <section class="related-articles"></section>
+  <footer>
+    <div class="container">
+      <p>© 2024 Syncfusion React Data Grid Search, Filter, and Sort.</p>
+    </div>
+  </footer>
 
-    <!-- DEMO SECTION -->
-    <section class="demo-section">
-    </section>
-
-    <!-- WHY MATTERS SECTION -->
-    <section class="why-matters">        
-    </section>
-
-    <!-- CAPABILITY CARDS SECTION -->
-     <section class="capabilities-section">        
-    </section>
-
-    <!-- IMPLEMENTATION RESOURCES SECTION -->
-    <section class="resources">        
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section class="faq">       
-    </section>
-
-    <!-- CUSTOMER STORIES SECTION -->
-    <section class="customer-stories">
-        <div class="container">
-            <div class="section-eyebrow">Customer Stories</div>
-            <h2 class="section-title">Trusted for Business Application Development</h2>
-
-            <div class="customer-content">
-                <div class="customer-quote">
-                    "Syncfusion components help teams build data-rich application screens faster, with consistent UI
-                    patterns and production-ready features."
-                </div>
-                <div class="customer-attribution">
-                    — Enterprise Development Team
-                </div>
-                <a href="#" class="read-more-link">Read customer stories →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOCIAL PROOF SECTION -->
-    <section class="social-proof">
-        <div class="container">
-            <div class="section-eyebrow">Our Customers Love Us</div>
-            <h2 class="section-title">Loved by Development Teams Worldwide</h2>
-
-            <div class="proof-content">
-                <div class="stars">★★★★★</div>
-                <p>Trusted by developers and enterprises building high-performance applications.</p>
-
-                <div class="proof-metrics">
-                    <div class="metric">
-                        <div class="metric-number">80+</div>
-                        <div class="metric-label">UI Components</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-number">1M+</div>
-                        <div class="metric-label">Developers Worldwide</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-number">24/7</div>
-                        <div class="metric-label">Support Available</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RELATED ARTICLES SECTION -->
-    <section class="related-articles">        
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Syncfusion React Data Grid Selection. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="filtering.js"></script>
+  <script src="filtering.js"></script>
 </body>
 </html>
