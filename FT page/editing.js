@@ -3,8 +3,8 @@
 window.data = {
   "HeroWithCTA": {
     "Eyebrow": "REACT DATA GRID EDITING",
-    "MainTitle": "Empower Faster Workflows with Intuitive Data Grid Editing",
-    "Subtitle": "Streamline data management with inline, cell, dialog, batch, and custom editing modes that help users update records quickly and accurately.",
+    "MainTitle": "Powerful Grid Editing for Modern Data Management",
+    "Subtitle": "Enable users to add, edit, validate, and save data directly within the grid using flexible editing modes, built-in validation, and seamless backend integration.",
     "ViewDemo": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/normal-edit",
     "ExploreDoc": "https://ej2.syncfusion.com/react/documentation/grid/editing/edit"
   },
@@ -15,17 +15,17 @@ window.data = {
   },
   "WhyMatters": {
     "Eyebrow": "WHY EDITING MATTERS",
-    "MainTitle": "Turn Data Review into Data Update",
-    "Subtitle": "A data grid is often where information is reviewed and maintained. Seamless editing allows users to make updates instantly without leaving their current workflow.",
-    "Content": "A data grid is where users frequently review, update, and manage important information. Users expect to correct errors or make changes directly within the grid without leaving the current view. Seamless editing improves productivity by reducing unnecessary navigation and extra steps. Switching between multiple screens disrupts productivity and slows down the process. It helps maintain data accuracy and ensures updates are reflected immediately.",
-    "OverviewTitle": "Syncfusion EJ2 Grid Feature Overview",
-    "OverviewContent": "Syncfusion EJ2 Grid offers powerful editing capabilities that seamlessly fit into modern data-driven applications. It enables users to add, update, and delete records directly within the grid without interrupting their workflow. Whether users need quick inline modifications, bulk data updates, or form-based editing, the grid provides flexible editing modes. Built-in validation and customizable editors help ensure data accuracy and consistency during the editing process. These features enhance productivity and deliver a smooth, efficient data management experience.",
-    "KeyCababilitiesTitle": [
-      "Flexible Editing Modes",
-      "Real-Time Validation",
-      "Batch Operations",
-      "Custom Templates",
-      "Full Keyboard Support"
+    "MainTitle": "Streamlined editing for enterprise applications",
+    "Content": "Grid Editing transforms a data grid from a simple read-only display into a complete data management interface, allowing users to add, modify, validate, and persist data directly within the grid. It includes built-in CRUD operations, multiple editing modes, validation capabilities, and seamless backend integration, enabling developers to build robust enterprise applications more efficiently.",
+    "KeyCapabilitiesTitle": [
+      "Multiple Editing Modes",
+      "Rich Built-in Editors",
+      "Build custom editor controls",
+      "Save bulk updates together",
+      "Prevent invalid data entry",
+      "Keep actions visible and clear",
+      "Enforce data quality rules",
+      "Sync changes to your backend",
     ]
   },
   "ChooseRightApproach": {
@@ -35,38 +35,38 @@ window.data = {
     "Options": [
       {
         "Title": "Inline Editing",
-        "Content": "Edit an entire row with all fields visible and editable at once. Perfect for quick multi-field updates where context matters.",
-        "BestFor": "Quick edits, multiple fields, row-level context",
-        "UseWhen": "Users need to see and modify related fields together."
+        "Content": "Edit an entire row with all fields visible and editable at once. Perfect for quick multi-field updates where you need to see related data together.",
+        "BestFor": ["Multi-field updates", "Related data correlation", "Form-like workflows"],
+        "UseWhen": "Users need to modify several fields in one operation."
       },
       {
         "Title": "Cell Editing",
-        "Content": "Edit individual cells with double-click or keyboard interaction. Saves changes immediately per cell for rapid workflows.",
-        "BestFor": "Spreadsheet-like workflows, cell-level changes",
-        "UseWhen": "Users expect Excel-like cell editing behavior."
+        "Content": "Edit individual cells with double-click or keyboard interaction. Saves changes immediately per cell for rapid, focused updates.",
+        "BestFor": ["Spreadsheet workflows", "Single-field changes", "High-frequency edits"],
+        "UseWhen": "Users expect Excel-like cell-by-cell editing behavior."
       },
       {
         "Title": "Dialog Editing",
         "Content": "Open a modal dialog with all editable fields organized in a form layout. Great for complex records with validation.",
-        "BestFor": "Complex forms, validation, organized layouts",
+        "BestFor": ["Complex forms", "validation", "organized layouts"],
         "UseWhen": "Records have many fields or need structured form display."
       },
       {
         "Title": "Batch Editing",
         "Content": "Edit multiple rows simultaneously with all changes applied at once. Ideal for bulk operations and atomic transactions.",
-        "BestFor": "Bulk updates, multi-row changes, atomic saves",
+        "BestFor": ["Bulk updates", "multi-row changes", "atomic saves"],
         "UseWhen": "Users need to update many records and save together."
       },
       {
         "Title": "Dialog Template Editing",
         "Content": "Use custom HTML templates to design your edit dialog exactly as needed. Full control over layout and styling.",
-        "BestFor": "Custom layouts, branded forms, complex UX",
+        "BestFor": ["Custom layouts", "branded forms", "complex UX"],
         "UseWhen": "Default dialog doesn't match your design requirements."
       },
       {
         "Title": "Command Column Editing",
         "Content": "Add Edit, Save, Cancel, and Delete buttons in a dedicated column. Always visible controls for explicit user actions.",
-        "BestFor": "Explicit actions, mobile-friendly, clear affordance",
+        "BestFor": ["Explicit actions", "mobile-friendly", "clear affordance"],
         "UseWhen": "Users need visible action buttons for every row."
       }
     ]
@@ -262,8 +262,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="${data.HeroWithCTA.ViewDemo}" class="btn btn-primary">View Demo</a>
-                <a href="${data.HeroWithCTA.ExploreDoc}" class="btn btn-secondary">Explore Documentation</a>
+                <a href="${data.HeroWithCTA.ViewDemo}" class="btn btn-primary" target="_blank">View Demo</a>
+                <a href="${data.HeroWithCTA.ExploreDoc}" class="btn btn-secondary" target="_blank">Explore Documentation</a>
             </div>
         </div>`
 
@@ -284,15 +284,12 @@ document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="conta
                     <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
                     <h2>${data.WhyMatters.MainTitle}</h2>
                     <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
+                    
                 </div>
                 <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
+                <div class="why-matters-right" style="padding-top: 30px;">
+                    <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCapabilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
                     </div>
                 </div>
             </div>
@@ -308,11 +305,11 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
             ${data.ChooseRightApproach.Options.map(item => `
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
-                    <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
+                    <p style="padding-bottom: 10px;">${item.Content}</p>
+                    <ul class="capability-list">
+                        ${item.BestFor.map(bestForItem => `<li>${bestForItem}</li>`).join('')}
+                    </ul>
+                    <div class="capability-pill">${item.UseWhen}</div>
                 </div>
                 `).join('')}
             </div>
