@@ -5,11 +5,11 @@ window.data = {
     "Eyebrow": "React Data Grid Templates",
     "MainTitle": "Craft Rich Experiences with Powerful Grid Customization",
     "Subtitle": "Customize columns, cells, templates, editors, and layouts to create highly interactive data grids tailored to your application's needs.",
-    "ViewDemo": "View Demo",
-    "ExploreDoc": "Explore Documentation"
+    "ViewDemo": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/column-template",
+    "ExploreDoc": "https://ej2.syncfusion.com/react/documentation/grid/columns/column-template"
   },
   "Preview": {
-    "Eyebrow": "Live Sample",
+    "Eyebrow": "Interactive Demo",
     "MainTitle": "Try Different Templates in Action",
     "Subtitle": "Explore various template types to discover how you can customize your grid's appearance and functionality."
   },
@@ -17,15 +17,17 @@ window.data = {
     "Eyebrow": "Why Templates Matter",
     "MainTitle": "Develop Customized Data Experiences Tailored to Your Brand",
     "Subtitle": "Templates provide the flexibility needed to create unique, interactive, and branded data experiences that align with business requirements.",
-    "Content": "Every application has unique data presentation requirements. Generic data grids can be limiting when organizations need solutions that reflect their business processes, brand identity, and user experience expectations. With templates, you can create highly customized and interactive data experiences, transforming standard grid displays into engaging interfaces that support sophisticated workflows and improve user productivity.",
-    "OverviewTitle": "Syncfusion EJ2 Grid Feature Overview",
-    "OverviewContent": "Templates provide complete visual control over the Data Grid, enabling custom rendering, branding, interactive elements, and advanced layouts.",
+    "Content": "Templates are essential for customizing the appearance of data, headers, rows, and other interface elements beyond the default layout. They enable the display of rich content such as images, icons, buttons, hyperlinks, and expandable sections, making information more engaging and easier to understand. By offering greater flexibility in presentation, templates enhance usability and accommodate complex business needs. This helps developers create modern, visually appealing, and highly interactive applications.",
     "KeyCababilitiesTitle": [
       "Custom Cell Rendering",
       "Brand-Consistent Design",
-      "Interactive Elements",
-      "Complex Data Layouts",
-      "Responsive UI"
+      "Interactive UI Components",
+      "Advanced Data Layouts",
+      "Responsive Design Support",
+      "Flexible Business-Specific Interfaces",
+      "Row Layout Customization",
+      "Custom Empty-State Messages"
+
     ]
   },
   "ChooseRightApproach": {
@@ -36,50 +38,50 @@ window.data = {
       {
         "Title": "Column Template",
         "Content": "Customize individual cell content with HTML, formatted text, images, badges, and interactive controls.",
-        "BestFor": "Status indicators, formatted values, action buttons, badges",
-        "UseWhen": "Cells need custom rendering beyond plain text."
+        "BestFor": ["Status indicators", "Formatted values", "Action buttons", "Badges"],
+        "UseWhen": "Use when cells need custom rendering beyond plain text."
       },
       {
         "Title": "Header Template",
         "Content": "Design custom column headers with icons, sort indicators, filter buttons, and advanced header layouts.",
-        "BestFor": "Custom sorting, advanced filtering, header icons",
-        "UseWhen": "Headers need interactive elements or custom styling."
+        "BestFor": ["Custom sorting", "Advanced filtering", "Header icons"],
+        "UseWhen": "Use when headers need interactive elements or custom styling."
       },
       {
         "Title": "Detail Template",
         "Content": "Create expandable row details showing comprehensive information, nested tables, or related records.",
-        "BestFor": "Master-detail layouts, expandable rows, nested data",
-        "UseWhen": "Rows need to display additional detailed information."
+        "BestFor": ["Master-detail layouts", "Expandable rows", "Nested data"],
+        "UseWhen": "Use when rows need to display additional detailed information."
       },
       {
         "Title": "Column Chooser Template",
         "Content": "Customize the column visibility dialog to provide an intuitive way for users to manage columns.",
-        "BestFor": "Column visibility dialogs, user preferences",
-        "UseWhen": "You need custom column selection UI."
+        "BestFor": ["Column visibility dialogs", "User preferences"],
+        "UseWhen": "Use when you need custom column selection UI."
       },
       {
         "Title": "Stacked Header Column",
         "Content": "Display multiple fields stacked vertically within a single column for compact, organized layouts.",
-        "BestFor": "Multi-field display, compact layouts, grouped data",
-        "UseWhen": "You need to show multiple fields in one column."
+        "BestFor": ["Multi-field display", "Compact layouts", "Grouped data"],
+        "UseWhen": "Use when you need to show multiple fields in one column."
       },
       {
         "Title": "Empty Record Template",
         "Content": "Design custom empty state messages with helpful guidance when no data matches the current filter.",
-        "BestFor": "Empty states, user guidance, call-to-action",
-        "UseWhen": "You want to customize the no-data experience."
+        "BestFor": ["Empty states", "User guidance", "Call-to-action"],
+        "UseWhen": "Use when you want to customize the no-data experience."
       },
       {
         "Title": "Filter Template",
         "Content": "Build advanced filter UI with custom dropdowns, date pickers, sliders, and filtering logic.",
-        "BestFor": "Advanced filters, date ranges, custom search",
-        "UseWhen": "Filters need custom controls or logic."
+        "BestFor": ["Advanced filters", "Date ranges", "Custom search"],
+        "UseWhen": "Use when filters need custom controls or logic."
       },
       {
         "Title": "Row Template",
         "Content": "Completely customize entire row layouts with conditional styling, actions, and complex markup.",
-        "BestFor": "Custom row layouts, complex hierarchies, conditional styling",
-        "UseWhen": "Entire rows need custom structure."
+        "BestFor": ["Custom row layouts", "Complex hierarchies", "Conditional styling"],
+        "UseWhen": "Use when entire rows need custom structure."
       }
     ]
   },
@@ -92,49 +94,49 @@ window.data = {
         "Title": "Template Documentation",
         "Content": "Complete guide to all template types with API references and configuration options.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/columns/column-template"
       },
       {
         "Title": "Column Template Demo",
         "Content": "Interactive demo showing custom cell rendering with formatted content and controls.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/column-template"
       },
       {
         "Title": "Detail Template Demo",
         "Content": "Master-detail example showing expandable rows with nested data and custom layouts.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/detail-template"
       },
       {
         "Title": "Header Template Demo",
         "Content": "Custom header examples with icons, sorting, and interactive header controls.",
         "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/header-template"
       },
       {
         "Title": "Advanced Filtering Guide",
         "Content": "Learn how to implement custom filter templates with validation and complex logic.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/filtering/filtering#perform-enum-column-filtering"
       },
       {
-        "Title": "Stacked Header Column Example",
+        "Title": "Stacked Header Column Demo",
         "Content": "Learn how to stack multiple fields in a single column efficiently.",
-        "ReadGuideORViewDemoTitle": "View Example",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoTitle": "View Demo",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/stacked-header"
       },
       {
         "Title": "Best Practices for Empty State Design",
         "Content": "Guidelines for designing effective empty state templates for better UX.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/how-to/customize-the-empty-record-template"
       },
       {
         "Title": "Row Template Customization",
         "Content": "Advanced techniques for complete row customization with conditional rendering.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/row/row-template"
       }
     ]
   },
@@ -170,6 +172,42 @@ window.data = {
       {
         "Question": "How to filter multiple records using the filter bar template in React Grid?",
         "Answer": "You can filter multiple records in a React Grid by using a filter bar template that renders a MultiSelect component. The selected values are converted into predicates, which are used to build and execute a query through the DataManager, returning only the matching records."
+      },
+      {
+        "Question": "Can I template a single column differently per row?",
+        "Answer": "Yes. Use conditional logic inside a column template to render different markup, classes, or components based on the row's field values."
+      },
+      {
+        "Question": "How do I access the current row data inside a column template?",
+        "Answer": "The template receives the row's data as a property. Destructure the fields you need from the data argument to render cell content, badges, or action controls."
+      },
+      {
+        "Question": "Do templates render in the exported or printed view?",
+        "Answer": "Templates are used during normal rendering only. For PDF, Excel, and print exports, configure a separate export-specific template or use the default value for that column."
+      },
+      {
+        "Question": "Can I bind click events inside a template?",
+        "Answer": "Yes. You can attach standard React event handlers such as onClick inside any template. Use the row data passed to the template to drive the action."
+      },
+      {
+        "Question": "How do I show async content like images inside a template?",
+        "Answer": "Use a standard React img tag or any async-aware component inside the template. The grid re-renders the template cell whenever the row data changes."
+      },
+      {
+        "Question": "Do templates work with frozen and freeze pane columns?",
+        "Answer": "Yes. Templates render inside frozen, movable, and lockable columns the same way they do in regular columns. Plan the column width so template content fits the frozen area."
+      },
+      {
+        "Question": "Are templates compatible with virtualization for 100k+ rows?",
+        "Answer": "Yes. Templates work with row virtualization. Keep template markup lightweight and memoize heavy child components to keep scrolling smooth at scale."
+      },
+      {
+        "Question": "How do I debug a template that is not rendering?",
+        "Answer": "Start by logging the row data inside the template, confirm the field name matches your data source, and verify the template property name matches the documented API for that template type."
+      },
+      {
+        "Question": "Can I reuse the same template across multiple grids?",
+        "Answer": "Yes. Extract the template as a React component or function and pass it to each Grid's column configuration. This keeps template logic consistent across your app."
       }
     ]
   },
@@ -179,24 +217,29 @@ window.data = {
     "Subtitle": "Discover related topics and best practices for building powerful data applications",
     "Options": [
       {
-        "Title": "Building Advanced Data Grid Layouts",
-        "Content": "Learn how to combine multiple template types to create sophisticated data displays and user interfaces.",
-        "ReadArticleLink": ""
+        "Title": "Cell Edit Template Using TextBox",
+        "Content": "Use a multiline TextBox as a custom edit template in React Grid cells.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11397/how-to-cell-edit-template-using-textbox-in-react-grid"
       },
       {
-        "Title": "Template Performance Optimization",
-        "Content": "Techniques and strategies for maintaining fast rendering performance with complex templates and large datasets.",
-        "ReadArticleLink": ""
+        "Title": "Custom Column Editor with Uploader",
+        "Content": "Use the Uploader component as a custom edit template for Grid columns.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11098/how-to-edit-the-column-in-grid-using-the-uploader-control"
+      }, 
+      {
+        "Title": "Group Caption Template Customization",
+        "Content": "Learn how to customize group captions with dynamic content, icons, and conditional rendering in React Data Grid.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/12048/change-default-group-caption-based-on-condition-in-react-grid"
       },
       {
-        "Title": "Implementing Master-Detail Workflows",
-        "Content": "Step-by-step guide to creating expandable master-detail views using detail templates and nested data.",
-        "ReadArticleLink": ""
+        "Title": "MultiSelect Cell Edit Template",
+        "Content": "Use a MultiSelect Dropdown as a custom cell edit template in React Grid to edit multiple values within a column.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11434/how-to-edit-the-column-in-grid-using-the-multiselect-dropdown-control"
       },
       {
-        "Title": "Custom Component Integration",
-        "Content": "Best practices for integrating custom React components into grid templates while maintaining performance.",
-        "ReadArticleLink": ""
+        "Title": "Group Caption Formatting",
+        "Content": "Learn how to format and customize group caption templates to display values in a user-friendly format.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/9693/how-to-apply-formatting-for-the-group-caption-template"
       }
     ]
   }
@@ -212,8 +255,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href=${data.HeroWithCTA.ViewDemo} class="btn btn-primary">View Demo</a>
+                <a href=${data.HeroWithCTA.ExploreDoc} class="btn btn-secondary">Explore Documentation</a>
             </div>
         </div>`
 
@@ -234,15 +277,12 @@ document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="conta
                     <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
                     <h2>${data.WhyMatters.MainTitle}</h2>
                     <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
                 </div>
                 <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
+                <div class="why-matters-right" style="width: 330px;">
+                <div class="selection-list">
+                    <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
                     </div>
                 </div>
             </div>
@@ -259,10 +299,10 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
+                    <ul class="capability-list">
+                        ${item.BestFor.map(bestForItem => `<li>${bestForItem}</li>`).join('')}
+                    </ul>
+                    <div class="capability-pill">${item.UseWhen}</div>
                 </div>
                 `).join('')}
             </div>

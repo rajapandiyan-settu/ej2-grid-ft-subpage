@@ -5,8 +5,8 @@ window.data = {
     "Eyebrow": "REACT DATA GRID THEME CUSTOMIZATION FEATURES",
     "MainTitle": "Deliver Stunning User Experiences with Custom Themes",
     "Subtitle": "Customize colors, fonts, and visual elements to match your design system. Create a consistent, on-brand experience that reflects your product identity.",
-    "ViewDemo": "View Demo",
-    "ExploreDoc": "Explore Documentation"
+    "ViewDemo": "https://ej2.syncfusion.com/react/demos/#/tailwind3/grid/overview",
+    "ExploreDoc": "https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance"
   },
   "Preview": {
     "Eyebrow": "Live Sample",
@@ -17,45 +17,43 @@ window.data = {
     "Eyebrow": "Why the theme customization matters?",
     "MainTitle": "Customize Themes to Reflect Your Brand",
     "Subtitle": "Theme customization helps organizations align data grids with their design systems while maintaining consistency, usability, and accessibility.",
-    "Content": "Design systems define brand identity through specific colors, typography, and spacing. Developers need to implement these guidelines consistently across applications. Generic, one-size-fits-all UI components force compromises on brand expression. The React Data Grid theme customization system lets you map your entire design system into production-ready components. Maintain brand consistency, reduce design-to-code friction, and empower developers to build on-brand experiences without fighting the component defaults.",
-    "OverviewTitle": "Syncfusion EJ2 Grid Feature Overview",
-    "OverviewContent": "Theme customization enables developers to customize colors, typography, spacing, and visual elements while supporting brand consistency, multiple themes, and accessibility standards.",
+    "Content": "Theme customization is important because it allows applications to match an organization's branding, design guidelines, and visual identity. It provides full control over colors, typography, spacing, and component styling, ensuring a consistent and professional look across the entire application. Custom themes also improve accessibility, readability, and user engagement by creating a more intuitive and visually appealing interface. This helps developers deliver cohesive, user-friendly experiences that align with both business and user expectations.",
     "KeyCababilitiesTitle": [
       "Consistent Brand Expression",
-      "Reduce Design-Dev Friction",
-      "Faster Implementation",
       "Centralized Style Control",
+      "Custom Visual Customization",
       "Multiple Theme Support",
-      "Accessibility Built-In"
+      "Accessibility Built-In",
+      "Faster UI Implementation"
     ]
   },
   "ChooseRightApproach": {
     "Eyebrow": "CHOOSE YOUR APPROACH",
     "MainTitle": "Select the Customization Method That Fits Your Workflow",
-    "Subtitle": "Different scenarios call for different customization approaches. Choose the method that matches your development and design workflow.",
+    "Subtitle": "Different use cases require different customization strategies. Choose the approach that best aligns with your development and design requirements.",
     "Options": [
       {
         "Title": "CSS Variables",
         "Content": "Override theme colors using CSS custom properties. Perfect for simple color adjustments and dynamic theme switching.",
-        "BestFor": "Light/dark mode toggling, simple brand color updates",
+        "BestFor": ["Light/dark mode toggling", "simple brand color updates"],
         "UseWhen": "You need quick CSS-level customization without code changes."
       },
       {
         "Title": "Theme Configuration",
         "Content": "Configure the grid using a complete theme object that supports colors, typography, spacing, and individual component styles.",
-        "BestFor": "Complete design system implementation, multi-theme support",
+        "BestFor": ["Complete design system implementation", "multi-theme support"],
         "UseWhen": "You have a full design system to implement."
       },
       {
         "Title": "Custom CSS Classes",
         "Content": "Apply custom CSS classes to grid elements. Provides fine-grained control for advanced styling scenarios.",
-        "BestFor": "Complex styling requirements, third-party CSS frameworks",
+        "BestFor": ["Complex styling requirements", "third-party CSS frameworks"],
         "UseWhen": "You need complete control over specific elements."
       },
       {
         "Title": "Component Templates",
         "Content": "Custom render functions for headers, cells, and rows. Build highly branded, custom cell experiences.",
-        "BestFor": "Custom cell layouts, branded data visualization",
+        "BestFor": ["Custom cell layouts", "branded data visualization"],
         "UseWhen": "You need to redesign specific grid elements."
       }
     ]
@@ -66,40 +64,40 @@ window.data = {
     "Subtitle": "Find the documentation, examples, and tools you need to implement theme customization in your project.",
     "Options": [
       {
-        "Title": "Theme Documentation",
+        "Title": "Theme Customization",
         "Content": "Complete guide to theming options, CSS variables, and theme configuration objects.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance#theme-customization"
       },
       {
         "Title": "CSS Variables Reference",
         "Content": "Full list of available CSS custom properties and their default values.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance#default-css-override"
       },
       {
-        "Title": "Light/Dark Mode Demo",
-        "Content": "Live demo showing how to implement light and dark theme switching with code examples.",
-        "ReadGuideORViewDemoTitle": "View Demo",
-        "ReadGuideORViewDemoLink": ""
+        "Title": "Cell Customization",
+        "Content": "Customize cell rendering, styling, and formatting using templates and events.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/cell"
       },
       {
-        "Title": "Custom Theme",
-        "Content": "Interactive tool to create and preview custom themes, generate CSS variables.",
-        "ReadGuideORViewDemoTitle": "Try It Now",
-        "ReadGuideORViewDemoLink": ""
+        "Title": "Responsive Layout Guide",
+        "Content": "Learn how to build responsive React Grid layouts that adapt to different screen sizes and devices.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/adaptive"
       },
       {
         "Title": "Template Customization Guide",
         "Content": "Learn how to use custom render templates to create branded cell and row layouts.",
         "ReadGuideORViewDemoTitle": "Read Guide",
-        "ReadGuideORViewDemoLink": ""
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/columns/column-template"
       },
       {
-        "Title": "API Reference",
-        "Content": "Complete TypeScript API documentation for theme configuration and styling options.",
-        "ReadGuideORViewDemoTitle": "API Reference",
-        "ReadGuideORViewDemoLink": ""
+        "Title": "Styling and Appearance",
+        "Content": "Learn how to customize Grid themes, headers, rows, cells, and visual appearance through CSS and theme overrides.",
+        "ReadGuideORViewDemoTitle": "Read Guide",
+        "ReadGuideORViewDemoLink": "https://ej2.syncfusion.com/react/documentation/grid/style-and-appearance/style-and-appearance"
       }
     ]
   },
@@ -131,6 +129,38 @@ window.data = {
       {
         "Question": "Does theming support accessibility standards?",
         "Answer": "Yes. All built-in themes meet WCAG 2.1 AA accessibility standards with proper color contrast ratios. When creating custom themes, use the theme builder to validate contrast ratios and ensure accessibility compliance."
+      },
+      {
+        "Question": "How to change the font size of DataGrid elements?",
+        "Answer": "Customize the Data Grid font size by overriding the default Grid CSS classes and applying a custom font-size to headers, rows, and cells. This ensures a consistent appearance across all Grid elements."
+      },
+      {
+        "Question": "Can I switch themes at runtime?",
+        "Answer": "Yes. You can swap CSS variables or load a different theme stylesheet at runtime to support user-driven theme switching without a full page refresh."
+      },
+      {
+        "Question": "Can different grids use different themes?",
+        "Answer": "Yes. Scope CSS variables or custom classes to a container so each grid instance can follow its own theme styling on the same page."
+      },
+      {
+        "Question": "Which option should I use for a quick brand update?",
+        "Answer": "Use CSS variables for quick color and contrast changes. It is the fastest way to align the grid with a brand palette without restructuring your styles."
+      },
+      {
+        "Question": "Which option fits a full design system rollout?",
+        "Answer": "Use theme configuration when you need broader control over colors, typography, spacing, and component-level styling across an application."
+      },
+      {
+        "Question": "Do custom themes work with dark mode?",
+        "Answer": "Yes. Define separate light and dark values for your CSS variables or load matching theme files to support dark mode switching."
+      },
+      {
+        "Question": "Can I style only specific cells or rows?",
+        "Answer": "Yes. Use custom CSS classes or templates when you need to target only certain cells, headers, or rows with specialized styling."
+      },
+      {
+        "Question": "Is accessibility affected by custom styling?",
+        "Answer": "Yes, custom styling can affect accessibility if it reduces contrast, impacts readability, or makes interactive elements harder to identify. Maintaining proper contrast, clear typography, and visible focus indicators helps ensure an accessible user experience."
       }
     ]
   },
@@ -140,25 +170,30 @@ window.data = {
     "Subtitle": "Explore more about styling, design systems, and building branded UI experiences.",
     "Options": [
       {
-        "Title": "Building Design Systems with React Data Grid",
-        "Content": "Learn how to create a scalable design system using theme customization and component templates.",
-        "ReadArticleLink": ""
+        "Title": "Light and Dark Theme Switching",
+        "Content": "Implement dynamic light and dark theme switching for Syncfusion React components with practical examples.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/14869/how-do-i-change-the-syncfusion-light-and-dark-themes-dynamically-in-react"
       },
       {
-        "Title": "Dark Mode Best Practices",
-        "Content": "Implement accessible, user-friendly dark mode using CSS variables and React state management.",
-        "ReadArticleLink": ""
+        "Title": "Dynamic Theme Loading",
+        "Content": "Load and switch Syncfusion themes dynamically at runtime to provide flexible user-driven theme customization.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/9499/how-to-load-themes-dynamically-in-syncfusion-components"
       },
       {
-        "Title": "White-Label Applications with React Data Grid",
-        "Content": "Multi-tenant styling strategies and how to support customer-specific branding.",
-        "ReadArticleLink": ""
+        "Title": "Render React Data Grid with Bootstrap Theme",
+        "Content": "Learn how to apply Bootstrap styling and themes to the Syncfusion React Data Grid component.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/10054/how-to-render-react-data-grid-with-bootstrap-theme"
       },
       {
-        "Title": "Accessibility and Theme Customization",
-        "Content": "Maintain WCAG compliance while creating custom themes and branded experiences.",
-        "ReadArticleLink": ""
-      }
+        "Title": "Customize Cell Style",
+        "Content": "Dynamically customize Grid cell appearance using data-driven conditions and business logic.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11989/how-to-customize-cell-style-based-on-the-condition-in-react-data-grid"
+      },
+      {
+        "Title": "Customize Row Style",
+        "Content": "Customize Grid row styles dynamically based on data values and predefined business conditions.",
+        "ReadArticleLink": "https://support.syncfusion.com/kb/article/11993/how-to-customize-the-row-style-based-on-condition-in-react-data-grid"
+      },
     ]
   }
 }
@@ -173,8 +208,8 @@ document.getElementsByClassName("hero")[0].innerHTML = `<div class="container">
             <h1>${data.HeroWithCTA.MainTitle}</h1>
             <p class="hero-description">${data.HeroWithCTA.Subtitle}</p>
             <div class="hero-ctas">
-                <a href="#" class="btn btn-primary">${data.HeroWithCTA.ViewDemo}</a>
-                <a href="#" class="btn btn-secondary">${data.HeroWithCTA.ExploreDoc}</a>
+                <a href=${data.HeroWithCTA.ViewDemo} class="btn btn-primary">ViewDemo</a>
+                <a href=${data.HeroWithCTA.ExploreDoc} class="btn btn-secondary">Explore Documentation</a>
             </div>
         </div>`
 
@@ -195,15 +230,12 @@ document.getElementsByClassName("why-matters")[0].innerHTML = `<div class="conta
                     <div style="color: #0066cc; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px;">${data.WhyMatters.Eyebrow}</div>
                     <h2>${data.WhyMatters.MainTitle}</h2>
                     <p class="why-matters-text-large">${data.WhyMatters.Content}</p>
-                    <div class="selection-types-list">
-                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
-                    </div>
                 </div>
                 <!-- RIGHT SIDE CARD -->
-                <div class="why-matters-right" style="padding-top: 110px;">
-                    <div class="why-matters-card">
-                        <h3 class="card-title">${data.WhyMatters.OverviewTitle}</h3>
-                        <p class="card-description">${data.WhyMatters.OverviewContent}</p>
+                <div class="why-matters-right" style="width: 330px;">
+                <div class="selection-list">
+                    <div class="selection-types-list">
+                    ${data.WhyMatters.KeyCababilitiesTitle.map(item => `<div class="selection-type-item">${item}</div>`).join('')}
                     </div>
                 </div>
             </div>
@@ -220,10 +252,10 @@ document.getElementsByClassName("capabilities-section")[0].innerHTML = `<div cla
                     <div class="capability-card">
                     <h3>${item.Title}</h3>
                     <p>${item.Content}</p>
-                    <div class="capability-label">Best for</div>
-                    <div class="capability-scenario">${item.BestFor}</div>
-                    <div class="capability-label">Use when</div>
-                    <div class="capability-scenario">${item.UseWhen}</div>
+                    <ul class="capability-list">
+                        ${item.BestFor.map(bestForItem => `<li>${bestForItem}</li>`).join('')}
+                    </ul>
+                    <div class="capability-pill">${item.UseWhen}</div>
                 </div>
                 `).join('')}
             </div>
